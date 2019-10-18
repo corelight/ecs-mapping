@@ -4,7 +4,7 @@ Corelight Elastic Common Schema Mapping
 
 Overview
 ========
-The `Elastic Common Schema <https://github.com/elastic/ecs>'_ is a way to unify field names across multiple data sources in Elastic. This mapping connects either Corelight or Zeek data types to relevant Elastic Common Schema field names, using Elastic's ingest node pipelines. A few notes on how the mapping works:
+The `Elastic Common Schema <https://github.com/elastic/ecs>`_ is a way to unify field names across multiple data sources in Elastic. This mapping connects either Corelight or Zeek data types to relevant Elastic Common Schema field names, using Elastic's ingest node pipelines. A few notes on how the mapping works:
 - Field names are replaced in this operation (i.e. ECS does not support having both the original field name and the ECS field name for the same record).
 - Both open source Zeek and Corelight source types are supported.  If you have changed your source type you will need to edit these mapping files to account for that.
 - The mapping can be done using either an ElasticSearch ingest node or directly in Kibana, as outlined below.
@@ -24,7 +24,7 @@ Installation
 ============
 There are three main steps for a successful installation: (1) load the ECS template into Elasticsearch (with a new index), (2) load the Corelight templates into Elasticsearch and (3) configure the Corelight sensor to export to the new index.
 
-1) Load the ECS template into Elasticsearch.  Installation instructions are available on the `ECS GitHub page <https://github.com/elastic/ecs>'_
+1) Load the ECS template into Elasticsearch.  Installation instructions are available on the `ECS GitHub page <https://github.com/elastic/ecs>`_
 
 2) Import index template
 2.a) Goto the Dev console in Kibana and run the command from the file "index_template_corelight". The index pattern name is "ecs-corelight*", which you can change if needed.
