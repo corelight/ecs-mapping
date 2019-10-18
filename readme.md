@@ -37,7 +37,7 @@ There are three main steps for a successful installation: (1) load the ECS templ
 	For automatic installation of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
 	- Use the folder automatic_install. Edit index name (or names) in file 'template_corelight' according to your environment.
 	- Copy all files to a Linux host. 
-	- Run the script using the command:: # bash pipelines_import.sh
+	- Run the script using the command # bash pipelines_import.sh
 	- Using an interactive menu, install all pipelines to your environment.
 
 	Note that the script will not work from a Mac as it relies on a direct TCP connection (please comment that line out of the script if you want to use it from a Mac).  Also, if you want to do cert based authentication you need to change the curl command to best fit your environment.
