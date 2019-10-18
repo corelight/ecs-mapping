@@ -27,6 +27,7 @@ There are three main steps for a successful installation: (1) load the ECS templ
 1) Load the ECS template into Elasticsearch.  Installation instructions are available on the ECS GitHub page (https://github.com/elastic/ecs)
 
 2) Import index template
+
 	2.a) Goto the Dev console in Kibana and run the command from the file "index_template_corelight". The index pattern name is "ecs-corelight*", which you can change if needed.
 
 
