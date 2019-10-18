@@ -1,0 +1,28 @@
+PUT _ingest/pipeline/corelight_known-hosts_pipeline
+{
+  "description" : "Corelight Known-hosts pipeline",
+  "processors" : [
+    {
+    "set": {
+    "field": "event.category",
+    "value": "observations",
+    "ignore_failure" : true
+          }   
+    },
+    {
+     "rename": {
+       "field": "host",
+        "target_field": "host.ip",
+        "ignore_failure" : true
+      }
+    },
+{
+  "set": {
+    "field": "network.transport",
+    "value": "tcp",
+    "ignore_failure" : true
+  
+        }
+    }
+]
+}

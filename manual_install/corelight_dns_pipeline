@@ -1,0 +1,213 @@
+PUT _ingest/pipeline/corelight_dns_pipeline
+{
+  "description" : "Corelight DNS pipeline",
+  "processors" : [
+     {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+    {
+      "rename": {
+       "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure" : true
+      }
+    },
+     {
+      "rename": {
+       "field": "addl",
+        "target_field": "dns.additionals.name",
+        "ignore_failure" : true
+      }
+    },
+    
+    {
+      "rename": {
+       "field": "auth",
+        "target_field": "dns.additionals.authoritative.name",
+        "ignore_failure" : true
+      }
+    },
+  
+      {
+      "rename": {
+       "field": "answers",
+        "target_field": "dns.answers.name",
+        "ignore_failure" : true
+      }
+    },
+    
+    {
+      "rename": {
+       "field": "TTLs",
+        "target_field": "dns.answers.ttl",
+        "ignore_failure" : true
+      }
+    },
+     {
+      "convert" : {
+        "field" : "dns.answers.ttl",
+        "type": "float",
+        "ignore_failure" : true
+      }
+    },
+ 
+  {
+      "rename": {
+       "field": "AA",
+        "target_field": "dns.flags.authoritative",
+        "ignore_failure" : true
+      }
+    },
+ 
+{
+      "rename": {
+       "field": "RA",
+        "target_field": "dns.flags.recursion.available",
+        "ignore_failure" : true
+      }
+    },
+{
+      "rename": {
+       "field": "RD",
+        "target_field": "dns.dns.flags.recursion.desired",
+        "ignore_failure" : true
+      }
+    },
+
+    {
+  "set": {
+    "field": "event.outcome",
+    "value": "failure",
+    "ignore_failure" : true,
+    "if": "(ctx.rejected == true)"
+        }
+    },
+       {
+  "set": {
+    "field": "event.outcome",
+    "value": "success",
+    "ignore_failure" : true,
+    "if": "(ctx.rejected == false)"
+        }
+    },
+   {
+      "rename": {
+       "field": "rejected",
+        "target_field": "dns.flags.rejected",
+        "ignore_failure" : true
+      }
+    },
+
+   {
+      "rename": {
+       "field": "TC",
+        "target_field": "dns.flags.truncated.response",
+        "ignore_failure" : true
+      }
+    },
+  {
+      "rename": {
+       "field": "Z",
+        "target_field": "dns.flags.z_bit",
+        "ignore_failure" : true
+      }
+    },
+    {
+      "rename": {
+       "field": "qclass",
+        "target_field": "dns.question.class_code",
+        "ignore_failure" : true
+      }
+    },
+     
+    {
+      "rename": {
+       "field": "qclass_name",
+        "target_field": "dns.question.class",
+        "ignore_failure" : true
+      }
+    },
+
+      
+ {
+      "rename": {
+       "field": "qtype",
+        "target_field": "dns.question.type_code",
+        "ignore_failure" : true
+      }
+    },
+      
+ {
+      "rename": {
+       "field": "qtype_name",
+        "target_field": "dns.question.type",
+        "ignore_failure" : true
+      }
+    },
+       {
+   "set": {
+    "field": "destination.domain",
+    "value": "{{query}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('query'))"
+        }
+    },
+     {
+      "rename": {
+       "field": "query",
+        "target_field": "dns.question.name",
+        "ignore_failure" : true
+      }
+    },
+     {
+      "rename": {
+       "field": "rcode_name",
+        "target_field": "dns.response_code",
+        "ignore_failure" : true
+      }
+    },
+{
+      "convert" : {
+        "field" : "rtt",
+        "type": "float",
+        "ignore_failure" : true
+      }
+    },
+     {
+  "script": {
+    "lang": "painless",
+    "source": "ctx.event.duration = ctx.rtt * params.param_c",
+    "params": {
+      "param_c": 1000000
+    },
+    "ignore_failure" : true
+  }
+},
+{
+    "remove": {
+    "field": "rtt",
+    "ignore_failure" : true
+    }
+  },
+
+{
+      "rename": {
+       "field": "rcode",
+        "target_field": "dns.status_code",
+        "ignore_failure" : true
+      }
+    },
+ {
+      "rename": {
+       "field": "trans_id",
+        "target_field": "dns.id",
+        "ignore_failure" : true
+      }
+    }
+
+]
+}

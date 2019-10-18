@@ -1,0 +1,29 @@
+PUT _ingest/pipeline/corelight_smb-cmd_pipeline
+{
+  "description" : "Corelight SMB-CMD pipeline",
+  "processors" : [
+    {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+    {
+     "rename": {
+       "field": "id",
+        "target_field": "log.id.id",
+        "ignore_failure" : true
+      }
+    },
+      {
+  "set": {
+    "field": "network.transport",
+    "value": "tcp",
+    "ignore_failure" : true
+  
+        }
+    }
+   
+]
+}

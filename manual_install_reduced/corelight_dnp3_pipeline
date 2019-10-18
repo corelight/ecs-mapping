@@ -1,0 +1,49 @@
+PUT _ingest/pipeline/corelight_dnp3_pipeline
+{
+  "description" : "Corelight DNP3 pipeline",
+  "processors" : [
+     {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+    {
+      "rename": {
+       "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure" : true
+      }
+    },  
+     {
+      "rename": {
+       "field": "fc_reply",
+        "target_field": "dnp3.fc_reply",
+        "ignore_failure" : true
+      }
+    },
+    {
+      "rename": {
+       "field": "fc_request",
+        "target_field": "dnp3.fc_request",
+        "ignore_failure" : true
+      }
+    },
+    {
+      "rename": {
+       "field": "iin",
+        "target_field": "dnp3.iin",
+        "ignore_failure" : true
+      }
+    },
+    {
+  "remove": {
+    "ignore_failure" : true,
+    "field": "id"
+  }
+}
+
+
+]
+}

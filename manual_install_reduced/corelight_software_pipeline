@@ -1,0 +1,184 @@
+PUT _ingest/pipeline/corelight_software_pipeline
+{
+  "description" : "Corelight Software pipeline",
+  "processors" : [
+    {
+    "set": {
+    "field": "event.category",
+    "value": "observations",
+    "ignore_failure" : true
+          }   
+    },
+  
+{
+     "rename": {
+       "field": "version_addl",
+        "target_field": "software.additional",
+        "ignore_failure" : true
+      }
+    },
+
+{
+  "set": {
+    "field": "host.ip",
+    "value": "{{host}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('host'))"
+        }
+    },
+{
+     "rename": {
+       "field": "host",
+        "target_field": "software.ip",
+        "ignore_failure" : true
+      }
+    },
+
+
+{
+  "set": {
+    "field": "host.port",
+    "value": "{{host_p}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('host_p'))"
+        }
+    },
+
+
+{
+     "rename": {
+       "field": "host_p",
+        "target_field": "software.port",
+        "ignore_failure" : true
+      }
+    },
+    
+    
+    {
+  "set": {
+    "field": "version_major",
+    "value": "{{version.major}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('version.major'))"
+        }
+    },
+       {
+  "set": {
+    "field": "version_minor",
+    "value": "{{version.minor}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('version.minor'))"
+        }
+    },
+       {
+  "set": {
+    "field": "version_minor2",
+    "value": "{{version.minor2}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('version.minor2'))"
+        }
+    },
+       {
+  "set": {
+    "field": "version_minor3",
+    "value": "{{version.minor3}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('version.minor3'))"
+        }
+    },
+{
+     "rename": {
+       "field": "version_major",
+        "target_field": "software.major",
+        "ignore_failure" : true,
+    "if": "(ctx.containsKey('version_major'))"
+      }
+    },
+{
+     "rename": {
+       "field": "version_minor",
+        "target_field": "software.minor",
+        "ignore_failure" : true,
+    "if": "(ctx.containsKey('version_minor'))"
+      }
+    },
+{
+     "rename": {
+       "field": "version_minor2",
+        "target_field": "software.minor2",
+        "ignore_failure" : true,
+    "if": "(ctx.containsKey('version_minor2'))"
+      }
+    },
+{
+     "rename": {
+       "field": "version_minor3",
+        "target_field": "software.minor3",
+        "ignore_failure" : true,
+    "if": "(ctx.containsKey('version_minor3'))"
+      }
+    },
+
+{
+    "dot_expander": {
+    "field": "version.minor",
+    "ignore_failure" : true
+    }
+    },
+
+ {
+    "dot_expander": {
+    "field": "version.major",
+    "ignore_failure" : true
+    }
+    },
+    {
+    "dot_expander": {
+    "field": "version.minor2",
+    "ignore_failure" : true
+    }
+    },
+    {
+    "dot_expander": {
+    "field": "version.minor3",
+    "ignore_failure" : true
+    }
+    },
+
+{
+  "remove": {
+    "ignore_failure" : true,
+    "field": ["version.minor", "version.minor2", "version.minor3", "version.major", "seen.indicator_type", "seen.indicator"]
+  }
+},
+{
+     "rename": {
+       "field": "name",
+        "target_field": "software.name",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "unparsed_version",
+        "target_field": "software.original",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "software_type",
+        "target_field": "software.type",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "url",
+        "target_field": "url.original",
+        "ignore_failure" : true
+      }
+    }
+  
+]
+}

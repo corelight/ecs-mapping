@@ -1,0 +1,82 @@
+PUT _ingest/pipeline/corelight_modbus_pipeline
+{
+  "description" : "Corelight Modbus pipeline",
+  "processors" : [
+     {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+    {
+      "rename": {
+       "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure" : true
+      }
+    },
+     
+    {
+     "rename": {
+       "field": "function",
+        "target_field": "modbus.function",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "exception",
+        "target_field": "modbus.exception",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "track_address",
+        "target_field": "modbus.track_address",
+        "ignore_failure" : true
+      }
+    },
+
+{
+     "rename": {
+       "field": "delta",
+        "target_field": "modbus.delta",
+        "ignore_failure" : true
+      }
+    },
+{
+      "convert" : {
+        "field" : "modbus.delta",
+        "type": "float",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "new_val",
+        "target_field": "modbus.new_value",
+        "ignore_failure" : true
+      }
+    },
+
+{
+     "rename": {
+       "field": "old_val",
+        "target_field": "modbus.old_value",
+        "ignore_failure" : true
+      }
+    },
+
+{
+     "rename": {
+       "field": "register",
+        "target_field": "modbus.register",
+        "ignore_failure" : true
+      }
+    }
+
+
+]
+}

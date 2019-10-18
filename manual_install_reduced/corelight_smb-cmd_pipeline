@@ -1,0 +1,129 @@
+PUT _ingest/pipeline/corelight_smb-cmd_pipeline
+{
+  "description" : "Corelight SMB-CMD pipeline",
+  "processors" : [
+    {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+    {
+     "rename": {
+       "field": "id",
+        "target_field": "log.id.id",
+        "ignore_failure" : true
+      }
+    },
+      {
+  "set": {
+    "field": "network.transport",
+    "value": "tcp",
+    "ignore_failure" : true
+  
+        }
+    },
+    {
+  "script": {
+    "lang": "painless",
+    "source": "ctx.event.duration = (long)(ctx.rtt * params.param_c)",
+    "params": {
+      "param_c": 1000000
+    },
+    "ignore_failure" : true
+  }
+},
+{
+    "remove": {
+    "field": "rtt",
+  "ignore_failure" : true
+    }
+  },
+  {
+     "rename": {
+       "field": "argument",
+        "target_field": "smb.argument",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "command",
+        "target_field": "smb.command",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "referenced_file",
+        "target_field": "smb.referenced_file",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "referenced_tree",
+        "target_field": "smb.referenced_tree",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "smb1_offered_dialects",
+        "target_field": "smb.smb1_offered_dialects",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "smb2_offered_dialects",
+        "target_field": "smb.smb2_offered_dialects",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "status",
+        "target_field": "event.name",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "sub_command",
+        "target_field": "smb.sub_command",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "tree",
+        "target_field": "smb.tree",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "tree_service",
+        "target_field": "smb.tree_service",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "username",
+        "target_field": "source.user.name",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "version",
+        "target_field": "smb.version",
+        "ignore_failure" : true
+      }
+    }
+   
+]
+}

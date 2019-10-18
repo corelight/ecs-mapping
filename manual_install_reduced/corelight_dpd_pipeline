@@ -1,0 +1,53 @@
+PUT _ingest/pipeline/corelight_dpd_pipeline
+{
+  "description" : "Corelight DPD pipeline",
+  "processors" : [
+ 
+    {
+    "set": {
+    "field": "event.category",
+    "value": "miscellaneous",
+    "ignore_failure" : true
+          }   
+    },
+    
+    {
+      "rename": {
+       "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure" : true
+      }
+    },
+  
+   {
+      "rename": {
+       "field": "analyzer",
+        "target_field": "dpd.analyzer",
+        "ignore_failure" : true
+      }
+    },
+    
+    {
+      "rename": {
+       "field": "failure_reason",
+        "target_field": "dpd.failure_reason",
+        "ignore_failure" : true
+      }
+    },
+    
+    {
+      "rename": {
+       "field": "packet_segment",
+        "target_field": "dpd.packet_segment",
+        "ignore_failure" : true
+      }
+    },
+    {
+  "remove": {
+    "ignore_failure" : true,
+    "field": "id"
+  }
+}
+
+]
+}

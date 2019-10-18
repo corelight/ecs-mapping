@@ -1,0 +1,171 @@
+PUT _ingest/pipeline/corelight_sip_pipeline
+{
+  "description" : "Corelight SIP pipeline",
+  "processors" : [
+    {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+    
+ 
+    {
+  "set": {
+    "field": "network.transport",
+    "value": "udp",
+    "ignore_failure" : true
+  
+        }
+    },
+    {
+     "rename": {
+       "field": "call_id",
+        "target_field": "sip.call_id",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "content_type",
+        "target_field": "sip.content_type",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "date",
+        "target_field": "sip.date",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "method",
+        "target_field": "sip.method",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "reply_to",
+        "target_field": "sip.reply_to",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "request_body_len",
+        "target_field": "sip.request_body_length",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "request_from",
+        "target_field": "sip.request_from",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "request_path",
+        "target_field": "sip.request_path",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "request_to",
+        "target_field": "sip.request_to",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "response_body_len",
+        "target_field": "sip.response_body_length",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "response_from",
+        "target_field": "sip.response_from",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "response_path",
+        "target_field": "sip.response_path",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "response_to",
+        "target_field": "sip.response_to",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "seq",
+        "target_field": "sip.seq",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "status_code",
+        "target_field": "sip.status_code",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "status_msg",
+        "target_field": "sip.status_msg",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "subject",
+        "target_field": "sip.subject",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "trans_depth",
+        "target_field": "sip.trans_depth",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "uri",
+        "target_field": "url.original",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "warning",
+        "target_field": "sip.warning",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "user_agent",
+        "target_field": "user_agent.original",
+        "ignore_failure" : true
+      }
+    }
+
+]
+}

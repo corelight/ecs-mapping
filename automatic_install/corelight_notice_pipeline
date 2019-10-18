@@ -1,0 +1,172 @@
+{
+  "description" : "Corelight Notice pipeline",
+  "processors" : [
+     {
+    "set": {
+    "field": "event.category",
+    "value": "detection",
+    "ignore_failure" : true
+          }   
+    },
+
+  {
+     "rename": {
+       "field": "fuid",
+        "target_field": "log.id.fuid",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "file_desc",
+        "target_field": "file.description",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "file_mime_type",
+        "target_field": "file.mime_type",
+        "ignore_failure" : true
+      }
+    },
+
+
+{
+   "set": {
+    "field": "source.address",
+    "value": "{{src}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('src'))"
+        }
+    },
+
+{
+     "rename": {
+       "field": "src",
+        "target_field": "source.ip",
+        "ignore_failure" : true
+      }
+    },
+
+    {
+   "set": {
+    "field": "destination.address",
+    "value": "{{dst}}",
+    "ignore_failure" : true,
+    "if": "(ctx.containsKey('dst'))"
+        }
+    },
+
+{
+     "rename": {
+       "field": "dst",
+        "target_field": "destination.ip",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "actions",
+        "target_field": "notice.actions",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "email_body_sections",
+        "target_field": "notice.email_body_sections",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "msg",
+        "target_field": "notice.message",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "note",
+        "target_field": "notice.note",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "peer_descr",
+        "target_field": "notice.peer_description",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "sub",
+        "target_field": "notice.sub_message",
+        "ignore_failure" : true
+      }
+    },
+
+
+{
+     "rename": {
+       "field": "n",
+        "target_field": "notice.number",
+        "ignore_failure" : true
+      }
+    },
+{
+      "convert" : {
+        "field" : "notice.number",
+        "type": "integer",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "subpress_for",
+        "target_field": "notice.subpress_duration",
+        "ignore_failure" : true
+      }
+    },
+{
+      "convert" : {
+        "field" : "notice.subpress_duration",
+        "type": "integer",
+        "ignore_failure" : true
+      }
+    },
+
+{
+      "convert" : {
+        "field" : "destination.port",
+        "type": "integer",
+        "ignore_failure" : true
+      }
+    },
+   
+{
+      "rename": {
+       "field": "dropped",
+        "target_field": "notice.dropped",
+        "ignore_failure" : true
+      }
+    },
+    {
+    "remove": {
+    "field": "p",
+    "ignore_failure" : true
+    }
+  }
+
+  
+]
+}

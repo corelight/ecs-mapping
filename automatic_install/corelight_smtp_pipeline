@@ -1,0 +1,169 @@
+{
+  "description" : "Corelight SMTP pipeline",
+  "processors" : [
+    {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+  
+ {
+     "rename": {
+       "field": "fuids",
+        "target_field": "log.id.fuids",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "cc",
+        "target_field": "smtp.cc",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "first_received",
+        "target_field": "smtp.first_received",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "from",
+        "target_field": "smtp.from",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "helo",
+        "target_field": "smtp.helo",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "in_reply_to",
+        "target_field": "smtp.in_reply_to",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "is_webmail",
+        "target_field": "smtp.is_webmail",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "last_reply",
+        "target_field": "smtp.last_reply",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "mailfrom",
+        "target_field": "smtp.mailfrom",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "msg_id",
+        "target_field": "smtp.msg_id",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "path",
+        "target_field": "smtp.path",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "rcptto",
+        "target_field": "smtp.rcptto",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "reply_to",
+        "target_field": "smtp.reply_to",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "second_received",
+        "target_field": "smtp.second_received",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "subject",
+        "target_field": "smtp.subject",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "tls",
+        "target_field": "smtp.tls",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "to",
+        "target_field": "smtp.to",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "trans_depth",
+        "target_field": "smtp.trans_depth",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "x_originating_ip",
+        "target_field": "smtp.x_originating_ip",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "user_agent",
+        "target_field": "user_agent.original",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "date",
+        "target_field": "smtp.date",
+        "ignore_failure" : true
+      }
+    },
+       {
+  "set": {
+    "field": "network.transport",
+    "value": "tcp",
+    "ignore_failure" : true
+  
+        }
+    }
+  
+]
+}

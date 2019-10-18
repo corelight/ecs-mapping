@@ -1,0 +1,48 @@
+{
+  "description" : "Corelight Weird pipeline",
+  "processors" : [
+    {
+    "set": {
+    "field": "event.category",
+    "value": "miscellaneous",
+    "ignore_failure" : true
+          }   
+    },
+    
+   {
+     "rename": {
+       "field": "addl",
+        "target_field": "weird.additional_info",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "name",
+        "target_field": "weird.name",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "notice",
+        "target_field": "weird.notice",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "peer",
+        "target_field": "weird.peer",
+        "ignore_failure" : true
+      }
+    },
+     {
+  "remove": {
+    "ignore_failure" : true,
+    "field": "id"
+  }
+}
+
+]
+}

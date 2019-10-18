@@ -1,0 +1,29 @@
+PUT _ingest/pipeline/corelight_tunnel_pipeline
+{
+  "description" : "Corelight Tunnel pipeline",
+  "processors" : [
+
+    {
+    "set": {
+    "field": "event.category",
+    "value": "network",
+    "ignore_failure" : true
+          }   
+    },
+        
+   {
+     "rename": {
+       "field": "action",
+        "target_field": "tunnel.action",
+        "ignore_failure" : true
+      }
+    },
+{
+     "rename": {
+       "field": "tunnel_type",
+        "target_field": "tunnel.tunnel_type",
+        "ignore_failure" : true
+      }
+    }
+]
+}
