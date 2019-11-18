@@ -10,6 +10,13 @@ PUT _ingest/pipeline/corelight_general_pipeline
       }
     },
     {
+      "rename": {
+       "field": "_path",
+        "target_field": "event.dataset",
+        "ignore_failure" : true
+      }
+    },
+    {
     "date" : {
         "field" : "_write_ts",
         "target_field" : "@timestamp",
