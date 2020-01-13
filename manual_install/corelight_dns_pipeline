@@ -156,6 +156,19 @@ PUT _ingest/pipeline/corelight_dns_pipeline
     "if": "(ctx.containsKey('query'))"
         }
     },
+    {
+          "script" : {
+              "lang" : "painless",
+              "source" : "ctx.length = ctx.query.length()"
+          }
+      },
+      {
+        "script" : {
+          "lang" : "painless", 
+          "source": "ctx.dns.question.registered_domain = ctx.destination.domain.substring(ctx.destination.domain.indexOf('.')+1)",
+          "ignore_failure": true
+        }
+      },
      {
       "rename": {
        "field": "query",
