@@ -1,103 +1,106 @@
 PUT _ingest/pipeline/corelight_radius_pipeline
 {
-  "description" : "Corelight Radius pipeline",
-  "processors" : [
+  "description": "Corelight Radius pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }   
     },
-    
-{
-     "rename": {
-       "field": "ttl",
+    {
+      "rename": {
+        "field": "ttl",
         "target_field": "event.duration",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
+    {
       "convert" : {
         "field" : "event.duration",
         "type": "float",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "username",
+    {
+      "rename": {
+        "field": "username",
         "target_field": "source.user.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "mac",
-        "target_field": "radius.calling_station_id",
-        "ignore_failure" : true
+    {
+      "rename": {
+        "field": "mac",
+        "target_field": "source.mac",
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "connect_info",
+    {
+      "rename": {
+        "field": "connect_info",
         "target_field": "radius.connect_info",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "framed_addr",
+    {
+      "rename": {
+        "field": "framed_addr",
         "target_field": "radius.framed.ip",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "reply_msg",
+    {
+      "rename": {
+        "field": "reply_msg",
         "target_field": "radius.reply_message",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "tunnel_client",
+    {
+      "rename": {
+        "field": "tunnel_client",
         "target_field": "radius.tunnel.source.endpoint",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-  "set": {
-    "field": "network.transport",
-    "value": "udp",
-    "ignore_failure" : true
-  
-        }
+      "set": {
+        "field": "network.transport",
+        "value": "udp",
+        "ignore_failure": true
+      }
     },
-
     {
-  "set": {
-    "field": "event.outcome",
-    "value": "success",
-    "ignore_failure" : true,
-    "if": "(ctx.result == true)"
-  
-        }
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.result == true)"
+      }
     },
-     {
-  "set": {
-    "field": "event.outcome",
-    "value": "failure",
-    "ignore_failure" : true,
-    "if": "(ctx.result == false)"
-  
-        }
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.result == false)"
+      }
     },
- {
-    "remove": {
-    "field": "result",
-    "ignore_failure" : true
+    {
+      "rename": {
+        "field": "result",
+        "target_field": "radius.result",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
     }
-  }
-]
+  ]
 }

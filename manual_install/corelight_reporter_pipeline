@@ -1,0 +1,10 @@
+PUT _ingest/pipeline/corelight_reporter_pipeline
+{
+  "description" : "(Corelight) Zeek Reporter pipeline",
+  "processors" : [
+    { "set": { "field": "event.category", "value": "diagnostics", "ignore_failure": true } },
+    { "rename": { "field": "level", "target_field": "reporter.level", "ignore_failure": true } },
+    { "rename": { "field": "location", "target_field": "reporter.location", "ignore_failure": true } },
+    { "rename": { "field": "message", "target_field": "reporter.message", "ignore_failure": true } }
+  ]
+}

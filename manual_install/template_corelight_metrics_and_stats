@@ -1,0 +1,55 @@
+PUT /_template/corelight_metrics_and_stats
+{
+  "order" : 99,
+  "index_patterns": [ "*corelight-zeek-metrics*", "*corelight-zeek-audit*" ],
+  "version": 1501,
+  "settings": {
+    "index": {
+      "mapping": {
+        "coerce": false,
+        "ignore_malformed": true,
+        "total_fields.limit": 10000
+      },
+      "refresh_interval": "20s"
+    },
+    "number_of_shards": "5",
+    "number_of_replicas": "0"
+  },
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "strings_as_keyword": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          }
+        }
+      },
+      {
+        "numeric_long_fields": {
+          "match_mapping_type": "long",
+          "mapping": {
+            "type": "long"
+          }
+        }
+      },
+      {
+        "numeric_double_fields_as_string": {
+          "match_mapping_type": "double",
+          "mapping": {
+            "type": "double"
+          }
+        }
+      },
+      {
+        "boolean_fields_as_string": {
+          "match_mapping_type": "boolean",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      }
+    ]
+  }
+}

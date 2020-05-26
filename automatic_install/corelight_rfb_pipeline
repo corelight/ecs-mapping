@@ -1,112 +1,112 @@
 {
-  "description" : "Corelight RFB pipeline",
-  "processors" : [
+  "description": "Corelight RFB pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
-    
- {
-     "rename": {
-       "field": "client_minor_version",
+    {
+      "rename": {
+        "field": "client_minor_version",
         "target_field": "source.software.minor",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "client_major_version",
-        "target_field": "source.url.password",
-        "ignore_failure" : true
+    {
+      "rename": {
+        "field": "client_major_version",
+        "target_field": "source.software.major",
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "authentication_method",
+    {
+      "rename": {
+        "field": "authentication_method",
         "target_field": "rfb.authentication.method",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-
     {
-  "set": {
-    "field": "event.outcome",
-    "value": "success",
-    "ignore_failure" : true,
-    "if": "(ctx.auth == true)"
-  
-        }
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.auth == true)"
+      }
     },
-     {
-  "set": {
-    "field": "event.outcome",
-    "value": "failure",
-    "ignore_failure" : true,
-    "if": "(ctx.auth == false)"
-  
-        }
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.auth == false)"
+      }
     },
-
-{
-     "rename": {
-       "field": "auth",
+    {
+      "rename": {
+        "field": "auth",
         "target_field": "rfb.authentication.successful",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "height",
-        "target_field": "rfb.desktop_height",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "width",
-        "target_field": "rfb.desktop_width",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "share_flag",
-        "target_field": "rfb.share_flag",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "server_major_version",
-        "target_field": "destination.software.major",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "server_minor_version",
-        "target_field": "destination.software.minor",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "desktop_name",
-        "target_field": "destination.hostname",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-  "set": {
-    "field": "network.transport",
-    "value": "tcp",
-    "ignore_failure" : true
-  
-        }
+      "rename": {
+        "field": "height",
+        "target_field": "rfb.desktop_height",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "width",
+        "target_field": "rfb.desktop_width",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "share_flag",
+        "target_field": "rfb.share_flag",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_major_version",
+        "target_field": "destination.software.major",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_minor_version",
+        "target_field": "destination.software.minor",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "desktop_name",
+        "target_field": "destination.hostname",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
     }
-
-]
+  ]
 }

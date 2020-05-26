@@ -1,0 +1,29 @@
+{
+  "description": "Corelight temporary pipeline for logs that do not have parsers written yet",
+  "processors": [
+    {
+      "set": {
+        "field": "event.ingested",
+        "value": "{{_ingest.timestamp}}",
+        "if": "ctx.event?.ingested != null"
+      }
+    },
+    {
+      "date": {
+        "field": "event.ingested",
+        "formats" : ["ISO8601"],
+        "ignore_failure": false
+      }
+    },
+    {
+      "date_index_name" : {
+        "field" : "event.ingested",
+        "index_name_prefix" : "temp-corelight-{{event.dataset}}-",
+        "date_formats": ["yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX"],
+        "date_rounding": "d",
+        "ignore_failure": false,
+        "index_name_format": "yyyy.MM.dd"
+      }
+    }
+  ]
+}

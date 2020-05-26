@@ -1,49 +1,47 @@
 {
   "description" : "Corelight Syslog pipeline",
   "processors" : [
-
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
-       
     {
-     "rename": {
-       "field": "proto",
+      "rename": {
+        "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "facility",
-        "target_field": "event.facility",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "severity",
-        "target_field": "event.severity",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "message",
-        "target_field": "syslog.message",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-  "remove": {
-    "ignore_failure" : true,
-    "field": "id"
-  }
-}
-  
-]
+      "rename": {
+        "field": "facility",
+        "target_field": "log.syslog.facility.name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "severity",
+        "target_field": "log.syslog.severity.name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "message",
+        "target_field": "syslog.message",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
 }

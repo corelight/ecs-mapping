@@ -1,7 +1,0 @@
-PUT /_template/corelight
-{
-    "index_patterns": ["*ecs-corelight*"],
-    "settings": {
-        "index.default_pipeline": "corelight_main_pipeline"
-    }
-}
