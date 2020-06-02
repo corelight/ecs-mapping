@@ -299,7 +299,7 @@ PUT _ingest/pipeline/corelight_main_pipeline
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'suricata_corelight'",
-        "name": "suricata_corelight_pipeline"
+        "name": "corelight_suricata_pipeline"
       }
     },
     {
@@ -340,44 +340,43 @@ PUT _ingest/pipeline/corelight_main_pipeline
     },
     {
       "pipeline": {
-        "if": "ctx.event.dataset == 'namecache'",
-        "name": "corelight_namecache_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'reporter'",
-        "name": "corelight_reporter_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'stats'",
-        "name": "corelight_stats_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'suricata_stats'",
-        "name": "suricata_stats_pipeline"
-      }
-    },
-    {
-      "pipeline": {
         "if": "ctx.event.dataset == 'corelight_audit_log'",
         "name": "corelight_audit_log_pipeline"
       }
     },
     {
       "pipeline": {
-        "if": " ctx.event.category == 'diagnostics' || ctx.event.dataset == 'namecache' ||   ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter'",
-        "name": "corelight_metrics_and_stats_pipeline"
+        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system'",
+        "name": "corelight_metrics_general_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.category == 'diagnostics' || ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter'",
+        "name": "corelight_stats_general_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event?.category == null",
         "name": "corelight_temporary_log_holdings_pipeline"
+      }
+    },
+    {
+      "geoip": {
+        "field": "host.ip",
+        "target_field": "host.geo",
+        "ignore_missing": true,
+        "if": "ctx.host?.ip != null"
+      }
+    },
+    {
+      "geoip": {
+        "database_file": "GeoLite2-ASN.mmdb",
+        "field": "host.ip",
+        "target_field": "host.geo",
+        "ignore_missing": true,
+        "if": "ctx.host?.ip != null"
       }
     }
   ],

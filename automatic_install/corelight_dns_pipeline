@@ -189,7 +189,7 @@
     {
         "script" : {
           "lang" : "painless",
-          "source" : "ctx.event.duration = ctx.dns.rtt * params.param_c",
+          "source" : "ctx.event.duration = (long)(ctx.dns.rtt * params.param_c)",
           "params" : {
             "param_c" : 1000000
           },

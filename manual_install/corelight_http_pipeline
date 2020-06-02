@@ -1,4 +1,5 @@
 PUT _ingest/pipeline/corelight_http_pipeline
+PUT _ingest/pipeline/corelight_http_pipeline
 {
   "description" : "Corelight HTTP pipeline",
   "processors" : [
@@ -175,15 +176,23 @@ PUT _ingest/pipeline/corelight_http_pipeline
     },
     {
       "rename": {
-        "field": "uri",
-        "target_field": "url.original",
+        "field": "uri_vars",
+        "target_field": "url.variables",
         "ignore_failure": true
       }
     },
     {
+      "set": {
+        "field": "url.path",
+        "value": "{{uri}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('uri')"
+      }
+    },
+    {
       "rename": {
-        "field": "uri_vars",
-        "target_field": "url.variables",
+        "field": "uri",
+        "target_field": "url.original",
         "ignore_failure": true
       }
     },

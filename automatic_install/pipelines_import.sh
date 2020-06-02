@@ -364,8 +364,8 @@ if [[ ${response} =~ ^([yY][eE][sS]|[yY])$ ]]; then
 	}
 	else
   {
-    ehco -e "${RED}Pipelines list is empty."
-    ehco "Please make sure you are in the same directory as the pipelines you are trying to install."
+    echo -e "${RED}Pipelines list is empty."
+    echo "Please make sure you are in the same directory as the pipelines you are trying to install."
     echo "Exit..."
     exit 0
   }

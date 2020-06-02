@@ -1,4 +1,4 @@
-PUT _ingest/pipeline/suricata_corelight_pipeline
+PUT _ingest/pipeline/corelight_suricata_pipeline
 {
   "description" : "Corelight Suricata pipeline",
   "processors" : [

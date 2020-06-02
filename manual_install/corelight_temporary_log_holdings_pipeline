@@ -6,7 +6,7 @@ PUT /_template/corelight_temporary_log_holdings_pipeline
       "set": {
         "field": "event.ingested",
         "value": "{{_ingest.timestamp}}",
-        "if": "ctx.event?.ingested != null"
+        "if": "ctx.event?.ingested == null"
       }
     },
     {

@@ -99,7 +99,7 @@
     {
       "script": {
         "lang": "painless",
-        "source": "ctx.event.duration = ctx.file.duration * params.param_c",
+        "source": "ctx.event.duration = (long)(ctx.file.duration * params.param_c)",
         "params": {
           "param_c": 1000000
         },
