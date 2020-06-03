@@ -17,20 +17,6 @@
     },
     {
       "rename": {
-        "field": "vlan",
-        "target_field": "network.vlan.id",
-        "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
-        "field": "inner_vlan",
-        "target_field": "network.vlan.inner.id",
-        "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
         "field": "tunnel_parents",
         "target_field": "log.id.tunnel_parents",
         "ignore_failure": true

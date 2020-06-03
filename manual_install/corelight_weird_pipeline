@@ -36,6 +36,13 @@ PUT _ingest/pipeline/corelight_weird_pipeline
         "target_field": "weird.peer",
         "ignore_failure": true
       }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
     }
   ]
 }

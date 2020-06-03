@@ -10,28 +10,26 @@
     },
     {
       "dot_expander": {
-        "field": "certificate.basic_constraints.ca",
-        "path": "temporary_x509",
+        "field": "basic_constraints.ca",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.basic_constraints.ca",
+        "field": "basic_constraints.ca",
         "target_field": "file.x509.certificate.basic_constraints.ca",
         "ignore_failure": true
       }
     },
     {
       "dot_expander": {
-        "field": "certificate.basic_constraints.path_length",
-        "path": "temporary_x509",
+        "field": "basic_constraints.path_length",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.basic_constraints.path_length",
+        "field": "basic_constraints.path_length",
         "target_field": "file.x509.certificate.basic_constraints.path_length",
         "ignore_failure": true
       }
@@ -39,13 +37,12 @@
     {
       "dot_expander": {
         "field": "certificate.cn",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.cn",
+        "field": "certificate.cn",
         "target_field": "file.x509.certificate.common_name",
         "ignore_failure": true
       }
@@ -53,13 +50,12 @@
     {
       "dot_expander": {
         "field": "certificate.curve",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.curve",
+        "field": "certificate.curve",
         "target_field": "file.x509.public_key_curve",
         "ignore_failure": true
       }
@@ -67,13 +63,12 @@
     {
       "dot_expander": {
         "field": "certificate.exponent",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.exponent",
+        "field": "certificate.exponent",
         "target_field": "file.x509.certificate.exponent",
         "ignore_failure": true
       }
@@ -81,13 +76,12 @@
     {
       "dot_expander": {
         "field": "certificate.issuer",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.issuer",
+        "field": "certificate.issuer",
         "target_field": "file.x509.issuer.distinguished_name",
         "ignore_failure": true
       }
@@ -95,13 +89,12 @@
     {
       "dot_expander": {
         "field": "certificate.key_alg",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.key_alg",
+        "field": "certificate.key_alg",
         "target_field": "file.x509.public_key_algorithm",
         "ignore_failure": true
       }
@@ -109,13 +102,12 @@
     {
       "dot_expander": {
         "field": "certificate.key_length",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.key_length",
+        "field": "certificate.key_length",
         "target_field": "file.x509.public_key_size",
         "ignore_failure": true
       }
@@ -123,13 +115,12 @@
     {
       "dot_expander": {
         "field": "certificate.key_type",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.key_type",
+        "field": "certificate.key_type",
         "target_field": "file.x509.public_key_type",
         "ignore_failure": true
       }
@@ -137,13 +128,12 @@
     {
       "dot_expander": {
         "field": "certificate.not_valid_after",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.not_valid_after",
+        "field": "certificate.not_valid_after",
         "target_field": "file.x509.not_after",
         "ignore_failure": true
       }
@@ -151,13 +141,12 @@
     {
       "dot_expander": {
         "field": "certificate.not_valid_before",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.not_valid_before",
+        "field": "certificate.not_valid_before",
         "target_field": "file.x509.not_before",
         "ignore_failure": true
       }
@@ -165,13 +154,12 @@
     {
       "dot_expander": {
         "field": "certificate.serial",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.serial",
+        "field": "certificate.serial",
         "target_field": "file.x509.serial_number",
         "ignore_failure": true
       }
@@ -179,13 +167,12 @@
     {
       "dot_expander": {
         "field": "certificate.sig_alg",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.sig_alg",
+        "field": "certificate.sig_alg",
         "target_field": "file.x509.signature_algorithm",
         "ignore_failure": true
       }
@@ -193,13 +180,12 @@
     {
       "dot_expander": {
         "field": "certificate.subject",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.subject",
+        "field": "certificate.subject",
         "target_field": "file.x509.subject.distinguished_name",
         "ignore_failure": true
       }
@@ -207,13 +193,12 @@
     {
       "dot_expander": {
         "field": "certificate.version",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.certificate.version",
+        "field": "certificate.version",
         "target_field": "file.x509.subject.version_number",
         "ignore_failure": true
       }
@@ -228,13 +213,12 @@
     {
       "dot_expander": {
         "field": "san.dns",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.san.dns",
+        "field": "san.dns",
         "target_field": "file.x509.san_dns",
         "ignore_failure": true
       }
@@ -242,13 +226,12 @@
     {
       "dot_expander": {
         "field": "san.email",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.san.email",
+        "field": "san.email",
         "target_field": "file.x509.san_email",
         "ignore_failure": true
       }
@@ -256,13 +239,12 @@
     {
       "dot_expander": {
         "field": "san.ip",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.san.ip",
+        "field": "san.ip",
         "target_field": "file.x509.san_ip",
         "ignore_failure": true
       }
@@ -270,13 +252,12 @@
     {
       "dot_expander": {
         "field": "san.url",
-        "path": "temporary_x509",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_x509.san.url",
+        "field": "san.url",
         "target_field": "file.x509.san_url",
         "ignore_failure": true
       }
@@ -427,7 +408,7 @@
         "target_field" : "file.x509.not_after",
         "formats" : ["UNIX"],
         "ignore_failure": true,
-        "if": "ctx.file.x509.not_after != null"
+        "if": "ctx.file?.x509?.not_after != null"
       }
     },
     {
@@ -436,7 +417,7 @@
         "target_field" : "file.x509.not_before",
         "formats" : ["UNIX"],
         "ignore_failure": true,
-        "if": "ctx.file.x509.not_before != null"
+        "if": "ctx.file?.x509?.not_before != null"
       }
     },
     {

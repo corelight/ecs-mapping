@@ -18,9 +18,10 @@ corelight_main_pipeline="corelight_main_pipeline"
 corelight_general_pipeline="corelight_general_pipeline"
 pipelines_list=$(ls ${pipelines_path} | grep -E '^.*_pipeline$' |grep -v ${corelight_general_pipeline} |grep -v ${corelight_main_pipeline})
 pipelines_list_amount=$(echo "$pipelines_list" |wc -l)
-max_install_attempts=7
+max_install_attempts=5
 successful_install_amount=0
 failed_install_amount=0
+failed_files=()
 
 tls_bypass='yes'
 tls_ca_location=''
@@ -346,6 +347,7 @@ if [[ ${response} =~ ^([yY][eE][sS]|[yY])$ ]]; then
         failed_install_amount=$((failed_install_amount+1))
         echo -e "${RED}${import_status}"
         echo -e "${RED}Failed to install '$pipeline_file'"
+        failed_files+=("${pipeline_file}")
       }
 			else
       {
@@ -358,7 +360,8 @@ if [[ ${response} =~ ^([yY][eE][sS]|[yY])$ ]]; then
 		}
 		done
 		if [[ ${failed_install_amount} -ge 1 ]]; then
-		  echo -e "${WAR}Failed to install $failed_install_amount pipelines"
+		  echo -e "${WAR}Failed to install $failed_install_amount pipeline(s)"
+		  echo -e "${WAR}Failed to install the following pipeline(s):\n${failed_files[@]}\n"
     fi
 		echo -e "${CYAN}Successfully installed $successful_install_amount of $pipelines_list_amount pipelines${STD}\n"
 	}

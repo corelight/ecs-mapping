@@ -27,13 +27,12 @@ PUT _ingest/pipeline/corelight_suricata_pipeline
     {
       "dot_expander": {
         "field": "alert.action",
-        "path": "temporary_suricata",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_suricata.alert.action",
+        "field": "alert.action",
         "target_field": "rule.action",
         "ignore_failure": true
       }
@@ -56,13 +55,12 @@ PUT _ingest/pipeline/corelight_suricata_pipeline
     {
       "dot_expander": {
         "field": "alert.category",
-        "path": "temporary_suricata",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_suricata.alert.category",
+        "field": "alert.category",
         "target_field": "rule.category",
         "ignore_failure": true
       }
@@ -85,13 +83,12 @@ PUT _ingest/pipeline/corelight_suricata_pipeline
     {
       "dot_expander": {
         "field": "alert.gid",
-        "path": "temporary_suricata",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_suricata.alert.gid",
+        "field": "alert.gid",
         "target_field": "rule.gid",
         "ignore_failure": true
       }
@@ -114,13 +111,12 @@ PUT _ingest/pipeline/corelight_suricata_pipeline
     {
       "dot_expander": {
         "field": "alert.rev",
-        "path": "temporary_suricata",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_suricata.alert.rev",
+        "field": "alert.rev",
         "target_field": "rule.version",
         "ignore_failure": true
       }
@@ -143,13 +139,12 @@ PUT _ingest/pipeline/corelight_suricata_pipeline
     {
       "dot_expander": {
         "field": "alert.severity",
-        "path": "temporary_suricata",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_suricata.alert.severity",
+        "field": "alert.severity",
         "target_field": "event.severity",
         "ignore_failure": true
       }
@@ -172,13 +167,12 @@ PUT _ingest/pipeline/corelight_suricata_pipeline
     {
       "dot_expander": {
         "field": "alert.signature",
-        "path": "temporary_suricata",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_suricata.alert.signature",
+        "field": "alert.signature",
         "target_field": "rule.name",
         "ignore_failure": true
       }
@@ -201,13 +195,12 @@ PUT _ingest/pipeline/corelight_suricata_pipeline
     {
       "dot_expander": {
         "field": "alert.signature_id",
-        "path": "temporary_suricata",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_suricata.alert.signature_id",
+        "field": "alert.signature_id",
         "target_field": "rule.id",
         "ignore_failure": true
       }

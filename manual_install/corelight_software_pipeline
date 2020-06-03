@@ -12,13 +12,12 @@ PUT _ingest/pipeline/corelight_software_pipeline
     {
       "dot_expander": {
         "field": "version.addl",
-        "path": "temporary_software",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_software.version.addl",
+        "field": "version.addl",
         "target_field": "software.version.additional_info",
         "ignore_failure": true
       }
@@ -33,13 +32,12 @@ PUT _ingest/pipeline/corelight_software_pipeline
     {
       "dot_expander": {
         "field": "version.minor",
-        "path": "temporary_software",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_software.version.minor",
+        "field": "version.minor",
         "target_field": "software.version.minor",
         "ignore_failure": true
       }
@@ -54,13 +52,12 @@ PUT _ingest/pipeline/corelight_software_pipeline
     {
       "dot_expander": {
         "field": "version.minor2",
-        "path": "temporary_software",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_software.version.minor2",
+        "field": "version.minor2",
         "target_field": "software.version.minor2",
         "ignore_failure": true
       }
@@ -75,13 +72,12 @@ PUT _ingest/pipeline/corelight_software_pipeline
     {
       "dot_expander": {
         "field": "version.minor3",
-        "path": "temporary_software",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_software.version.minor3",
+        "field": "version.minor3",
         "target_field": "software.version.minor3",
         "ignore_failure": true
       }

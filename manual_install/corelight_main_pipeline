@@ -361,23 +361,6 @@ PUT _ingest/pipeline/corelight_main_pipeline
         "if": "ctx.event?.category == null",
         "name": "corelight_temporary_log_holdings_pipeline"
       }
-    },
-    {
-      "geoip": {
-        "field": "host.ip",
-        "target_field": "host.geo",
-        "ignore_missing": true,
-        "if": "ctx.host?.ip != null"
-      }
-    },
-    {
-      "geoip": {
-        "database_file": "GeoLite2-ASN.mmdb",
-        "field": "host.ip",
-        "target_field": "host.geo",
-        "ignore_missing": true,
-        "if": "ctx.host?.ip != null"
-      }
     }
   ],
   "on_failure" : [

@@ -18,20 +18,6 @@ PUT _ingest/pipeline/corelight_conn_pipeline
     },
     {
       "rename": {
-        "field": "vlan",
-        "target_field": "network.vlan.id",
-        "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
-        "field": "inner_vlan",
-        "target_field": "network.vlan.inner.id",
-        "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
         "field": "tunnel_parents",
         "target_field": "log.id.tunnel_parents",
         "ignore_failure": true
@@ -345,6 +331,7 @@ PUT _ingest/pipeline/corelight_conn_pipeline
     {
       "remove": {
         "field": [
+          "id",
           "conn_state",
           "id.orig_h_name.src",
           "id.orig_h_name.vals",
@@ -367,6 +354,13 @@ PUT _ingest/pipeline/corelight_conn_pipeline
         "field": "orig_cc",
         "target_field": "source.geo.country_iso_code",
         "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     }
   ]

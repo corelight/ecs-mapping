@@ -6,7 +6,7 @@
       "set": {
         "field": "event.ingested",
         "value": "{{_ingest.timestamp}}",
-        "if": "ctctx.event?.ingested == null"
+        "if": "ctx.event?.ingested == null"
       }
     },
     {

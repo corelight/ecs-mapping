@@ -68,13 +68,12 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
     {
       "dot_expander": {
         "field": "times.accessed",
-        "path": "temporary_smb_files",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_smb_files.times.accessed",
+        "field": "times.accessed",
         "target_field": "file.accessed",
         "ignore_failure": true
       }
@@ -89,13 +88,12 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
     {
       "dot_expander": {
         "field": "times.created",
-        "path": "temporary_smb_files",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_smb_files.times.created",
+        "field": "times.created",
         "target_field": "file.created",
         "ignore_failure": true
       }
@@ -110,13 +108,12 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
     {
       "dot_expander": {
         "field": "times.changed",
-        "path": "temporary_smb_files",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_smb_files.times.changed",
+        "field": "times.changed",
         "target_field": "file.ctime",
         "ignore_failure": true
       }
@@ -131,13 +128,12 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
     {
       "dot_expander": {
         "field": "times.modified",
-        "path": "temporary_smb_files",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "temporary_smb_files.times.modified",
+        "field": "times.modified",
         "target_field": "file.mtime",
         "ignore_failure": true
       }
@@ -155,7 +151,7 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
         "target_field" : "file.accessed",
         "formats" : ["UNIX"],
         "ignore_failure": true,
-        "if": "ctx.file.accessed != null"
+        "if": "ctx.file?.accessed != null"
       }
     },
     {
@@ -164,7 +160,7 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
         "target_field" : "file.created",
         "formats" : ["UNIX"],
         "ignore_failure": true,
-        "if": "ctx.file.created != null"
+        "if": "ctx.file?.created != null"
       }
     },
     {
@@ -173,7 +169,7 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
         "target_field" : "file.ctime",
         "formats" : ["UNIX"],
         "ignore_failure": true,
-        "if": "ctx.file.ctime != null"
+        "if": "ctx.file?.ctime != null"
       }
     },
     {
@@ -182,7 +178,7 @@ PUT _ingest/pipeline/corelight_smb-files_pipeline
         "target_field" : "file.mtime",
         "formats" : ["UNIX"],
         "ignore_failure": true,
-        "if": "ctx.file.mtime != null"
+        "if": "ctx.file?.mtime != null"
       }
     },
     {
