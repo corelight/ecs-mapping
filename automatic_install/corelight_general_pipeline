@@ -5,21 +5,24 @@
       "rename": {
         "field": "@path",
         "target_field": "event.dataset",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "_path",
         "target_field": "event.dataset",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "@stream",
         "target_field": "event.dataset",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     },
     {
@@ -282,6 +285,38 @@
         "database_file": "GeoLite2-ASN.mmdb",
         "field": "source.ip",
         "target_field": "source.as",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "source.as.asn",
+        "target_field": "source.as.number",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "source.as.organization_name",
+        "target_field": "source.as.organization.name",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "destination.as.asn",
+        "target_field": "destination.as.number",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "destination.as.organization_name",
+        "target_field": "destination.as.organization.name",
+        "ignore_failure": true,
         "ignore_missing": true
       }
     },

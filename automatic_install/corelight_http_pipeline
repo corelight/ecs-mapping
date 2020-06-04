@@ -279,6 +279,13 @@
       }
     },
     {
+      "rename": {
+        "field": "tags",
+        "target_field": "http.tags",
+        "ignore_missing" : true
+      }
+    },
+    {
       "set": {
         "field": "network.transport",
         "value": "tcp",
@@ -289,7 +296,7 @@
       "user_agent": {
         "field": "user_agent.original",
         "target_field": "user_agent",
-        "if": "(ctx.containsKey('user_agent.original'))"
+        "ignore_missing": true
       }
     },
     {
