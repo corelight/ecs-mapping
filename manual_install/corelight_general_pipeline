@@ -274,7 +274,7 @@ PUT _ingest/pipeline/corelight_general_pipeline
       "geoip": {
         "database_file": "GeoLite2-ASN.mmdb",
         "field": "destination.ip",
-        "target_field": "destination.geo",
+        "target_field": "destination.as",
         "ignore_missing": true
       }
     },
@@ -282,7 +282,7 @@ PUT _ingest/pipeline/corelight_general_pipeline
       "geoip": {
         "database_file": "GeoLite2-ASN.mmdb",
         "field": "source.ip",
-        "target_field": "source.geo",
+        "target_field": "source.as",
         "ignore_missing": true
       }
     },
