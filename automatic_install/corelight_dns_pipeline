@@ -44,13 +44,6 @@
       }
     },
     {
-      "convert" : {
-        "field" : "dns.answers.ttl",
-        "type" : "float",
-        "ignore_failure": true
-      }
-    },
-    {
       "rename" : {
         "field" : "AA",
           "target_field" : "dns.flags.authoritative",

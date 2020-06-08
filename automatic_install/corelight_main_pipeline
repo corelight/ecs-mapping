@@ -63,6 +63,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'files_red'",
+        "name": "corelight_files_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'ftp'",
         "name": "corelight_ftp_pipeline"
       }

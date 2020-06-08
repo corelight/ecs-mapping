@@ -381,7 +381,7 @@ PUT _ingest/pipeline/corelight_main_pipeline
       "date_index_name" : {
         "field" : "event.ingested",
         "index_name_prefix" : "parse-failures-",
-        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX" ],
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
         "date_rounding": "d",
         "ignore_failure": true,
         "index_name_format": "yyyy.MM.dd"
