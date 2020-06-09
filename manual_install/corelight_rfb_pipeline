@@ -7,7 +7,7 @@ PUT _ingest/pipeline/corelight_rfb_pipeline
         "field": "event.category",
         "value": "network",
         "ignore_failure": true
-      }   
+      }
     },
     {
       "rename": {

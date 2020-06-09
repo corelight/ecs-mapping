@@ -7,7 +7,7 @@ PUT _ingest/pipeline/corelight_traceroute_pipeline
         "field": "event.category",
         "value": "detection",
         "ignore_failure": true
-      }   
+      }
     },
     {
       "rename": {

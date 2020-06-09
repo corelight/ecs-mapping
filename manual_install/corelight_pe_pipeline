@@ -7,7 +7,7 @@ PUT _ingest/pipeline/corelight_pe_pipeline
         "field": "event.category",
         "value": "file",
         "ignore_failure": true
-      }   
+      }
     },
     {
       "rename": {

@@ -46,6 +46,12 @@ PUT _ingest/pipeline/corelight_main_pipeline
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'dns_red'",
+        "name": "corelight_dns_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'dnp3'",
         "name": "corelight_dnp3_pipeline"
       }
@@ -59,6 +65,12 @@ PUT _ingest/pipeline/corelight_main_pipeline
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'files'",
+        "name": "corelight_files_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'files_red'",
         "name": "corelight_files_pipeline"
       }
     },
@@ -274,6 +286,12 @@ PUT _ingest/pipeline/corelight_main_pipeline
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'software_red'",
+        "name": "corelight_software_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'ssh'",
         "name": "corelight_ssh_pipeline"
       }
@@ -335,6 +353,12 @@ PUT _ingest/pipeline/corelight_main_pipeline
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'x509'",
+        "name": "corelight_x509_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'x509_red'",
         "name": "corelight_x509_pipeline"
       }
     },

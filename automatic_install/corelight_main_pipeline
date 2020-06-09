@@ -45,6 +45,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'dns_red'",
+        "name": "corelight_dns_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'dnp3'",
         "name": "corelight_dnp3_pipeline"
       }
@@ -279,6 +285,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'software_red'",
+        "name": "corelight_software_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'ssh'",
         "name": "corelight_ssh_pipeline"
       }
@@ -345,6 +357,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'x509_red'",
+        "name": "corelight_x509_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'corelight_audit_log'",
         "name": "corelight_audit_log_pipeline"
       }
@@ -386,7 +404,7 @@
       "date_index_name" : {
         "field" : "event.ingested",
         "index_name_prefix" : "parse-failures-",
-        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX" ],
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
         "date_rounding": "d",
         "ignore_failure": true,
         "index_name_format": "yyyy.MM.dd"
