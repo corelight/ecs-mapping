@@ -1,195 +1,187 @@
 PUT _ingest/pipeline/corelight_ssh_pipeline
 {
-  "description" : "Corelight SSH pipeline",
-  "processors" : [
+  "description": "Corelight SSH pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
     {
-  "set": {
-    "field": "source.software.original",
-    "value": "{{client}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('client'))"
-        }
+      "set": {
+        "field": "source.software.original",
+        "value": "{{client}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('client'))"
+      }
     },
-
- {
-     "rename": {
-       "field": "client",
+    {
+      "rename": {
+        "field": "client",
         "target_field": "ssh.client",
-        "ignore_failure" : true
-      }
-    },
-  
-   
-  {
-     "rename": {
-       "field": "direction",
-        "target_field": "network.direction",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "auth_attempts",
-        "target_field": "ssh.auth_attempts",
-        "ignore_failure" : true
-      }
-    },
-
-{
-  "set": {
-    "field": "event.outcome",
-    "value": "success",
-    "ignore_failure" : true,
-    "if": "(ctx.auth_success == true)"
-  
-        }
-    },
-     {
-  "set": {
-    "field": "event.outcome",
-    "value": "failure",
-    "ignore_failure" : true,
-    "if": "(ctx.auth_success == false)"
-  
-        }
-    },
-
-{
-     "rename": {
-       "field": "auth_success",
-        "target_field": "ssh.auth_successful",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "cipher_alg",
-        "target_field": "ssh.cipher",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "compression_alg",
-        "target_field": "ssh.compression_algorithm",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "cshka",
-        "target_field": "ssh.cshka",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "hassh",
-        "target_field": "ssh.hassh",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "hasshAlgorithms",
-        "target_field": "ssh.hasshAlgorithms",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "hasshServer",
-        "target_field": "ssh.hasshServer",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "hasshServerAlgorithms",
-        "target_field": "ssh.hasshServerAlgorithms",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "hasshVersion",
-        "target_field": "ssh.hasshVersion",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "host_key",
-        "target_field": "ssh.host_key",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "host_key_alg",
-        "target_field": "ssh.key_algorithm",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "kex_alg",
-        "target_field": "ssh.key_exchange_algorithm",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "mac_alg",
-        "target_field": "ssh.mac_algorithm",
-        "ignore_failure" : true
-      }
-    },
-
-{
-  "set": {
-    "field": "destination.software.original",
-    "value": "{{server}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('server'))"
-        }
-    },
-
-{
-     "rename": {
-       "field": "server",
-        "target_field": "ssh.server",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "version",
-        "target_field": "ssh.version",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-  "set": {
-    "field": "network.transport",
-    "value": "tcp",
-    "ignore_failure" : true
-  
-        }
+      "rename": {
+        "field": "direction",
+        "target_field": "network.direction",
+        "ignore_failure": true
+      }
     },
-     {
-  "remove": {
-    "ignore_failure" : true,
-    "field": "id"
-  }
-}
-
-]
+    {
+      "rename": {
+        "field": "auth_attempts",
+        "target_field": "ssh.auth_attempts",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.auth_success == true)"
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.auth_success == false)"
+      }
+    },
+    {
+      "rename": {
+        "field": "auth_success",
+        "target_field": "ssh.auth_successful",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cipher_alg",
+        "target_field": "ssh.cipher",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "compression_alg",
+        "target_field": "ssh.compression_algorithm",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cshka",
+        "target_field": "ssh.cshka",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hassh",
+        "target_field": "ssh.hassh",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshAlgorithms",
+        "target_field": "ssh.hasshAlgorithms",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshServer",
+        "target_field": "ssh.hasshServer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshServerAlgorithms",
+        "target_field": "ssh.hasshServerAlgorithms",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshVersion",
+        "target_field": "ssh.hasshVersion",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host_key",
+        "target_field": "ssh.host_key",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host_key_alg",
+        "target_field": "ssh.key_algorithm",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "kex_alg",
+        "target_field": "ssh.key_exchange_algorithm",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "mac_alg",
+        "target_field": "ssh.mac_algorithm",
+        "ignore_failure": true
+      }
+    },
+    
+    {
+      "set": {
+        "field": "destination.software.original",
+        "value": "{{server}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('server'))"
+      }
+    },
+    
+    {
+      "rename": {
+        "field": "server",
+        "target_field": "ssh.server",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version",
+        "target_field": "ssh.version",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
 }

@@ -1,112 +1,114 @@
 {
-  "description" : "Corelight SNMP pipeline",
-  "processors" : [
+  "description": "Corelight SNMP pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "udp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "community",
+        "target_field": "snmp.community",
+        "ignore_failure": true
+      }
     },
     
- 
-       {
-  "set": {
-    "field": "network.transport",
-    "value": "udp",
-    "ignore_failure" : true
-  
-        }
+    {
+      "set": {
+        "field": "destination.software.original",
+        "value": "{{display_string}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('display_string'))"
+      }
     },
     {
-     "rename": {
-       "field": "community",
-        "target_field": "snmp.community",
-        "ignore_failure" : true
-      }
-    },
-
- {
-  "set": {
-    "field": "destination.software.original",
-    "value": "{{display_string}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('display_string'))"
-        }
-    },
-
-{
-     "rename": {
-       "field": "display_string",
+      "rename": {
+        "field": "display_string",
         "target_field": "snmp.display_string",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "get_bulk_requests",
+    {
+      "rename": {
+        "field": "get_bulk_requests",
         "target_field": "snmp.get_bulk_requests",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "get_requests",
+    {
+      "rename": {
+        "field": "get_requests",
         "target_field": "snmp.get_requests",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "get_responses",
+    {
+      "rename": {
+        "field": "get_responses",
         "target_field": "snmp.get_responses",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "set_requests",
+    {
+      "rename": {
+        "field": "set_requests",
         "target_field": "snmp.set_requests",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "up_since",
+    {
+      "rename": {
+        "field": "up_since",
         "target_field": "snmp.up_since",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "version",
+    {
+      "rename": {
+        "field": "version",
         "target_field": "snmp.version",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
       "convert" : {
-        "field" : "duration",
+        "field": "duration",
         "type": "float",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-     {
-  "script": {
-    "lang": "painless",
-    "source": "ctx.event.duration = ctx.duration * params.param_c",
-    "params": {
-      "param_c": 1000000
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.event.duration = (long)(ctx.duration * params.param_c)",
+        "params": {
+          "param_c": 1000000
+        },
+        "ignore_failure": true
+      }
     },
-    "ignore_failure" : true
-  }
-},
-{
-    "remove": {
-    "field": ["duration", "id"],
-    "ignore_failure" : true
+    {
+      "remove": {
+        "field": ["duration"],
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
     }
-  }
-  
-]
+  ]
 }

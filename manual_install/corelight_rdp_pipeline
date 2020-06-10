@@ -1,154 +1,165 @@
 PUT _ingest/pipeline/corelight_rdp_pipeline
 {
-  "description" : "Corelight RDP pipeline",
-  "processors" : [
+  "description": "Corelight RDP pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
-    },
-   
- {
-  "set": {
-    "field": "network.transport",
-    "value": "tcp",
-    "ignore_failure" : true
-  
-        }
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
     {
-     "rename": {
-       "field": "cert_count",
+      "rename": {
+        "field": "cert_count",
         "target_field": "rdp.certificate.count",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "cert_permanent",
+    {
+      "rename": {
+        "field": "cert_permanent",
         "target_field": "rdp.certificate.permanent",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "cert_type",
+    {
+      "rename": {
+        "field": "cert_type",
         "target_field": "rdp.certificate.type",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
 {
   "set": {
     "field": "software.original",
     "value": "{{client_build}}",
-    "ignore_failure" : true,
+    "ignore_failure": true,
     "if": "(ctx.containsKey('client_build'))"
         }
     },
 
-{
-     "rename": {
-       "field": "client_build",
+    {
+      "rename": {
+        "field": "client_build",
         "target_field": "rdp.source.build",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "client_dig_product_id",
+    {
+      "rename": {
+        "field": "client_dig_product_id",
         "target_field": "rdp.source.dig_product_id",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-
-{
-  "set": {
-    "field": "source.hostname",
-    "value": "{{client_name}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('client_name'))"
-        }
+    {
+      "set": {
+        "field": "source.hostname",
+        "value": "{{client_name}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('client_name'))"
+      }
     },
-
-{
-     "rename": {
-       "field": "client_name",
+    {
+      "rename": {
+        "field": "client_name",
         "target_field": "rdp.source.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "cookie",
+    {
+      "rename": {
+        "field": "cookie",
         "target_field": "rdp.cookie",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "desktop_height",
+    {
+      "rename": {
+        "field": "desktop_height",
         "target_field": "rdp.desktop_height",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "desktop_width",
+    {
+      "rename": {
+        "field": "desktop_width",
         "target_field": "rdp.desktop_width",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "encryption_level",
+    {
+      "rename": {
+        "field": "encryption_level",
         "target_field": "rdp.encryption_level",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "encryption_method",
+    {
+      "rename": {
+        "field": "encryption_method",
         "target_field": "rdp.encryption_method",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "keyboard_layout",
+    {
+      "rename": {
+        "field": "keyboard_layout",
         "target_field": "rdp.keyboard_layout",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "requested_color_depth",
+    {
+      "rename": {
+        "field": "requested_color_depth",
         "target_field": "rdp.requested_color_depth",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "result",
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.result == true)"
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.result == false)"
+      }
+    },
+    {
+      "rename": {
+        "field": "result",
         "target_field": "rdp.result",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "security_protocol",
+    {
+      "rename": {
+        "field": "security_protocol",
         "target_field": "rdp.selected_protocol",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "ssl",
+    {
+      "rename": {
+        "field": "ssl",
         "target_field": "rdp.ssl",
-        "ignore_failure" : true
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     }
-
-]
+  ]
 }

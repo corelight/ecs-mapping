@@ -1,51 +1,27 @@
 PUT _ingest/pipeline/corelight_traceroute_pipeline
 {
-  "description" : "Corelight Traceroute pipeline",
-  "processors" : [
+  "description": "Corelight Traceroute pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "detection",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "detection",
+        "ignore_failure": true
+      }
     },
-     {
-     "rename": {
-       "field": "proto",
+    {
+      "rename": {
+        "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "src",
-        "target_field": "source.ip",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "src",
-        "target_field": "source.address",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "dst",
-        "target_field": "destination.ip",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "dst",
-        "target_field": "destination.address",
-        "ignore_failure" : true
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     }
-    
-   
-  
-]
+  ]
 }

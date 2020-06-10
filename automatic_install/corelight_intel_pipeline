@@ -1,146 +1,146 @@
 {
-  "description" : "Corelight Intel pipeline",
-  "processors" : [
-     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+  "description": "Corelight Intel pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
     {
       "rename": {
-       "field": "proto",
+        "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "fuid",
+    {
+      "rename": {
+        "field": "fuid",
         "target_field": "log.id.fuid",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "file_mime_type",
+    {
+      "rename": {
+        "field": "file_mime_type",
         "target_field": "file.mime_type",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "file_desc",
+    {
+      "rename": {
+        "field": "file_desc",
         "target_field": "intel.file_description",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "matched",
+    {
+      "rename": {
+        "field": "matched",
         "target_field": "intel.matched",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-
     {
-    "set": {
-    "field": "intel.seen.indicator",
-    "value": "{{seen.indicator}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('seen.indicator'))"
-        }
+      "set": {
+        "field": "intel.seen.indicator",
+        "value": "{{seen.indicator}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('seen.indicator'))"
+      }
     },
     {
-    "set": {
-    "field": "intel.seen.indicator_type",
-    "value": "{{seen.indicator_type}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('seen.indicator_type'))"
-        }
+      "set": {
+        "field": "intel.seen.indicator_type",
+        "value": "{{seen.indicator_type}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('seen.indicator_type'))"
+      }
     },
     {
-    "set": {
-    "field": "intel.seen.ip",
-    "value": "{{seen.host}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('seen.host'))"
-        }
+      "set": {
+        "field": "host.ip",
+        "value": "{{seen.host}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('seen.host'))"
+      }
     },
     {
-    "set": {
-    "field": "intel.seen.node",
-    "value": "{{seen.node}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('seen.node'))"
-        }
+      "set": {
+        "field": "intel.seen.node",
+        "value": "{{seen.node}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('seen.node'))"
+      }
     },
     {
-    "set": {
-    "field": "intel.seen.where",
-    "value": "{{seen.where}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('seen.where'))"
-        }
+      "set": {
+        "field": "intel.seen.where",
+        "value": "{{seen.where}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('seen.where'))"
+      }
     },
     {
-    "set": {
-    "field": "intel.seen.sources",
-    "value": "{{seen.sources}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('seen.sources'))"
-        }
+      "set": {
+        "field": "intel.seen.sources",
+        "value": "{{seen.sources}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('seen.sources'))"
+      }
     },
-
     {
-    "dot_expander": {
-    "field": "seen.sources",
-    "ignore_failure" : true
+      "dot_expander": {
+        "field": "seen.sources",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "seen.where",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "seen.node",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "seen.host",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "seen.indicator_type",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "seen.indicator",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "ignore_failure": true,
+        "ignore_missing": true,
+        "field": [
+          "id",
+          "seen.sources",
+          "seen.where",
+          "seen.node",
+          "seen.host",
+          "seen.indicator_type",
+          "seen.indicator"
+        ]
+      }
     }
-    },
-     {
-    "dot_expander": {
-    "field": "seen.where",
-    "ignore_failure" : true
-    }
-    },
-
- {
-    "dot_expander": {
-    "field": "seen.node",
-    "ignore_failure" : true
-    }
-    },
-
- {
-    "dot_expander": {
-    "field": "seen.host",
-    "ignore_failure" : true
-    }
-    },
-
- {
-    "dot_expander": {
-    "field": "seen.indicator_type",
-    "ignore_failure" : true
-    }
-    },
-
- {
-    "dot_expander": {
-    "field": "seen.indicator",
-    "ignore_failure" : true
-    }
-    },
-
-{
-  "remove": {
-    "ignore_failure" : true,
-    "field": ["seen.sources", "seen.where", "seen.node", "seen.host", "seen.indicator_type", "seen.indicator"]
-  }
-}
-
-
-]
+  ]
 }

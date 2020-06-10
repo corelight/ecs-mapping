@@ -1,0 +1,119 @@
+PUT /_template/corelight_parse_failures
+{
+  "order": 99,
+  "version": 1501,
+  "index_patterns": [
+    "parse-failures-*"
+  ],
+  "settings": {
+    "index": {
+      "mapping": {
+        "coerce": "false",
+        "total_fields": {
+          "limit": "7500"
+        },
+        "ignore_malformed": "true"
+      },
+      "refresh_interval": "30s"
+    }
+  },
+  "mappings": {
+    "date_detection": false,
+    "dynamic_templates": [
+      {
+        "string_fields": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "index": true,
+            "analyzer": "keyword",
+            "norms": false,
+            "ignore_above": 2048,
+            "type": "keyword"
+          }
+        }
+      }
+    ],
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      },
+      "message": {
+        "norms": false,
+        "type": "text"
+      },
+      "labels": {
+        "type": "object"
+      },
+      "tags": {
+        "type": "keyword"
+      },
+      "event": {
+        "properties": {
+          "category": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "created": {
+            "type": "date"
+          },
+          "dataset": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "duration": {
+            "type": "long"
+          },
+          "end": {
+            "type": "date"
+          },
+          "facility": {
+            "type": "keyword"
+          },
+          "hash": {
+            "type": "keyword"
+          },
+          "id": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "kind": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "module": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "original": {
+            "doc_values": false,
+            "index": false,
+            "type": "keyword"
+          },
+          "outcome": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          },
+          "priority": {
+            "type": "keyword"
+          },
+          "risk_score": {
+            "type": "float"
+          },
+          "risk_score_norm": {
+            "type": "float"
+          },
+          "severity": {
+            "type": "keyword"
+          },
+          "start": {
+            "type": "date"
+          },
+          "timezone": {
+            "ignore_above": 1024,
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}

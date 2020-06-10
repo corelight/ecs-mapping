@@ -3,47 +3,46 @@ PUT _ingest/pipeline/corelight_weird_pipeline
   "description" : "Corelight Weird pipeline",
   "processors" : [
     {
-    "set": {
-    "field": "event.category",
-    "value": "miscellaneous",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "miscellaneous",
+        "ignore_failure": true
+      }   
     },
-    
-   {
-     "rename": {
-       "field": "addl",
+    {
+      "rename": {
+        "field": "addl",
         "target_field": "weird.additional_info",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "name",
+    {
+      "rename": {
+        "field": "name",
         "target_field": "weird.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "notice",
+    {
+      "rename": {
+        "field": "notice",
         "target_field": "weird.notice",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "peer",
+    {
+      "rename": {
+        "field": "peer",
         "target_field": "weird.peer",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-     {
-  "remove": {
-    "ignore_failure" : true,
-    "field": "id"
-  }
-}
-
-]
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
 }

@@ -1,76 +1,77 @@
 {
-  "description" : "Corelight MySQL pipeline",
-  "processors" : [
-     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+  "description": "Corelight MySQL pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
-      {
+    {
       "rename": {
-       "field": "proto",
+        "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-  
     {
-     "rename": {
-       "field": "arg",
-        "target_field": "mysql.args",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "cmd",
-        "target_field": "mysql.command",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "response",
-        "target_field": "mysql.response",
-        "ignore_failure" : true
-      }
-    },
-
-    {
-     "rename": {
-       "field": "rows",
-        "target_field": "mysql.rows",
-        "ignore_failure" : true
-      }
-    },
-
- {
-  "set": {
-    "field": "event.outcome",
-    "value": "success",
-    "ignore_failure" : true,
-    "if": "(ctx.success == true)"
-  
-        }
-    },
-     {
-  "set": {
-    "field": "event.outcome",
-    "value": "failure",
-    "ignore_failure" : true,
-    "if": "(ctx.success == false)"
-  
-        }
-    },
-
-{
       "rename": {
-       "field": "success",
+        "field": "arg",
+        "target_field": "mysql.args",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cmd",
+        "target_field": "mysql.command",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "response",
+        "target_field": "mysql.response",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rows",
+        "target_field": "mysql.rows",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.success == true)"
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.success == false)"
+      }
+    },
+    {
+      "rename": {
+        "field": "success",
         "target_field": "mysql.successful",
-        "ignore_failure" : true
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     }
-]
+  ]
 }

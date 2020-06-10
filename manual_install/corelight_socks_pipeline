@@ -1,94 +1,97 @@
 PUT _ingest/pipeline/corelight_socks_pipeline
 {
-  "description" : "Corelight Socks pipeline",
-  "processors" : [
+  "description": "Corelight Socks pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
-   
-  
-       {
-  "set": {
-    "field": "network.transport",
-    "value": "tcp",
-    "ignore_failure" : true
-  
-        }
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
     },
-   {
-     "rename": {
-       "field": "user",
+    {
+      "rename": {
+        "field": "user",
         "target_field": "source.user.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "password",
+    {
+      "rename": {
+        "field": "password",
         "target_field": "source.user.password",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "bound_host",
+    {
+      "rename": {
+        "field": "bound_host",
         "target_field": "socks.bound.ip",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "bound_name",
+    {
+      "rename": {
+        "field": "bound_name",
         "target_field": "socks.bound.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "bound_p",
+    {
+      "rename": {
+        "field": "bound_p",
         "target_field": "socks.bound.port",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "request_host",
+    {
+      "rename": {
+        "field": "request_host",
         "target_field": "socks.request.ip",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "request_name",
+    {
+      "rename": {
+        "field": "request_name",
         "target_field": "socks.request.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "request_p",
+    {
+      "rename": {
+        "field": "request_p",
         "target_field": "socks.request.port",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "status",
+    {
+      "rename": {
+        "field": "status",
         "target_field": "socks.status",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "version",
+    {
+      "rename": {
+        "field": "version",
         "target_field": "socks.version",
-        "ignore_failure" : true
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     }
-  
-]
+  ]
 }

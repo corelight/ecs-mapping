@@ -1,0 +1,40 @@
+{
+  "description": "Corelight SMTP Links pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host",
+        "target_field": "url.domain",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "url",
+        "target_field": "url.original",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "destination.domain",
+        "value" : "{{url.domain}}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

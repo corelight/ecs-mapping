@@ -1,165 +1,192 @@
 PUT _ingest/pipeline/corelight_smb-files_pipeline
 {
-  "description" : "Corelight SMB-CMD pipeline",
-  "processors" : [
+  "description": "Corelight SMB-CMD pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
-    },
-    
- {
-     "rename": {
-       "field": "id",
-        "target_field": "log.id.id",
-        "ignore_failure" : true
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
       }
     },
-      {
-  "set": {
-    "field": "network.transport",
-    "value": "tcp",
-    "ignore_failure" : true
-  
-        }
+    {
+      "rename": {
+        "field": "uid",
+        "target_field": "log.id.uid",
+        "ignore_failure": true
+      }
     },
     {
-     "rename": {
-       "field": "fuid",
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "fuid",
         "target_field": "log.id.fuid",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "name",
+    {
+      "rename": {
+        "field": "name",
         "target_field": "file.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "path",
+    {
+      "rename": {
+        "field": "path",
         "target_field": "file.path",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "size",
+    {
+      "rename": {
+        "field": "size",
         "target_field": "file.size",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "action",
+    {
+      "rename": {
+        "field": "action",
         "target_field": "smb.action",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "prev_name",
+    {
+      "rename": {
+        "field": "prev_name",
         "target_field": "smb.previous_name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-
- {
-  "set": {
-    "field": "times_accessed",
-    "value": "{{times.accessed}}",
-    "ignore_failure" : true
-  
-        }
+    {
+      "dot_expander": {
+        "field": "times.accessed",
+        "ignore_failure": true
+      }
     },
- {
-  "set": {
-    "field": "times_created",
-    "value": "{{times.created}}",
-    "ignore_failure" : true
-  
-        }
+    {
+      "rename": {
+        "field": "times.accessed",
+        "target_field": "file.accessed",
+        "ignore_failure": true
+      }
     },
-     {
-  "set": {
-    "field": "times_changed",
-    "value": "{{times.changed}}",
-    "ignore_failure" : true
-  
-        }
+    {
+      "rename": {
+        "field": "times_accessed",
+        "target_field": "file.accessed",
+        "ignore_failure": true
+      }
     },
-     {
-  "set": {
-    "field": "times_modified",
-    "value": "{{times.modified}}",
-    "ignore_failure" : true
-  
-        }
+    {
+      "dot_expander": {
+        "field": "times.created",
+        "ignore_failure": true
+      }
     },
-
-  {
-    "date" : {
-        "field" : "times_created",
+    {
+      "rename": {
+        "field": "times.created",
+        "target_field": "file.created",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times_created",
+        "target_field": "file.created",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "times.changed",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times.changed",
+        "target_field": "file.ctime",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times_changed",
+        "target_field": "file.ctime",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "times.modified",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times.modified",
+        "target_field": "file.mtime",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times_modified",
+        "target_field": "file.mtime",
+        "ignore_failure": true
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.accessed",
+        "target_field" : "file.accessed",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.accessed != null"
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.created",
         "target_field" : "file.created",
-        "formats" : ["ISO8601"],
-        "ignore_failure" : true
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.created != null"
       }
     },
     {
-    "date" : {
-        "field" : "times_changed",
+      "date" : {
+        "field" : "file.ctime",
         "target_field" : "file.ctime",
-        "formats" : ["ISO8601"],
-        "ignore_failure" : true
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.ctime != null"
       }
     },
     {
-    "date" : {
-        "field" : "times_modified",
-        "target_field" : "file.mtime ",
-        "formats" : ["ISO8601"],
-        "ignore_failure" : true
+      "date" : {
+        "field" : "file.mtime",
+        "target_field" : "file.mtime",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.mtime != null"
       }
     },
-
-
-{
-    "dot_expander": {
-    "field": "times.accessed",
-    "ignore_failure" : true
-    }
-    },
-
- {
-    "dot_expander": {
-    "field": "times.created",
-    "ignore_failure" : true
-    }
-    },
     {
-    "dot_expander": {
-    "field": "times.changed",
-    "ignore_failure" : true
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
     }
-    },
-
- {
-    "dot_expander": {
-    "field": "times.modified",
-    "ignore_failure" : true
-    }
-    },
-
-{
-  "remove": {
-    "ignore_failure" : true,
-    "field": ["times.modified", "times.changed", "times.created", "times.accessed"]
-  }
-}
-  
-]
+  ]
 }

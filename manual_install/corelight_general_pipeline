@@ -1,200 +1,332 @@
 PUT _ingest/pipeline/corelight_general_pipeline
 {
-  "description" : "Corelight pipeline",
+  "description": "Corelight pipeline",
   "processors" : [
     {
       "rename": {
-       "field": "@path",
+        "field": "@path",
         "target_field": "event.dataset",
-        "ignore_failure" : true
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     },
     {
       "rename": {
-       "field": "_path",
+        "field": "_path",
         "target_field": "event.dataset",
-        "ignore_failure" : true
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     },
     {
-    "date" : {
-        "field" : "_write_ts",
-        "target_field" : "@timestamp",
+      "rename": {
+        "field": "@stream",
+        "target_field": "event.dataset",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "date" : {
+        "field": "ts",
+        "target_field": "@timestamp",
+        "formats" : [ "ISO8601", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.containsKey('ts') && ctx.containsKey('_write_ts')"
+      }
+    },
+    {
+      "date" : {
+        "field": "ts",
+        "target_field": "@timestamp",
+        "formats" : [ "UNIX", "ISO8601" ],
+        "ignore_failure": true,
+        "if": "ctx.containsKey('ts') && !(ctx.containsKey('@timestamp'))"
+      }
+    },
+    {
+      "date" : {
+        "field": "_write_ts",
+        "target_field": "event.created",
         "formats" : ["ISO8601"],
-        "ignore_failure" : true,
+        "ignore_failure": true,
         "if": "(ctx.containsKey('_write_ts'))"
       }
     },
     {
-    "remove": {
-    "field": "_write_ts",
-    "ignore_failure" : true
-    }
-  },
-  {
-  "date" : {
-        "field" : "ts",
-        "target_field" : "@timestamp",
-        "formats" : ["ISO8601"],
-        "ignore_failure" : true,
-        "if": "(ctx.containsKey('ts'))"
+      "dot_expander": {
+        "field": "id.orig_h",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('id.orig_h'))"
       }
     },
     {
-    "remove": {
-    "field": "ts",
-    "ignore_failure" : true
-    }
-  },
-    {
-  "set": {
-    "field": "source.ip",
-    "value": "{{id.orig_h}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id.orig_h'))"
-  
-        }
-    },
-     {
-  "set": {
-    "field": "source.port",
-    "value": "{{id.orig_p}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id.orig_p'))"
-  
-        }
+      "rename": {
+        "field": "source",
+        "target_field": "temp_source",
+        "ignore_failure": true
+      }
     },
     {
-  "set": {
-    "field": "source.address",
-    "value": "{{id.orig_h}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id.orig_h'))"
-        }
+      "rename": {
+        "field": "id.orig_h",
+        "target_field": "source.ip",
+        "ignore_failure": true
+      }
     },
     {
-    "dot_expander": {
-    "field": "id.orig_p",
-    "ignore_failure" : true
-    }
-    },
-
- {
-    "dot_expander": {
-    "field": "id.orig_h",
-    "ignore_failure" : true
-    }
-    },
-
-{
-  "remove": {
-    "ignore_failure" : true,
-    "field": ["id.orig_p", "id.orig_h"]
-  }
-},
-  {
-  "set": {
-    "field": "destination.ip",
-    "value": "{{id.resp_h}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id.resp_h'))"
-  
-        }
+      "dot_expander": {
+        "field": "id.orig_p",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('id.orig_p'))"
+      }
     },
     {
-  "set": {
-    "field": "destination.port",
-    "value": "{{id.resp_p}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id.resp_p'))"
-  
-        }
+      "rename": {
+        "field": "id.orig_p",
+        "target_field": "source.port",
+        "ignore_failure": true
+      }
     },
     {
-  "set": {
-    "field": "destination.address",
-    "value": "{{id.resp_h}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id.resp_h'))"
-        }
+      "dot_expander": {
+        "field": "id.resp_h",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('id.resp_h'))"
+      }
     },
     {
-    "dot_expander": {
-    "field": "id.resp_p",
-    "ignore_failure" : true
-    }
-    },
-
- {
-    "dot_expander": {
-    "field": "id.resp_h",
-    "ignore_failure" : true
-    }
-    },
-
-{
-  "remove": {
-    "ignore_failure" : true,
-    "field": ["id.resp_p", "id.resp_h"]
-  }
-},
- 
-    {
-  "set": {
-    "field": "event.id",
-    "value": "{{uid}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('uid'))"
-        }
-    },
-     {
-  "set": {
-    "field": "log.id.uid",
-    "value": "{{uid}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('uid'))"
-        }
+      "rename": {
+        "field": "id.resp_h",
+        "target_field": "destination.ip",
+        "ignore_failure": true
+      }
     },
     {
-    "remove": {
-    "field": "uid",
-    "ignore_failure" : true
-    }
-  },
-  {
-     "rename": {
-       "field": "_system_name",
+      "dot_expander": {
+        "field": "id.resp_p",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('id.resp_p'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.resp_p",
+        "target_field": "destination.port",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id_orig_h",
+        "target_field": "source.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id_orig_p",
+        "target_field": "source.port",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id_resp_h",
+        "target_field": "destination.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id_resp_p",
+        "target_field": "destination.port",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "source.address",
+        "value": "{{source.ip}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('source') && ctx['source'].containsKey('ip')"
+      }
+    },
+    {
+      "set": {
+        "field": "destination.address",
+        "value": "{{destination.ip}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('destination') && ctx['destination'].containsKey('ip')"
+      }
+    },    
+    {
+      "set": {
+        "field": "event.id",
+        "value": "{{uid}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('uid'))"
+      }
+    },
+    {
+      "set": {
+        "field": "log.id.uid",
+        "value": "{{uid}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('uid'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "@sensor",
         "target_field": "observer.hostname",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-    "set": {
-    "field": "observer.vendor",
-    "value": "Corelight",
-    "ignore_failure" : true
-          }   
+      "rename": {
+        "field": "_system_name",
+        "target_field": "observer.hostname",
+        "ignore_failure": true
+      }
     },
     {
-    "set": {
-    "field": "observer.type",
-    "value": "sensor",
-    "ignore_failure" : true
-          }   
+      "rename": {
+        "field": "community_id",
+        "target_field": "network.community_id",
+        "ignore_failure": true
+      }
     },
-
-{
-  "set": {
-    "field": "event.created",
-    "value": "{{_ingest.timestamp}}"
-  }
-},
-{
-     "rename": {
-       "field": "num",
+    {
+      "rename": {
+        "field": "inner_vlan",
+        "target_field": "network.vlan.inner.id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "vlan_inner",
+        "target_field": "network.vlan.inner.id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "vlan",
+        "target_field": "network.vlan.id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "observer.vendor",
+        "value": "Corelight",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "ecs.version",
+        "value": "1.5.0",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.ecs_version",
+        "value": "1.5.0.1",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "observer.type",
+        "value": "sensor",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.ingested",
+        "value": "{{_ingest.timestamp}}"
+      }
+    },
+    {
+      "rename": {
+        "field": "num",
         "target_field": "event.count",
-        "ignore_failure" : true
+        "ignore_failure": true
+      }
+    },
+    {
+      "geoip": {
+        "field": "destination.ip",
+        "target_field": "destination.geo",
+        "ignore_missing": true
+      }
+    },
+    {
+      "geoip": {
+        "field": "source.ip",
+        "target_field": "source.geo",
+        "ignore_missing": true
+      }
+    },
+    {
+      "geoip": {
+        "database_file": "GeoLite2-ASN.mmdb",
+        "field": "destination.ip",
+        "target_field": "destination.as",
+        "ignore_missing": true
+      }
+    },
+    {
+      "geoip": {
+        "database_file": "GeoLite2-ASN.mmdb",
+        "field": "source.ip",
+        "target_field": "source.as",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "source.as.asn",
+        "target_field": "source.as.number",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "source.as.organization_name",
+        "target_field": "source.as.organization.name",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "destination.as.asn",
+        "target_field": "destination.as.number",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "destination.as.organization_name",
+        "target_field": "destination.as.organization.name",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": [ "ts", "uid", "_write_ts" ],
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     }
-]
+  ]
 }

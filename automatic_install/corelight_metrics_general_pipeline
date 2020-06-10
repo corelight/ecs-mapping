@@ -1,0 +1,78 @@
+{
+  "description": "Corelight Zeek Metrics general pipeline",
+  "processors": [
+    { "set": { "field": "event.category", "value": "diagnostics", "ignore_failure": true } },
+    {
+      "set": {
+        "field": "event.ingested",
+        "value": "{{_ingest.timestamp}}",
+        "if": "ctx.event?.ingested == null"
+      }
+    },
+    {
+      "date_index_name": {
+        "field": "event.ingested",
+        "index_name_prefix": "corelight-zeek-metrics-{{event.dataset}}-",
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+        "date_rounding": "d",
+        "ignore_failure": false,
+        "index_name_format": "yyyy.MM.dd"
+      }
+    }
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_bro'",
+//        "name": "corelight_metrics_bro"
+//      }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_cpu'",
+//        "name": "corelight_metrics_cpu"
+//      }
+//    }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_disk'",
+//        "name": "corelight_metrics_disk"
+//      }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_iface'",
+//        "name": "corelight_metrics_iface"
+//      }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_memory'",
+//        "name": "corelight_metrics_memory"
+//      }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_s3'",
+//        "name": "corelight_metrics_s3"
+//      }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_sftp'",
+//        "name": "corelight_metrics_sftp"
+//      }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_suricata'",
+//        "name": "corelight_metrics_suricata"
+//      }
+//    },
+//    {
+//      "pipeline": {
+//        "if": "ctx.event.dataset == 'corelight_metrics_system'",
+//        "name": "corelight_metrics_system"
+//      }
+//    }
+  ]
+}

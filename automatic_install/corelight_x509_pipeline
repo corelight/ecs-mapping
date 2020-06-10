@@ -1,496 +1,462 @@
 {
   "description" : "Corelight x509 pipeline",
   "processors" : [
-
     {
-    "set": {
-    "field": "event.category",
-    "value": "files",
-    "ignore_failure" : true
-          }   
-    },
-    {
-  "set": {
-    "field": "certificate_not_valid_after",
-    "value": "{{certificate.not_valid_after}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.not_valid_after'))"
-        }
-    },
-    {
-  "set": {
-    "field": "certificate_not_valid_before",
-    "value": "{{certificate.not_valid_before}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.not_valid_before'))"
-        }
-    },
-
-    {
-    "date" : {
-        "field" : "certificate_not_valid_after",
-        "target_field" : "x509.certificate.not_valid_after",
-        "formats" : ["ISO8601"],
-        "ignore_failure" : true
+      "set": {
+        "field": "event.category",
+        "value": "file",
+        "ignore_failure": true
       }
     },
     {
-    "remove": {
-    "field": "certificate_not_valid_after",
-    "ignore_failure" : true
-    }
-  },
- 
-      {
-    "date" : {
-        "field" : "certificate_not_valid_before",
-        "target_field" : "x509.certificate.not_valid_before",
-        "formats" : ["ISO8601"],
-        "ignore_failure" : true
+      "dot_expander": {
+        "field": "basic_constraints.ca",
+        "ignore_failure": true
       }
     },
     {
-    "remove": {
-    "field": "certificate_not_valid_before",
-    "ignore_failure" : true
-    }
-  },
-
-    {
-  "set": {
-    "field": "event.id",
-    "value": "{{id}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id'))"
-        }
-    },
-     {
-  "set": {
-    "field": "log.id.id",
-    "value": "{{id}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('id'))"
-        }
-    },
-    {
-    "remove": {
-    "field": "id",
-    "ignore_failure" : true
-    }
-  },
-
-
- {
-  "set": {
-    "field": "basic_constraints_ca",
-    "value": "{{basic_constraints.ca}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('basic_constraints.ca'))"
-        }
-    },
-
-   {
-     "rename": {
-       "field": "basic_constraints_ca",
-        "target_field": "x509.certificate.basic_constraints_ca",
-        "ignore_failure" : true
+      "rename": {
+        "field": "basic_constraints.ca",
+        "target_field": "file.x509.certificate.basic_constraints.ca",
+        "ignore_failure": true
       }
     },
     {
-  "set": {
-    "field": "basic_constraints_path_len",
-    "value": "{{basic_constraints.path_len}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('basic_constraints.path_len'))"
-        }
-    },
-{
-     "rename": {
-       "field": "basic_constraints_path_len",
-        "target_field": "x509.certificate.basic_constraints_path_length",
-        "ignore_failure" : true
-      }
-    },
-
-  {
-  "set": {
-    "field": "certificate_cn",
-    "value": "{{certificate.cn}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.cn'))"
-        }
-    },
-{
-     "rename": {
-       "field": "certificate_cn",
-        "target_field": "x509.certificate.common_name",
-        "ignore_failure" : true
-      }
-    },
-     {
-  "set": {
-    "field": "certificate_curve",
-    "value": "{{certificate.curve}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.curve'))"
-        }
-    },
-{
-     "rename": {
-       "field": "certificate_curve",
-        "target_field": "x509.certificate.elliptic_curve",
-        "ignore_failure" : true
-      }
-    },
- {
-  "set": {
-    "field": "certificate_exponent",
-    "value": "{{certificate.exponent}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.exponent'))"
-        }
-    },
-
-{
-     "rename": {
-       "field": "certificate_exponent",
-        "target_field": "x509.certificate.exponent",
-        "ignore_failure" : true
-      }
-    },
-{
-  "set": {
-    "field": "certificate_issuer",
-    "value": "{{certificate.issuer}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.issuer'))"
-        }
-    },
-
-{
-     "rename": {
-       "field": "certificate_issuer",
-        "target_field": "x509.certificate.issuer",
-        "ignore_failure" : true
-      }
-    },
-
-    {
-  "set": {
-    "field": "certificate_key_alg",
-    "value": "{{certificate.key_alg}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.key_alg'))"
-        }
-    },
-{
-     "rename": {
-       "field": "certificate_key_alg",
-        "target_field": "x509.certificate.key_algorithm",
-        "ignore_failure" : true
-      }
-    },
-     {
-  "set": {
-    "field": "certificate_key_length",
-    "value": "{{certificate.key_length}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.key_length'))"
-        }
-    }, 
-{
-     "rename": {
-       "field": "certificate_key_length",
-        "target_field": "x509.certificate.key_length",
-        "ignore_failure" : true
-      }
-    },
-     {
-  "set": {
-    "field": "certificate_key_type",
-    "value": "{{certificate.key_type}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.key_type'))"
-        }
-    }, 
-{
-     "rename": {
-       "field": "certificate_key_type",
-        "target_field": "x509.certificate.key_type",
-        "ignore_failure" : true
-      }
-    },
-         {
-  "set": {
-    "field": "certificate_serial",
-    "value": "{{certificate.serial}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.serial'))"
-        }
-    }, 
-    {
-     "rename": {
-       "field": "certificate_serial",
-        "target_field": "x509.certificate.serial",
-        "ignore_failure" : true
-      }
-    },
-          {
-  "set": {
-    "field": "certificate_sig_alg",
-    "value": "{{certificate.sig_alg}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.sig_alg'))"
-        }
-    }, 
-{
-     "rename": {
-       "field": "certificate_sig_alg",
-        "target_field": "x509.certificate.signature_algorithm",
-        "ignore_failure" : true
-      }
-    },
-          {
-  "set": {
-    "field": "certificate_subject",
-    "value": "{{certificate.subject}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.subject'))"
-        }
-    }, 
-{
-     "rename": {
-       "field": "certificate_subject",
-        "target_field": "x509.certificate.subject",
-        "ignore_failure" : true
-      }
-    },
-             {
-  "set": {
-    "field": "certificate_version",
-    "value": "{{certificate.version}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('certificate.version'))"
-        }
-    }, 
-{
-     "rename": {
-       "field": "certificate_version",
-        "target_field": "x509.certificate.version",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "logcert",
-        "target_field": "x509.logcert",
-        "ignore_failure" : true
+      "dot_expander": {
+        "field": "basic_constraints.path_length",
+        "ignore_failure": true
       }
     },
     {
-  "set": {
-    "field": "san_dns",
-    "value": "{{san.dns}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('san.dns'))"
-        }
-    }, 
-{
-     "rename": {
-       "field": "san_dns",
-        "target_field": "x509.san.dns",
-        "ignore_failure" : true
-      }
-    },
-     {
-  "set": {
-    "field": "san_email",
-    "value": "{{san.email}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('san.email'))"
-        }
-    }, 
-{
-     "rename": {
-       "field": "san_email",
-        "target_field": "x509.san.email",
-        "ignore_failure" : true
-      }
-    },
-      {
-  "set": {
-    "field": "san_ip",
-    "value": "{{san.ip}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('san.ip'))"
-        }
-    },
-{
-     "rename": {
-       "field": "san_ip",
-        "target_field": "x509.san.ip",
-        "ignore_failure" : true
+      "rename": {
+        "field": "basic_constraints.path_length",
+        "target_field": "file.x509.certificate.basic_constraints.path_length",
+        "ignore_failure": true
       }
     },
     {
-  "set": {
-    "field": "url.original",
-    "value": "{{san.uri}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('san.uri'))"
-        }
-    },
-      {
-  "set": {
-    "field": "san_uri",
-    "value": "{{san.uri}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('san.uri'))"
-        }
-    },
-   {
-     "rename": {
-       "field": "san_uri",
-        "target_field": "x509.san.url",
-        "ignore_failure" : true
+      "dot_expander": {
+        "field": "certificate.cn",
+        "ignore_failure": true
       }
     },
-{
-    "dot_expander": {
-    "field": "certificate.issuer",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.cn",
+        "target_field": "file.x509.certificate.common_name",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.exponent",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.curve",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.curve",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.curve",
+        "target_field": "file.x509.public_key_curve",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.cn",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.exponent",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "basic_constraints.path_len",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.exponent",
+        "target_field": "file.x509.certificate.exponent",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "basic_constraints.ca",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.issuer",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.key_alg",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.issuer",
+        "target_field": "file.x509.issuer.distinguished_name",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.not_valid_before",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.key_alg",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.not_valid_after",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.key_alg",
+        "target_field": "file.x509.public_key_algorithm",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "san.uri",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.key_length",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "san.ip",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.key_length",
+        "target_field": "file.x509.public_key_size",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "san.email",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.key_type",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "san.dns",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.key_type",
+        "target_field": "file.x509.public_key_type",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.version",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.not_valid_after",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.subject",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.not_valid_after",
+        "target_field": "file.x509.not_after",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.sig_alg",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.not_valid_before",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.serial",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.not_valid_before",
+        "target_field": "file.x509.not_before",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.key_type",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.serial",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.key_length",
-    "ignore_failure" : true
-    }
+    {
+      "rename": {
+        "field": "certificate.serial",
+        "target_field": "file.x509.serial_number",
+        "ignore_failure": true
+      }
     },
-{
-    "dot_expander": {
-    "field": "certificate.key_algorithm",
-    "ignore_failure" : true
-    }
+    {
+      "dot_expander": {
+        "field": "certificate.sig_alg",
+        "ignore_failure": true
+      }
     },
-
-{
-  "remove": {
-    "ignore_failure" : true,
-    "field": ["certificate", "basic_constraints.path_len", "basic_constraints.ca","san.uri", "san.ip", "san.email", "san.dns", "san", "basic_constraints"]
-  }
-},
-{
-  "script": {
-    "lang": "painless",
-    "source": "ctx.remove('certificate.not_valid_before'); ctx.remove('x509.certificate.not_valid_after'); ctx.remove('certificate.not_valid_after'); ctx.remove('x509.certificate.not_valid_before') ",
-    "ignore_failure" : true
-    
-   }
-}
-
-
-]
+    {
+      "rename": {
+        "field": "certificate.sig_alg",
+        "target_field": "file.x509.signature_algorithm",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "certificate.subject",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate.subject",
+        "target_field": "file.x509.subject.distinguished_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "certificate.version",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate.version",
+        "target_field": "file.x509.subject.version_number",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "logcert",
+        "target_field": "file.x509.logcert",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "san.dns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san.dns",
+        "target_field": "file.x509.san_dns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "san.email",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san.email",
+        "target_field": "file.x509.san_email",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "san.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san.ip",
+        "target_field": "file.x509.san_ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "san.url",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san.url",
+        "target_field": "file.x509.san_url",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "basic_constraints_ca",
+        "target_field": "file.x509.certificate.basic_constraints.ca",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "basic_constraints_path_length",
+        "target_field": "file.x509.certificate.basic_constraints.path_length",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_cn",
+        "target_field": "file.x509.certificate.common_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_curve",
+        "target_field": "file.x509.public_key_curve",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_exponent",
+        "target_field": "file.x509.public_key_exponent",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_issuer",
+        "target_field": "file.x509.issuer.distinguished_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_key_alg",
+        "target_field": "file.x509.public_key_algorithm",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_key_length",
+        "target_field": "file.x509.public_key_size",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_key_type",
+        "target_field": "file.x509.public_key_type",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_not_valid_after",
+        "target_field": "file.x509.not_after",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_not_valid_before",
+        "target_field": "file.x509.not_before",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_serial",
+        "target_field": "file.x509.serial_number",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_sig_alg",
+        "target_field": "file.x509.signature_algorithm",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_subject",
+        "target_field": "file.x509.subject.distinguished_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "certificate_version",
+        "target_field": "file.x509.subject.version_number",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "logcert",
+        "target_field": "file.x509.logcert",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san_dns",
+        "target_field": "file.x509.san_dns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san_email",
+        "target_field": "file.x509.san_email",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san_ip",
+        "target_field": "file.x509.san_ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "san_url",
+        "target_field": "file.x509.san_url",
+        "ignore_failure": true
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.x509.not_after",
+        "target_field" : "file.x509.not_after",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.x509?.not_after != null"
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.x509.not_before",
+        "target_field" : "file.x509.not_before",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.x509?.not_before != null"
+      }
+    },
+    {
+      "set": {
+        "field": "event.id",
+        "value": "{{id}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('id'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "id",
+        "target_field": "log.id.id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "url.original",
+        "value": "{{file.x509.san_url}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('file.x509.san_url'))"
+      }
+    },
+    {
+      "convert": {
+        "field": "file.x509.certificate.exponent",
+        "target_field": "file.x509.public_key_exponent",
+        "type": "integer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
 }

@@ -1,259 +1,310 @@
 {
   "description" : "Corelight HTTP pipeline",
   "processors" : [
-     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
     },
-{
-     "rename": {
-       "field": "orig_fuids",
+    {
+      "rename": {
+        "field": "orig_fuids",
         "target_field": "log.id.orig_fuids",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "username",
+    {
+      "rename": {
+        "field": "username",
         "target_field": "source.user.name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "password",
+    {
+      "rename": {
+        "field": "password",
         "target_field": "source.user.password",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "resp_fuids",
+    {
+      "rename": {
+        "field": "resp_fuids",
         "target_field": "log.id.resp_fuids",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
- "set": {
-    "field": "destination.domain",
-    "value": "{{host}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('host'))"
-        }
+      "set": {
+        "field": "destination.domain",
+        "value": "{{host}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('host'))"
+      }
     },
-
-{
-     "rename": {
-       "field": "host",
+    {
+      "rename": {
+        "field": "host",
         "target_field": "url.domain",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-     "rename": {
-       "field": "cookie_vars",
+      "rename": {
+        "field": "cookie_vars",
         "target_field": "http.cookie_variables",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "client_header_names",
+    {
+      "rename": {
+        "field": "client_header_names",
         "target_field": "http.request.header_names",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "info_msg",
+    {
+      "rename": {
+        "field": "info_msg",
         "target_field": "http.response.informational_message",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "method",
+    {
+      "rename": {
+        "field": "method",
         "target_field": "http.request.method",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "orig_filenames",
-        "target_field": "source.file.mime_type",
-        "ignore_failure" : true
+    {
+      "set": {
+        "field": "source.file.name",
+        "value": "{{orig_filenames}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('orig_filenames')"
       }
     },
-{
-     "rename": {
-       "field": "orig_mime_types",
+    {
+      "rename": {
+        "field": "orig_filenames",
+        "target_field": "http.orig_filenames",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_mime_types",
         "target_field": "http.request.mime_type",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "origin",
+    {
+      "rename": {
+        "field": "origin",
         "target_field": "http.request.origin",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "proxied",
+    {
+      "rename": {
+        "field": "proxied",
         "target_field": "http.request.proxied",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "referrer",
+    {
+      "rename": {
+        "field": "referrer",
         "target_field": "http.request.referrer",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "server_header_names",
+    {
+      "rename": {
+        "field": "server_header_names",
         "target_field": "http.response.header_names",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "resp_mime_types",
+    {
+      "rename": {
+        "field": "resp_mime_types",
         "target_field": "http.response.mime_type",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "status_msg",
+    {
+      "rename": {
+        "field": "status_msg",
         "target_field": "http.response.status_name",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "version",
+    {
+      "rename": {
+        "field": "version",
         "target_field": "http.version",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "resp_filenames",
-        "target_field": "destination.file.name",
-        "ignore_failure" : true
+    {
+      "set": {
+        "field": "destination.file.name",
+        "value": "{{resp_filenames}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('resp_filenames')"
       }
     },
-{
-     "rename": {
-       "field": "flash_version",
+    {
+      "rename": {
+        "field": "resp_filenames",
+        "target_field": "http.resp_filenames",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "flash_version",
         "target_field": "software.flash_version",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "uri",
-        "target_field": "url.original",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "uri_vars",
+    {
+      "rename": {
+        "field": "uri_vars",
         "target_field": "url.variables",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "user_agent",
+    {
+      "set": {
+        "field": "url.path",
+        "value": "{{uri}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('uri')"
+      }
+    },
+    {
+      "rename": {
+        "field": "uri",
+        "target_field": "url.original",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "user_agent",
         "target_field": "user_agent.original",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-     "rename": {
-       "field": "info_code",
+      "rename": {
+        "field": "info_code",
         "target_field": "http.response.informational_code",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "request_body_len",
+    {
+      "rename": {
+        "field": "request_body_len",
         "target_field": "http.request.body.bytes",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "response_body_len",
+    {
+      "rename": {
+        "field": "response_body_len",
         "target_field": "http.response.body.bytes",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "status_code",
+    {
+      "rename": {
+        "field": "status_code",
         "target_field": "http.response.status_code",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "trans_depth",
+    {
+      "rename": {
+        "field": "trans_depth",
         "target_field": "http.transaction_depth",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
+    {
       "rename": {
-       "field": "omniture",
+        "field": "omniture",
         "target_field": "http.response.omniture",
-        "ignore_failure" : true
-      }
-    },
-    {
-    "remove": {
-    "field": "omniture",
-    "ignore_failure" : true
-    }
-  },
-  {
-  "set": {
-    "field": "network.transport",
-    "value": "tcp",
-    "ignore_failure" : true
-  
-        }
-    },
-{
-      "rename": {
-       "field": "orig_filenames",
-        "target_field": "file.name_source",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
       "rename": {
-       "field": "resp_filenames",
-        "target_field": "file.name_destination",
-        "ignore_failure" : true
+        "field": "encoding",
+        "target_field": "http.encoding",
+        "ignore_failure": true
       }
     },
     {
-    "remove": {
-    "field": "id",
-    "ignore_failure" : true
+      "rename": {
+        "field": "push",
+        "target_field": "http.push",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "stream",
+        "target_field": "http.stream",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "post_body",
+        "target_field": "http.request.body.content",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "omniture",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    },
+    {
+      "rename": {
+        "field": "tags",
+        "target_field": "http.tags",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "user_agent": {
+        "field": "user_agent.original",
+        "target_field": "user_agent",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
     }
-  }
-
-]
+  ]
 }

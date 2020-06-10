@@ -2,51 +2,47 @@ PUT _ingest/pipeline/corelight_modbus-register-change_pipeline
 {
   "description" : "Corelight Modbus-Register-Change pipeline",
   "processors" : [
-
     {
-    "set": {
-    "field": "event.category",
-    "value": "network",
-    "ignore_failure" : true
-          }   
+      "set": {
+      "field": "event.category",
+      "value": "network",
+      "ignore_failure": true
+            }
     },
-   
-  {
-     "rename": {
-       "field": "delta",
+    {
+      "rename": {
+        "field": "delta",
         "target_field": "modbus.delta",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-      "convert" : {
-        "field" : "modbus.delta",
-        "type": "float",
-        "ignore_failure" : true
-      }
-    },
-{
-     "rename": {
-       "field": "new_val",
+    {
+      "rename": {
+        "field": "new_val",
         "target_field": "modbus.new_value",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-
-{
-     "rename": {
-       "field": "old_val",
+    {
+      "rename": {
+        "field": "old_val",
         "target_field": "modbus.old_value",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-
-{
-     "rename": {
-       "field": "register",
+    {
+      "rename": {
+        "field": "register",
         "target_field": "modbus.register",
-        "ignore_failure" : true
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     }
-]
+  ]
 }

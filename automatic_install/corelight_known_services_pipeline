@@ -1,67 +1,47 @@
 {
-  "description" : "Corelight Known_Services pipeline",
-  "processors" : [
+  "description": "Corelight Known_Services pipeline",
+  "processors": [
     {
-    "set": {
-    "field": "event.category",
-    "value": "observations",
-    "ignore_failure" : true
-          }   
+      "set": {
+        "field": "event.category",
+        "value": "observations",
+        "ignore_failure": true
+      }
     },
     {
-     "rename": {
-       "field": "port_proto",
+      "rename": {
+        "field": "port_proto",
         "target_field": "network.transport",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
     {
-  "set": {
-    "field": "server.ip",
-    "value": "{{host}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('host'))"
-        }
-    },
-    {
-    "set": {
-    "field": "server.address",
-    "value": "{{host}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('host'))"
-        }
-    },
-{
-     "rename": {
-       "field": "host",
+      "rename": {
+        "field": "host",
         "target_field": "host.ip",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-     "rename": {
-       "field": "service",
+    {
+      "rename": {
+        "field": "service",
         "target_field": "network.protocol",
-        "ignore_failure" : true
+        "ignore_failure": true
       }
     },
-{
-"set": {
-    "field": "server.port",
-    "value": "{{port_num}}",
-    "ignore_failure" : true,
-    "if": "(ctx.containsKey('port_num'))"
-        }
-    },
-
-
-{
-     "rename": {
-       "field": "port_num",
+    {
+      "rename": {
+        "field": "port_num",
         "target_field": "host.port",
-        "ignore_failure" : true
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     }
-
-]
+  ]
 }
