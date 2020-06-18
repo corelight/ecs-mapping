@@ -21,20 +21,19 @@ The mapping files and automation script are open-source under a BSD license. See
 
 Installation
 ------------
-There are three main steps for a successful installation: (1) load the ECS template into Elasticsearch (with a new index), (2) load the Corelight templates into Elasticsearch and (3) configure the Corelight sensor to export to the new index.
-
-1) Load the ECS template into Elasticsearch.  Installation instructions are available on the ECS GitHub page (https://github.com/elastic/ecs)
-
-2) Import index template
-
-    2.a) Goto the Dev console in Kibana and run the command from the file "template_corelight_base_settings". The index pattern name is "*\*ecs-corelight\**", which you can change if needed.
+There are three main steps for a successful installation: (1) load the Corelight templates into Elasticsearch and (2) configure the Corelight sensor to export to the new index.
 
 
-    2.b) Import the default pipeline with the command from the file "corelight_main_pipeline" (this essentially maps the ECS datasets (groups of field names) to the appropriate Corelight mapping file).
+1) Import index template
 
-    2.c) Import all other pipelines from the files "corelight_conn_pipeline", "corelight_dce_rpc_pipeline", etc. You can also import all the pipelines automatically with the custom script (below).
+    1.a) Goto the Dev console in Kibana and run the command from the file "template_corelight_base_settings". The index pattern name is "*\*ecs-corelight\**", which you can change if needed.
 
-    For automatic installation - NOTE- This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
+
+    1.b) Import the default pipeline with the command from the file "corelight_main_pipeline" (this essentially maps the ECS datasets (groups of field names) to the appropriate Corelight mapping file).
+
+    1.c) Import all other pipelines from the files "corelight_conn_pipeline", "corelight_dce_rpc_pipeline", etc. You can also import all the pipelines automatically with the custom script (below).
+
+    For automatic installation *- NOTE-* This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
     - Use the folder automatic_install. Edit index name (or names) in file 'template_corelight' according to your environment.
     - Copy all files to a Linux host.
     - Run the script using the command # bash pipelines_import.sh
