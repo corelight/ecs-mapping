@@ -27,7 +27,7 @@ There are three main steps for a successful installation: (1) load the ECS templ
 
 2) Import index template
 
-    2.a) Goto the Dev console in Kibana and run the command from the file "index_template_corelight". The index pattern name is "ecs-corelight*", which you can change if needed.
+    2.a) Goto the Dev console in Kibana and run the command from the file "index_template_corelight". The index pattern name is "*ecs-corelight*", which you can change if needed.
 
 
     2.b) Import the default pipeline with the command from the file "corelight_main_pipeline" (this essentially maps the ECS datasets (groups of field names) to the appropriate Corelight mapping file).
