@@ -27,14 +27,14 @@ There are three main steps for a successful installation: (1) load the ECS templ
 
 2) Import index template
 
-    2.a) Goto the Dev console in Kibana and run the command from the file "index_template_corelight". The index pattern name is "*ecs-corelight*", which you can change if needed.
+    2.a) Goto the Dev console in Kibana and run the command from the file "template_corelight_base_settings". The index pattern name is "*ecs-corelight*", which you can change if needed.
 
 
     2.b) Import the default pipeline with the command from the file "corelight_main_pipeline" (this essentially maps the ECS datasets (groups of field names) to the appropriate Corelight mapping file).
 
     2.c) Import all other pipelines from the files "corelight_conn_pipeline", "corelight_dce_rpc_pipeline", etc. You can also import all the pipelines automatically with the custom script (below).
 
-    For automatic installation of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
+    For automatic installation - NOTE- This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
     - Use the folder automatic_install. Edit index name (or names) in file 'template_corelight' according to your environment.
     - Copy all files to a Linux host.
     - Run the script using the command # bash pipelines_import.sh
