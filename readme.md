@@ -33,7 +33,7 @@ There are three main steps for a successful installation: (1) load the Corelight
 
     1.c) Import all other pipelines from the files "corelight_conn_pipeline", "corelight_dce_rpc_pipeline", etc. You can also import all the pipelines automatically with the custom script (below).
 
-    For automatic installation *- NOTE-* This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
+    For automatic installation  *NOTE* This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
     - Use the folder automatic_install. Edit index name (or names) in file 'template_corelight' according to your environment.
     - Copy all files to a Linux host.
     - Run the script using the command # bash pipelines_import.sh
