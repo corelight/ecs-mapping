@@ -1,3 +1,4 @@
+PUT /_enrich/policy/zeek-enrichment-conn-policy
 {
   "match": {
     "indices": [ "zeek-enrichment-conn-dictionary" ],
