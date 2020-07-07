@@ -36,11 +36,10 @@ There are three main steps for a successful installation: (1) load the Corelight
     For automatic installation  *NOTE* This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
     - Use the folder automatic_install. Edit index name (or names) in file 'template_corelight' according to your environment.
     - Copy all files to a Linux host.
-    - Run the script using the command # bash pipelines_import.sh
+    - Run the script using the command # bash pipelines_import.sh or pipelines_import.py (Python3)
     - Using an interactive menu, install all pipelines to your environment.
 
-    Note that the script will not work from a Mac as it relies on a direct TCP connection (please comment that line out of the script if you want to use it from a Mac).  Also, if you want to do cert based authentication you need to change the curl command to best fit your environment.
 
-    Also, for either the script or the manual installation if you are using Corelight's "reduced" logs you should use the mapping folder labeled "reduced." If you are only doing a subset of the reduced logs, replace the specific log pipeline file in the "reduced" folder with the appropriate mapping file from the original (i.e. non-reduced) pipeline folder. We will work to combine these in to a single pipeline ingest folder with nested logic for the next update of this mapping!
+ In this version both reduced and non reduced logs are in the same pipeline
 
 3) Configure your sensor to send events to the new elasticsearch index. This is documented in the Corelight manual; for Zeek you have likely written your own export mechanism so configure that as appropriate for your environment.
