@@ -43,3 +43,6 @@ There are three main steps for a successful installation: (1) load the Corelight
  In this version both reduced and non reduced logs are in the same pipeline
 
 3) Configure your sensor to send events to the new elasticsearch index. This is documented in the Corelight manual; for Zeek you have likely written your own export mechanism so configure that as appropriate for your environment.
+
+**Note**
+You can change the Number of Shards and Lifesycle policy in the template_corelight_base_settings
