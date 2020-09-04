@@ -146,9 +146,9 @@ def main():
         exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
         exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
         exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
-        exportToElastic(session, baseURI, "non-xpack-corelight_conn_pipeline")
-    else:
         exportToElastic(session, baseURI, "corelight_conn_pipeline")
+    else:
+        exportToElastic(session, baseURI, "non-xpack-corelight_conn_pipeline")
     for f in glob.glob("template_corelight*"):
         if f != "template_corelight_metrics_and_stats":
             exportToElastic(session, baseURI, f)
