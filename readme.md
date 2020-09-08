@@ -23,6 +23,8 @@ Installation
 ------------
 There are three main steps for a successful installation: (1) load the Corelight templates into Elasticsearch and (2) configure the Corelight sensor to export to the new index.
 
+Added support in the Python script to disable Xpack support. This will disable geolocation and Enrich tables. If you are useing the manual install you need to use the non xpack general pipline and non xpack conn pipeline
+
 
 1) Import index template
 
