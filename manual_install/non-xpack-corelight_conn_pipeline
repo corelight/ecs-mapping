@@ -1,0 +1,359 @@
+{
+  "description" : "Corelight Conn pipeline",
+  "processors" : [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tunnel_parents",
+        "target_field": "log.id.tunnel_parents",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_bytes",
+        "target_field": "source.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_ip_bytes",
+        "target_field": "source.ip_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_ip_bytes",
+        "target_field": "destination.ip_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_l2_addr",
+        "target_field": "source.mac",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "source": "if (ctx.local_orig == true && ctx.local_resp == true) {ctx.network_direction = 'internal';} else if (ctx.local_orig == true && ctx.local_resp == false) {ctx.network_direction = 'outbound';} else if (ctx.local_orig == false && ctx.local_resp == true) {ctx.network_direction = 'inbound';} else {ctx.network_direction = 'unknown';}"
+      }
+    },
+    {
+      "rename": {
+        "field": "network_direction",
+        "target_field": "network.direction",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "local_orig",
+        "target_field": "conn.local_orig",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "local_resp",
+        "target_field": "conn.local_resp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert" : {
+        "field" : "duration",
+        "type": "float",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.event.duration = (long)(ctx.duration * params.param_c)",
+        "params": {
+          "param_c": 1000000
+        },
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field" : "duration",
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert" : {
+        "field" : "source.bytes",
+        "type": "integer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_bytes",
+        "target_field": "destination.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert" : {
+        "field" : "destination.bytes",
+        "type": "integer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.network_bytes = ctx.source.bytes + ctx.destination.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "network_bytes",
+        "target_field": "network.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "history",
+        "target_field": "network.connection.history",
+        "ignore_failure": true
+      }
+    },
+
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.network_ip_bytes = ctx.source.ip_bytes + ctx.destination.ip_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "network_ip_bytes",
+        "target_field": "network.ip_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "missed_bytes",
+        "target_field": "network.missed_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_pkts",
+        "target_field": "source.packets",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_pkts",
+        "target_field": "destination.packets",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.network_packets = ctx.source.packets + ctx.destination.packets",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "network_packets",
+        "target_field": "network.packets",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "service",
+        "target_field": "network.protocol",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_l2_addr",
+        "target_field": "destination.mac",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_rx_ev",
+        "target_field": "conn.cache_add_rx_ev",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_rx_mpg",
+        "target_field": "conn.cache_add_rx_mpg",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_rx_new",
+        "target_field": "conn.cache_add_rx_new",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_tx_ev",
+        "target_field": "conn.cache_add_tx_ev",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_tx_mpg",
+        "target_field": "conn.cache_add_tx_mpg",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_del_mpg",
+        "target_field": "conn.cache_del_mpg",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_entries",
+        "target_field": "conn.cache_entries",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "community_id",
+        "target_field": "network.community_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "corelight_shunted",
+        "target_field": "conn.corelight_shunted",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.orig_h_name.src",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.orig_h_name.vals",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.resp_h_name.src",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.resp_h_name.vals",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id.orig_h_name.src",
+        "target_field": "conn.id.orig_h_name.src",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id.orig_h_name.vals",
+        "target_field": "conn.id.orig_h_name.vals",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id.resp_h_name.src",
+        "target_field": "conn.id.resp_h_name.src",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id.resp_h_name.vals",
+        "target_field": "conn.id.resp_h_name.vals",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": [
+          "id",
+          "conn_state",
+          "id.orig_h_name.src",
+          "id.orig_h_name.vals",
+          "id.resp_h_name.src",
+          "id.resp_h_name.vals"
+        ],
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_cc",
+        "target_field": "destination.geo.country_iso_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_cc",
+        "target_field": "source.geo.country_iso_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

@@ -141,15 +141,24 @@ def main():
     print("Uploading schemas to", baseURI)
 
     testConnection(session, baseURI)
-    exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
-    exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
-    exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
-    exportToElastic(session, baseURI, "corelight_conn_pipeline")
+    xpack = input_bool("Will X-Pack be enabled?Disableing this will disable Enrich tables and Geolocation", default=True)
+    if xpack:
+        exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
+        exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
+        exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
+        exportToElastic(session, baseURI, "xpack-corelight_conn_pipeline")
+    else:
+        exportToElastic(session, baseURI, "non-xpack-corelight_conn_pipeline")
     for f in glob.glob("template_corelight*"):
         if f != "template_corelight_metrics_and_stats":
             exportToElastic(session, baseURI, f)
-    for f in glob.glob("corelight*"):
-        exportToElastic(session, baseURI, f)
-
+    if xpack:
+        for f in glob.glob("corelight*"):
+            exportToElastic(session, baseURI, f)
+        exportToElastic(session, baseURI, "xpack-corelight_general_pipeline")
+    else:
+        for f in glob.glob("corelight*"):
+            exportToElastic(session, baseURI, f)
+        exportToElastic(session, baseURI, "non-xpack-corelight_general_pipeline")        
 if __name__ == "__main__":
     main()
