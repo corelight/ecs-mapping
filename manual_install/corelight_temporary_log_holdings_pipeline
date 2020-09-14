@@ -1,4 +1,4 @@
-PUT /_template/corelight_temporary_log_holdings_pipeline
+PUT _ingest/pipeline/corelight_temporary_log_holdings_pipeline
 {
   "description": "Corelight temporary pipeline for logs that do not have parsers written yet",
   "processors": [

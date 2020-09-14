@@ -1,3 +1,4 @@
+PUT _ingest/pipeline/corelight_stats_general_pipeline
 {
   "description": "Corelight Zeek Stats general pipeline",
   "processors": [
