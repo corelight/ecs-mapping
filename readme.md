@@ -25,15 +25,18 @@ There are three main steps for a successful installation: (1) load the Corelight
 
 Added support in the Python script to disable Xpack support. This will disable geolocation and Enrich tables. If you are useing the manual install you need to use the non xpack general pipline and non xpack conn pipeline
 
+1) Import enrich tables
 
-1) Import index template
+2) Execute enrich tables. POST /_enrich/policy/zeek-enrichment-conn-policy/_execute
 
-    1.a) Goto the Dev console in Kibana and run the command from the file "template_corelight_base_settings". The index pattern name is "*\*ecs-corelight\**", which you can change if needed.
+3) Import index template
+
+    3.a) Goto the Dev console in Kibana and run the command from the file "template_corelight_base_settings". The index pattern name is "*\*ecs-corelight\**", which you can change if needed.
 
 
-    1.b) Import the default pipeline with the command from the file "corelight_main_pipeline" (this essentially maps the ECS datasets (groups of field names) to the appropriate Corelight mapping file).
+    3.b) Import the default pipeline with the command from the file "corelight_main_pipeline" (this essentially maps the ECS datasets (groups of field names) to the appropriate Corelight mapping file).
 
-    1.c) Import all other pipelines from the files "corelight_conn_pipeline", "corelight_dce_rpc_pipeline", etc. You can also import all the pipelines automatically with the custom script (below).
+    3.c) Import all other pipelines from the files "corelight_conn_pipeline", "corelight_dce_rpc_pipeline", etc. You can also import all the pipelines automatically with the custom script (below).
 
     For automatic installation  *NOTE* This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
     - Use the folder automatic_install. Edit index name (or names) in file 'template_corelight' according to your environment.
@@ -44,7 +47,7 @@ Added support in the Python script to disable Xpack support. This will disable g
 
  In this version both reduced and non reduced logs are in the same pipeline
 
-3) Configure your sensor to send events to the new elasticsearch index. This is documented in the Corelight manual; for Zeek you have likely written your own export mechanism so configure that as appropriate for your environment.
+4.) Configure your sensor to send events to the new elasticsearch index. This is documented in the Corelight manual; for Zeek you have likely written your own export mechanism so configure that as appropriate for your environment.
 
 **Note**
 You can change the Number of Shards and Lifesycle policy in the template_corelight_base_settings
