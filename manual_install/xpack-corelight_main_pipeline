@@ -1,28 +1,29 @@
+PUT _ingest/pipeline/corelight_main_pipeline
 {
   "description": "A pipeline of pipelines for Corelight log files",
   "version": 1,
   "processors": [
     {
       "pipeline": {
-        "name": "corelight_general_pipeline"
+        "name": "xpack-corelight_general_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn_long'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
      "pipeline": {
         "if": "ctx.event.dataset == 'conn_red'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
