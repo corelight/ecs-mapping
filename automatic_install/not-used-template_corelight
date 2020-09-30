@@ -3,7 +3,7 @@
   "index_patterns": [ "*ecs-corelight*" ],
   "version": 1501,
   "settings": {
-    "index.default_pipeline": "corelight_main_pipeline"
+    "index.default_pipeline": "xpack-corelight_main_pipeline"
   },
   "mappings": {
     "dynamic_templates": [
