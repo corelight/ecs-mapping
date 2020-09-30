@@ -1,4 +1,4 @@
-PUT _ingest/pipeline/corelight_smtp_links
+PUT _ingest/pipeline/corelight_smtp_links_pipeline
 {
   "description": "Corelight SMTP Links pipeline",
   "processors": [
