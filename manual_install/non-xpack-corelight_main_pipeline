@@ -382,6 +382,12 @@ PUT _ingest/pipeline/corelight_main_pipeline
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'etc_viz'",
+        "name": "corelight_etc_viz_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event?.category == null",
         "name": "corelight_temporary_log_holdings_pipeline"
       }
