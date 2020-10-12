@@ -47,7 +47,7 @@ PUT _ingest/pipeline/corelight_etc_viz_pipeline
     {
         "rename": {
             "field": "c2s_viz.pdu1_enc",
-            "target_field": "client.viz.pdu1_enc
+            "target_field": "client.viz.pdu1_enc"
             "ignore_failure": true
         }
     },
