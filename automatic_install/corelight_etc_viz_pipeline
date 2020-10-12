@@ -46,7 +46,7 @@
     {
         "rename": {
             "field": "c2s_viz.pdu1_enc",
-            "target_field": "client.viz.pdu1_enc"
+            "target_field": "client.viz.pdu1_enc",
             "ignore_failure": true
         }
     },
@@ -81,7 +81,7 @@
     {
         "rename": {
             "field": "s2c_viz.pdu1_enc",
-            "target_field": "server.viz.pdu1_enc
+            "target_field": "server.viz.pdu1_enc",
             "ignore_failure": true
         }
     },
