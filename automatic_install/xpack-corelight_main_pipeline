@@ -4,25 +4,25 @@
   "processors": [
     {
       "pipeline": {
-        "name": "corelight_general_pipeline"
+        "name": "xpack-corelight_general_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn_long'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
      "pipeline": {
         "if": "ctx.event.dataset == 'conn_red'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
@@ -381,10 +381,23 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'etc_viz'",
+        "name": "corelight_etc_viz_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'weird_stats'",
+        "name": "corelight_weird_stats_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event?.category == null",
         "name": "corelight_temporary_log_holdings_pipeline"
       }
     }
+    
   ],
   "on_failure" : [
     {

@@ -74,6 +74,8 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
         if response == 400:
             if (pipeline == "zeek-enrichment-conn-policy"):
                 response = elasticDel(session, baseURI, "corelight_conn_pipeline", retry)
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry)
+                response = elasticDel(session, baseURI, "non-xpack-corelight_conn_pipeline", retry)
                 print(response)
                 response = elasticDel(session, baseURI, pipeline, retry)
                 print(response)
@@ -156,9 +158,13 @@ def main():
         for f in glob.glob("corelight*"):
             exportToElastic(session, baseURI, f)
         exportToElastic(session, baseURI, "xpack-corelight_general_pipeline")
+        exportToElastic(session, baseURI, "xpack-corelight_main_pipeline")
+        exportToElastic(session, baseURI, "xpack-template_corelight")
     else:
         for f in glob.glob("corelight*"):
             exportToElastic(session, baseURI, f)
-        exportToElastic(session, baseURI, "non-xpack-corelight_general_pipeline")        
+        exportToElastic(session, baseURI, "non-xpack-corelight_general_pipeline")
+        exportToElastic(session, baseURI, "non-xpack-corelight_main_pipeline")
+        exportToElastic(session, baseURI, "non-xpack-template_corelight")     
 if __name__ == "__main__":
     main()

@@ -5,25 +5,25 @@ PUT _ingest/pipeline/corelight_main_pipeline
   "processors": [
     {
       "pipeline": {
-        "name": "corelight_general_pipeline"
+        "name": "xpack-corelight_general_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn_long'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
      "pipeline": {
         "if": "ctx.event.dataset == 'conn_red'",
-        "name": "corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_pipeline"
       }
     },
     {
@@ -378,6 +378,18 @@ PUT _ingest/pipeline/corelight_main_pipeline
       "pipeline": {
         "if": "ctx.event.category == 'diagnostics' || ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter'",
         "name": "corelight_stats_general_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'etc_viz'",
+        "name": "corelight_etc_viz_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'weird_stats'",
+        "name": "corelight_weird_stats_pipeline"
       }
     },
     {
