@@ -14,7 +14,7 @@ PUT _ingest/pipeline/corelight_stats_general_pipeline
       "date_index_name" : {
         "field": "event.ingested",
         "index_name_prefix": "corelight-zeek-stats-{{event.dataset}}-",
-        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
         "date_rounding": "d",
         "ignore_failure": false,
         "index_name_format": "yyyy.MM.dd"
