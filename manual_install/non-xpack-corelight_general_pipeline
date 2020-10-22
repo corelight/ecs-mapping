@@ -1,3 +1,4 @@
+PUT _ingest/pipeline/non-xpack-corelight_general_pipeline
 {
   "description": "Corelight pipeline",
   "processors" : [
