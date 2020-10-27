@@ -1,4 +1,4 @@
-PUT _ingest/pipeline/corelight_main_pipeline
+PUT _ingest/pipeline/xpack-corelight_main_pipeline
 {
   "description": "A pipeline of pipelines for Corelight log files",
   "version": 1,
@@ -432,6 +432,13 @@ PUT _ingest/pipeline/corelight_main_pipeline
     {
       "remove": {
         "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    },
+    {
+      "remove": {
+        "field": "message",
         "ignore_failure": true,
         "ignore_missing" : true
       }
