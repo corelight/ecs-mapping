@@ -282,5 +282,5 @@ PUT _ingest/pipeline/corelight_etc_viz_pipeline
             "ignore_failure": true
         }
     }
-  ]
+  ] 
 }
