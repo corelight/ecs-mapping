@@ -1,3 +1,4 @@
+PUT _ingest/pipeline/corelight_wierd_stats_pipeline
 {
   "description" : "Corelight Weird stats pipeline",
   "processors" : [
