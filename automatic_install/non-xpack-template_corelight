@@ -1178,6 +1178,62 @@
           }
         }
       },
+      "server" : {
+          "type" : "object",
+          "properties" : {
+            "viz" : {
+              "type" : "object",
+              "properties" : {
+                "pdu1_enc" : {
+                  "type" : "boolean"
+                },
+                "size" : {
+                  "type" : "long"
+                },
+                "enc_dev" : {
+                  "type" : "float"
+                },
+                "clr_frac" : {
+                  "type" : "float"
+                },
+                "enc_frac" : {
+                  "type" : "float"
+                },
+                "clr_ex" : {
+                  "type" : "text"
+                }
+              }
+            }
+          }
+        },
+      "client" : {
+          "type" : "object",
+          "properties" : {
+            "viz" : {
+              "type" : "object",
+              "properties" : {
+                "pdu1_enc" : {
+                  "type" : "boolean"
+                },
+                "size" : {
+                  "type" : "long"
+                },
+                "enc_dev" : {
+                  "type" : "float"
+                },
+                "clr_frac" : {
+                  "type" : "float"
+                },
+                "enc_frac" : {
+                  "type" : "float"
+                },
+                "clr_ex" : {
+                  "type" : "text"
+                }
+              }
+            }
+          }
+        },
       "http": {
         "properties": {
           "cookie_variables": {
