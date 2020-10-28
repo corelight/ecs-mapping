@@ -36,7 +36,20 @@ PUT /_template/corelight
         "type": "text"
       },
       "labels": {
-        "type": "object"
+        "type": "object",
+        "properties" : {
+            "weird" : {
+              "type" : "object",
+              "properties" : {
+                "name" : {
+                  "type" : "text"
+                },
+                "number_seen" : {
+                  "type" : "integer"
+                }
+              }
+            }
+          }
       },
       "tags": {
         "type": "keyword"
