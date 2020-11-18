@@ -379,12 +379,25 @@
         "name": "corelight_stats_general_pipeline"
       }
     },
+     {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'etc_viz'",
+        "name": "corelight_etc_viz_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'weird_stats'",
+        "name": "corelight_weird_stats_pipeline"
+      }
+    },
     {
       "pipeline": {
         "if": "ctx.event?.category == null",
         "name": "corelight_temporary_log_holdings_pipeline"
       }
     }
+   
   ],
   "on_failure" : [
     {
@@ -404,7 +417,7 @@
       "date_index_name" : {
         "field" : "event.ingested",
         "index_name_prefix" : "parse-failures-",
-        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
         "date_rounding": "d",
         "ignore_failure": true,
         "index_name_format": "yyyy.MM.dd"

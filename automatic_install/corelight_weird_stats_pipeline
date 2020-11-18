@@ -1,0 +1,26 @@
+{
+  "description" : "Corelight Weird stats pipeline",
+  "processors" : [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "miscellaneous",
+        "ignore_failure": true
+      }   
+    },
+    {
+      "rename": {
+        "field": "name",
+        "target_field": "labels.weird.name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "num_seen",
+        "target_field": "labels.weird.number_seen",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
