@@ -22,7 +22,7 @@ The mapping files and automation script are open-source under a BSD license. See
 Installation
 ------------
 Automatic installation (recommended)
--    1. Clone the Corelight Elastic Common Schema Mapping repository from GitHub to you Corelight Sensor.
+-    1. Clone the Corelight Elastic Common Schema Mapping repository from GitHub to your workstation or jumpbox.
 -    2. In ecs_mapping/automatic_install/, locate the template files (template_corelight_*). Edit each file,
        changing the values of the index_patterns field according to your environment.
 -    3. Run pipelines_import.py (Python3) from ecs_mapping/automatic_install/.
