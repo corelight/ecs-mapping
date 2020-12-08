@@ -21,33 +21,31 @@ The mapping files and automation script are open-source under a BSD license. See
 
 Installation
 ------------
-There are three main steps for a successful installation: (1) load the Corelight templates into Elasticsearch and (2) configure the Corelight sensor to export to the new index.
+Automatic installation (recommended)
+-    1. Clone the Corelight Elastic Common Schema Mapping repository from GitHub to you Corelight Sensor.
+-    2. In ecs_mapping/automatic_install/, locate the template files (template_corelight_*). Edit each file,
+       changing the values of the index_patterns field according to your environment.
+-    3. Run pipelines_import.py (Python3) from ecs_mapping/automatic_install/.
+       Note: CorelightrecommendsusingthePython3scriptforinstallation.Howeverifyoucan’trunPython3 in your environment, there’s also a bash script that executes          the installation (ecs_mapping/automatic_ install/pipelines_import.sh).
+-    4. Respond to the configuration prompts to complete the installation.
+-    5. Configure your Corelight Sensor to send events to the new Elasticsearch index.
 
-Added support in the Python script to disable Xpack support. This will disable geolocation and Enrich tables. If you are useing the manual install you need to use the non xpack general pipline and non xpack conn pipeline
-
-1) Import enrich tables
-
-2) Execute enrich tables. POST /_enrich/policy/zeek-enrichment-conn-policy/_execute
-
-3) Import index template
-
-    3.a) Goto the Dev console in Kibana and run the command from the file "template_corelight_base_settings". The index pattern name is "*\*ecs-corelight\**", which you can change if needed.
-
-
-    3.b) Import the default pipeline with the command from the file "corelight_main_pipeline" (this essentially maps the ECS datasets (groups of field names) to the appropriate Corelight mapping file).
-
-    3.c) Import all other pipelines from the files "corelight_conn_pipeline", "corelight_dce_rpc_pipeline", etc. You can also import all the pipelines automatically with the custom script (below).
-
-    For automatic installation  *NOTE* This is the recommended and supported method - of pipelines on your Elasticsearch instance you can use the script pipelines_import.sh:
-    - Use the folder automatic_install. Edit index name (or names) in file 'template_corelight' according to your environment.
-    - Copy all files to a Linux host.
-    - Run the script using the command # bash pipelines_import.sh or pipelines_import.py (Python3)
-    - Using an interactive menu, install all pipelines to your environment.
-
-
+Manual installation
+-    1. In the Kibana sidebar, open Dev Tools to access the console.
+-    2. In a separate tab, open the manual_install directory in the ecs_mapping repository.
+-    3. Copy the contents of zeek-enrichment-conn-dictionary into the Kibana console and click the play button to execute the request. 
+       This command imports enriched tables.
+-    4. Execute the enriched tables using this command in the Kibana console.
+        POST /_enrich/policy/zeek-enrichment-conn-policy/_execute
+-    5. In the ecs-mapping repository, locate the template files (template_corelight_*). One at a time, copy the contents of each into the Kibana console. 
+       Change the values of the index_patterns fields according to your environment and execute the request.
+-    6. Copy the contents of the corelight_general_pipeline file from the ecs-mapping repository into the Kibana console and execute the request. 
+       This command maps the ECS datasets to the appropriate Corelight mapping file.
+-    7.  One at a time, copy the contents of each pipeline file (corelight_*_pipeline) into the Kibana console and execute the request. 
+        These commands install each pipeline to your environment.
+-    8. Configure your Corelight Sensor to send events to the new Elasticsearch index.
+    
  In this version both reduced and non reduced logs are in the same pipeline
 
-4.) Configure your sensor to send events to the new elasticsearch index. This is documented in the Corelight manual; for Zeek you have likely written your own export mechanism so configure that as appropriate for your environment.
-
 **Note**
-You can change the Number of Shards and Lifesycle policy in the template_corelight_base_settings
+You can change the number of shards and the lifecycle policy in template_corelight_ base_settings.
