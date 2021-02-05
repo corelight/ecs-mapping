@@ -1,6 +1,6 @@
 {
   "order" : 10,
-  "index_patterns": [ "*ecs-corelight*" ],
+  "index_patterns": [ "*single-corelight*" ],
   "version": 1501,
   "settings": {
     "index": {

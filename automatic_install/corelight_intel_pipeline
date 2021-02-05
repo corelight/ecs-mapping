@@ -141,6 +141,11 @@
           "seen.indicator"
         ]
       }
+    },
+      {
+      "pipeline": {
+        "name": "corelight_postprocess_pipeline"
+      }
     }
   ]
 }

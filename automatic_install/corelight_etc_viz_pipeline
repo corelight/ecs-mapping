@@ -280,6 +280,11 @@
             "target_field": "labels.viz_stat",
             "ignore_failure": true
         }
+    },
+      {
+      "pipeline": {
+        "name": "corelight_postprocess_pipeline"
+      }
     }
   ] 
 }

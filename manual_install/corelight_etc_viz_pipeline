@@ -23,7 +23,7 @@ PUT _ingest/pipeline/corelight_etc_viz_pipeline
             "ignore_failure": true
         }
     },
-    {
+    {zee
       "dot_expander": {
         "field": "c2s_viz.pdu1_enc",
         "ignore_failure": true,

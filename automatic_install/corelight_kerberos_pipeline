@@ -173,6 +173,11 @@
         "ignore_failure": true,
         "ignore_missing" : true
       }
+    },
+      {
+      "pipeline": {
+        "name": "corelight_postprocess_pipeline"
+      }
     }
   ]
 }
