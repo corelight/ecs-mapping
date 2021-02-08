@@ -165,11 +165,6 @@
         "target_field": "pe.uses_seh",
         "ignore_failure": true
       }
-    },
-      {
-      "pipeline": {
-        "name": "corelight_postprocess_pipeline"
-      }
     }
   ]
 }

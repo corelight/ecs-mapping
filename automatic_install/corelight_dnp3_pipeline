@@ -42,11 +42,6 @@
         "ignore_missing" : true,
         "field": "id"
       }
-    },
-      {
-      "pipeline": {
-        "name": "corelight_postprocess_pipeline"
-      }
     }
   ]
 }

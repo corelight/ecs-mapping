@@ -56,11 +56,6 @@
         "ignore_failure": true,
         "ignore_missing" : true
       }
-    },
-      {
-      "pipeline": {
-        "name": "xpack-corelight_general_pipeline"
-      }
     }
   ]
 }
