@@ -160,11 +160,13 @@ def main():
         exportToElastic(session, baseURI, "xpack-corelight_general_pipeline")
         exportToElastic(session, baseURI, "xpack-corelight_main_pipeline")
         exportToElastic(session, baseURI, "xpack-template_corelight")
+        exportToElastic(session, baseURI, "xpack-template_corelight_allinone")
     else:
         for f in glob.glob("corelight*"):
             exportToElastic(session, baseURI, f)
         exportToElastic(session, baseURI, "non-xpack-corelight_general_pipeline")
         exportToElastic(session, baseURI, "non-xpack-corelight_main_pipeline")
-        exportToElastic(session, baseURI, "non-xpack-template_corelight")     
+        exportToElastic(session, baseURI, "non-xpack-template_corelight")   
+        exportToElastic(session, baseURI, "non-xpack-template_corelight_allinone")  
 if __name__ == "__main__":
     main()

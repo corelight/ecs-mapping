@@ -363,6 +363,18 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'enip'",
+        "name": "corelight_enip_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'profinet'",
+        "name": "corelight_profinet_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'corelight_audit_log'",
         "name": "corelight_audit_log_pipeline"
       }
