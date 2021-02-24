@@ -11,28 +11,28 @@
     {
       "rename": {
         "field": "block_version",
-        "target_field": "lables.corelight.profinet.block_version",
+        "target_field": "corelight.profinet.block_version",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "operation_type",
-        "target_field": "lables.corelight.profinet.operation_type",
+        "target_field": "corelight.profinet.operation_type",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "slot_number",
-        "target_field": "lables.corelight.profinet.slot_number",
+        "target_field": "corelight.profinet.slot_number",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "subslot_number",
-        "target_field": "lables.corelight.profinet.subslot_number",
+        "target_field": "corelight.profinet.subslot_number",
         "ignore_failure": true
       }
     }
