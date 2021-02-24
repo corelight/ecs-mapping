@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight enpi pipeline",
+  "description" : "Corelight enip pipeline",
   "processors" : [
     {
       "set": {
@@ -11,34 +11,34 @@
     {
       "rename": {
         "field": "command",
-        "target_field": "corelight.enip.command",
+        "target_field": "enip.command",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "length",
-        "target_field": "corelight.enip.length",
+        "target_field": "enip.length",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "options",
-        "target_field": "corelight.enip.options",
+        "target_field": "enip.options",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "session_handle",
-        "target_field": "corelight.enip.session_handle",
+        "target_field": "enip.session_handle",
         "ignore_failure": true
       },
      {
       "rename": {
         "field": "sender_context",
-        "target_field": "corelight.enip.sender_context",
+        "target_field": "enip.sender_context",
         "ignore_failure": true
       }
     }
