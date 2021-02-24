@@ -1,0 +1,46 @@
+{
+  "description" : "Corelight enpi pipeline",
+  "processors" : [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "command",
+        "target_field": "corelight.enip.command",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "length",
+        "target_field": "corelight.enip.length",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "options",
+        "target_field": "corelight.enip.options",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "session_handle",
+        "target_field": "corelight.enip.session_handle",
+        "ignore_failure": true
+      },
+     {
+      "rename": {
+        "field": "sender_context",
+        "target_field": "corelight.enip.sender_context",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
