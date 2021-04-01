@@ -72,10 +72,12 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
         response = session.put(uri, data=postData, timeout=10)
         response = checkRequest(response)
         if response == 400:
-            if (pipeline == "zeek-enrichment-conn-policy"):
+            if pipeline == "zeek-enrichment-conn-policy":
+                # Delete the pipeline that calls the enrich policy before we can delete the enrich policy itself. https://www.elastic.co/guide/en/elasticsearch/reference/master/enrich-setup.html#update-enrich-policies
                 response = elasticDel(session, baseURI, "corelight_conn_pipeline", retry)
                 response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry)
                 response = elasticDel(session, baseURI, "non-xpack-corelight_conn_pipeline", retry)
+                response = elasticDel(session, baseURI, "zeek-enrichment-conn-policy", retry)
                 print(response)
                 response = elasticDel(session, baseURI, pipeline, retry)
                 print(response)
