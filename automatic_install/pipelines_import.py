@@ -143,7 +143,7 @@ def main():
     print("Uploading schemas to", baseURI)
 
     testConnection(session, baseURI)
-    xpack = input_bool("Will X-Pack be enabled?Disableing this will disable Enrich tables and Geolocation", default=True)
+    xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
     if xpack:
         exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
         exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
