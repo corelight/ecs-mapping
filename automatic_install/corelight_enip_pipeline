@@ -34,8 +34,9 @@
         "field": "session_handle",
         "target_field": "enip.session_handle",
         "ignore_failure": true
-      },
-     {
+      }
+    },
+    {
       "rename": {
         "field": "sender_context",
         "target_field": "enip.sender_context",
