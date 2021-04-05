@@ -2138,6 +2138,29 @@ PUT /_template/corelight
           }
         }
       },
+      "smb": {
+        "type" : "object",
+        "properties" : {
+          "path" : {
+            "type" : "keyword"
+          },
+          "share_type" : {
+            "type" : "keyword"
+          },
+          "native_file_system" : {
+            "type" : "keyword"
+          },
+          "service" : {
+            "type" : "keyword"
+          },
+          "previous_name" : {
+            "type" : "keyword"
+          },
+          "action" : {
+            "type" : "keyword"
+          }
+        }
+      },
       "ssh": {
         "properties": {
           "auth_successful": {

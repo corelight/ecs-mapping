@@ -1,3 +1,4 @@
+PUT _ingest/pipeline/xpack-corelight_conn_pipeline
 {
   "description" : "Corelight Conn pipeline",
   "processors" : [
