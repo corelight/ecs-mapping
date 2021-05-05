@@ -391,7 +391,7 @@
         "name": "corelight_stats_general_pipeline"
       }
     },
-     {
+    {
       "pipeline": {
         "if": "ctx.event.dataset == 'etc_viz'",
         "name": "corelight_etc_viz_pipeline"
@@ -409,7 +409,6 @@
         "name": "corelight_temporary_log_holdings_pipeline"
       }
     }
-   
   ],
   "on_failure" : [
     {
