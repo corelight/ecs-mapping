@@ -1,0 +1,47 @@
+{
+  "description": "Corelight Generic DNS Tunnels pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "network.protocol",
+        "value" : "dns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "dns_client",
+        "target_field": "source.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "destination.domain",
+        "value" : "{{domain}}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "bytes",
+        "target_field": "source.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "capture_secs",
+        "target_field": "encrypted_dns_tunnels_capture_secs",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
