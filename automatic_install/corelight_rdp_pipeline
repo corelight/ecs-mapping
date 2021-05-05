@@ -29,15 +29,14 @@
         "ignore_failure": true
       }
     },
-{
-  "set": {
-    "field": "software.original",
-    "value": "{{client_build}}",
-    "ignore_failure": true,
-    "if": "(ctx.containsKey('client_build'))"
-        }
+    {
+      "set": {
+        "field": "software.original",
+        "value": "{{client_build}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('client_build'))"
+      }
     },
-
     {
       "rename": {
         "field": "client_build",
