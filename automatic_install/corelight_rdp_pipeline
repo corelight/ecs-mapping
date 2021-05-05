@@ -120,7 +120,7 @@
         "field": "event.outcome",
         "value": "success",
         "ignore_failure": true,
-        "if": "(ctx.result == true)"
+        "if": "(ctx.auth_success == true)"
       }
     },
     {
@@ -128,7 +128,7 @@
         "field": "event.outcome",
         "value": "failure",
         "ignore_failure": true,
-        "if": "(ctx.result == false)"
+        "if": "(ctx.auth_success == false)"
       }
     },
     {
@@ -138,6 +138,13 @@
         "ignore_failure": true
       }
     },
+    {
+      "rename": {
+        "field": "auth_success",
+        "target_field": "rdp.auth_successful",
+        "ignore_failure": true
+      }
+    },    
     {
       "rename": {
         "field": "security_protocol",
@@ -157,6 +164,41 @@
         "field": "id",
         "ignore_failure": true,
         "ignore_missing" : true
+      }
+    },
+    {
+      "rename": {
+        "field": "channels_joined",
+        "target_field": "rdp.channels_joined",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "inferences",
+        "target_field": "rdp.inferences",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rdpeudp_uid",
+        "target_field": "log.id.rdpeudp_uidp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rdfp_string",
+        "target_field": "rdp.rdfp_string",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rdfp_hash",
+        "target_field": "rdp.rdfp_hash",
+        "ignore_failure": true
       }
     }
   ]
