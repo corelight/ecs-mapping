@@ -4,7 +4,7 @@
   "processors": [
     {
       "pipeline": {
-        "name": "xpack-corelight_general_pipeline"
+        "name": "corelight_general_pipeline"
       }
     },
     {
