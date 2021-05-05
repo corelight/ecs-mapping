@@ -1213,8 +1213,13 @@
                   "type" : "float"
                 },
                 "clr_ex" : {
-                  "type" : "text"
-                }
+                  "type" : "text",
+                  "fields": {
+                    "keyword": {
+                      "ignore_above": 8000,
+                      "type": "keyword"
+                    }
+                  }
               }
             }
           }
@@ -1241,7 +1246,13 @@
                   "type" : "float"
                 },
                 "clr_ex" : {
-                  "type" : "text"
+                  "type" : "text",
+                  "fields": {
+                    "keyword": {
+                      "ignore_above": 8000,
+                      "type": "keyword"
+                    }
+                  }
                 }
               }
             }
