@@ -1,9 +1,0 @@
-PUT /_cluster/settings
-{
-  "persistent": {
-    "script.max_compilations_rate": "20000/1m"
-  },
-  "transient": {
-    "script.max_compilations_rate": "20000/1m"
-  }
-}
