@@ -1,33 +1,49 @@
-### release version
-## Current Version
-ecs: 1.9
-internal: 1501
+## Versioning of templates, schema, etc
+ecs version gets stored as `ecs.version`
+
+corelight version gets stored as `labels.corelight.ecs_version`
+
+ECS version is the current release of ECS that Corelight ECS is based upon.  
+Corelight ECS version is based on that ECS release. and will add its iteration of this.  
+For example, if the ECS version is `1.9.0` and the first release of Corelight is matching this version, then Corelight ECS version is `1.9.0.1`. Then any new updates matching `1.9.0` would increment the 4th number, so the next update would be `1.9.0.2` and so on.  
+When a new release of ECS comes out (example) `1.9.0` then first release of Corelight ECS would be `1.9.0.1`
+
+Elasticsearch template (file named `template_corelight`) version is the value of `labels.corelight.ecs_version` without the dots, so `1.9.0.1` would be `1901`
 
 ## Release notes
 
-### 2021.05
- - rdp.log
-    add new fields from v21
-    - auth_success > rdp.auth_success
-      - add
-        - if true = event.outcome:success
-        - if false = event.outcome:failure
-      - rdp.auth_success
-    - channels_joined > rdp.channels_joined
-    - inferences > rdp.inferences
-    - rdpeudp_uid > rdp.rdpeudp_uid
-    - rdfp_string > rdp.rdfp_string
-    - rdfp_hash > rdp.rdfp_hash
-- [ ] event.ingested GET RID OF event.created ? or what is that being set as now/used for?
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] supports ECS 1.9.0
+### 1.9.0.1
+- ECS 1.9.0 support
+- Corelight v21 New Logs
+    - dga.log
+        Part of the DGA Detection package. When DGA Detection is enabled, tracks DNS records that match known DGA patterns.
+    - encrypted_dns.log
+        Part of the Encrypted DNS Server Detection package. When Encrypted DNS Server Detection is enabled, reports information about detected DNS-over-HTTPS traffic.
+    - generic_dns_tunnels.log
+        Part of the DNS Tunnels package. When DNS Tunnels is enabled with the generic detection option, reports information about likely DNS tunnels.
+    - generic_icmp_tunnels.log
+        Part of the ICMP Tunnels package. When ICMP Tunnels is enabled with the generic detection option, reports information about likely ICMP tunnels.
+    - meterpreter.log
+        Part of the Meterpreter Detection package. When Meterpreter Detection is enabled, reports information about connections with Meterpreter-formatted headers.
+    - meterpreter_headers.log
+        Part of the Meterpreter Detection package. When Meterpreter Detection is enabled, reports information about connections with Meterpreter-formatted headers where the detection was made through a TCP header.
+    - specific_dns_tunnels.log
+        Part of the DNS Tunnels package. When DNS Tunnels is enabled, reports information about detected DNS tunnels originating from a specific set of tunneling tools.
+- Corelight v21 Updated Logs
+    - conn.log
+        The conn log has new fields associated with the Shunting package on Corelight Sensors with enhanced NICs. These fields are only present when Shunting is enabled.
+    - notice.log
+        The notice log has a new severity field.
+    - rdp.log
+        The rdp log has new fields associated with the RDP Inference package. These fields are only present when RDP Inference is enabled.
+    - ssl.log
+        The encrypted_dns_resp_h field associated with the deprecated Encrypted DNS package is no longer available.
+- Collapsed the logic of xpack (licensed) VS non-xpack (opendistro AKA opensearch) into as few files as possible, separating only the very necessary components that are licensed VS non licensed
 
 
-### 2020.05
-- supports ECS 1.5.0
+
+### 1.5.0.1
+- ECS 1.5.0 support
 - ECS TLS schema
 - ECS VLAN schema
 - added analyzed fields for faster searching
@@ -69,22 +85,7 @@ internal: 1501
     - `namecache.log` fields no longer get renamed, and are now stored in `corelight-zeek-namecache`
     - `reporter.log` fields no longer get renamed, and are now stored in `corelight-zeek-reporter`
     - `stats.log` fields no longer get renamed, and are now stored in `corelight-zeek-stats`
-    
-```
-
-#### Versioning of templates, schema, etc
-ecs version gets stored as `ecs.version`
-corelight version gets stored as `labels.corelight.ecs_version`
-ECS version is the current release of ECS that Corelight ECS is based upon.
-Corelight ECS version is based on that ECS release. and will add its itteration of this.
-For example, if the ECS version is `1.5.0` and the first release of Corelight is matching this version, then Corelight ECS version is `1.5.0.1`
-then any new updates matching `1.5.0` would increment the 4th number, so the next update would be `1.5.0.2` and so on
-When a new release of ECS comes out say `1.5.0` then first release of Corelight ECS would be `1.5.0.1`
-
-Elasticsearch template (file named `template_corelight`) version is the value of `labels.corelight.ecs_version` without the dots, so `1.5.0.1` would be `1501`
-
-
-### Fields renamed
+#### Fields renamed
 `previous field name: new field name` 
 ```yaml
 All Logs:
