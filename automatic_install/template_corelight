@@ -179,6 +179,11 @@
                 "type": "keyword",
                 "copy_to": "related.id"
               },
+              "rdpeudp_uid": {
+                "ignore_above": 2048,
+                "type": "keyword",
+                "copy_to": "related.id"
+              },
               "related_fuids": {
                 "ignore_above": 2048,
                 "type": "keyword",
