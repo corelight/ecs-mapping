@@ -31,7 +31,7 @@
         "target_field": "@timestamp",
         "formats" : [ "ISO8601", "UNIX" ],
         "ignore_failure": true,
-        "if": "ctx.containsKey('ts') && ctx.containsKey('_write_ts')"
+        "if": "ctx.containsKey('ts')"
       }
     },
     {
