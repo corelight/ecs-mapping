@@ -1,0 +1,63 @@
+{
+  "description": "Corelight Meterpreter pipeline that handles both meterpreter.log and meterpreter_headers.log",
+  "processors": [
+    {
+      "date" : {
+        "field": "start_time",
+        "target_field": "@timestamp",
+        "formats" : [ "ISO8601", "UNIX" ],
+        "ignore_failure": true,
+        "if": "!(ctx.containsKey('@timestamp')"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "protocol",
+        "target_field": "network.transport",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "reason",
+        "target_field": "meterpreter_reason",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "os",
+        "target_field": "os.family",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "guid",
+        "target_field": "meterpreter_guid",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "encrypted",
+        "target_field": "meterpreter_staged",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "encrypted",
+        "target_field": "meterpreter_encrypted",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
