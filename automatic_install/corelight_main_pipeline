@@ -1,6 +1,6 @@
 {
   "description": "A pipeline of pipelines for Corelight log files",
-  "version": 2021050501,
+  "version": 1901,
   "processors": [
     {
       "pipeline": {
