@@ -1640,6 +1640,123 @@
           }
         }
       },
+      "rdp": {
+        "properties" : {
+          "cert_count" : {
+            "type" : "long"
+          },
+          "cert_permanent" : {
+            "type" : "boolean"
+          },
+          "cert_type" : {
+            "ignore_above": 4096,
+            "type" : "keyword"
+          },
+          "client_build" : {
+            "ignore_above": 32000,
+            "type" : "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "client_dig_product_id" : {
+            "ignore_above": 32000,
+            "type" : "keyword"
+          },
+          "client_name" : {
+            "ignore_above": 32000,
+            "type" : "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "cookie" : {
+            "ignore_above": 4096,
+            "type" : "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "desktop_height" : {
+            "type" : "long"
+          },
+          "desktop_width" : {
+            "type" : "long"
+          },
+          "encryption_level" : {
+            "ignore_above": 4096,
+            "type" : "keyword"
+          },
+          "encryption_method" : {
+            "ignore_above": 4096,
+            "type" : "keyword"
+          },
+          "keyboard_layout" : {
+            "ignore_above": 4096,
+            "type" : "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "requested_color_depth" : {
+            "ignore_above": 4096,
+            "type" : "keyword"
+          },
+          "result" : {
+            "ignore_above": 4096,
+            "type" : "keyword"
+          },
+          "security_protocol" : {
+            "ignore_above": 4096,
+            "type" : "keyword"
+          },
+          "ssl" : {
+            "type" : "boolean"
+          },
+          "auth_success" : {
+            "type" : "boolean"
+          },
+          "channels_joined" : {
+            "ignore_above": 4096,
+            "type" : "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "inferences" : {
+            "ignore_above": 4096,
+            "type" : "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "rdfp_string" : {
+            "ignore_above": 4096,
+            "type" : "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "rdfp_hash" : {
+            "ignore_above": 4096,
+            "type" : "keyword"
+          }
+        }
+      },      
       "related": {
         "properties": {
           "ip": {
