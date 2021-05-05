@@ -7,6 +7,6 @@
   "version": 1501,
   "settings": {
     "index.default_pipeline": "corelight_main_pipeline"
-    "index.final_pipeline": "xpack-corelight_pipeline"
+    "index.final_pipeline": "xpack-corelight_additional_pipeline"
   }
 }
