@@ -16,6 +16,13 @@
       }
     },
     {
+      "set" : {
+        "field" : "network.protocol",
+        "value" : "dns",
+        "ignore_failure": true
+      }
+    },
+    {
       "rename" : {
         "field" : "addl",
           "target_field" : "dns.additionals.name",
