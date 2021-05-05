@@ -227,7 +227,7 @@
     {
       "set": {
         "field": "ecs.version",
-        "value": "1.5.0",
+        "value": "1.9.0",
         "ignore_failure": true
       }
     },
