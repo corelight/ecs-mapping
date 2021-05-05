@@ -320,6 +320,34 @@
       }
     },
     {
+      "rename": {
+        "field": "orig_shunted_bytes",
+        "target_field": "conn.orig_shunted_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_shunted_pkts",
+        "target_field": "conn.orig_shunted_pkts",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_shunted_bytes",
+        "target_field": "conn.resp_shunted_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_shunted_pkts",
+        "target_field": "conn.resp_shunted_pkts",
+        "ignore_failure": true
+      }
+    },
+    {
       "remove": {
         "field": [
           "id",
