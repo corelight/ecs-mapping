@@ -45,6 +45,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'dga'",
+        "name": "corelight_dga_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'dns'",
         "name": "corelight_dns_pipeline"
       }
@@ -69,6 +75,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'encrypted_dns'",
+        "name": "corelight_encrypted_dns_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'files'",
         "name": "corelight_files_pipeline"
       }
@@ -83,6 +95,18 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'ftp'",
         "name": "corelight_ftp_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'generic_dns_tunnels'",
+        "name": "corelight_generic_dns_tunnels_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'generic_icmp_tunnels'",
+        "name": "corelight_generic_icmp_tunnels_pipeline"
       }
     },
     {
@@ -293,6 +317,24 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'software_red'",
         "name": "corelight_software_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'meterpreter'",
+        "name": "corelight_meterpreter_all_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'meterpreter_headers'",
+        "name": "corelight_meterpreter_all_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'specific_dns_tunnels'",
+        "name": "corelight_specific_dns_tunnels_pipeline"
       }
     },
     {
