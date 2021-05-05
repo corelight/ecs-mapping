@@ -1,4 +1,32 @@
+### release version
+## Current Version
+ecs: 1.9
+internal: 1501
+
 ## Release notes
+
+### 2021.05
+ - rdp.log
+    add new fields from v21
+    - auth_success > rdp.auth_success
+      - add
+        - if true = event.outcome:success
+        - if false = event.outcome:failure
+      - rdp.auth_success
+    - channels_joined > rdp.channels_joined
+    - inferences > rdp.inferences
+    - rdpeudp_uid > rdp.rdpeudp_uid
+    - rdfp_string > rdp.rdfp_string
+    - rdfp_hash > rdp.rdfp_hash
+- [ ] event.ingested GET RID OF event.created ? or what is that being set as now/used for?
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] supports ECS 1.9.0
+
+
+### 2020.05
 - supports ECS 1.5.0
 - ECS TLS schema
 - ECS VLAN schema
@@ -23,7 +51,7 @@
 - MQTT_Publish log
 - MQTT_Subscribe log
 - MQTT_POP3 log
-- GQUIC log
+- GQUIC logy
 - no longer renaming fields unless specifically an ECS name to be mapped to (to reduce confusion, but more importantly to share queries/hunts with those who do NOT do a lot of transform/ETL pipelines)
 - SMTP_Links log
 - Conn_Long log
@@ -115,6 +143,3 @@ x509.log:
   x509.san.ip: file.x509.san_ip
   x509.san.url: file.x509.san_url
 ```
-
-### release version
-version: 1501
