@@ -415,7 +415,6 @@
         "name": "corelight_temporary_log_holdings_pipeline"
       }
     }
-    
   ],
   "on_failure" : [
     {
