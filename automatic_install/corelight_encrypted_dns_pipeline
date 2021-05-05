@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Encrypted DNS pipeline",
+  "description": "Corelight Encrypted DNS Tunnels pipeline",
   "processors": [
     {
       "set": {
@@ -12,13 +12,6 @@
       "set" : {
         "field" : "network.protocol",
         "value" : "dns",
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "field": "network.transport",
-        "value": "tcp",
         "ignore_failure": true
       }
     },
