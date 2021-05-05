@@ -45,6 +45,13 @@
     },
     {
       "rename": {
+        "field": "severity",
+        "target_field": "event.severity",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
         "field": "email_body_sections",
         "target_field": "notice.email_body_sections",
         "ignore_failure": true
