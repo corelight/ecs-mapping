@@ -1,0 +1,68 @@
+{
+  "description": "Corelight Generic ICMP Tunnels pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "network.protocol",
+        "value" : "icmp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig",
+        "target_field": "source.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp",
+        "target_field": "destination.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id",
+        "target_field": "icmp_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "seq",
+        "target_field": "icmp_seq_number",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "bytes",
+        "target_field": "network.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "payload_len",
+        "target_field": "network.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "icmp_payload",
+        "target_field": "payload",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
