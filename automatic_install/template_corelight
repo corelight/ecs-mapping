@@ -9,7 +9,7 @@
     "dynamic_templates": [
       {
         "zeek_ssh_stepping_ips": {
-          "path_match":   "ssh.stepping.*_ip",
+          "path_match": "ssh.stepping.*_ip",
           "mapping": {
             "type": "ip",
             "copy_to": "related.ip"
