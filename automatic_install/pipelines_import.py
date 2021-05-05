@@ -156,13 +156,11 @@ def main():
     for f in glob.glob("template_corelight*"):
         if f != "template_corelight_metrics_and_stats":
             exportToElastic(session, baseURI, f)
+    for f in glob.glob("corelight*"):
+        exportToElastic(session, baseURI, f)
     if xpack:
-        for f in glob.glob("corelight*"):
-            exportToElastic(session, baseURI, f)
         exportToElastic(session, baseURI, "xpack-template_corelight")
     else:
-        for f in glob.glob("corelight*"):
-            exportToElastic(session, baseURI, f)
         exportToElastic(session, baseURI, "non-xpack-template_corelight")
 if __name__ == "__main__":
     main()
