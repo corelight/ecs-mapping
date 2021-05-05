@@ -15,6 +15,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'conn'",
+        "name": "xpack-corelight_conn_enrich_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'conn_long'",
         "name": "xpack-corelight_conn_pipeline"
       }

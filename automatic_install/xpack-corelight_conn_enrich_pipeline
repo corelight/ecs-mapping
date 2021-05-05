@@ -1,0 +1,13 @@
+{
+  "description" : "Corelight Conn pipeline for Elastic licensed xpack enrich processor",
+  "processors" : [
+    {
+      "enrich": {
+        "policy_name": "zeek-enrichment-conn-policy",
+        "field": "conn_state",
+        "target_field": "network.connection",
+        "max_matches": "1"
+      }
+    }
+  ]
+}

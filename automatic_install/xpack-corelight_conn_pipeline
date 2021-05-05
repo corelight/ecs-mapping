@@ -142,14 +142,6 @@
       }
     },
     {
-      "enrich" : {
-        "policy_name" : "zeek-enrichment-conn-policy",
-        "field" : "conn_state",
-        "target_field" : "network.connection",
-        "max_matches" : "1"
-      }
-    },
-    {
       "script": {
         "lang": "painless",
         "source": "ctx.network_ip_bytes = ctx.source.ip_bytes + ctx.destination.ip_bytes",
