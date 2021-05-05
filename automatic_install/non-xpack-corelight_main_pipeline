@@ -10,7 +10,7 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn'",
-        "name": "non-xpack-corelight_conn_pipeline"
+        "name": "corelight_conn_pipeline"
       }
     },
     {
