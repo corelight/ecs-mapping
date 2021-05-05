@@ -1,6 +1,6 @@
 {
   "description": "XPack Licensed Elastic Specific Pipeline that calls those specific pipelines that contain licensed pipeline settings",
-  "version": 2021050501,
+  "version": 1901,
   "processors": [
     {
       "pipeline": {

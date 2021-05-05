@@ -1,6 +1,6 @@
 {
   "order": 99,
-  "version": 1501,
+  "version": 1901,
   "index_patterns": [
     "parse-failures-*"
   ],

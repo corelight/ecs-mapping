@@ -1,7 +1,7 @@
 {
   "order" : 99,
   "index_patterns": [ "*corelight-zeek-metrics*", "*corelight-zeek-audit*", "*corelight-zeek-stats*" ],
-  "version": 1501,
+  "version": 1901,
   "settings": {
     "index": {
       "mapping": {
