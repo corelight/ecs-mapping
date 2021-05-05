@@ -74,9 +74,8 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
         if response == 400:
             if pipeline == "zeek-enrichment-conn-policy":
                 # Delete the pipeline that calls the enrich policy before we can delete the enrich policy itself. https://www.elastic.co/guide/en/elasticsearch/reference/master/enrich-setup.html#update-enrich-policies
-                response = elasticDel(session, baseURI, "corelight_conn_pipeline", retry)
-                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry)
-                response = elasticDel(session, baseURI, "non-xpack-corelight_conn_pipeline", retry)
+                response = elasticDel(session, baseURI, "xpack-corelight_additional_pipeline", retry)
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_enrich_pipeline", retry)
                 response = elasticDel(session, baseURI, "zeek-enrichment-conn-policy", retry)
                 print(response)
                 response = elasticDel(session, baseURI, pipeline, retry)
@@ -150,25 +149,20 @@ def main():
         exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
         exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
         exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
-        exportToElastic(session, baseURI, "xpack-corelight_conn_pipeline")
+        exportToElastic(session, baseURI, "xpack-corelight_additional_pipeline")
+        exportToElastic(session, baseURI, "xpack-corelight_conn_enrich_pipeline")
     else:
-        exportToElastic(session, baseURI, "non-xpack-corelight_conn_pipeline")
+        pass
     for f in glob.glob("template_corelight*"):
         if f != "template_corelight_metrics_and_stats":
             exportToElastic(session, baseURI, f)
     if xpack:
         for f in glob.glob("corelight*"):
             exportToElastic(session, baseURI, f)
-        exportToElastic(session, baseURI, "xpack-corelight_general_pipeline")
-        exportToElastic(session, baseURI, "xpack-corelight_main_pipeline")
         exportToElastic(session, baseURI, "xpack-template_corelight")
-        exportToElastic(session, baseURI, "xpack-template_corelight_allinone")
     else:
         for f in glob.glob("corelight*"):
             exportToElastic(session, baseURI, f)
-        exportToElastic(session, baseURI, "non-xpack-corelight_general_pipeline")
-        exportToElastic(session, baseURI, "non-xpack-corelight_main_pipeline")
-        exportToElastic(session, baseURI, "non-xpack-template_corelight")   
-        exportToElastic(session, baseURI, "non-xpack-template_corelight_allinone")  
+        exportToElastic(session, baseURI, "non-xpack-template_corelight")
 if __name__ == "__main__":
     main()
