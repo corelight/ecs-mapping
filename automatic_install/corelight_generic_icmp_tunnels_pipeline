@@ -63,6 +63,13 @@
         "target_field": "payload",
         "ignore_failure": true
       }
+    },
+    {
+      "rename": {
+        "field": "detection",
+        "target_field": "icmp_detection",
+        "ignore_failure": true
+      }
     }
   ]
 }
