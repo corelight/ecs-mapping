@@ -1,8 +1,12 @@
 {
   "order" : 9,
-  "index_patterns": [ "*ecs-corelight*" ],
+  "index_patterns": [
+    "*ecs-corelight*",
+    "*single-corelight*"
+  ],
   "version": 1501,
   "settings": {
-    "index.default_pipeline": "xpack-corelight_main_pipeline"
+    "index.default_pipeline": "corelight_main_pipeline"
+    "index.final_pipeline": "xpack-corelight_pipeline"
   }
 }
