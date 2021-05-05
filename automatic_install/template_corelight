@@ -2152,21 +2152,27 @@
         "type" : "object",
         "properties" : {
           "path" : {
+            "ignore_above": 32000,
             "type" : "keyword"
           },
           "share_type" : {
+            "ignore_above": 1024,
             "type" : "keyword"
           },
           "native_file_system" : {
+            "ignore_above": 1024,
             "type" : "keyword"
           },
           "service" : {
+            "ignore_above": 32000,
             "type" : "keyword"
           },
           "previous_name" : {
+            "ignore_above": 32000,
             "type" : "keyword"
           },
           "action" : {
+            "ignore_above": 1024,
             "type" : "keyword"
           }
         }
