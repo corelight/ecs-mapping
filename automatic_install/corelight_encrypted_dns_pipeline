@@ -36,6 +36,33 @@
         "target_field": "tls.client.server_name",
         "ignore_failure": true
       }
+    },    {
+      "dot_expander": {
+        "field": "cert.cn",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('cert.cn'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "cert.cn",
+        "target_field": "encrypted_dns_cert_cn",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "cert.sans",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('cert.sans'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "cert.sans",
+        "target_field": "encrypted_dns_cert_sans",
+        "ignore_failure": true
+      }
     },
     {
       "rename": {
