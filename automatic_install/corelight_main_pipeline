@@ -461,12 +461,6 @@
   "on_failure" : [
     {
       "set": {
-        "field": "_index",
-        "value": "parse-failures"
-      }
-    },
-    {
-      "set": {
         "field": "event.ingested",
         "value": "{{_ingest.timestamp}}",
         "if": "ctx.event?.ingested == null"
