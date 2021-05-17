@@ -1,7 +1,7 @@
 {
   "description" : "Corelight Postprocessing pipeline",
   "processors" : [
-{
+    {
       "set": {
         "field": "_index",
         "value": "single-corelight"
