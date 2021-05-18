@@ -423,6 +423,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'etc_viz'",
+        "name": "corelight_etc_viz_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "description": "a stats or metrics log",
         "if": "ctx.event.dataset == 'corelight_audit_log'",
         "name": "corelight_audit_log_pipeline"
@@ -440,12 +446,6 @@
         "description": "a stats or metrics log",
         "if": "ctx.event.category == 'diagnostics' || ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter'",
         "name": "corelight_stats_general_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'etc_viz'",
-        "name": "corelight_etc_viz_pipeline"
       }
     },
     {
