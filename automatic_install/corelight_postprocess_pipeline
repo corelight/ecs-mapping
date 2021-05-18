@@ -2,19 +2,8 @@
   "description" : "Corelight Postprocessing pipeline",
   "processors" : [
     {
-      "set": {
-        "field": "_index",
-        "value": "single-corelight"
-      }
-    },
-    {
-      "date_index_name" : {
-        "field" : "event.ingested",
-        "index_name_prefix" : "single-corelight-",
-        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
-        "date_rounding": "d",
-        "ignore_failure": true,
-        "index_name_format": "yyyy.MM.dd"
+      "pipeline": {
+        "name": "corelight_postprocess_geoip_pipeline"
       }
     }
   ]

@@ -14,6 +14,7 @@
       },
       "refresh_interval": "15s"
     },
+    "index.default_pipeline": "corelight_main_pipeline",
     "number_of_shards": "1",
     "number_of_replicas": "0"
   },

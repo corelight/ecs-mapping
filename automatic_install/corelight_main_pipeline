@@ -422,31 +422,58 @@
       }
     },
     {
-      "pipeline": {
-        "description": "a stats or metrics log",
-        "if": "ctx.event.dataset == 'corelight_audit_log'",
-        "name": "corelight_audit_log_pipeline"
+      "set": {
+        "description": "This field can be used to determine if a data type is a metric or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle metrics - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
+        "field": "_ingest.corelight_its_a_metric",
+        "value": "no"
+      }
+    },
+    {
+      "set": {
+        "description": "This field can be used to determine if a data type is a metric or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle stats - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
+        "field": "_ingest.corelight_its_a_stat",
+        "value": "no"
+      }
+    },
+    {
+      "set": {
+        "description": "This field can be used to determine if a data type is a system type log or not. Set all as 'no' first, then once it hits the specific call to the pipelines that system logs - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
+        "field": "_ingest.corelight_its_a_system_log",
+        "value": "no"
       }
     },
     {
       "pipeline": {
-        "description": "a stats or metrics log",
+        "description": "Logs that are system related.",
+        "if": "ctx.event.dataset == 'corelight_audit_log'",
+        "name": "corelight_system_related_info_general_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "description": "Logs that are metrics.",
         "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system'",
         "name": "corelight_metrics_general_pipeline"
       }
     },
     {
       "pipeline": {
-        "description": "a stats or metrics log",
-        "if": "ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter'",
+        "description": "Logs that are stats.",
+        "if": "ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter' || ctx.event.dataset == 'weird_stats'",
         "name": "corelight_stats_general_pipeline"
       }
     },
     {
       "pipeline": {
-        "description": "a stats or metrics log",
-        "if": "ctx.event.dataset == 'weird_stats'",
-        "name": "corelight_weird_stats_pipeline"
+        "description": "If not a metric, stat, or other system log - then do more.",
+        "if": "ctx._ingest.corelight_its_a_metric == 'no' && ctx._ingest.corelight_its_a_stat == 'no' && ctx._ingest.corelight_its_a_system_log == 'no'",
+        "name": "corelight_postprocess_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "description": "Set final index naming",
+        "name": "corelight_index_naming_pipeline"
       }
     }
   ],

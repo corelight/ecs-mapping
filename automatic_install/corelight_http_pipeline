@@ -3,6 +3,13 @@
   "processors" : [
     {
       "set": {
+        "field": "_ingest.corelight_index_name_suffix",
+        "value": "http",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
         "field": "event.category",
         "value": "network",
         "ignore_failure": true

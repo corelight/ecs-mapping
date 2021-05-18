@@ -2,6 +2,13 @@
   "description": "Corelight Meterpreter pipeline that handles both meterpreter.log and meterpreter_headers.log",
   "processors": [
     {
+      "set": {
+        "field": "_ingest.corelight_index_name_suffix",
+        "value": "various",
+        "ignore_failure": true
+      }
+    },
+    {
       "date" : {
         "field": "start_time",
         "target_field": "@timestamp",

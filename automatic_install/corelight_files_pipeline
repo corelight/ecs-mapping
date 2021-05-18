@@ -3,6 +3,13 @@
   "processors": [
     {
       "set": {
+        "field": "_ingest.corelight_index_name_suffix",
+        "value": "files",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
         "field": "event.category",
         "value": "file",
         "ignore_failure": true

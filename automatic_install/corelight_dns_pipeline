@@ -2,6 +2,13 @@
   "description" : "Corelight DNS pipeline",
   "processors" : [
     {
+      "set": {
+        "field": "_ingest.corelight_index_name_suffix",
+        "value": "dns",
+        "ignore_failure": true
+      }
+    },
+    {
       "set" : {
         "field" : "event.category",
         "value" : "network",

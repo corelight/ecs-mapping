@@ -1,0 +1,26 @@
+{
+  "description": "Corelight Zeek system related information pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "_ingest.corelight_index_name_suffix",
+        "value": "system-{{event.dataset}}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "_ingest.corelight_its_a_system_log",
+        "value": "yes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "pipeline": {
+        "description": "Logs that are system related.",
+        "if": "ctx.event.dataset == 'corelight_audit_log'",
+        "name": "corelight_audit_log_pipeline"
+      }
+    }
+  ]
+}

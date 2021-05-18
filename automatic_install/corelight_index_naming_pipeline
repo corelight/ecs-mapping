@@ -1,0 +1,104 @@
+{
+  "description": "Corelight index naming pipeline",
+  "processors": [
+
+    {
+      "set": {
+        "description": "set index name prefix for non metrics,stats,system,etc",
+        "field": "_ingest.corelight_index_name_prefix",
+        "value": "ecs-corelight",
+        "if": "ctx._ingest.corelight_its_a_metric == 'no' && ctx._ingest.corelight_its_a_stat == 'no' && ctx._ingest.corelight_its_a_system_log == 'no'"
+      }
+    },
+    {
+      "set": {
+        "description": "set index name prefix for metrics,stats,system,etc",
+        "field": "_ingest.corelight_index_name_prefix",
+        "value": "zeek-corelight",
+        "if": "ctx._ingest.corelight_its_a_metric == 'yes' || ctx._ingest.corelight_its_a_stat == 'yes' || ctx._ingest.corelight_its_a_system_log == 'yes'"
+      }
+    },
+    {
+      "date_index_name": {
+        "description": "Parsed log, thus would have _ingest.corelight_index_name_suffix field set.",
+        "field": "event.ingested",
+        "index_name_prefix": "{{_ingest.corelight_index_name_prefix}}-{{_ingest.corelight_index_name_suffix}}-",
+        "date_formats": [
+          "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX",
+          "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX",
+          "yyyy-MM-dd'T'HH:mm:ss.SSSXX"
+        ],
+        "date_rounding": "d",
+        "ignore_failure": true,
+        "index_name_format": "yyyy.MM.dd",
+        "if": "ctx._ingest.corelight_index_name_suffix != null",
+        "on_failure" : [
+          {
+            "set": {
+              "field": "event.ingested",
+              "value": "{{_ingest.timestamp}}",
+              "if": "ctx.event?.ingested == null"
+            }
+          },
+          {
+            "date_index_name" : {
+              "field" : "event.ingested",
+              "index_name_prefix" : "parse-failures-",
+              "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+              "date_rounding": "d",
+              "ignore_failure": true,
+              "index_name_format": "yyyy.MM.dd"
+            }
+          },
+          {
+            "set": {
+              "field": "custom_error_message",
+              "value": "Failed to place log into specific index that was determined via the pipeline."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "date_index_name" : {
+        "description": "Log not parsed, thus would not have _ingest.corelight_index_name_suffix field set. Thus should be placed in own index to prevent field collisions",
+        "field" : "event.ingested",
+        "index_name_prefix" : "ecs-corelight-temporary-{{event.dataset}}-",
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+        "date_rounding": "d",
+        "ignore_failure": false,
+        "index_name_format": "yyyy.MM.dd",
+        "if": "ctx._ingest.corelight_index_name_suffix == null",
+        "on_failure" : [
+          {
+            "set": {
+              "field": "event.ingested",
+              "value": "{{_ingest.timestamp}}",
+              "if": "ctx.event?.ingested == null"
+            }
+          },
+          {
+            "date_index_name" : {
+              "field" : "event.ingested",
+              "index_name_prefix" : "parse-failures-",
+              "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+              "date_rounding": "d",
+              "ignore_failure": true,
+              "index_name_format": "yyyy.MM.dd"
+            }
+          },
+          {
+            "set": {
+              "field": "custom_error_message",
+              "value": "Failed to place log into seperate event dataset index, based on the logic that this log does not have a parser yet."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+
+
+
+
