@@ -38,7 +38,14 @@ Elasticsearch template (file named `template_corelight`) version is the value of
         The rdp log has new fields associated with the RDP Inference package. These fields are only present when RDP Inference is enabled.
     - ssl.log
         The encrypted_dns_resp_h field associated with the deprecated Encrypted DNS package is no longer available.
+    - files.log
+      - renamed `tx_host` to `files.tx_hosts`
+      - renamed `rx_host` to `files.rx_hosts`
+      - copied `files.tx_hosts` to `destination.ip`
+      - copied `files.rx_hosts` to `source.ip`
 - Collapsed the logic of xpack (licensed) VS non-xpack (opendistro AKA opensearch) into as few files as possible, separating only the very necessary components that are licensed VS non licensed
+- removed `template_corelight_temporary_log_holdings`
+- - If a parser is not included for a log (ie: an unknown or brand new log), that log is sent to the elasticsearch index `ecs-corelight-$logname-$pattern` ex: (`ecs-corelight-some_new_log-2021-05-01`)
 
 
 
@@ -144,3 +151,6 @@ x509.log:
   x509.san.ip: file.x509.san_ip
   x509.san.url: file.x509.san_url
 ```
+
+# To-Do #TODO:
+- [ ] set processor in later version of Elasticsearch (>= 7.9 ) has an option called `ignore_empty_value` - which would free up hundreds of CPU cycles per pipeline (ie: having to check if exists and if NOT null) - description of processor is `if evaluates to null or the empty string`
