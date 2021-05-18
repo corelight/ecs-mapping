@@ -9,13 +9,6 @@
       }
     },
     {
-      "set": {
-        "field": "event.ingested",
-        "value": "{{_ingest.timestamp}}",
-        "if": "ctx.event?.ingested == null"
-      }
-    },
-    {
       "date_index_name" : {
         "field" : "event.ingested",
         "index_name_prefix" : "corelight-zeek-audit_log-",

@@ -1,12 +1,11 @@
 {
   "description": "Corelight Zeek Metrics general pipeline",
   "processors": [
-    { "set": { "field": "event.category", "value": "diagnostics", "ignore_failure": true } },
     {
       "set": {
-        "field": "event.ingested",
-        "value": "{{_ingest.timestamp}}",
-        "if": "ctx.event?.ingested == null"
+        "field": "event.category",
+        "value": "diagnostics",
+        "ignore_failure": true
       }
     },
     {
