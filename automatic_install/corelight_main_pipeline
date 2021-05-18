@@ -448,12 +448,6 @@
         "if": "ctx.event.dataset == 'weird_stats'",
         "name": "corelight_weird_stats_pipeline"
       }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event?.category == null",
-        "name": "corelight_temporary_log_holdings_pipeline"
-      }
     }
   ],
   "on_failure" : [
