@@ -1278,7 +1278,8 @@
             }
           },
           "ip": {
-            "type": "ip"
+            "type": "ip",
+            "copy_to": "related.ip"
           },
           "mac": {
             "ignore_above": 32000,
@@ -2267,6 +2268,12 @@
           },
           "timedout": {
             "type": "boolean"
+          },
+          "rx_hosts": {
+            "type": "ip"
+          },
+          "tx_hosts": {
+            "type": "ip"
           }
         }
       },
@@ -2450,7 +2457,8 @@
             }
           },
           "ip": {
-            "type": "ip"
+            "type": "ip",
+            "copy_to": "related.ip"
           },
           "mac": {
             "ignore_above": 32000,
