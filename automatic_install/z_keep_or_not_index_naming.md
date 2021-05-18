@@ -1,6 +1,8 @@
 # Index Naming
 the following field `_ingest.corelight_index_name_suffix` should be set under each type (below). 
 
+## Parse Failures
+- parse-failures-yyyy-MM-dd
 ## NSM Metadata type Logs
 "_ingest.corelight_index_name_prefix": "ecs-corelight"
 - ecs-corelight-conn-yyyy-MM-dd
