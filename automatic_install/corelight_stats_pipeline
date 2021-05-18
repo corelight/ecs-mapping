@@ -1,7 +1,6 @@
 {
   "description" : "Corelight Stats pipeline",
   "processors" : [
-    { "set": { "field": "event.category", "value": "diagnostics", "ignore_failure": true } },
     { "rename": { "field": "active_dns_requests", "target_field": "stats.active_dns_requests", "ignore_failure": true } },
     { "rename": { "field": "active_icmp_conns", "target_field": "stats.active_icmp_conns", "ignore_failure": true } },
     { "rename": { "field": "active_tcp_conns", "target_field": "stats.active_tcp_conns", "ignore_failure": true } },

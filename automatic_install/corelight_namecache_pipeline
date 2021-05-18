@@ -1,7 +1,6 @@
 {
   "description": "Corelight Namecache pipeline",
   "processors": [
-    { "set": { "field": "event.category", "value": "diagnostics", "ignore_failure": true } },
     { "rename": { "field": "cache_add_rx_mpg", "target_field": "namecache.cache_add_rx_mpg", "ignore_failure": true } },
     { "rename": { "field": "cache_add_rx_new", "target_field": "namecache.cache_add_rx_new", "ignore_failure": true } },
     { "rename": { "field": "cache_add_tx_ev", "target_field": "namecache.cache_add_tx_ev", "ignore_failure": true } },
