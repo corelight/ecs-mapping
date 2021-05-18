@@ -423,18 +423,21 @@
     },
     {
       "pipeline": {
+        "description": "a stats or metrics log",
         "if": "ctx.event.dataset == 'corelight_audit_log'",
         "name": "corelight_audit_log_pipeline"
       }
     },
     {
       "pipeline": {
+        "description": "a stats or metrics log",
         "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system'",
         "name": "corelight_metrics_general_pipeline"
       }
     },
     {
       "pipeline": {
+        "description": "a stats or metrics log",
         "if": "ctx.event.category == 'diagnostics' || ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter'",
         "name": "corelight_stats_general_pipeline"
       }
@@ -447,6 +450,7 @@
     },
     {
       "pipeline": {
+        "description": "a stats or metrics log",
         "if": "ctx.event.dataset == 'weird_stats'",
         "name": "corelight_weird_stats_pipeline"
       }
