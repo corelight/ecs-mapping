@@ -473,7 +473,7 @@
     {
       "pipeline": {
         "description": "Set final index naming",
-        "name": "corelight_index_naming_pipeline"
+        "name": "corelight_postprocess_index_naming_pipeline"
       }
     }
   ],
