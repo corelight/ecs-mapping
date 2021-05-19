@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight Postprocessing pipeline",
+  "description" : "Corelight Postprocessing Data Pipeline",
   "processors" : [
     {
       "pipeline": {

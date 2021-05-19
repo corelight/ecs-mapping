@@ -467,13 +467,13 @@
       "pipeline": {
         "description": "If not a metric, stat, or other system log - then do more.",
         "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'",
-        "name": "corelight_postprocess_pipeline"
+        "name": "corelight_postprocess_data_pipeline"
       }
     },
     {
       "pipeline": {
-        "description": "Set final index naming",
-        "name": "corelight_postprocess_index_naming_pipeline"
+        "description": "Run pipeline that all logs need.",
+        "name": "corelight_postprocess_all_pipeline"
       }
     }
   ],
