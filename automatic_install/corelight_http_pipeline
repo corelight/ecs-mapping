@@ -3,9 +3,9 @@
   "processors" : [
     {
       "set": {
-        "field": "_ingest.corelight_index_name_suffix",
+        "field": "temporary_metadata_index_name_suffix",
         "value": "http",
-        "ignore_failure": true
+        "ignore_failure": false
       }
     },
     {

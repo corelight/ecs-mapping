@@ -3,16 +3,16 @@
   "processors": [
     {
       "set": {
-        "field": "_ingest.corelight_index_name_suffix",
+        "field": "temporary_metadata_index_name_suffix",
         "value": "system-{{event.dataset}}",
-        "ignore_failure": true
+        "ignore_failure": false
       }
     },
     {
       "set": {
-        "field": "_ingest.corelight_its_a_system_log",
+        "field": "temporary_metadata_is_system_log",
         "value": "yes",
-        "ignore_failure": true
+        "ignore_failure": false
       }
     },
     {
