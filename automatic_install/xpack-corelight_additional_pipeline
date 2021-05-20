@@ -11,45 +11,13 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'conn_long'",
-        "name": "xpack-corelight_conn_pipeline"
+        "name": "xpack-corelight_conn_enrich_pipeline"
       }
     },
     {
      "pipeline": {
         "if": "ctx.event.dataset == 'conn_red'",
-        "name": "xpack-corelight_conn_pipeline"
-      }
-    },
-  ],
-  "on_failure" : [
-    {
-      "set": {
-        "field": "event.ingested",
-        "value": "{{_ingest.timestamp}}",
-        "if": "ctx.event?.ingested == null"
-      }
-    },
-    {
-      "date_index_name" : {
-        "field" : "event.ingested",
-        "index_name_prefix" : "parse-failures-",
-        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
-        "date_rounding": "d",
-        "ignore_failure": true,
-        "index_name_format": "yyyy.MM.dd"
-      }
-    },
-    {
-      "set": {
-        "field": "error.message",
-        "value": "{{ _ingest.on_failure_message }}"
-      }
-    },
-    {
-      "remove": {
-        "field": "id",
-        "ignore_failure": true,
-        "ignore_missing" : true
+        "name": "xpack-corelight_conn_enrich_pipeline"
       }
     }
   ]
