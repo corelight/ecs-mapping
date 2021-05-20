@@ -23,35 +23,19 @@
       }
     },
     {
-      "set": {
-        "description": "set rx_hosts as source.ip only if exists and string is not empty. do this before rename of rx_hosts for more efficient checking (ie: less json object exists checking)",
-        "field": "source.ip",
-        "value": "{{rx_hosts}}",
-        "ignore_failure": true,
-        "if": "ctx?.rx_hosts != null && !(ctx['rx_hosts'].empty)"
-      }
-    },
-    {
-      "set": {
-        "description": "set tx_hosts as destination.ip only if exists and string is not empty. do this before rename of tx_hosts for more efficient checking (ie: less json object exists checking)",
-        "field": "destination.ip",
-        "value": "{{tx_hosts}}",
+      "rename": {
+        "field": "tx_hosts",
+        "target_field": "files.tx_hosts",
         "ignore_failure": true,
         "if": "ctx?.tx_hosts != null && !(ctx['tx_hosts'].empty)"
       }
     },
     {
       "rename": {
-        "field": "tx_hosts",
-        "target_field": "files.tx_hosts",
-        "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
         "field": "rx_hosts",
         "target_field": "files.rx_hosts",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx?.rx_hosts != null && !(ctx['rx_hosts'].empty)"
       }
     },
     {
