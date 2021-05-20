@@ -3,7 +3,7 @@
   "processors" : [
     {
       "enrich": {
-        description: "Enrich conn state with descriptive name. Have to use target field to something random and then rename later on, because otherwise overwrites anything that is an object. Reference similar issue: https://github.com/elastic/elasticsearch/issues/51473",
+        "description": "Enrich conn state with descriptive name. Have to use target field to something random and then rename later on, because otherwise overwrites anything that is an object. Reference similar issue: https://github.com/elastic/elasticsearch/issues/51473",
         "policy_name": "zeek-enrichment-conn-policy",
         "field": "conn_state",
         "target_field": "temporary_field_rename_conn_enrich",
