@@ -154,3 +154,4 @@ x509.log:
 
 # To-Do #TODO:
 - [ ] set processor in later version of Elasticsearch (>= 7.9 ) has an option called `ignore_empty_value` - which would free up hundreds of CPU cycles per pipeline (ie: having to check if exists and if NOT null) - description of processor is `if evaluates to null or the empty string`
+- [ ] set processor in later version of Elasticsearch (>= 7.11 ) has an option called `copy_from` - which would make easier basically copying fields/values instead of using `{{$FieldName}}`
