@@ -27,7 +27,7 @@
         "field": "tx_hosts",
         "target_field": "files.tx_hosts",
         "ignore_failure": true,
-        "if": "ctx?.tx_hosts != null && !(ctx['tx_hosts'].empty)"
+        "if": "ctx?.tx_hosts != null"
       }
     },
     {
@@ -35,7 +35,7 @@
         "field": "rx_hosts",
         "target_field": "files.rx_hosts",
         "ignore_failure": true,
-        "if": "ctx?.rx_hosts != null && !(ctx['rx_hosts'].empty)"
+        "if": "ctx?.rx_hosts != null"
       }
     },
     {
