@@ -8,6 +8,13 @@
         "target_field": "network.connection",
         "max_matches": "1"
       }
+    },
+    {
+      "remove": {
+        "field": [ "conn_state" ],
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
     }
   ]
 }

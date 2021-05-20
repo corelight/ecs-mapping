@@ -358,7 +358,6 @@
       "remove": {
         "field": [
           "id",
-          "conn_state",
           "id.orig_h_name.src",
           "id.orig_h_name.vals",
           "id.resp_h_name.src",
