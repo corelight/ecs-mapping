@@ -54,6 +54,22 @@
     },
     {
       "set": {
+        "field": "client.address",
+        "value": "{{files.rx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.rx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "server.address",
+        "value": "{{files.tx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.tx_hosts != null"
+      }
+    },
+    {
+      "set": {
         "field": "log.id.fuid",
         "value": "{{fuid}}",
         "ignore_failure": true,
