@@ -147,7 +147,7 @@
         "field": "source.ip",
         "value": "{{notice.src_ip}}",
         "ignore_failure": true,
-        "if": "!(ctx.containsKey('source')) || !(ctx['source'].containsKey('ip'))&& ctx.containsKey('notice.src_ip') )"
+        "if": "!(ctx.containsKey('source')) || !(ctx['source'].containsKey('ip'))&& ctx.containsKey('notice.src_ip')"
       }
     },
     {
