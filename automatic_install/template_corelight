@@ -45,6 +45,15 @@
               }
             }
           },
+          "dns": {
+            "type": "object",
+            "properties": {
+              "query_length": {
+                "type": "alias",
+                "path": "dns.question.name_length"
+              }
+            }
+          },
           "weird": {
             "type": "object",
             "properties": {
@@ -757,6 +766,9 @@
                   }
                 },
                 "type": "keyword"
+              },
+              "name_length": {
+                "type": "long"
               },
               "registered_domain": {
                 "ignore_above": 1024,

@@ -161,7 +161,7 @@
     {
       "rename" : {
         "field" : "length",
-        "target_field" : "labels.dns.query_length",
+        "target_field" : "dns.question.name_length",
         "ignore_failure": true
       }
     },
@@ -253,6 +253,13 @@
         "value" : "TC",
         "ignore_failure": true,
         "if": "(ctx.dns.TC == true)"
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     },
     {

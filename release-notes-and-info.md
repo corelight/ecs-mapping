@@ -45,7 +45,8 @@ Elasticsearch template (file named `template_corelight`) version is the value of
       - copied `files.rx_hosts` to `source.ip`
 - Collapsed the logic of xpack (licensed) VS non-xpack (opendistro AKA opensearch) into as few files as possible, separating only the very necessary components that are licensed VS non licensed
 - removed `template_corelight_temporary_log_holdings`
-- - If a parser is not included for a log (ie: an unknown or brand new log), that log is sent to the elasticsearch index `ecs-corelight-$logname-$pattern` ex: (`ecs-corelight-some_new_log-2021-05-01`)
+- If a parser is not included for a log (ie: an unknown or brand new log), that log is sent to the elasticsearch index `ecs-corelight-$logname-$pattern` ex: (`ecs-corelight-some_new_log-2021-05-01`)
+- `labels.dns.query_length alias` to `dns.question.name_length`
 
 
 
