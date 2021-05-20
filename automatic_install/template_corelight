@@ -37,6 +37,14 @@
       "labels": {
         "type": "object",
         "properties": {
+          "corelight": {
+            "type": "object",
+            "properties": {
+              "ecs_version": {
+                "type": "keyword"
+              }
+            }
+          },
           "weird": {
             "type": "object",
             "properties": {
