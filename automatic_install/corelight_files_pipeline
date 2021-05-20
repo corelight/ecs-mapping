@@ -41,15 +41,15 @@
         "field": "source.ip",
         "value": "{{files.rx_hosts}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('files') && ctx['files'].containsKey('rx_hosts')"
+        "if": "ctx?.files?.rx_hosts != null"
       }
     },
-     {
+    {
       "set": {
         "field": "destination.ip",
         "value": "{{files.tx_hosts}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('files') && ctx['files'].containsKey('tx_hosts')"
+        "if": "ctx?.files?.tx_hosts != null"
       }
     },
     {
