@@ -8,7 +8,7 @@
           "temporary_metadata_index_name_prefix",
           "temporary_metadata_is_metric_log",
           "temporary_metadata_is_stats_log",
-          "temporary_metadata_log_is_system"
+          "temporary_metadata_is_system_log"
         ],
         "ignore_failure": true,
         "ignore_missing": true
