@@ -11,7 +11,7 @@
         "total_fields": {
           "limit": "7500"
         },
-        "ignore_malformed": "true"
+        "ignore_malformed": true
       },
       "refresh_interval": "30s"
     }
