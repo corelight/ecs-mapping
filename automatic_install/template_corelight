@@ -2207,10 +2207,6 @@
           "duration": {
             "type": "float"
           },
-          "history": {
-            "ignore_above": 1024,
-            "type": "keyword"
-          },
           "local_orig": {
             "type": "boolean"
           },
