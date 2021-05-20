@@ -2266,10 +2266,12 @@
             "type": "boolean"
           },
           "rx_hosts": {
-            "type": "ip"
+            "ignore_above": 32000,
+            "type": "keyword"
           },
           "tx_hosts": {
-            "type": "ip"
+            "ignore_above": 32000,
+            "type": "keyword"
           }
         }
       },
