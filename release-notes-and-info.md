@@ -47,6 +47,8 @@ Elasticsearch template (file named `template_corelight`) version is the value of
 - removed `template_corelight_temporary_log_holdings`
 - If a parser is not included for a log (ie: an unknown or brand new log), that log is sent to the elasticsearch index `ecs-corelight-$logname-$pattern` ex: (`ecs-corelight-some_new_log-2021-05-01`)
 - `labels.dns.query_length alias` to `dns.question.name_length`
+- added length of useragent `user_agent.original_length` 
+- added length of url `url.original_length` 
 
 
 
