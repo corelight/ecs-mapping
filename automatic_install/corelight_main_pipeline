@@ -465,9 +465,9 @@
     },
     {
       "pipeline": {
-        "description": "If not a metric, stat, or other system log - then do more.",
+        "description": "If is a metadata log do extra enrichment and parsing. Metadata log AKA application or network protocol log.. ie: not a metric, stat, or other system log.",
         "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'",
-        "name": "corelight_postprocess_data_pipeline"
+        "name": "corelight_postprocess_metadata_logs_pipeline"
       }
     },
     {
