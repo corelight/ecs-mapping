@@ -5,6 +5,16 @@
       "pipeline": {
         "name": "corelight_postprocess_geoip_pipeline"
       }
+    },
+    {
+      "pipeline": {
+        "name": "corelight_postprocess_metadata_useragent_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "name": "corelight_postprocess_metadata_url_pipeline"
+      }
     }
   ]
 }

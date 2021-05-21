@@ -2065,6 +2065,9 @@
             },
             "type": "keyword"
           },
+          "original_length": {
+            "type": "long"
+          },
           "port": {
             "type": "long"
           },
@@ -2170,6 +2173,9 @@
               }
             },
             "type": "keyword"
+          },
+          "original_length": {
+            "type": "long"
           },
           "patch": {
             "ignore_above": 1024,

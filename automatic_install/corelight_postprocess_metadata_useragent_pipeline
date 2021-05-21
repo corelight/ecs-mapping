@@ -1,0 +1,14 @@
+{
+  "description": "Corelight Postprocess Metadata UserAgent Pipeline",
+  "processors" : [
+    {
+      "description": "Add length of user_agent.original",
+      "script" : {
+        "lang" : "painless",
+        "source" : "ctx.user_agent.original_length = ctx.user_agent.original.length()",
+        "if": "ctx.containsKey('user_agent') && ctx['user_agent'].containsKey('original')"
+      },
+      "ignore_failure": true
+    }
+  ]
+}
