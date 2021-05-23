@@ -488,7 +488,7 @@
     {
       "date_index_name" : {
         "field" : "event.ingested",
-        "index_name_prefix" : "parse-failures-",
+        "index_name_prefix" : "parse-failures-corelight-",
         "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
         "date_rounding": "d",
         "ignore_failure": true,

@@ -49,7 +49,7 @@ Elasticsearch template (file named `template_corelight`) version is the value of
 - `labels.dns.query_length alias` to `dns.question.name_length`
 - added length of useragent `user_agent.original_length` 
 - added length of url `url.original_length` 
-
+- moved parsed failure logs to `parse-failures-corelight-*` from `parse-failures-*`
 
 
 ### 1.5.0.1
