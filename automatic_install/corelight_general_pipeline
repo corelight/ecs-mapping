@@ -1,5 +1,5 @@
 {
-  "description": "Corelight pipeline",
+  "description": "Corelight General pipeline. Common parsings amongst each data/log type.",
   "processors" : [
     {
       "rename": {
