@@ -308,7 +308,7 @@
               "organization": {
                 "properties": {
                   "name": {
-                    "ignore_above": 4096,
+                    "ignore_above": 10000,
                     "fields": {
                       "text": {
                         "type": "text"
@@ -324,7 +324,7 @@
             "type": "long"
           },
           "domain": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -340,7 +340,7 @@
                 "type": "keyword"
               },
               "name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -349,7 +349,7 @@
                 "type": "keyword"
               },
               "mime_type": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -431,7 +431,7 @@
           },
           "hostname": {
             "copy_to": "related.domain",
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -466,7 +466,7 @@
           "user": {
             "properties": {
               "full_name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -481,7 +481,7 @@
                 "type": "keyword"
               },
               "name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -515,7 +515,7 @@
               "organization": {
                 "properties": {
                   "name": {
-                    "ignore_above": 4096,
+                    "ignore_above": 10000,
                     "fields": {
                       "text": {
                         "type": "text"
@@ -531,7 +531,7 @@
             "type": "long"
           },
           "domain": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -547,7 +547,7 @@
                 "type": "keyword"
               },
               "name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -556,7 +556,7 @@
                 "type": "keyword"
               },
               "mime_type": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -638,7 +638,7 @@
           },
           "hostname": {
             "copy_to": "related.domain",
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -673,7 +673,7 @@
           "user": {
             "properties": {
               "full_name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -688,7 +688,7 @@
                 "type": "keyword"
               },
               "name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -719,7 +719,7 @@
                 "type": "keyword"
               },
               "name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -759,7 +759,7 @@
                 "type": "keyword"
               },
               "name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -823,7 +823,7 @@
             "type": "keyword"
           },
           "directory": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "fields": {
               "text": {
                 "type": "text"
@@ -847,7 +847,7 @@
             "properties": {
               "imphash": {
                 "copy_to": "related.hash",
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "type": "keyword"
               },
               "md5": {
@@ -877,7 +877,7 @@
               },
               "ssdeep": {
                 "copy_to": "related.hash",
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "type": "keyword"
               }
             }
@@ -898,7 +898,7 @@
             "path": "file.mtime"
           },
           "mime_type": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -907,7 +907,7 @@
             "type": "keyword"
           },
           "name": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "type": "keyword",
             "fields": {
               "text": {
@@ -920,7 +920,7 @@
             "type": "keyword"
           },
           "path": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -936,7 +936,7 @@
             "type": "keyword"
           },
           "target_path": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -1415,7 +1415,7 @@
                 "type": "text",
                 "fields": {
                   "keyword": {
-                    "ignore_above": 8000,
+                    "ignore_above": 32000,
                     "type": "keyword"
                   }
                 }
@@ -1427,7 +1427,7 @@
       "http": {
         "properties": {
           "cookie_variables": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "fields": {
               "text": {
                 "type": "text"
@@ -1446,7 +1446,7 @@
                     "type": "long"
                   },
                   "content": {
-                    "ignore_above": 8000,
+                    "ignore_above": 32000,
                     "fields": {
                       "text": {
                         "type": "text"
@@ -1457,7 +1457,7 @@
                 }
               },
               "header_names": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1466,11 +1466,11 @@
                 "type": "keyword"
               },
               "method": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "type": "keyword"
               },
               "mime_type": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1479,11 +1479,11 @@
                 "type": "keyword"
               },
               "origin": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "type": "keyword"
               },
               "proxied": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1492,7 +1492,7 @@
                 "type": "keyword"
               },
               "referrer": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1513,7 +1513,7 @@
                     "type": "long"
                   },
                   "content": {
-                    "ignore_above": 8000,
+                    "ignore_above": 32000,
                     "fields": {
                       "text": {
                         "type": "text"
@@ -1524,7 +1524,7 @@
                 }
               },
               "header_names": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1536,11 +1536,11 @@
                 "type": "long"
               },
               "informational_message": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "type": "keyword"
               },
               "mime_type": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1552,7 +1552,7 @@
                 "type": "long"
               },
               "status_name": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "type": "keyword"
               }
             }
@@ -1561,7 +1561,7 @@
             "type": "long"
           },
           "version": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           }
         }
@@ -1670,7 +1670,7 @@
             "type" : "boolean"
           },
           "cert_type" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword"
           },
           "client_build" : {
@@ -1696,7 +1696,7 @@
             }
           },
           "cookie" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword",
             "fields": {
               "text": {
@@ -1711,15 +1711,15 @@
             "type" : "long"
           },
           "encryption_level" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword"
           },
           "encryption_method" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword"
           },
           "keyboard_layout" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword",
             "fields": {
               "text": {
@@ -1728,15 +1728,15 @@
             }
           },
           "requested_color_depth" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword"
           },
           "result" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword"
           },
           "security_protocol" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword"
           },
           "ssl" : {
@@ -1746,7 +1746,7 @@
             "type" : "boolean"
           },
           "channels_joined" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword",
             "fields": {
               "text": {
@@ -1755,7 +1755,7 @@
             }
           },
           "inferences" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword",
             "fields": {
               "text": {
@@ -1764,7 +1764,7 @@
             }
           },
           "rdfp_string" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword",
             "fields": {
               "text": {
@@ -1773,7 +1773,7 @@
             }
           },
           "rdfp_hash" : {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type" : "keyword"
           }
         }
@@ -1912,7 +1912,7 @@
                 }
               },
               "issuer": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1925,7 +1925,7 @@
                 "type": "keyword"
               },
               "server_name": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1934,7 +1934,7 @@
                 "type": "keyword"
               },
               "subject": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1973,7 +1973,7 @@
                 }
               },
               "issuer": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -1986,7 +1986,7 @@
                 "type": "keyword"
               },
               "subject": {
-                "ignore_above": 8000,
+                "ignore_above": 32000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -2010,7 +2010,7 @@
         "properties": {
           "domain": {
             "copy_to": "related.domain",
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2032,7 +2032,7 @@
             "type": "keyword"
           },
           "full": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2057,7 +2057,7 @@
             }
           },
           "original": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2127,7 +2127,7 @@
           "device": {
             "properties": {
               "name": {
-                "ignore_above": 4096,
+                "ignore_above": 10000,
                 "fields": {
                   "text": {
                     "type": "text"
@@ -2157,7 +2157,7 @@
             "type": "long"
           },
           "name": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2166,7 +2166,7 @@
             "type": "keyword"
           },
           "original": {
-            "ignore_above": 8000,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2308,19 +2308,19 @@
             "copy_to": "related.ip"
           },
           "agent_remote_id": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           },
           "circuit_id": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           },
           "client_message": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           },
           "client_fqdn": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2329,7 +2329,7 @@
             "type": "keyword"
           },
           "client_software": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2342,7 +2342,7 @@
             "copy_to": "related.ip"
           },
           "msg_types": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           },
           "lease_time": {
@@ -2353,11 +2353,11 @@
             "copy_to": "related.ip"
           },
           "server_message": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           },
           "server_software": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "fields": {
               "text": {
                 "type": "text"
@@ -2366,7 +2366,7 @@
             "type": "keyword"
           },
           "subscriber_id": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           }
         }
@@ -2394,7 +2394,7 @@
             "type": "float"
           },
           "tunnel_client": {
-            "ignore_above": 4096,
+            "ignore_above": 10000,
             "type": "keyword"
           }
         }
