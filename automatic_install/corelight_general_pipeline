@@ -98,7 +98,7 @@
       "rename": {
         "field": "id.resp_h",
         "target_field": "destination.ip",
-        "ignore_failure": true,
+        "ignore_failure": true
       }
     },
     {
@@ -112,7 +112,7 @@
       "rename": {
         "field": "id.resp_p",
         "target_field": "destination.port",
-        "ignore_failure": true,
+        "ignore_failure": true
       }
     },
     {
