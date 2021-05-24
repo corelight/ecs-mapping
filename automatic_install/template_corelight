@@ -333,6 +333,9 @@
             "copy_to": "related.domain",
             "type": "keyword"
           },
+          "domain_length": {
+            "type": "long"
+          },
           "file": {
             "properties": {
               "extension": {
@@ -2017,6 +2020,9 @@
               }
             },
             "type": "keyword"
+          },
+          "domain_length": {
+            "type": "long"
           },
           "extension": {
             "ignore_above": 1024,
