@@ -15,6 +15,11 @@
       "pipeline": {
         "name": "corelight_postprocess_metadata_url_pipeline"
       }
+    },
+    {
+      "pipeline": {
+        "name": "corelight_postprocess_metadata_destination_domain_pipeline"
+      }
     }
   ]
 }
