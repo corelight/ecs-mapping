@@ -1,0 +1,19 @@
+{
+  "description" : "Corelight Postprocessing All Pipeline",
+  "processors" : [
+    {
+      "pipeline": {
+        "description": "Set index naming",
+        "name": "corelight_postprocess_index_naming_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "description": "Run final pipeline. Does cleanup of temporary fields or tags and other final things needed.",
+        "name": "corelight_postprocess_final_pipeline"
+      }
+    }
+  ]
+}
+
+

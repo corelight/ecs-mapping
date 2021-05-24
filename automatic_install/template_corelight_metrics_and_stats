@@ -1,7 +1,12 @@
 {
   "order" : 99,
-  "index_patterns": [ "*corelight-zeek-metrics*", "*corelight-zeek-audit*", "*corelight-zeek-stats*" ],
-  "version": 1501,
+  "index_patterns": [
+    "*corelight-zeek-metrics*",
+    "*corelight-zeek-audit*",
+    "*corelight-zeek-stats*",
+    "*corelight-zeek-system*"
+  ],
+  "version": 1901,
   "settings": {
     "index": {
       "mapping": {
@@ -11,7 +16,7 @@
       },
       "refresh_interval": "20s"
     },
-    "number_of_shards": "5",
+    "number_of_shards": "1",
     "number_of_replicas": "0"
   },
   "mappings": {

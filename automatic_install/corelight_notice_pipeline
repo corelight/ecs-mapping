@@ -3,6 +3,13 @@
   "processors": [
     {
       "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
         "field": "event.category",
         "value": "detection",
         "ignore_failure": true
@@ -40,6 +47,13 @@
       "rename": {
         "field": "actions",
         "target_field": "notice.actions",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "severity",
+        "target_field": "event.severity",
         "ignore_failure": true
       }
     },
@@ -133,7 +147,7 @@
         "field": "source.ip",
         "value": "{{notice.src_ip}}",
         "ignore_failure": true,
-        "if": "!(ctx.containsKey('source')) || !(ctx['source'].containsKey('ip'))"
+        "if": "!(ctx.containsKey('source')) || !(ctx['source'].containsKey('ip')) && (ctx.containsKey('notice.src_ip'))"
       }
     },
     {
@@ -149,7 +163,7 @@
         "field": "destination.ip",
         "value": "{{notice.dst_ip}}",
         "ignore_failure": true,
-        "if": "!(ctx.containsKey('destination')) || !(ctx['destination'].containsKey('ip'))"
+        "if": "(!(ctx.containsKey('destination')) || !(ctx['destination'].containsKey('ip')) && ctx.containsKey('notice.dst_ip') )"
       }
     },
     {

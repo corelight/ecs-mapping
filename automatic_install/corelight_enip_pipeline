@@ -3,6 +3,13 @@
   "processors" : [
     {
       "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
         "field": "event.category",
         "value": "network",
         "ignore_failure": true
@@ -34,8 +41,9 @@
         "field": "session_handle",
         "target_field": "enip.session_handle",
         "ignore_failure": true
-      },
-     {
+      }
+    },
+    {
       "rename": {
         "field": "sender_context",
         "target_field": "enip.sender_context",

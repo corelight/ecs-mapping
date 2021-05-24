@@ -1,7 +1,7 @@
 {
   "order" : 99,
   "index_patterns": [ "temp-corelight*" ],
-  "version": 1501,
+  "version": 1901,
   "settings": {
     "index": {
       "mapping": {

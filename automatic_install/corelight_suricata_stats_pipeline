@@ -1,7 +1,6 @@
 {
   "description" : "Corelight Suricata Stats pipeline",
   "processors" : [
-    { "set": { "field": "event.category", "value": "diagnostics", "ignore_failure": true } },
     {
       "json": {
         "field": "raw_mgmt",

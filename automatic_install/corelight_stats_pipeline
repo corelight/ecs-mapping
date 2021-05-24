@@ -1,30 +1,173 @@
 {
-  "description" : "Corelight Stats pipeline",
-  "processors" : [
-    { "set": { "field": "event.category", "value": "diagnostics", "ignore_failure": true } },
-    { "rename": { "field": "active_dns_requests", "target_field": "stats.active_dns_requests", "ignore_failure": true } },
-    { "rename": { "field": "active_icmp_conns", "target_field": "stats.active_icmp_conns", "ignore_failure": true } },
-    { "rename": { "field": "active_tcp_conns", "target_field": "stats.active_tcp_conns", "ignore_failure": true } },
-    { "rename": { "field": "active_timers", "target_field": "stats.active_timers", "ignore_failure": true } },
-    { "rename": { "field": "active_udp_conns", "target_field": "stats.active_udp_conns", "ignore_failure": true } },
-    { "rename": { "field": "bytes_recv", "target_field": "stats.bytes_recv", "ignore_failure": true } },
-    { "rename": { "field": "dns_requests", "target_field": "stats.dns_requests", "ignore_failure": true } },
-    { "rename": { "field": "events_proc", "target_field": "stats.events_proc", "ignore_failure": true } },
-    { "rename": { "field": "events_queued", "target_field": "stats.events_queued", "ignore_failure": true } },
-    { "rename": { "field": "files", "target_field": "stats.files", "ignore_failure": true } },
-    { "rename": { "field": "icmp_conns", "target_field": "stats.icmp_conns", "ignore_failure": true } },
-    { "rename": { "field": "mem", "target_field": "stats.mem", "ignore_failure": true } },
-    { "rename": { "field": "peer", "target_field": "stats.peer", "ignore_failure": true } },
-    { "rename": { "field": "pkt_lag", "target_field": "stats.pkt_lag", "ignore_failure": true } },
-    { "rename": { "field": "pkts_dropped", "target_field": "stats.pkts_dropped", "ignore_failure": true } },
-    { "rename": { "field": "pkts_link", "target_field": "stats.pkts_link", "ignore_failure": true } },
-    { "rename": { "field": "pkts_proc", "target_field": "stats.pkts_proc", "ignore_failure": true } },
-    { "rename": { "field": "reassem_file_size", "target_field": "stats.reassem_file_size", "ignore_failure": true } },
-    { "rename": { "field": "reassem_frag_size", "target_field": "stats.reassem_frag_size", "ignore_failure": true } },
-    { "rename": { "field": "reassem_tcp_size", "target_field": "stats.reassem_tcp_size", "ignore_failure": true } },
-    { "rename": { "field": "reassem_unknown_size", "target_field": "stats.reassem_unknown_size", "ignore_failure": true } },
-    { "rename": { "field": "tcp_conns", "target_field": "stats.tcp_conns", "ignore_failure": true } },
-    { "rename": { "field": "timers", "target_field": "stats.timers", "ignore_failure": true } },
-    { "rename": { "field": "udp_conns", "target_field": "stats.udp_conns", "ignore_failure": true } }
+  "description": "Corelight Stats pipeline",
+  "processors": [
+    {
+      "rename": {
+        "field": "active_dns_requests",
+        "target_field": "stats.active_dns_requests",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "active_icmp_conns",
+        "target_field": "stats.active_icmp_conns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "active_tcp_conns",
+        "target_field": "stats.active_tcp_conns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "active_timers",
+        "target_field": "stats.active_timers",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "active_udp_conns",
+        "target_field": "stats.active_udp_conns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "bytes_recv",
+        "target_field": "stats.bytes_recv",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "dns_requests",
+        "target_field": "stats.dns_requests",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "events_proc",
+        "target_field": "stats.events_proc",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "events_queued",
+        "target_field": "stats.events_queued",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "files",
+        "target_field": "stats.files",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "icmp_conns",
+        "target_field": "stats.icmp_conns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "mem",
+        "target_field": "stats.mem",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "peer",
+        "target_field": "stats.peer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pkt_lag",
+        "target_field": "stats.pkt_lag",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pkts_dropped",
+        "target_field": "stats.pkts_dropped",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pkts_link",
+        "target_field": "stats.pkts_link",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pkts_proc",
+        "target_field": "stats.pkts_proc",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "reassem_file_size",
+        "target_field": "stats.reassem_file_size",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "reassem_frag_size",
+        "target_field": "stats.reassem_frag_size",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "reassem_tcp_size",
+        "target_field": "stats.reassem_tcp_size",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "reassem_unknown_size",
+        "target_field": "stats.reassem_unknown_size",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tcp_conns",
+        "target_field": "stats.tcp_conns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "timers",
+        "target_field": "stats.timers",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "udp_conns",
+        "target_field": "stats.udp_conns",
+        "ignore_failure": true
+      }
+    }
   ]
 }
