@@ -74,7 +74,7 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
         if response == 400 or response == 409:
             if pipeline == "zeek-enrichment-conn-policy":
                 # Delete the pipeline that calls the enrich policy before we can delete the enrich policy itself. https://www.elastic.co/guide/en/elasticsearch/reference/master/enrich-setup.html#update-enrich-policies
-                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry)
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry) # Keep to delete old one, can ignore these errors
                 response = elasticDel(session, baseURI, "xpack-corelight_additional_pipeline", retry)
                 response = elasticDel(session, baseURI, "xpack-corelight_conn_enrich_pipeline", retry)
                 response = elasticDel(session, baseURI, "zeek-enrichment-conn-policy", retry)
