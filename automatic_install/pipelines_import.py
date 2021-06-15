@@ -125,7 +125,7 @@ def get_config():
 
     print("You have entered the following parameters to connect to your cluster: \n - Host/IP: %s \n - Port: %s \n - HTTP/HTTPS: %s" %(ipHost, port, secure))
     if auth:
-        print(" -User: %s \n -Passowrd: %s" %(user, password))
+        print(" -User: %s \n -Password: %s" %(user, password))
     if secure:
         print(" - Ignore Certificate Errors: %s" % ignoreCertErrors)
 

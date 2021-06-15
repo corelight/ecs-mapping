@@ -19,6 +19,14 @@
     },
     {
       "rename": {
+        "field": "type",
+        "target_field": "event.dataset",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "@stream",
         "target_field": "event.dataset",
         "ignore_failure": true,
