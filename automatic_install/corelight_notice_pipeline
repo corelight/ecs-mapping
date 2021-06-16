@@ -147,7 +147,7 @@
         "field": "source.ip",
         "value": "{{notice.src_ip}}",
         "ignore_failure": true,
-        "if": "!(ctx.containsKey('source')) || !(ctx['source'].containsKey('ip')) && (ctx.containsKey('notice.src_ip'))"
+        "if": " (ctx['notice'].containsKey('src_ip'))"
       }
     },
     {
@@ -163,7 +163,7 @@
         "field": "destination.ip",
         "value": "{{notice.dst_ip}}",
         "ignore_failure": true,
-        "if": "(!(ctx.containsKey('destination')) || !(ctx['destination'].containsKey('ip')) && ctx.containsKey('notice.dst_ip') )"
+        "if": " (ctx['notice'].containsKey('dst_ip'))"
       }
     },
     {
