@@ -1,5 +1,59 @@
+## Versioning of templates, schema, etc
+ecs version gets stored as `ecs.version`
+
+corelight version gets stored as `labels.corelight.ecs_version`
+
+ECS version is the current release of ECS that Corelight ECS is based upon.  
+Corelight ECS version is based on that ECS release. and will add its iteration of this.  
+For example, if the ECS version is `1.9.0` and the first release of Corelight is matching this version, then Corelight ECS version is `1.9.0.1`. Then any new updates matching `1.9.0` would increment the 4th number, so the next update would be `1.9.0.2` and so on.  
+When a new release of ECS comes out (example) `1.9.0` then first release of Corelight ECS would be `1.9.0.1`
+
+Elasticsearch template (file named `template_corelight`) version is the value of `labels.corelight.ecs_version` without the dots, so `1.9.0.1` would be `1901`
+
 ## Release notes
-- supports ECS 1.5.0
+
+### 1.9.0.1
+- ECS 1.9.0 support
+- Corelight v21 New Logs
+    - dga.log
+        Part of the DGA Detection package. When DGA Detection is enabled, tracks DNS records that match known DGA patterns.
+    - encrypted_dns.log
+        Part of the Encrypted DNS Server Detection package. When Encrypted DNS Server Detection is enabled, reports information about detected DNS-over-HTTPS traffic.
+    - generic_dns_tunnels.log
+        Part of the DNS Tunnels package. When DNS Tunnels is enabled with the generic detection option, reports information about likely DNS tunnels.
+    - generic_icmp_tunnels.log
+        Part of the ICMP Tunnels package. When ICMP Tunnels is enabled with the generic detection option, reports information about likely ICMP tunnels.
+    - meterpreter.log
+        Part of the Meterpreter Detection package. When Meterpreter Detection is enabled, reports information about connections with Meterpreter-formatted headers.
+    - meterpreter_headers.log
+        Part of the Meterpreter Detection package. When Meterpreter Detection is enabled, reports information about connections with Meterpreter-formatted headers where the detection was made through a TCP header.
+    - specific_dns_tunnels.log
+        Part of the DNS Tunnels package. When DNS Tunnels is enabled, reports information about detected DNS tunnels originating from a specific set of tunneling tools.
+- Corelight v21 Updated Logs
+    - conn.log
+        The conn log has new fields associated with the Shunting package on Corelight Sensors with enhanced NICs. These fields are only present when Shunting is enabled.
+    - notice.log
+        The notice log has a new severity field.
+    - rdp.log
+        The rdp log has new fields associated with the RDP Inference package. These fields are only present when RDP Inference is enabled.
+    - ssl.log
+        The encrypted_dns_resp_h field associated with the deprecated Encrypted DNS package is no longer available.
+    - files.log
+      - renamed `tx_host` to `files.tx_hosts`
+      - renamed `rx_host` to `files.rx_hosts`
+      - copied `files.tx_hosts` to `destination.ip`
+      - copied `files.rx_hosts` to `source.ip`
+- Collapsed the logic of xpack (licensed) VS non-xpack (opendistro AKA opensearch) into as few files as possible, separating only the very necessary components that are licensed VS non licensed
+- removed `template_corelight_temporary_log_holdings`
+- If a parser is not included for a log (ie: an unknown or brand new log), that log is sent to the elasticsearch index `ecs-corelight-$logname-$pattern` ex: (`ecs-corelight-some_new_log-2021-05-01`)
+- `labels.dns.query_length alias` to `dns.question.name_length`
+- added length of useragent `user_agent.original_length` 
+- added length of url `url.original_length` 
+- moved parsed failure logs to `parse-failures-corelight-*` from `parse-failures-*`
+
+
+### 1.5.0.1
+- ECS 1.5.0 support
 - ECS TLS schema
 - ECS VLAN schema
 - added analyzed fields for faster searching
@@ -23,7 +77,7 @@
 - MQTT_Publish log
 - MQTT_Subscribe log
 - MQTT_POP3 log
-- GQUIC log
+- GQUIC logy
 - no longer renaming fields unless specifically an ECS name to be mapped to (to reduce confusion, but more importantly to share queries/hunts with those who do NOT do a lot of transform/ETL pipelines)
 - SMTP_Links log
 - Conn_Long log
@@ -41,22 +95,7 @@
     - `namecache.log` fields no longer get renamed, and are now stored in `corelight-zeek-namecache`
     - `reporter.log` fields no longer get renamed, and are now stored in `corelight-zeek-reporter`
     - `stats.log` fields no longer get renamed, and are now stored in `corelight-zeek-stats`
-    
-```
-
-#### Versioning of templates, schema, etc
-ecs version gets stored as `ecs.version`
-corelight version gets stored as `labels.corelight.ecs_version`
-ECS version is the current release of ECS that Corelight ECS is based upon.
-Corelight ECS version is based on that ECS release. and will add its itteration of this.
-For example, if the ECS version is `1.5.0` and the first release of Corelight is matching this version, then Corelight ECS version is `1.5.0.1`
-then any new updates matching `1.5.0` would increment the 4th number, so the next update would be `1.5.0.2` and so on
-When a new release of ECS comes out say `1.5.0` then first release of Corelight ECS would be `1.5.0.1`
-
-Elasticsearch template (file named `template_corelight`) version is the value of `labels.corelight.ecs_version` without the dots, so `1.5.0.1` would be `1501`
-
-
-### Fields renamed
+#### Fields renamed
 `previous field name: new field name` 
 ```yaml
 All Logs:
@@ -116,5 +155,6 @@ x509.log:
   x509.san.url: file.x509.san_url
 ```
 
-### release version
-version: 1501
+# To-Do #TODO:
+- [ ] set processor in later version of Elasticsearch (>= 7.9 ) has an option called `ignore_empty_value` - which would free up hundreds of CPU cycles per pipeline (ie: having to check if exists and if NOT null) - description of processor is `if evaluates to null or the empty string`
+- [ ] set processor in later version of Elasticsearch (>= 7.11 ) has an option called `copy_from` - which would make easier basically copying fields/values instead of using `{{$FieldName}}`

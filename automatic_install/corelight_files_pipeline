@@ -3,6 +3,13 @@
   "processors": [
     {
       "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "files",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
         "field": "event.category",
         "value": "file",
         "ignore_failure": true
@@ -18,31 +25,33 @@
     {
       "rename": {
         "field": "tx_hosts",
-        "target_field": "destination.ip",
-        "ignore_failure": true
+        "target_field": "files.tx_hosts",
+        "ignore_failure": true,
+        "if": "ctx?.tx_hosts != null"
       }
     },
     {
       "rename": {
         "field": "rx_hosts",
-        "target_field": "source.ip",
-        "ignore_failure": true
+        "target_field": "files.rx_hosts",
+        "ignore_failure": true,
+        "if": "ctx?.rx_hosts != null"
       }
     },
     {
       "set": {
         "field": "client.address",
-        "value": "{{source.ip}}",
+        "value": "{{files.rx_hosts}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('source') && ctx['source'].containsKey('ip')"
+        "if": "ctx?.files?.rx_hosts != null"
       }
     },
-     {
+    {
       "set": {
         "field": "server.address",
-        "value": "{{destination.ip}}",
+        "value": "{{files.tx_hosts}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('destination') && ctx['destination'].containsKey('ip')"
+        "if": "ctx?.files?.tx_hosts != null"
       }
     },
     {

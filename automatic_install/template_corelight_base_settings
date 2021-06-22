@@ -1,7 +1,10 @@
 {
   "order" : 10,
-  "index_patterns": [ "*ecs-corelight*" ],
-  "version": 1501,
+  "index_patterns": [
+    "*ecs-corelight*",
+    "*single-corelight*"
+  ],
+  "version": 1901,
   "settings": {
     "index": {
       "mapping": {
@@ -11,7 +14,8 @@
       },
       "refresh_interval": "15s"
     },
-    "number_of_shards": "5",
+    "index.default_pipeline": "corelight_main_pipeline",
+    "number_of_shards": "1",
     "number_of_replicas": "0"
   },
   "mappings": {

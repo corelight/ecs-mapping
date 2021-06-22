@@ -1,0 +1,50 @@
+{
+  "description": "Corelight index naming pipeline",
+  "processors": [
+
+    {
+      "set": {
+        "description": "set index name prefix for non metrics,stats,system,etc",
+        "field": "temporary_metadata_index_name_prefix",
+        "value": "ecs-corelight",
+        "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'"
+      }
+    },
+    {
+      "set": {
+        "description": "set index name prefix for metrics,stats,system,etc",
+        "field": "temporary_metadata_index_name_prefix",
+        "value": "zeek-corelight",
+        "if": "ctx.temporary_metadata_is_metric_log == 'yes' || ctx.temporary_metadata_is_stats_log == 'yes' || ctx.temporary_metadata_is_system_log == 'yes'"
+      }
+    },
+    {
+      "date_index_name": {
+        "description": "Parsed log, thus would have temporary_metadata_index_name_suffix field set.",
+        "field": "event.ingested",
+        "index_name_prefix": "{{temporary_metadata_index_name_prefix}}-{{temporary_metadata_index_name_suffix}}-",
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+        "date_rounding": "d",
+        "ignore_failure": true,
+        "index_name_format": "yyyy.MM.dd",
+        "if": "ctx.temporary_metadata_index_name_suffix != null"
+      }
+    },
+    {
+      "date_index_name" : {
+        "description": "Log not parsed, thus would not have temporary_metadata_index_name_suffix field set. Thus should be placed in own index to prevent field collisions",
+        "field" : "event.ingested",
+        "index_name_prefix" : "ecs-corelight-temporary-{{event.dataset}}-",
+        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
+        "date_rounding": "d",
+        "ignore_failure": false,
+        "index_name_format": "yyyy.MM.dd",
+        "if": "ctx.temporary_metadata_index_name_suffix == null"
+      }
+    }
+  ]
+}
+
+
+
+

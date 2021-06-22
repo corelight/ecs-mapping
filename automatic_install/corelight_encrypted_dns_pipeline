@@ -1,0 +1,89 @@
+{
+  "description": "Corelight Encrypted DNS Tunnels pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "network.protocol",
+        "value" : "dns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_h",
+        "target_field": "destination.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "destination.domain",
+        "value" : "{{sni}}",
+        "ignore_failure": true,
+        "if" : "(ctx.containsKey('sni'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "sni",
+        "target_field": "tls.client.server_name",
+        "ignore_failure": true
+      }
+    },    {
+      "dot_expander": {
+        "field": "cert.cn",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('cert.cn'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "cert.cn",
+        "target_field": "encrypted_dns_cert_cn",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "cert.sans",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('cert.sans'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "cert.sans",
+        "target_field": "encrypted_dns_cert_sans",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cert",
+        "target_field": "encrypted_dns_cert",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "match",
+        "target_field": "encrypted_dns_match",
+        "ignore_failure": true
+      }
+    }
+  ]
+}

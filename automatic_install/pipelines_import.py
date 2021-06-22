@@ -71,11 +71,13 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
         run = run + 1
         response = session.put(uri, data=postData, timeout=10)
         response = checkRequest(response)
-        if response == 400:
-            if (pipeline == "zeek-enrichment-conn-policy"):
-                response = elasticDel(session, baseURI, "corelight_conn_pipeline", retry)
-                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry)
-                response = elasticDel(session, baseURI, "non-xpack-corelight_conn_pipeline", retry)
+        if response == 400 or response == 409:
+            if pipeline == "zeek-enrichment-conn-policy":
+                # Delete the pipeline that calls the enrich policy before we can delete the enrich policy itself. https://www.elastic.co/guide/en/elasticsearch/reference/master/enrich-setup.html#update-enrich-policies
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry) # Keep to delete old one, can ignore these errors
+                response = elasticDel(session, baseURI, "xpack-corelight_additional_pipeline", retry)
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_enrich_pipeline", retry)
+                response = elasticDel(session, baseURI, "zeek-enrichment-conn-policy", retry)
                 print(response)
                 response = elasticDel(session, baseURI, pipeline, retry)
                 print(response)
@@ -123,7 +125,7 @@ def get_config():
 
     print("You have entered the following parameters to connect to your cluster: \n - Host/IP: %s \n - Port: %s \n - HTTP/HTTPS: %s" %(ipHost, port, secure))
     if auth:
-        print(" -User: %s \n -Passowrd: %s" %(user, password))
+        print(" -User: %s \n -Password: %s" %(user, password))
     if secure:
         print(" - Ignore Certificate Errors: %s" % ignoreCertErrors)
 
@@ -143,28 +145,23 @@ def main():
     print("Uploading schemas to", baseURI)
 
     testConnection(session, baseURI)
-    xpack = input_bool("Will X-Pack be enabled?Disableing this will disable Enrich tables and Geolocation", default=True)
+    xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
     if xpack:
         exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
         exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
         exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
-        exportToElastic(session, baseURI, "xpack-corelight_conn_pipeline")
+        exportToElastic(session, baseURI, "xpack-corelight_additional_pipeline")
+        exportToElastic(session, baseURI, "xpack-corelight_conn_enrich_pipeline")
     else:
-        exportToElastic(session, baseURI, "non-xpack-corelight_conn_pipeline")
+        pass
     for f in glob.glob("template_corelight*"):
         if f != "template_corelight_metrics_and_stats":
             exportToElastic(session, baseURI, f)
+    for f in glob.glob("corelight*"):
+        exportToElastic(session, baseURI, f)
     if xpack:
-        for f in glob.glob("corelight*"):
-            exportToElastic(session, baseURI, f)
-        exportToElastic(session, baseURI, "xpack-corelight_general_pipeline")
-        exportToElastic(session, baseURI, "xpack-corelight_main_pipeline")
         exportToElastic(session, baseURI, "xpack-template_corelight")
     else:
-        for f in glob.glob("corelight*"):
-            exportToElastic(session, baseURI, f)
-        exportToElastic(session, baseURI, "non-xpack-corelight_general_pipeline")
-        exportToElastic(session, baseURI, "non-xpack-corelight_main_pipeline")
-        exportToElastic(session, baseURI, "non-xpack-template_corelight")     
+        exportToElastic(session, baseURI, "non-xpack-template_corelight")
 if __name__ == "__main__":
     main()
