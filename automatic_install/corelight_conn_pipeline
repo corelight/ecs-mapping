@@ -381,6 +381,86 @@
         "ignore_failure": true
       }
     },
+
+     {
+      "dot_expander": {
+        "field": "spcap.rule",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "spcap.trigger",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "spcap.url",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "spcap.rule",
+        "target_field": "labels.corelight.spcap.rule",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "spcap.trigger",
+        "target_field": "labels.corelight.spcap.trigger",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "spcap.url",
+        "target_field": "labels.corelight.spcap.url",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "spcap.rule",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "spcap.trigger",
+        "ignore_failure": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "spcap.url",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "spcap.rule",
+        "target_field": "labels.corelight.spcap.rule",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "spcap.trigger",
+        "target_field": "labels.corelight.spcap.trigger",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "spcap.url",
+        "target_field": "labels.corelight.spcap.url",
+        "ignore_failure": true
+      }
+    },
+
     {
       "remove": {
         "field": "id",
