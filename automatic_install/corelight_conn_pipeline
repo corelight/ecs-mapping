@@ -403,7 +403,7 @@
     {
       "rename": {
         "field": "spcap.rule",
-        "target_field": "labels.corelight.spcap_rule",
+        "target_field": "labels.corelight.spcap.rule",
         "ignore_failure": true
       }
     },
