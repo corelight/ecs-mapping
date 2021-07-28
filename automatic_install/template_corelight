@@ -42,6 +42,15 @@
             "properties": {
               "ecs_version": {
                 "type": "keyword"
+              },
+              "spcap_url" : {
+                "type": "keyword"
+              },
+              "spcap_rule" : {
+                "type" : "short"
+              },
+              "spcap_trigger" : {
+                "type": "keyword"
               }
             }
           },
