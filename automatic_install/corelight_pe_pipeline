@@ -49,7 +49,7 @@
       "date": {
         "field": "compile_ts",
         "target_field": "pe.compile_ts",
-        "formats": [ "UNIX" ],
+        "formats": [ "ISO8601" ],
         "ignore_failure": true
       }
     },

@@ -137,5 +137,24 @@
         }
       }
     }
+    "utilization.": {
+      "type" :"object",
+      "properties": {
+        "corelight": {
+        "type": "object",
+        "properties": {
+        "smartpcap": {
+          "type": "float"
+          },
+          "suricata": {
+            "type": "float"
+          },
+          "sensor": {
+            "type": "float"
+          }
+        }
+      }
+    }
+  }
   }
 }
