@@ -1,0 +1,12 @@
+{
+  "description" : "Corelight (System) Audit pipeline",
+  "processors" : [
+    {
+      "set": {
+        "field": "event.category",
+        "value": "observations",
+        "ignore_failure": true
+      }
+    }
+  ]
+}

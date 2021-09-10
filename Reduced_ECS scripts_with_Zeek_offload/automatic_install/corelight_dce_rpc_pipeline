@@ -1,0 +1,68 @@
+{
+  "description" : "Corelight DCE_RPC pipeline",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "endpoint",
+        "target_field": "dce_rpc.endpoint",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "named_pipe",
+        "target_field": "dce_rpc.named_pipe",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "operation",
+        "target_field": "dce_rpc.operation",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rtt",
+        "target_field": "dce_rpc.rtt",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.duration",
+        "value": "{{dce_rpc.rtt}}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

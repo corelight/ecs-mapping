@@ -1,0 +1,11 @@
+{
+  "order" : 11,
+  "index_patterns": [
+    "*ecs-corelight*",
+    "*single-corelight*"
+  ],
+  "version": 1901,
+  "settings": {
+    "index.default_pipeline": "corelight_main_pipeline"
+  }
+}

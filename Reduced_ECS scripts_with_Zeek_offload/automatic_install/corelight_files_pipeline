@@ -1,0 +1,264 @@
+{
+  "description": "Corelight Files pipeline",
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "files",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "file",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "temp_source",
+        "target_field": "network.protocol",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tx_hosts",
+        "target_field": "files.tx_hosts",
+        "ignore_failure": true,
+        "if": "ctx?.tx_hosts != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "rx_hosts",
+        "target_field": "files.rx_hosts",
+        "ignore_failure": true,
+        "if": "ctx?.rx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "client.address",
+        "value": "{{files.rx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.rx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "server.address",
+        "value": "{{files.tx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.tx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "log.id.fuid",
+        "value": "{{fuid}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('fuid'))"
+      }
+    },
+    {
+      "set": {
+        "field": "event.id",
+        "value": "{{fuid}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('fuid'))"
+      }
+    },
+    {
+      "remove": {
+        "field": "fuid",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    },
+    {
+      "rename": {
+        "field": "conn_uids",
+        "target_field": "log.id.conn_uids",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "analyzers",
+        "target_field": "file.analyzers",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "depth",
+        "target_field": "file.depth",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "duration",
+        "target_field": "file.duration",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.event.duration = (long)(ctx.file.duration * params.param_c)",
+        "params": {
+          "param_c": 1000000
+        },
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "duration",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "extracted",
+        "target_field": "file.extracted",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "extracted_cutoff",
+        "target_field": "file.extracted_cutoff",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "extracted_size",
+        "target_field": "file.extracted_size",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "entropy",
+        "target_field": "file.entropy",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "md5",
+        "target_field": "file.hash.md5",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sha1",
+        "target_field": "file.hash.sha1",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sha256",
+        "target_field": "file.hash.sha256",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "is_orig",
+        "target_field": "file.is_orig",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "local_orig",
+        "target_field": "file.local_orig",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "local_orig",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "timedout",
+        "target_field": "file.timedout",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "mime_type",
+        "target_field": "file.mime_type",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "filename",
+        "target_field": "file.name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "missing_bytes",
+        "target_field": "file.missing_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "overflow_bytes",
+        "target_field": "file.overflow_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "seen_bytes",
+        "target_field": "file.seen_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "total_bytes",
+        "target_field": "file.size",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "parent_fuid",
+        "target_field": "log.id.parent_fuid",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "local_orig",
+        "target_field": "file.local_origin",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}
