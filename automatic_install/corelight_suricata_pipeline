@@ -11,7 +11,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "network",
+        "value": "detection",
         "ignore_failure": true
       }
     },
@@ -186,7 +186,7 @@
     {
       "rename": {
         "field": "alert_signature",
-        "target_field": "event.name",
+        "target_field": "rule.name",
         "ignore_failure": true
       }
     },
