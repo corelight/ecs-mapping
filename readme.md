@@ -52,3 +52,7 @@ Manual installation
 
 **Note**
 You can change the number of shards and the lifecycle policy in template_corelight_ base_settings.
+
+**With the latest update there was a change to matain backward compatibility you will need to do the following**
+
+network.vlan.inner.id should be network.inner.vlan.id use an alias or elastic run time fields for backwards compatibility
