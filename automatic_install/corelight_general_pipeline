@@ -242,7 +242,7 @@
     {
       "set": {
         "field": "labels.corelight.ecs_version",
-        "value": "1.9.0.1",
+        "value": "1.9.0.2",
         "ignore_failure": true
       }
     },
