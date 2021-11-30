@@ -2304,7 +2304,7 @@
           "is_originating": {
             "type": "boolean"
           },
-          "local_origin": {
+          "local_orig": {
             "type": "boolean"
           },
           "missing_bytes": {
