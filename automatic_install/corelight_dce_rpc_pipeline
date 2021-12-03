@@ -37,16 +37,33 @@
       }
     },
     {
-      "rename": {
+      "set": {
         "field": "rtt",
-        "target_field": "dce_rpc.rtt",
+        "value": "{{dce_rpc.rtt}}",
         "ignore_failure": true
       }
     },
     {
-      "set": {
-        "field": "event.duration",
-        "value": "{{dce_rpc.rtt}}",
+      "convert" : {
+        "field" : "rtt",
+        "type": "float",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.event.duration = (long)(ctx.rtt * params.param_c)",
+        "params": {
+          "param_c": 1000000
+        },
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rtt",
+        "target_field": "dce_rpc.rtt",
         "ignore_failure": true
       }
     },
