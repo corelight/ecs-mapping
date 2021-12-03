@@ -60,7 +60,7 @@
     {
       "rename": {
         "field": "payload_len",
-        "target_field": "network.bytes",
+        "target_field": "icmp_payload_len",
         "ignore_failure": true
       }
     },
