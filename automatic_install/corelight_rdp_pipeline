@@ -190,7 +190,7 @@
     {
       "rename": {
         "field": "rdpeudp_uid",
-        "target_field": "log.id.rdpeudp_uidp",
+        "target_field": "log.id.rdpeudp_uid",
         "ignore_failure": true
       }
     },
