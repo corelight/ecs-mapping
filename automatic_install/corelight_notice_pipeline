@@ -123,7 +123,7 @@
     {
       "rename": {
         "field": "suppress_for",
-        "target_field": "notice.subpress_duration",
+        "target_field": "notice.supress_duration",
         "ignore_failure": true
       }
     },
