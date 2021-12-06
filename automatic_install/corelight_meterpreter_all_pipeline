@@ -41,7 +41,7 @@
     {
       "rename": {
         "field": "os",
-        "target_field": "os.family",
+        "target_field": "os_family",
         "ignore_failure": true
       }
     },
