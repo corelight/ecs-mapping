@@ -54,7 +54,7 @@
     },
     {
       "rename": {
-        "field": "encrypted",
+        "field": "staged",
         "target_field": "meterpreter_staged",
         "ignore_failure": true
       }
