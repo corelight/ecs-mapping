@@ -43,6 +43,9 @@
               "ecs_version": {
                 "type": "keyword"
               },
+              "ecs_method": {
+                "type": "keyword"
+              },
               "spcap_url" : {
                 "type": "keyword"
               },
