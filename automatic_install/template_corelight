@@ -63,6 +63,16 @@
               }
             }
           },
+          "etl": {
+            "type": "object",
+            "properties": {
+              "pipeline": {
+                "doc_values": false,
+                "norms": false,
+                "type": "keyword"
+              }
+            }
+          },
           "weird": {
             "type": "object",
             "properties": {
