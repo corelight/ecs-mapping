@@ -49,6 +49,13 @@
         "target_field": "enip.sender_context",
         "ignore_failure": true
       }
+    },
+    {
+      "rename": {
+        "field": "status",
+        "target_field": "enip.status",
+        "ignore_failure": true
+      }
     }
   ]
 }
