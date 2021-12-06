@@ -112,7 +112,6 @@ def get_config():
     ipHost = input("Hostname or IP: ")
     port = input_int("Port")
     auth = input_bool("Use user and password authentication?", default=True)
-
     if auth:
         user = input("User: ")
         password = input("Password: ")
@@ -145,23 +144,31 @@ def main():
     print("Uploading schemas to", baseURI)
 
     testConnection(session, baseURI)
-    xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
-    if xpack:
-        exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
-        exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
-        exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
-        exportToElastic(session, baseURI, "xpack-corelight_additional_pipeline")
-        exportToElastic(session, baseURI, "xpack-corelight_conn_enrich_pipeline")
+    # Prompt to skip loading ingest pipelines #ie: if using logstash to do all the parsing
+    load_ingest_pipelines = input_bool("Use ingest pipelines or only load elasticsearch mappings and settings (ie: using Logstash as ingest)?", default=True)
+    if load_ingest_pipelines:
+        xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
+        if xpack:
+            exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
+            exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
+            exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
+            exportToElastic(session, baseURI, "xpack-corelight_additional_pipeline")
+            exportToElastic(session, baseURI, "xpack-corelight_conn_enrich_pipeline")
+        else:
+            pass
     else:
         pass
     for f in glob.glob("template_corelight*"):
         if f != "template_corelight_metrics_and_stats":
             exportToElastic(session, baseURI, f)
-    for f in glob.glob("corelight*"):
-        exportToElastic(session, baseURI, f)
-    if xpack:
-        exportToElastic(session, baseURI, "xpack-template_corelight")
+    if load_ingest_pipelines:
+        for f in glob.glob("corelight*"):
+            exportToElastic(session, baseURI, f)
+        if xpack:
+            exportToElastic(session, baseURI, "xpack-template_corelight")
+        else:
+            exportToElastic(session, baseURI, "non-xpack-template_corelight")
     else:
-        exportToElastic(session, baseURI, "non-xpack-template_corelight")
+        pass
 if __name__ == "__main__":
     main()
