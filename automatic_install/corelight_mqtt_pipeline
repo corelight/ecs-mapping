@@ -24,6 +24,13 @@
     },
     {
       "rename": {
+        "field": "ack",
+        "target_field": "mqtt.ack",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
         "field": "action",
         "target_field": "mqtt.action",
         "ignore_failure": true
