@@ -145,7 +145,7 @@ def main():
 
     testConnection(session, baseURI)
     # Prompt to skip loading ingest pipelines #ie: if using logstash to do all the parsing
-    load_ingest_pipelines = input_bool("Use ingest pipelines or only load elasticsearch mappings and settings (ie: using Logstash as ingest)?", default=True)
+    load_ingest_pipelines = input_bool("Use ingest pipelines? (if you are using Logstash to perform ECS and normalization then select no)", default=True)
     if load_ingest_pipelines:
         xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
         if xpack:
