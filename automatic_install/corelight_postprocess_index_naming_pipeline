@@ -7,7 +7,7 @@
         "description": "set index name prefix for non metrics,stats,system,etc",
         "field": "temporary_metadata_index_name_prefix",
         "value": "ecs-corelight",
-        "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'"
+        "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_netcontrol_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'"
       }
     },
     {
@@ -15,7 +15,7 @@
         "description": "set index name prefix for metrics,stats,system,etc",
         "field": "temporary_metadata_index_name_prefix",
         "value": "zeek-corelight",
-        "if": "ctx.temporary_metadata_is_metric_log == 'yes' || ctx.temporary_metadata_is_stats_log == 'yes' || ctx.temporary_metadata_is_system_log == 'yes'"
+        "if": "ctx.temporary_metadata_is_metric_log == 'yes' || ctx.temporary_metadata_is_netcontrol_log == 'yes' || ctx.temporary_metadata_is_stats_log == 'yes' || ctx.temporary_metadata_is_system_log == 'yes'"
       }
     },
     {
