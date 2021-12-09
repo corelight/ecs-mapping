@@ -3,6 +3,7 @@
   "index_patterns": [
     "*zeek-corelight-audit*",
     "*zeek-corelight-metrics*",
+    "*zeek-corelight-netcontrol*",
     "*zeek-corelight-stats*",
     "*zeek-corelight-system*"
   ],

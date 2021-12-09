@@ -7,6 +7,7 @@
           "temporary_metadata_index_name_suffix",
           "temporary_metadata_index_name_prefix",
           "temporary_metadata_is_metric_log",
+          "temporary_metadata_is_netcontrol_log",
           "temporary_metadata_is_stats_log",
           "temporary_metadata_is_system_log"
         ],
