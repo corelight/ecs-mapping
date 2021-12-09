@@ -29,7 +29,7 @@ Automatic installation (recommended)
 -    2. In ecs_mapping/automatic_install/, locate the template files (template_corelight_*). Edit each file,
        changing the values of the index_patterns field according to your environment.
 -    3. Run pipelines_import.py (Python3) from ecs_mapping/automatic_install/.
-       Note: CorelightrecommendsusingthePython3scriptforinstallation.Howeverifyoucan’trunPython3 in your environment, there’s also a bash script that executes          the installation (ecs_mapping/automatic_ install/pipelines_import.sh).
+       Note: Corelight recommends using the Python3 script for installation. However if you can’t run Python3 in your environment, there’s also a bash script that executes  the installation (ecs_mapping/automatic_ install/pipelines_import.sh).
 -    4. Respond to the configuration prompts to complete the installation.
 -    5. Configure your Corelight Sensor to send events to the new Elasticsearch index.
 
