@@ -5,8 +5,8 @@ corelight version gets stored as `labels.corelight.ecs_version`
 
 ECS version is the current release of ECS that Corelight ECS is based upon.  
 Corelight ECS version is based on that ECS release. and will add its iteration of this.  
-For example, if the ECS version is `1.9.0` and the first release of Corelight is matching this version, then Corelight ECS version is `1.9.0.1`. Then any new updates matching `1.9.0` would increment the 4th number, so the next update would be `1.9.0.2` and so on.  
-When a new release of ECS comes out (example) `1.9.0` then first release of Corelight ECS would be `1.9.0.1`
+For example, if the ECS version is `1.12.0` and the first release of Corelight is matching this version, then Corelight ECS version is `1.12.0.1`. Then any new updates matching `1.12.0` would increment the 4th number, so the next update would be `1.12.0.2` and so on.  
+When a new release of ECS comes out (example) `1.12.0` then first release of Corelight ECS would be `1.12.0.1`
 
 Elasticsearch template (file named `template_corelight`) version is the value of `labels.corelight.ecs_version` without the dots, so `1.12.0.1` would be `11201`
 
