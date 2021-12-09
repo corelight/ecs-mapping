@@ -4,7 +4,7 @@
     "*ecs-corelight*",
     "*single-corelight*"
   ],
-  "version": 1901,
+  "version": 11201,
   "settings": {
     "index": {
       "mapping": {
