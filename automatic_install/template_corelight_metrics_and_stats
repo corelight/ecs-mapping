@@ -1,8 +1,8 @@
 {
   "order" : 99,
   "index_patterns": [
-    "*zeek-corelight-metrics*",
     "*zeek-corelight-audit*",
+    "*zeek-corelight-metrics*",
     "*zeek-corelight-stats*",
     "*zeek-corelight-system*"
   ],
