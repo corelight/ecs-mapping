@@ -459,7 +459,7 @@
     {
       "pipeline": {
         "description": "Logs that are stats.",
-        "if": "ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' || ctx.event.dataset == 'reporter' || ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter' || ctx.event.dataset == 'weird_stats'",
+        "if": "ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_cloud_stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'corelight_profiling'|| ctx.event.dataset == 'corelight_weird_stats' || ctx.event.dataset == 'corelight_weird_stats' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'namecache' || ctx.event.dataset == 'netcontrol' || ctx.event.dataset == 'netcontrol_drop' || ctx.event.dataset == 'netcontrol_shunt' || ctx.event.dataset == 'packet_filter' || ctx.event.dataset == 'reporter' || ctx.event.dataset == 'stats' || ctx.event.dataset == 'suricata_stats' || ctx.event.dataset == 'weird_stats'",
         "name": "corelight_stats_general_pipeline"
       }
     },
