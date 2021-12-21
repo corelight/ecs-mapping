@@ -76,6 +76,13 @@
     },
     {
       "rename": {
+        "field": "host",
+        "target_field": "temp_host",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
         "field": "id.orig_h",
         "target_field": "source.ip",
         "ignore_failure": true

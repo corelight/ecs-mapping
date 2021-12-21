@@ -17,7 +17,7 @@
     },
     {
       "rename": {
-        "field": "host",
+        "field": "temp_host",
         "target_field": "url.domain",
         "ignore_failure": true
       }

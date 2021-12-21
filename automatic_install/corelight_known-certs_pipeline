@@ -17,7 +17,7 @@
     },
     {
       "rename": {
-        "field": "host",
+        "field": "temp_host",
         "target_field": "host.ip",
         "ignore_failure": true
       }
@@ -47,6 +47,14 @@
       "set": {
         "field": "host.port",
         "value": "{{port_num}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('port_num'))"
+      }
+    },
+    {
+      "set": {
+        "field": "known_certs.host",
+        "value": "{{host.ip}}",
         "ignore_failure": true,
         "if": "(ctx.containsKey('port_num'))"
       }

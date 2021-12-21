@@ -97,7 +97,7 @@
     },
     {
       "rename": {
-        "field": "host",
+        "field": "temp_host",
         "target_field": "software_host",
         "ignore_failure": true
       }
