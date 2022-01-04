@@ -159,8 +159,8 @@ def main():
     else:
         pass
     for f in glob.glob("template_corelight*"):
-        if f != "template_corelight_metrics_and_stats":
-            exportToElastic(session, baseURI, f)
+        #if f != "template_corelight_metrics_and_stats":
+        exportToElastic(session, baseURI, f)
     if load_ingest_pipelines:
         for f in glob.glob("corelight*"):
             exportToElastic(session, baseURI, f)
