@@ -1,0 +1,1 @@
+This is a Zeek offload of common ECS log rename for Connections. This is still being tested but in test show about 50% reduction of CPU ingest for conn logs. You will need both the zeek script on Zeek and the ECS pipeline that are in the Auto install in this folder to make this work. 
