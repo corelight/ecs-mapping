@@ -19,7 +19,7 @@
       "rename": {
         "field": "orig_fuids",
         "target_field": "log.id.orig_fuids",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

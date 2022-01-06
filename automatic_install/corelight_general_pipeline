@@ -5,23 +5,22 @@
       "rename": {
         "field": "@path",
         "target_field": "event.dataset",
-        "ignore_failure": true,
-        "ignore_missing": true
+        "ignore_missing": true,
+        "if": "ctx.containsKey('@path')"
       }
     },
     {
       "rename": {
         "field": "_path",
         "target_field": "event.dataset",
-        "ignore_failure": true,
-        "ignore_missing": true
+        "ignore_missing": true,
+        "if": "ctx.containsKey('_path')"
       }
     },
     {
       "rename": {
         "field": "type",
         "target_field": "event.dataset",
-        "ignore_failure": true,
         "ignore_missing": true
       }
     },
@@ -29,8 +28,8 @@
       "rename": {
         "field": "@stream",
         "target_field": "event.dataset",
-        "ignore_failure": true,
-        "ignore_missing": true
+        "ignore_missing": true,
+        "if": "ctx.containsKey('@stream')"
       }
     },
     {
@@ -38,7 +37,6 @@
         "field": "ts",
         "target_field": "@timestamp",
         "formats" : [ "ISO8601", "UNIX" ],
-        "ignore_failure": true,
         "if": "ctx.containsKey('ts')"
       }
     },
@@ -47,7 +45,6 @@
         "field": "ts",
         "target_field": "@timestamp",
         "formats" : [ "UNIX", "ISO8601" ],
-        "ignore_failure": true,
         "if": "ctx.containsKey('ts') && !(ctx.containsKey('@timestamp'))"
       }
     },
@@ -56,14 +53,12 @@
         "field": "_write_ts",
         "target_field": "event.created",
         "formats" : ["ISO8601"],
-        "ignore_failure": true,
         "if": "(ctx.containsKey('_write_ts'))"
       }
     },
     {
       "dot_expander": {
         "field": "id.orig_h",
-        "ignore_failure": true,
         "if": "(ctx.containsKey('id.orig_h'))"
       }
     },
@@ -71,27 +66,26 @@
       "rename": {
         "field": "source",
         "target_field": "temp_source",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('source'))"
       }
     },
     {
       "rename": {
         "field": "host",
         "target_field": "temp_host",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('host'))"
       }
     },
     {
       "rename": {
         "field": "id.orig_h",
         "target_field": "source.ip",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id.orig_h'))"
       }
     },
     {
       "dot_expander": {
         "field": "id.orig_p",
-        "ignore_failure": true,
         "if": "(ctx.containsKey('id.orig_p'))"
       }
     },
@@ -99,13 +93,12 @@
       "rename": {
         "field": "id.orig_p",
         "target_field": "source.port",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id.orig_p'))"
       }
     },
     {
       "dot_expander": {
         "field": "id.resp_h",
-        "ignore_failure": true,
         "if": "(ctx.containsKey('id.resp_h'))"
       }
     },
@@ -113,13 +106,12 @@
       "rename": {
         "field": "id.resp_h",
         "target_field": "destination.ip",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id.resp_h'))"
       }
     },
     {
       "dot_expander": {
         "field": "id.resp_p",
-        "ignore_failure": true,
         "if": "(ctx.containsKey('id.resp_p'))"
       }
     },
@@ -127,42 +119,41 @@
       "rename": {
         "field": "id.resp_p",
         "target_field": "destination.port",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id.resp_p'))"
       }
     },
     {
       "rename": {
         "field": "id_orig_h",
         "target_field": "source.ip",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id_orig_h'))"
       }
     },
     {
       "rename": {
         "field": "id_orig_p",
         "target_field": "source.port",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id_orig_p'))"
       }
     },
     {
       "rename": {
         "field": "id_resp_h",
         "target_field": "destination.ip",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id_resp_h'))"
       }
     },
     {
       "rename": {
         "field": "id_resp_p",
         "target_field": "destination.port",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('id_resp_p'))"
       }
     },
     {
       "set": {
         "field": "source.address",
         "value": "{{source.ip}}",
-        "ignore_failure": true,
         "if": "ctx.containsKey('source') && ctx['source'].containsKey('ip')"
       }
     },
@@ -170,7 +161,6 @@
       "set": {
         "field": "destination.address",
         "value": "{{destination.ip}}",
-        "ignore_failure": true,
         "if": "ctx.containsKey('destination') && ctx['destination'].containsKey('ip')"
       }
     },    
@@ -178,7 +168,6 @@
       "set": {
         "field": "event.id",
         "value": "{{uid}}",
-        "ignore_failure": true,
         "if": "(ctx.containsKey('uid'))"
       }
     },
@@ -186,7 +175,6 @@
       "set": {
         "field": "log.id.uid",
         "value": "{{uid}}",
-        "ignore_failure": true,
         "if": "(ctx.containsKey('uid'))"
       }
     },
@@ -194,77 +182,72 @@
       "rename": {
         "field": "@sensor",
         "target_field": "observer.hostname",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('@sensor'))"
       }
     },
     {
       "rename": {
         "field": "_system_name",
         "target_field": "observer.hostname",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('_system_name'))"
       }
     },
     {
       "rename": {
         "field": "community_id",
         "target_field": "network.community_id",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('community_id'))"
       }
     },
     {
       "rename": {
         "field": "inner_vlan",
         "target_field": "network.inner.vlan.id",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('inner_vlan'))"
       }
     },
     {
       "rename": {
         "field": "vlan_inner",
         "target_field": "network.inner.vlan.id",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('vlan_inner'))"
       }
     },
     {
       "rename": {
         "field": "vlan",
         "target_field": "network.vlan.id",
-        "ignore_failure": true
+        "if": "(ctx.containsKey('vlan'))"
       }
     },
     {
       "set": {
         "field": "observer.vendor",
-        "value": "Corelight",
-        "ignore_failure": true
+        "value": "Corelight"
       }
     },
     {
       "set": {
         "field": "ecs.version",
-        "value": "1.12.0",
-        "ignore_failure": true
+        "value": "1.12.0"
       }
     },
     {
       "set": {
         "field": "labels.corelight.ecs_version",
-        "value": "1.12.0.1",
-        "ignore_failure": true
+        "value": "1.12.0.1"
       }
     },
     {
       "set": {
         "field": "labels.corelight.ecs_method",
-        "value": "ingest_pipeline",
-        "ignore_failure": true
+        "value": "ingest_pipeline"
       }
     },
     {
       "set": {
         "field": "observer.type",
-        "value": "sensor",
-        "ignore_failure": true
+        "value": "sensor"
       }
     },
     {
@@ -277,13 +260,12 @@
       "rename": {
         "field": "num",
         "target_field": "event.count",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "remove": {
         "field": [ "ts", "uid", "_write_ts" ],
-        "ignore_failure": true,
         "ignore_missing": true
       }
     }
