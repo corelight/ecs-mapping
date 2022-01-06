@@ -396,8 +396,15 @@
       }
     },
     {
+      "rename": {
+        "field": "id_vlan",
+        "target_field": "network.vlan.id",
+        "if": "ctx.containsKey('id_vlan') && !(ctx.network.vlan.containsKey('id'))"
+      }
+    },
+    {
       "remove": {
-        "field": "id",
+        "field": [ "id", "id_vlan" ],
         "ignore_missing" : true
       }
     }

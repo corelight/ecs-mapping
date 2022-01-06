@@ -221,14 +221,6 @@
       }
     },
     {
-      "rename": {
-        "field": "id_vlan",
-        "target_field": "network.vlan.id",
-        "ignore_failure": true,
-        "if": "(ctx.containsKey('id_vlan'))"
-      }
-    },
-    {
       "set": {
         "field": "observer.vendor",
         "value": "Corelight"
