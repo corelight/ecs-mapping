@@ -46,6 +46,37 @@
       "tags": {
         "type": "keyword"
       },
+      "error": {
+        "properties": {
+          "code": {
+            "type": "keyword"
+          },
+          "id": {
+            "type": "keyword"
+          },
+          "message": {
+            "ignore_above": 32000,
+            "type": "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "stack_trace": {
+            "ignore_above": 32000,
+            "type": "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          },
+          "type": {
+            "type": "keyword"
+          }
+        }
+      },
       "event": {
         "properties": {
           "category": {
