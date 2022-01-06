@@ -19,28 +19,28 @@
       "rename": {
         "field": "addl",
         "target_field": "weird.additional_info",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "name",
         "target_field": "weird.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "notice",
         "target_field": "weird.notice",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "peer",
         "target_field": "weird.peer",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

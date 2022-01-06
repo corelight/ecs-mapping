@@ -19,7 +19,7 @@
       "rename": {
         "field": "id",
         "target_field": "event.id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -79,98 +79,98 @@
       "rename": {
         "field": "has_cert_table",
         "target_field": "pe.has_cert_table",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "has_debug_data",
         "target_field": "pe.has_debug_data",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "has_import_table",
         "target_field": "pe.has_import_table",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "has_export_table",
         "target_field": "pe.has_export_table",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "is_64bit",
         "target_field": "pe.is_64bit",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "is_exe",
         "target_field": "pe.is_exe",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "machine",
         "target_field": "pe.machine",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "os",
         "target_field": "pe.os",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "section_names",
         "target_field": "pe.section_names",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "subsystem",
         "target_field": "pe.subsystem",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "uses_aslr",
         "target_field": "pe.uses_aslr",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "uses_code_integrity",
         "target_field": "pe.uses_code_integrity",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "uses_dep",
         "target_field": "pe.uses_dep",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "uses_seh",
         "target_field": "pe.uses_seh",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     }
   ]

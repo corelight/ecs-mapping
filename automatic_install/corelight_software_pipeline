@@ -25,14 +25,14 @@
       "rename": {
         "field": "version.addl",
         "target_field": "software.version.additional_info",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version_addl",
         "target_field": "software.version.additional_info",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -45,14 +45,14 @@
       "rename": {
         "field": "version.minor",
         "target_field": "software.version.minor",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version_minor",
         "target_field": "software.version.minor",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -65,14 +65,14 @@
       "rename": {
         "field": "version.minor2",
         "target_field": "software.version.minor2",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version_minor2",
         "target_field": "software.version.minor2",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -85,21 +85,21 @@
       "rename": {
         "field": "version.minor3",
         "target_field": "software.version.minor3",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version_minor3",
         "target_field": "software.version.minor3",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "temp_host",
         "target_field": "software_host",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -114,7 +114,7 @@
       "rename": {
         "field": "software_host",
         "target_field": "software.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -129,35 +129,35 @@
       "rename": {
         "field": "host_p",
         "target_field": "software.port",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "name",
         "target_field": "software.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "unparsed_version",
         "target_field": "software.original",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "software_type",
         "target_field": "software.type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "url",
         "target_field": "url.original",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

@@ -19,119 +19,119 @@
       "rename": {
         "field": "fuid",
         "target_field": "log.id.fuid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "file_desc",
         "target_field": "file.description",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "file_mime_type",
         "target_field": "file.mime_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "actions",
         "target_field": "notice.actions",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "severity",
         "target_field": "event.severity",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "email_body_sections",
         "target_field": "notice.email_body_sections",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "email_delay_tokens",
         "target_field": "notice.email_delay_tokens",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "identifier",
         "target_field": "notice.identifier",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "msg",
         "target_field": "notice.message",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "note",
         "target_field": "notice.note",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "n",
         "target_field": "notice.number",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "peer_descr",
         "target_field": "notice.peer_description",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "peer_name",
         "target_field": "notice.peer_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "sub",
         "target_field": "notice.sub_message",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "suppress_for",
         "target_field": "notice.supress_duration",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "dropped",
         "target_field": "notice.dropped",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

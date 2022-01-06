@@ -48,7 +48,8 @@
     {
       "remove": {
         "field": [ "temp_without_top_level" ],
-        "ignore_failure": true
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     }
   ]

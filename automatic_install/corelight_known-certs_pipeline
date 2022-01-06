@@ -19,28 +19,28 @@
       "rename": {
         "field": "temp_host",
         "target_field": "host.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "issuer_subject",
         "target_field": "known_certs.issuer_subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "serial",
         "target_field": "known_certs.serial",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "subject",
         "target_field": "known_certs.subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -63,7 +63,7 @@
       "rename": {
         "field": "port_num",
         "target_field": "known_certs.port",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

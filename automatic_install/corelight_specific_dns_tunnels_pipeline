@@ -19,7 +19,7 @@
       "rename" : {
         "field" : "proto",
         "target_field" : "network.transport",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -49,7 +49,7 @@
       "rename" : {
         "field" : "length",
         "target_field" : "dns.question.name_length",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -63,49 +63,49 @@
       "rename" : {
         "field" : "query",
         "target_field" : "dns.question.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename" : {
         "field" : "dns_client",
         "target_field" : "source.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename" : {
         "field" : "program",
         "target_field" : "dns.tunnel_program",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename" : {
         "field" : "resolver",
         "target_field" : "destination.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename" : {
         "field" : "session_id",
         "target_field" : "dns.client_session_id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename" : {
         "field" : "sods_id",
         "target_field" : "dns.sods_id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename" : {
         "field" : "trans_id",
         "target_field" : "dns.id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     }
   ]

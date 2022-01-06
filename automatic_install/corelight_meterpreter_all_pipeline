@@ -28,42 +28,42 @@
       "rename": {
         "field": "protocol",
         "target_field": "network.transport",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "reason",
         "target_field": "meterpreter_reason",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "os",
         "target_field": "os_family",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "guid",
         "target_field": "meterpreter_guid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "staged",
         "target_field": "meterpreter_staged",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "encrypted",
         "target_field": "meterpreter_encrypted",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     }
   ]

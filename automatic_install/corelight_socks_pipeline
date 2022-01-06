@@ -26,70 +26,70 @@
       "rename": {
         "field": "user",
         "target_field": "source.user.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "password",
         "target_field": "source.user.password",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "bound_host",
         "target_field": "socks.bound.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "bound_name",
         "target_field": "socks.bound.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "bound_p",
         "target_field": "socks.bound.port",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "request_host",
         "target_field": "socks.request.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "request_name",
         "target_field": "socks.request.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "request_p",
         "target_field": "socks.request.port",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "status",
         "target_field": "socks.status",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version",
         "target_field": "socks.version",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

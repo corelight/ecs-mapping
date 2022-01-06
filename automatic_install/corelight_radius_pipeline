@@ -19,7 +19,7 @@
       "rename": {
         "field": "ttl",
         "target_field": "event.duration",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -33,42 +33,42 @@
       "rename": {
         "field": "username",
         "target_field": "source.user.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "mac",
         "target_field": "source.mac",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "connect_info",
         "target_field": "radius.connect_info",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "framed_addr",
         "target_field": "radius.framed.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "reply_msg",
         "target_field": "radius.reply_message",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "tunnel_client",
         "target_field": "radius.tunnel.source.endpoint",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -98,7 +98,7 @@
       "rename": {
         "field": "result",
         "target_field": "radius.result",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

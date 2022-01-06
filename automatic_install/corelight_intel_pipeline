@@ -19,35 +19,35 @@
       "rename": {
         "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "fuid",
         "target_field": "log.id.fuid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "file_mime_type",
         "target_field": "file.mime_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "file_desc",
         "target_field": "intel.file_description",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "matched",
         "target_field": "intel.matched",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

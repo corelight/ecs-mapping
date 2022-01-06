@@ -26,7 +26,7 @@
       "rename": {
         "field": "dns_client",
         "target_field": "source.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -40,14 +40,14 @@
       "rename": {
         "field": "bytes",
         "target_field": "source.bytes",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "capture_secs",
         "target_field": "encrypted_dns_tunnels_capture_secs",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     }
   ]

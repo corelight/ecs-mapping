@@ -26,7 +26,7 @@
       "rename": {
         "field": "community",
         "target_field": "snmp.community",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     
@@ -42,49 +42,49 @@
       "rename": {
         "field": "display_string",
         "target_field": "snmp.display_string",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "get_bulk_requests",
         "target_field": "snmp.get_bulk_requests",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "get_requests",
         "target_field": "snmp.get_requests",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "get_responses",
         "target_field": "snmp.get_responses",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "set_requests",
         "target_field": "snmp.set_requests",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "up_since",
         "target_field": "snmp.up_since",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version",
         "target_field": "snmp.version",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -106,8 +106,9 @@
     },
     {
       "remove": {
-        "field": ["duration"],
-        "ignore_failure": true
+        "field": "duration",
+        "ignore_failure": true,
+        "ignore_missing" : true
       }
     },
     {

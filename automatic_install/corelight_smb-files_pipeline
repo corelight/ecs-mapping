@@ -19,7 +19,7 @@
       "rename": {
         "field": "uid",
         "target_field": "log.id.uid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -33,42 +33,42 @@
       "rename": {
         "field": "fuid",
         "target_field": "log.id.fuid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "name",
         "target_field": "file.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "path",
         "target_field": "file.path",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "size",
         "target_field": "file.size",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "action",
         "target_field": "smb.action",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "prev_name",
         "target_field": "smb.previous_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -81,14 +81,14 @@
       "rename": {
         "field": "times.accessed",
         "target_field": "file.accessed",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_accessed",
         "target_field": "file.accessed",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -101,14 +101,14 @@
       "rename": {
         "field": "times.created",
         "target_field": "file.created",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_created",
         "target_field": "file.created",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -121,14 +121,14 @@
       "rename": {
         "field": "times.changed",
         "target_field": "file.ctime",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_changed",
         "target_field": "file.ctime",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -141,14 +141,14 @@
       "rename": {
         "field": "times.modified",
         "target_field": "file.mtime",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_modified",
         "target_field": "file.mtime",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

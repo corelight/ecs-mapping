@@ -25,7 +25,7 @@
       "rename": {
         "field": "basic_constraints.ca",
         "target_field": "file.x509.certificate.basic_constraints.ca",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -38,7 +38,7 @@
       "rename": {
         "field": "basic_constraints.path_length",
         "target_field": "file.x509.certificate.basic_constraints.path_length",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -51,7 +51,7 @@
       "rename": {
         "field": "certificate.cn",
         "target_field": "file.x509.certificate.common_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -64,7 +64,7 @@
       "rename": {
         "field": "certificate.curve",
         "target_field": "file.x509.public_key_curve",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -77,7 +77,7 @@
       "rename": {
         "field": "certificate.exponent",
         "target_field": "file.x509.certificate.exponent",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -90,7 +90,7 @@
       "rename": {
         "field": "certificate.issuer",
         "target_field": "file.x509.issuer.distinguished_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -103,7 +103,7 @@
       "rename": {
         "field": "certificate.key_alg",
         "target_field": "file.x509.public_key_algorithm",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -116,7 +116,7 @@
       "rename": {
         "field": "certificate.key_length",
         "target_field": "file.x509.public_key_size",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -129,7 +129,7 @@
       "rename": {
         "field": "certificate.key_type",
         "target_field": "file.x509.public_key_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -142,7 +142,7 @@
       "rename": {
         "field": "certificate.not_valid_after",
         "target_field": "file.x509.not_after",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -155,7 +155,7 @@
       "rename": {
         "field": "certificate.not_valid_before",
         "target_field": "file.x509.not_before",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -168,7 +168,7 @@
       "rename": {
         "field": "certificate.serial",
         "target_field": "file.x509.serial_number",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -181,7 +181,7 @@
       "rename": {
         "field": "certificate.sig_alg",
         "target_field": "file.x509.signature_algorithm",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -194,7 +194,7 @@
       "rename": {
         "field": "certificate.subject",
         "target_field": "file.x509.subject.distinguished_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -207,14 +207,14 @@
       "rename": {
         "field": "certificate.version",
         "target_field": "file.x509.subject.version_number",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "logcert",
         "target_field": "file.x509.logcert",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -227,7 +227,7 @@
       "rename": {
         "field": "san.dns",
         "target_field": "file.x509.san_dns",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -240,7 +240,7 @@
       "rename": {
         "field": "san.email",
         "target_field": "file.x509.san_email",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -253,7 +253,7 @@
       "rename": {
         "field": "san.ip",
         "target_field": "file.x509.san_ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -266,147 +266,147 @@
       "rename": {
         "field": "san.url",
         "target_field": "file.x509.san_url",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "basic_constraints_ca",
         "target_field": "file.x509.certificate.basic_constraints.ca",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "basic_constraints_path_length",
         "target_field": "file.x509.certificate.basic_constraints.path_length",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_cn",
         "target_field": "file.x509.certificate.common_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_curve",
         "target_field": "file.x509.public_key_curve",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_exponent",
         "target_field": "file.x509.public_key_exponent",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_issuer",
         "target_field": "file.x509.issuer.distinguished_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_key_alg",
         "target_field": "file.x509.public_key_algorithm",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_key_length",
         "target_field": "file.x509.public_key_size",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_key_type",
         "target_field": "file.x509.public_key_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_not_valid_after",
         "target_field": "file.x509.not_after",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_not_valid_before",
         "target_field": "file.x509.not_before",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_serial",
         "target_field": "file.x509.serial_number",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_sig_alg",
         "target_field": "file.x509.signature_algorithm",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_subject",
         "target_field": "file.x509.subject.distinguished_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "certificate_version",
         "target_field": "file.x509.subject.version_number",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "logcert",
         "target_field": "file.x509.logcert",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "san_dns",
         "target_field": "file.x509.san_dns",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "san_email",
         "target_field": "file.x509.san_email",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "san_ip",
         "target_field": "file.x509.san_ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "san_url",
         "target_field": "file.x509.san_url",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -439,7 +439,7 @@
       "rename": {
         "field": "id",
         "target_field": "log.id.id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

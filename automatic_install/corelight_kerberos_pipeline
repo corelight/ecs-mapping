@@ -42,21 +42,21 @@
       "rename": {
         "field": "server_cert_fuid",
         "target_field": "log.id.server_cert_fuid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_cert_fuid",
         "target_field": "log.id.client_cert_fuid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "error_msg",
         "target_field": "kerberos.error_message",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -71,56 +71,56 @@
       "rename": {
         "field": "client",
         "target_field": "kerberos.request.client",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_cert_subject",
         "target_field": "kerberos.request.certificate.subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "cipher",
         "target_field": "kerberos.request.ticket.cipher",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "auth_ticket",
         "target_field": "kerberos.request.ticket.hash.md5",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "request_type",
         "target_field": "kerberos.request.type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "new_ticket",
         "target_field": "kerberos.response.ticket.hash.md5",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_cert_subject",
         "target_field": "kerberos.response.certificate.subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "service",
         "target_field": "kerberos.ticket.service",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -143,28 +143,28 @@
       "rename": {
         "field": "success",
         "target_field": "kerberos.request.successul",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "forwardable",
         "target_field": "kerberos.request.ticket.forwardable",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "renewable",
         "target_field": "kerberos.request.ticket.renewable",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "error_code",
         "target_field": "kerberos.error_code",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

@@ -19,7 +19,7 @@
       "rename": {
         "field": "temp_host",
         "target_field": "host.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -34,7 +34,7 @@
       "rename": {
         "field": "device_type",
         "target_field": "modbus.device_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
