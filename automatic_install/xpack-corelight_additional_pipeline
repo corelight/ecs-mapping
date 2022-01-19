@@ -1,5 +1,5 @@
 {
-  "description": "XPack Licensed Elastic Specific Pipeline that calls those specific pipelines that contain licensed pipeline settings. This pipeline is from the repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding github repo.",
+  "description": "XPack Licensed Elastic Specific Pipeline that calls those specific pipelines that contain licensed pipeline settings. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "version": 11201,
   "processors": [
     {
