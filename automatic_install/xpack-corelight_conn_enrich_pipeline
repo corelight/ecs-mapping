@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight Conn pipeline for Elastic licensed xpack enrich processor",
+  "description" : "Corelight Conn pipeline for Elastic licensed xpack enrich processor. This pipeline is from the repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding github repo.\",",
   "processors" : [
     {
       "enrich": {
