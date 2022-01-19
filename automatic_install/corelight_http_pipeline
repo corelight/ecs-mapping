@@ -46,9 +46,9 @@
     {
       "set": {
         "field": "destination.domain",
-        "value": "{{host}}",
+        "value": "{{temp_host}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('host'))"
+        "if": "(ctx.containsKey('temp_host'))"
       }
     },
     {
