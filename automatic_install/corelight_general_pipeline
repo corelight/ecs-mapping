@@ -80,6 +80,7 @@
       "rename": {
         "field": "id.orig_h",
         "target_field": "source.ip",
+        "ignore_missing": true,
         "if": "ctx.id.containsKey('orig_h')"
       }
     },
@@ -93,6 +94,7 @@
       "rename": {
         "field": "id.orig_p",
         "target_field": "source.port",
+        "ignore_missing": true,
         "if": "ctx.id.containsKey('orig_p')"
       }
     },
@@ -106,6 +108,7 @@
       "rename": {
         "field": "id.resp_h",
         "target_field": "destination.ip",
+        "ignore_missing": true,
         "if": "ctx.id.containsKey('resp_h')"
       }
     },
@@ -119,6 +122,7 @@
       "rename": {
         "field": "id.resp_p",
         "target_field": "destination.port",
+        "ignore_missing": true,
         "if": "ctx.id.containsKey('resp_p')"
       }
     },
