@@ -1,5 +1,5 @@
 {
-  "description": "(Corelight) Zeek Reporter pipeline. This pipeline is from the repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding github repo.\",",
+  "description": "(Corelight) Zeek Reporter pipeline. This pipeline is from the repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding github repo.",
   "processors": [
     {
       "rename": {
