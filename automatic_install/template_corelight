@@ -5,9 +5,6 @@
     "*single-corelight*"
   ],
   "version": 11201,
-  "_meta": {
-    "description": "This Elasticsearch template is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in that Github repository."
-  },
   "mappings": {
     "dynamic_templates": [
       {
