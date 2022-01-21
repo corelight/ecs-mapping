@@ -7,6 +7,11 @@
         "target_field": "labels.corelight.logstash_input_host_listening_ip",
         "if": "ctx.containsKey('temp_host')"
       },
+      "rename": {
+        "field": "temp_port",
+        "target_field": "labels.corelight.logstash_input_host_listening_port",
+        "if": "ctx.containsKey('temp_port')"
+      },
       "remove": {
         "field": [
           "temporary_metadata_index_name_suffix",
