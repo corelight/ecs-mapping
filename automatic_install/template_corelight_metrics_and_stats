@@ -65,7 +65,58 @@
         "type": "text"
       },
       "labels": {
-        "type": "object"
+        "type": "object",
+        "properties": {
+          "corelight": {
+            "type": "object",
+            "properties": {
+              "ecs_version": {
+                "type": "keyword"
+              },
+              "ecs_method": {
+                "type": "keyword"
+              }
+            }
+          },
+          "etl": {
+            "type": "object",
+            "properties": {
+              "format_applied": {
+                "doc_values": false,
+                "norms": false,
+                "type": "keyword"
+              },
+              "format_final_codec": {
+                "doc_values": false,
+                "norms": false,
+                "type": "keyword"
+              },
+              "format_is_json": {
+                "doc_values": false,
+                "norms": false,
+                "type": "keyword"
+              },
+              "info_tags": {
+                "doc_values": false,
+                "norms": false,
+                "type": "keyword"
+              },
+              "input_application_protocol": {
+                "doc_values": false,
+                "norms": false,
+                "type": "keyword"
+              },
+              "pipeline": {
+                "doc_values": false,
+                "norms": false,
+                "type": "keyword"
+              },
+              "processed_time": {
+                "type": "date"
+              }
+            }
+          }
+        }
       },
       "tags": {
         "type": "keyword"
