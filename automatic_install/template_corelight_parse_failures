@@ -57,7 +57,7 @@
               },
               "logstash_input_host_listening_port": {
                 "type": "keyword"
-              },
+              }
             }
           },
           "etl": {
