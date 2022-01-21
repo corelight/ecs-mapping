@@ -78,6 +78,13 @@
     },
     {
       "rename": {
+        "field": "port",
+        "target_field": "temp_port",
+        "if": "(ctx.containsKey('host'))"
+      }
+    },
+    {
+      "rename": {
         "field": "id.orig_h",
         "target_field": "source.ip",
         "ignore_missing": true,
