@@ -51,7 +51,13 @@
               },
               "ecs_method": {
                 "type": "keyword"
-              }
+              },
+              "logstash_input_host_listening_ip": {
+                "type": "keyword"
+              },
+              "logstash_input_host_listening_port": {
+                "type": "keyword"
+              },
             }
           },
           "etl": {
