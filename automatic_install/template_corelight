@@ -2492,8 +2492,12 @@
             "type": "keyword"
           },
           "framed": {
-            "type": "ip",
-            "copy_to": "related.ip"
+            "properties": {
+              "ip": {
+                "type": "ip",
+                "copy_to": "related.ip"
+              }
+            }
           },
           "reply_msg": {
             "ignore_above": 2048,
