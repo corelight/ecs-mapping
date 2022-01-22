@@ -2154,6 +2154,9 @@
               "has_whitespace": {
                 "type": "boolean"
               },
+              "rfc_compliant": {
+                "type": "boolean"
+              },
               "total_length": {
                 "type": "long"
               },
