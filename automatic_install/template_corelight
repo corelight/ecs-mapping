@@ -2770,6 +2770,12 @@
           "auth_attempts": {
             "type": "long"
           },
+          "inferences": {
+            "type": "keyword"
+          },
+          "inferences_detailed": {
+            "type": "keyword"
+          },
           "stepping": {
             "properties": {
               "direct": {
