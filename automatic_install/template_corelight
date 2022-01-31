@@ -2806,7 +2806,7 @@
       "vpn": {
         "properties": {
           "inferences": {
-            "name": "keyword"
+            "type": "keyword"
           },
           "inferences_detailed": {
             "type": "keyword"
@@ -2819,7 +2819,7 @@
               }
             }
           },
-          "type": {
+          "name": {
             "type": "keyword"
           }
         }
