@@ -2199,9 +2199,6 @@
             },
             "type": "keyword"
           },
-          "has_colon": {
-              "type": "boolean"
-          },
           "has_non_ascii": {
             "type": "boolean"
           },
