@@ -473,7 +473,76 @@
             "copy_to": "related.domain",
             "type": "keyword"
           },
+          "domain_ends_with_integer": {
+            "type": "boolean"
+          },
+          "domain_has_colon": {
+            "type": "boolean"
+          },
+          "domain_has_dot": {
+            "type": "boolean"
+          },
+          "domain_has_non_ascii": {
+            "type": "boolean"
+          },
+          "domain_has_whitespace": {
+            "type": "boolean"
+          },
+          "domain_is_idn": {
+            "type": "boolean"
+          },
           "domain_length": {
+            "type": "long"
+          },
+          "level_1n2_domain_name": {
+            "ignore_above": 32000,
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            },
+            "type": "keyword"
+          },
+          "level_1n2n3_domain_name": {
+            "ignore_above": 32000,
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            },
+            "type": "keyword"
+          },
+          "domain_total_levels": {
+            "type": "long"
+          },
+          "level_1_domain_length": {
+            "type": "alias",
+            "path": "destination.top_level_domain_length"
+          },
+          "level_2_domain_length": {
+            "type": "alias",
+            "path": "destination.parent_domain_length"
+          },
+          "level_2_ends_with_integer": {
+            "type": "alias",
+            "path": "destination.parent_domain_ends_with_integer"
+          },
+          "level_3_domain_length": {
+            "type": "long"
+          },
+          "level_4_domain_length": {
+            "type": "long"
+          },
+          "level_5_domain_length": {
+            "type": "long"
+          },
+          "parent_domain_length": {
+            "type": "long"
+          },
+          "parent_domain_ends_with_integer": {
+            "type": "boolean"
+          },
+          "top_level_domain_length": {
             "type": "long"
           },
           "file": {
@@ -844,8 +913,6 @@
               }
             }
           }
-
-
         }
       },
       "dns": {
