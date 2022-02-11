@@ -2146,24 +2146,23 @@
             },
             "type": "keyword"
           },
-            "has_colon": {
+          "has_colon": {
               "type": "boolean"
-            },
-            "has_non_ascii": {
-              "type": "boolean"
-            },
-            "has_whitespace": {
-              "type": "boolean"
-            },
-            "rfc_compliant": {
-              "type": "boolean"
-            },
-            "total_length": {
-              "type": "long"
-            },
-            "paths": {
-              "type": "long"
-            }
+          },
+          "has_non_ascii": {
+            "type": "boolean"
+          },
+          "has_whitespace": {
+            "type": "boolean"
+          },
+          "rfc_compliant": {
+            "type": "boolean"
+          },
+          "total_length": {
+            "type": "long"
+          },
+          "paths": {
+            "type": "long"
           },
           "original": {
             "ignore_above": 32000,
