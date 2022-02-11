@@ -2125,11 +2125,11 @@
             "type": "long"
           },
           "extension": {
-            "ignore_above": 4096,
+            "ignore_above": 32000,
             "type": "keyword"
           },
           "fragment": {
-            "ignore_above": 4096,
+            "ignore_above": 32000,
             "fields": {
               "text": {
                 "type": "text"
