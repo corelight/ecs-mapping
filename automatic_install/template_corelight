@@ -2275,9 +2275,6 @@
           "rfc_compliant": {
             "type": "boolean"
           },
-          "total_length": {
-            "type": "long"
-          },
           "paths": {
             "type": "long"
           },
@@ -2364,13 +2361,6 @@
           },
           "major": {
             "type": "long"
-          },
-          "meta": {
-            "properties": {
-              "total_length": {
-                "type": "long"
-              }
-            }
           },
           "minor": {
             "type": "long"
