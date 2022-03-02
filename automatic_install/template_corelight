@@ -545,15 +545,15 @@
           },
           "level_1_ends_with_integer": {
             "type": "alias",
-            "path": "destination.top_level_domain_ends_with_integer"
+            "path": "destination.domain_ends_with_integer"
           },
           "level_1_domain": {
             "type": "alias",
             "path": "destination.top_level_domain"
           },
           "level_2_domain": {
-            "ignore_above": 32000,
-            "type": "keyword"
+            "type": "alias",
+            "path": "destination.parent_domain"
           },
           "level_2_domain_length": {
             "type": "alias",
