@@ -543,6 +543,18 @@
             "type": "alias",
             "path": "destination.top_level_domain_length"
           },
+          "level_1_ends_with_integer": {
+            "type": "alias",
+            "path": "destination.top_level_domain_ends_with_integer"
+          },
+          "level_1_domain": {
+            "type": "alias",
+            "path": "destination.top_level_domain"
+          },
+          "level_2_domain": {
+            "ignore_above": 32000,
+            "type": "keyword"
+          },
           "level_2_domain_length": {
             "type": "alias",
             "path": "destination.parent_domain_length"
@@ -551,14 +563,30 @@
             "type": "alias",
             "path": "destination.parent_domain_ends_with_integer"
           },
+          "level_3_domain": {
+            "ignore_above": 32000,
+            "type": "keyword"
+          },
           "level_3_domain_length": {
             "type": "long"
+          },
+          "level_4_domain": {
+            "ignore_above": 32000,
+            "type": "keyword"
           },
           "level_4_domain_length": {
             "type": "long"
           },
+          "level_5_domain": {
+            "ignore_above": 32000,
+            "type": "keyword"
+          },
           "level_5_domain_length": {
             "type": "long"
+          },
+          "parent_domain": {
+            "ignore_above": 32000,
+            "type": "keyword"
           },
           "parent_domain_length": {
             "type": "long"
@@ -566,7 +594,21 @@
           "parent_domain_ends_with_integer": {
             "type": "boolean"
           },
+          "top_level_domain": {
+            "ignore_above": 32000,
+            "type": "keyword"
+          },
           "top_level_domain_length": {
+            "type": "long"
+          },
+          "top_level_domain_ends_with_integer": {
+            "type": "boolean"
+          },
+          "subdomain": {
+            "ignore_above": 32000,
+            "type": "keyword"
+          },
+          "subdomain_length": {
             "type": "long"
           },
           "file": {
@@ -731,7 +773,7 @@
             }
           }
         }
-      },
+        },
       "source": {
         "properties": {
           "address": {
