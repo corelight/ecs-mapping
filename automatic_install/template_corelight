@@ -512,7 +512,31 @@
             },
             "type": "keyword"
           },
+          "domain_total_alphanumeric": {
+            "type": "long"
+          },
+          "domain_total_consonants": {
+            "type": "long"
+          },
+          "domain_total_digits": {
+            "type": "long"
+          },
+          "domain_total_hex": {
+            "type": "long"
+          },
+          "domain_total_invalid_characters": {
+            "type": "long"
+          },
+          "domain_total_letters": {
+            "type": "long"
+          },
           "domain_total_levels": {
+            "type": "long"
+          },
+          "domain_total_punctuation": {
+            "type": "long"
+          },
+          "domain_total_vowels": {
             "type": "long"
           },
           "level_1_domain_length": {
