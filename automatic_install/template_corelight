@@ -494,16 +494,11 @@
           "domain_length": {
             "type": "long"
           },
-          "level_1n2_domain_name": {
-            "ignore_above": 32000,
-            "fields": {
-              "text": {
-                "type": "text"
-              }
-            },
-            "type": "keyword"
+          "level_1n2_domain": {
+            "type": "alias",
+            "path": "destination.registered_domain"
           },
-          "level_1n2n3_domain_name": {
+          "level_1n2n3_domain": {
             "ignore_above": 32000,
             "fields": {
               "text": {
