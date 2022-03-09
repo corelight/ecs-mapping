@@ -599,6 +599,10 @@
           "top_level_domain_ends_with_integer": {
             "type": "boolean"
           },
+          "registered_domain": {
+            "ignore_above": 32000,
+            "type": "keyword"
+          },
           "subdomain": {
             "ignore_above": 32000,
             "type": "keyword"
