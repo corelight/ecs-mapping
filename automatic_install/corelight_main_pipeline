@@ -459,7 +459,7 @@
     {
       "pipeline": {
         "description": "Logs that are metrics.",
-        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_metrics_utilization'",
+        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_docker' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_metrics_utilization'",
         "name": "corelight_metrics_general_pipeline"
       }
     },
