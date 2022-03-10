@@ -452,7 +452,7 @@
     {
       "pipeline": {
         "description": "Logs that are system related.",
-        "if": "ctx.event.dataset == 'audit' || ctx.event.dataset == 'auditlog' || ctx.event.dataset == 'cluster' || ctx.event.dataset == 'config' || ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'corelight_license_capacity' || ctx.event.dataset == 'loaded_scripts'",
+        "if": "ctx.event.dataset == 'audit' || ctx.event.dataset == 'auditlog' || ctx.event.dataset == 'broker' || ctx.event.dataset == 'cluster' || ctx.event.dataset == 'config' || ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'corelight_license_capacity' || ctx.event.dataset == 'loaded_scripts'",
         "name": "corelight_system_related_info_general_pipeline"
       }
     },
