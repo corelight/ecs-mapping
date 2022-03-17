@@ -445,7 +445,7 @@
     {
       "pipeline": {
         "description": "Logs that are system related.",
-        "if": "\"ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'auditlog'",
+        "if": "ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'auditlog'",
         "name": "corelight_system_related_info_general_pipeline"
       }
     },
