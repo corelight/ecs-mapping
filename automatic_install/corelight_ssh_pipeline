@@ -170,6 +170,13 @@
     },
     {
       "rename": {
+        "field": "sshka",
+        "target_field": "ssh.sshka",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "version",
         "target_field": "ssh.version",
         "ignore_missing": true
