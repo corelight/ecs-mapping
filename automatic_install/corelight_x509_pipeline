@@ -264,8 +264,8 @@
     },
     {
       "rename": {
-        "field": "san.url",
-        "target_field": "file.x509.san_url",
+        "field": "san.uri",
+        "target_field": "file.x509.san_uri",
         "ignore_missing": true
       }
     },
@@ -404,8 +404,8 @@
     },
     {
       "rename": {
-        "field": "san_url",
-        "target_field": "file.x509.san_url",
+        "field": "san_uri",
+        "target_field": "file.x509.san_uri",
         "ignore_missing": true
       }
     },
