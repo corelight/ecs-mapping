@@ -40,7 +40,7 @@
     },
     {
       "set": {
-        "field": "client.address",
+        "field": "source.address",
         "value": "{{files.rx_hosts}}",
         "ignore_failure": true,
         "if": "ctx?.files?.rx_hosts != null"
@@ -48,7 +48,23 @@
     },
     {
       "set": {
-        "field": "server.address",
+        "field": "source.ip",
+        "value": "{{files.rx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.rx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "destination.address",
+        "value": "{{files.tx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.tx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "destination.ip",
         "value": "{{files.tx_hosts}}",
         "ignore_failure": true,
         "if": "ctx?.files?.tx_hosts != null"
