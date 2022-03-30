@@ -17,8 +17,22 @@
     },
     {
       "rename": {
+        "field": "cert_chain_fps",
+        "target_field": "tls.server.cert_chain_fingerprints",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "cert_chain_fuids",
         "target_field": "log.id.cert_chain_fuids",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_cert_chain_fps",
+        "target_field": "tls.client.cert_chain_fingerprints",
         "ignore_missing": true
       }
     },
