@@ -23,6 +23,13 @@
     },
     {
       "rename": {
+        "field": "suri_ids",
+        "target_field": "log.id.suri_ids",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "tunnel_parents",
         "target_field": "log.id.tunnel_parents",
         "ignore_missing": true
