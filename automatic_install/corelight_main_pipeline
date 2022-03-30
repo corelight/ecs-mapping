@@ -473,7 +473,7 @@
     {
       "pipeline": {
         "description": "Logs that are netcontrol.",
-        "if": "ctx.event.dataset == 'netcontrol' || ctx.event.dataset == 'netcontrol_drop' || ctx.event.dataset == 'netcontrol_shunt'",
+        "if": "ctx.event.dataset == 'netcontrol' || ctx.event.dataset == 'netcontrol_drop' || ctx.event.dataset == 'netcontrol_shunt' || ctx.event.dataset == 'openflow'",
         "name": "corelight_netcontrol_general_pipeline"
       }
     },
