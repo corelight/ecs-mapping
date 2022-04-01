@@ -40,23 +40,23 @@
     },
     {
       "set": {
-        "field": "source.address",
-        "value": "{{files.rx_hosts}}",
-        "ignore_failure": true,
-        "if": "ctx?.files?.rx_hosts != null"
-      }
-    },
-    {
-      "set": {
-        "field": "source.ip",
-        "value": "{{files.rx_hosts}}",
-        "ignore_failure": true,
-        "if": "ctx?.files?.rx_hosts != null"
-      }
-    },
-    {
-      "set": {
         "field": "destination.address",
+        "value": "{{files.rx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.rx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "destination.ip",
+        "value": "{{files.rx_hosts}}",
+        "ignore_failure": true,
+        "if": "ctx?.files?.rx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "source.address",
         "value": "{{files.tx_hosts}}",
         "ignore_failure": true,
         "if": "ctx?.files?.tx_hosts != null"
@@ -64,7 +64,7 @@
     },
     {
       "set": {
-        "field": "destination.ip",
+        "field": "source.ip",
         "value": "{{files.tx_hosts}}",
         "ignore_failure": true,
         "if": "ctx?.files?.tx_hosts != null"
