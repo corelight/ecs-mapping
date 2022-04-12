@@ -20,7 +20,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "detection",
+        "value": "intrusion_detection",
         "ignore_failure": true
       }
     },

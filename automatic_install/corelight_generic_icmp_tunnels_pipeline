@@ -11,7 +11,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "detection",
+        "value": "intrusion_detection",
         "ignore_failure": true
       }
     },
@@ -73,7 +73,7 @@
     },
     {
       "rename": {
-        "field": "detection",
+        "field": "intrusion_detection",
         "target_field": "icmp_detection",
         "ignore_missing": true
       }
