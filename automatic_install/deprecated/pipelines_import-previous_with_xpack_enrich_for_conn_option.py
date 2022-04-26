@@ -50,27 +50,45 @@ def checkRequest(responseObj):
 
 def exportToElastic(session, baseURI, pipeline, retry=4):
     print("Trying to upload pipeline: %s" % pipeline)
-    with open(pipeline) as f:
-        postData = f.read()
+    if pipeline != "zeek-enrichment-conn-policy/_execute":
+        with open(pipeline) as f:
+            postData = f.read()
+    else:
+        postData = ""
     run = 1
     uri = baseURI + "/_ingest/pipeline/"  + pipeline
     if "template" in pipeline:
         uri = baseURI + "/_template/" + pipeline
+    if pipeline == "zeek-enrichment-conn-dictionary":
+        uri = baseURI + "/" + pipeline + "/_bulk"
+    if pipeline.endswith(("policy", "policy/_execute")):
+        uri = baseURI +  "/_enrich/policy/" + pipeline 
 
     print("URI = %s" % uri)
     # print "Uploading data to: %s" %uri    
-    while run <= retry:
-        run += 1
+    response = 0
+    while run <= retry and response != 200:
+        run = run + 1
         response = session.put(uri, data=postData, timeout=10)
         response = checkRequest(response)
-        
-        if response == 200:
-            return 
-        else:
-            print(response)
-            print("Error uploading %s status code %s" %(pipeline, response),file=sys.stderr)
-            time.sleep( 5 )
-            sys.exit(1)
+        if response == 400 or response == 409:
+            if pipeline == "zeek-enrichment-conn-policy":
+                # Delete the pipeline that calls the enrich policy before we can delete the enrich policy itself. https://www.elastic.co/guide/en/elasticsearch/reference/master/enrich-setup.html#update-enrich-policies
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry) # Keep to delete old one, can ignore these errors
+                response = elasticDel(session, baseURI, "xpack-corelight_additional_pipeline", retry)
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_enrich_pipeline", retry)
+                response = elasticDel(session, baseURI, "zeek-enrichment-conn-policy", retry)
+                print(response)
+                response = elasticDel(session, baseURI, pipeline, retry)
+                print(response)
+                time.sleep(5)
+                response = 500
+
+    if response == 200:
+        return 
+    else:
+        print("Error uploading %s status code %s" %(pipeline, response),file=sys.stderr)
+        sys.exit(1)
 
 
 def elasticDel(session, baseURI, pipeline,  retry):
@@ -128,12 +146,28 @@ def main():
     testConnection(session, baseURI)
     # Prompt to skip loading ingest pipelines #ie: if using logstash to do all the parsing
     load_ingest_pipelines = input_bool("Use ingest pipelines? (if you are using Logstash to perform ECS and normalization then select no)", default=True)
+    if load_ingest_pipelines:
+        xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
+        if xpack:
+            exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
+            exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
+            exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
+            exportToElastic(session, baseURI, "xpack-corelight_additional_pipeline")
+            exportToElastic(session, baseURI, "xpack-corelight_conn_enrich_pipeline")
+        else:
+            pass
+    else:
+        pass
     for f in glob.glob("template_corelight*"):
         #if f != "template_corelight_metrics_and_stats":
         exportToElastic(session, baseURI, f)
     if load_ingest_pipelines:
         for f in glob.glob("corelight*"):
             exportToElastic(session, baseURI, f)
+        if xpack:
+            exportToElastic(session, baseURI, "xpack-template_corelight")
+        else:
+            exportToElastic(session, baseURI, "non-xpack-template_corelight")
     else:
         pass
 if __name__ == "__main__":

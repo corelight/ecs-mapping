@@ -7,6 +7,7 @@
   "version": 11221,
   "settings": {
     "index": {
+      "default_pipeline": "corelight_main_pipeline",
       "mapping": {
         "coerce": true,
         "ignore_malformed": true,
