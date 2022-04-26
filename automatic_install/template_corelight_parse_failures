@@ -1,6 +1,6 @@
 {
   "order": 99,
-  "version": 11201,
+  "version": 11221,
   "index_patterns": [
     "parse-failures-corelight-*"
   ],

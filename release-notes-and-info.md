@@ -1,14 +1,13 @@
 ## Versioning of templates, schema, etc
-ecs version gets stored as `ecs.version`
+The version of Elastic Common Schema gets stored as `ecs.version`
+this the release of ECS that the repo is based upon.
+example: `1.12.2`
+The version of the Corelight repo gets stored as `labels.corelight.ecs_version`
+ 
+For example, if the ECS version is `1.12.2` and the first release of Corelight is matching this version, then Corelight ECS version is `1.12.2.1`. Then any new updates matching `1.12.2` would increment the 4th number, so the next update would be `1.12.2.2` and so on.  
+When a new release of ECS comes out (example) `1.12.2` then first release of Corelight ECS would be `1.12.2.1`
 
-corelight version gets stored as `labels.corelight.ecs_version`
-
-ECS version is the current release of ECS that Corelight ECS is based upon.  
-Corelight ECS version is based on that ECS release. and will add its iteration of this.  
-For example, if the ECS version is `1.12.0` and the first release of Corelight is matching this version, then Corelight ECS version is `1.12.0.1`. Then any new updates matching `1.12.0` would increment the 4th number, so the next update would be `1.12.0.2` and so on.  
-When a new release of ECS comes out (example) `1.12.0` then first release of Corelight ECS would be `1.12.0.1`
-
-Elasticsearch template (file named `template_corelight`) version is the value of `labels.corelight.ecs_version` without the dots, so `1.12.0.1` would be `11201`
+Elasticsearch template (file named `template_corelight`) version is the value of `labels.corelight.ecs_version` without the dots, so `1.12.2.1` would be `11221`
 
 ## Release notes
 
@@ -77,7 +76,7 @@ Elasticsearch template (file named `template_corelight`) version is the value of
 - MQTT_Publish log
 - MQTT_Subscribe log
 - MQTT_POP3 log
-- GQUIC logy
+- GQUIC log
 - no longer renaming fields unless specifically an ECS name to be mapped to (to reduce confusion, but more importantly to share queries/hunts with those who do NOT do a lot of transform/ETL pipelines)
 - SMTP_Links log
 - Conn_Long log
@@ -156,5 +155,5 @@ x509.log:
 ```
 
 # To-Do #TODO:
-- [ ] set processor in later version of Elasticsearch (>= 7.9 ) has an option called `ignore_empty_value` - which would free up hundreds of CPU cycles per pipeline (ie: having to check if exists and if NOT null) - description of processor is `if evaluates to null or the empty string`
-- [ ] set processor in later version of Elasticsearch (>= 7.11 ) has an option called `copy_from` - which would make easier basically copying fields/values instead of using `{{$FieldName}}`
+- [x] set processor in later version of Elasticsearch (>= 7.9 ) has an option called `ignore_empty_value` - which would free up hundreds of CPU cycles per pipeline (ie: having to check if exists and if NOT null) - description of processor is `if evaluates to null or the empty string`
+- [x] set processor in later version of Elasticsearch (>= 7.11 ) has an option called `copy_from` - which would make easier basically copying fields/values instead of using `{{$FieldName}}`

@@ -4,7 +4,7 @@
     "*ecs-corelight*",
     "*single-corelight*"
   ],
-  "version": 11201,
+  "version": 11221,
   "settings": {
     "index.default_pipeline": "corelight_main_pipeline"
   }
