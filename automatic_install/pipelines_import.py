@@ -54,8 +54,6 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
         postData = f.read()
     run = 1
     uri = baseURI + "/_ingest/pipeline/"  + pipeline
-    if "template" in pipeline:
-        uri = baseURI + "/_template/" + pipeline
 
     print("URI = %s" % uri)
     # print "Uploading data to: %s" %uri    
@@ -124,15 +122,5 @@ def main():
     print("Uploading schemas to", baseURI)
 
     testConnection(session, baseURI)
-    # Prompt to skip loading ingest pipelines #ie: if using logstash to do all the parsing
-    load_ingest_pipelines = input_bool("Use ingest pipelines? (if you are using Logstash to perform ECS and normalization then select no)", default=True)
-    for f in glob.glob("template_corelight*"):
-        #if f != "template_corelight_metrics_and_stats":
-        exportToElastic(session, baseURI, f)
-    if load_ingest_pipelines:
-        for f in glob.glob("corelight*"):
-            exportToElastic(session, baseURI, f)
-    else:
-        pass
 if __name__ == "__main__":
     main()
