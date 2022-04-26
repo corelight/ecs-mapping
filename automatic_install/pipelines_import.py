@@ -76,8 +76,6 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
 def elasticDel(session, baseURI, pipeline,  retry):
 
     uri = baseURI + "/_ingest/pipeline/"  + pipeline
-    if pipeline.endswith("-policy"):
-        uri = baseURI + "/_enrich/policy/" + pipeline
 
     print("deleting uri = %s" % uri)
     response = session.delete(uri, timeout=5)
