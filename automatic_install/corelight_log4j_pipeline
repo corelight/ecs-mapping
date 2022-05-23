@@ -1,0 +1,89 @@
+{
+    "description" : "Corelight log4j pipeline",
+    "processors" : [
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_suffix",
+          "value": "various",
+          "ignore_failure": false
+        }
+      },
+      {
+        "rename": {
+          "field": "target_port",
+          "target_field": "log4j.target_port",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "value",
+          "target_field": "log4j.value",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "http_uri",
+          "target_field": "log4j.http_uri",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "method",
+          "target_field": "log4j.method",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "matched_value",
+          "target_field": "log4j.matched_value",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "is_orig",
+          "target_field": "log4j.is_orig",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "target_host",
+          "target_field": "log4j.target_host",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "uri",
+          "target_field": "log4j.uri",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "matched_name",
+          "target_field": "log4j.matched_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "name",
+          "target_field": "log4j.name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "stem",
+          "target_field": "log4j.stem",
+          "ignore_failure": true
+        }
+      }
+    ]
+}
