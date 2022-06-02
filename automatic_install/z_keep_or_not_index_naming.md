@@ -38,8 +38,8 @@ the following field `temporary_metadata_index_name_suffix` should be set under e
   "temporary_metadata_index_name_suffix": "x509"
 
 ## Metrics type
-"temporary_metadata_index_name_prefix": "corelight-zeek"
-- corelight-zeek-metrics-{{event.dataset}}-yyyy-MM-dd
+"temporary_metadata_index_name_prefix": "zeek-corelight"
+- zeek-corelight-metrics-{{event.dataset}}-yyyy-MM-dd
   - corelight_metrics_bro
   - corelight_metrics_cpu
   - corelight_metrics_disk
@@ -51,8 +51,8 @@ the following field `temporary_metadata_index_name_suffix` should be set under e
   - corelight_metrics_system
   "temporary_metadata_index_name_suffix": "metrics-{{event.dataset}}"
 ## Stats type
-"temporary_metadata_index_name_prefix": "corelight-zeek"
-- corelight-zeek-stats-{{event.dataset}}-yyyy-MM-dd
+"temporary_metadata_index_name_prefix": "zeek-corelight"
+- zeek-corelight-stats-{{event.dataset}}-yyyy-MM-dd
   - namecache
   - loaded_scripts
   - suricata_stats
@@ -65,7 +65,7 @@ the following field `temporary_metadata_index_name_suffix` should be set under e
   - corelight_weird_stats
   "temporary_metadata_index_name_suffix": "stats-{{event.dataset}}"
 ## System Related Info type
-"temporary_metadata_index_name_prefix": "corelight-zeek"
-- corelight-zeek-system-{{event.dataset}}-yyyy-MM-dd
+"temporary_metadata_index_name_prefix": "zeek-corelight"
+- zeek-corelight-system-{{event.dataset}}-yyyy-MM-dd
   - corelight_audit_log
   "temporary_metadata_index_name_suffix": "system-{{event.dataset}}"
