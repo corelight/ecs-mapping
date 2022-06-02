@@ -1,0 +1,110 @@
+{
+  "description": "Corelight Log4j pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "intrusion_detection",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "http_uri",
+        "target_field": "url.original",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "is_orig",
+        "target_field": "log4j.is_orig",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "matched_name",
+        "target_field": "log4j.matched_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "matched_value",
+        "target_field": "log4j.matched_value",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "method",
+        "target_field": "http.request.method",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "name",
+        "target_field": "log4j.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "stem",
+        "target_field": "log4j.stem",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "target_host",
+        "target_field": "url.domain",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "target_port",
+        "target_field": "log4j.target_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uri",
+        "target_field": "url.path",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "value",
+        "target_field": "log4j.value",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "destination.domain",
+        "value" : "{{url.domain}}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "destination.port",
+        "value" : "{{log4j.target_port}}",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
