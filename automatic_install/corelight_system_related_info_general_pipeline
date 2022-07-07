@@ -16,6 +16,13 @@
       }
     },
     {
+      "set": {
+        "field": "event.category",
+        "value": "system",
+        "ignore_failure": true
+      }
+    },
+    {
       "pipeline": {
         "description": "Logs that are system related.",
         "if": "ctx.event.dataset == 'corelight_audit_log'",

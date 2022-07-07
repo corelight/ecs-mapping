@@ -247,13 +247,6 @@
       }
     },
     {
-      "rename": {
-        "field": "local_orig",
-        "target_field": "file.local_origin",
-        "ignore_failure": true
-      }
-    },
-    {
       "remove": {
         "field": "id",
         "ignore_failure": true,

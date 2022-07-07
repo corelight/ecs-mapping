@@ -4,7 +4,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "observations",
+        "value": "iam",
         "ignore_failure": true
       }
     }

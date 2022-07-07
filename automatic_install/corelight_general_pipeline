@@ -207,14 +207,14 @@
     {
       "rename": {
         "field": "inner_vlan",
-        "target_field": "network.vlan.inner.id",
+        "target_field": "network.inner.vlan.id",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "vlan_inner",
-        "target_field": "network.vlan.inner.id",
+        "target_field": "network.inner.vlan.id",
         "ignore_failure": true
       }
     },
@@ -242,7 +242,7 @@
     {
       "set": {
         "field": "labels.corelight.ecs_version",
-        "value": "1.9.0.1",
+        "value": "1.9.0.2",
         "ignore_failure": true
       }
     },
