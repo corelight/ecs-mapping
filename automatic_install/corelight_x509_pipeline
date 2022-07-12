@@ -212,6 +212,20 @@
     },
     {
       "rename": {
+        "field": "client_cert",
+        "target_field": "file.x509.client_cert",
+        "if": "(ctx.containsKey('client_cert'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "host_cert",
+        "target_field": "file.x509.host_cert",
+        "if": "(ctx.containsKey('host_cert'))"
+      }
+    },
+    {
+      "rename": {
         "field": "logcert",
         "target_field": "file.x509.logcert",
         "ignore_missing": true
