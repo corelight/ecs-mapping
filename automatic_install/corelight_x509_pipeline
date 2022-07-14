@@ -219,6 +219,13 @@
     },
     {
       "rename": {
+        "field": "fingerprint",
+        "target_field": "file.hash.sha256",
+        "if": "(ctx.containsKey('fingerprint'))"
+      }
+    },
+    {
+      "rename": {
         "field": "host_cert",
         "target_field": "file.x509.host_cert",
         "if": "(ctx.containsKey('host_cert'))"
