@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight Suricata pipeline",
+  "description" : "Corelight Suricata pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -11,7 +11,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "detection",
+        "value": "intrusion_detection",
         "ignore_failure": true
       }
     },
@@ -40,14 +40,14 @@
       "rename": {
         "field": "alert.action",
         "target_field": "rule.action",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "alert_action",
         "target_field": "rule.action",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -68,14 +68,14 @@
       "rename": {
         "field": "alert.category",
         "target_field": "rule.category",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "alert_category",
         "target_field": "rule.category",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -96,14 +96,14 @@
       "rename": {
         "field": "alert.gid",
         "target_field": "rule.gid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "alert_gid",
         "target_field": "rule.gid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -124,14 +124,14 @@
       "rename": {
         "field": "alert.rev",
         "target_field": "rule.version",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "alert_rev",
         "target_field": "rule.version",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -152,14 +152,14 @@
       "rename": {
         "field": "alert.severity",
         "target_field": "event.severity",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "alert_severity",
         "target_field": "event.severity",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -180,14 +180,14 @@
       "rename": {
         "field": "alert.signature",
         "target_field": "rule.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "alert_signature",
         "target_field": "rule.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -208,63 +208,63 @@
       "rename": {
         "field": "alert.signature_id",
         "target_field": "rule.id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "alert_signature_id",
         "target_field": "rule.id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "community_id",
         "target_field": "network.community_id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "metadata",
         "target_field": "suricata.metadata",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "suri_id",
         "target_field": "log.id.suri_id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "service",
         "target_field": "network.protocol",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "flow_id",
         "target_field": "log.id.flow_id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "tx_id",
         "target_field": "log.id.tx_id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "pcap_cnt",
         "target_field": "suricata.pcap_count",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

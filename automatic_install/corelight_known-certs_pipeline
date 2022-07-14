@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Known-certs pipeline",
+  "description": "Corelight Known-certs pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -17,30 +17,30 @@
     },
     {
       "rename": {
-        "field": "host",
+        "field": "temp_host",
         "target_field": "host.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "issuer_subject",
         "target_field": "known_certs.issuer_subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "serial",
         "target_field": "known_certs.serial",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "subject",
         "target_field": "known_certs.subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -52,10 +52,18 @@
       }
     },
     {
+      "set": {
+        "field": "known_certs.host",
+        "value": "{{host.ip}}",
+        "ignore_failure": true,
+        "if": "(ctx.containsKey('port_num'))"
+      }
+    },
+    {
       "rename": {
         "field": "port_num",
         "target_field": "known_certs.port",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

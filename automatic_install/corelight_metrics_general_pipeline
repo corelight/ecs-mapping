@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Zeek Metrics general pipeline",
+  "description": "Corelight Zeek Metrics general pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -21,12 +21,12 @@
         "value": "diagnostics",
         "ignore_failure": true
       }
-    },{
+    },
+    {
       "pipeline": {
         "if": "ctx.event.dataset == 'corelight_metrics_utilization'",
-       "name": "corelight_mertics_utilization_pipeline"
-   }
-
+       "name": "corelight_metrics_utilization_pipeline"
+      }
     }
 //    {
 //      "pipeline": {

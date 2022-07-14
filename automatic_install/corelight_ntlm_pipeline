@@ -1,5 +1,5 @@
 {
-  "description": "Corelight NTLM pipeline",
+  "description": "Corelight NTLM pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -19,42 +19,42 @@
       "rename": {
         "field": "domainname",
         "target_field": "source.domain",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "hostname",
         "target_field": "source.hostname",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "username",
         "target_field": "source.user.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_nb_computer_name",
         "target_field": "ntlm.domain.netbios_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_tree_name",
         "target_field": "ntlm.domain.tree",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_dns_computer_name",
         "target_field": "destination.domain",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -77,7 +77,7 @@
       "rename": {
         "field": "success",
         "target_field": "ntlm.successful",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

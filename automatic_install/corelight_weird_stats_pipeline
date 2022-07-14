@@ -1,18 +1,18 @@
 {
-  "description" : "Corelight Weird stats pipeline",
+  "description" : "Corelight Weird stats pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "rename": {
         "field": "name",
         "target_field": "labels.weird.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "num_seen",
         "target_field": "labels.weird.number_seen",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     }
   ]

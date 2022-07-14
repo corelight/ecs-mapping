@@ -1,5 +1,5 @@
 {
-    "description" : "Corelight VPN pipeline",
+    "description" : "Corelight VPN pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
     "processors" : [
       {
         "set": {
@@ -32,21 +32,14 @@
       {
         "rename": {
           "field": "ja3",
-          "target_field": "vpn.ja3",
+          "target_field": "tls.client.ja3",
           "ignore_failure": true
         }
       },
       {
         "rename": {
           "field": "ja3s",
-          "target_field": "vpn.ja3s",
-          "ignore_failure": true
-        }
-      },
-      {
-        "rename": {
-          "field": "duration",
-          "target_field": "event.duration",
+          "target_field": "tls.server.ja3s",
           "ignore_failure": true
         }
       },
@@ -97,6 +90,14 @@
           "field": "vpn_type",
           "target_field": "vpn.name",
           "ignore_failure": true
+        }
+      },
+      {
+        "set" : {
+          "field" : "destination.domain",
+          "value" : "{{vpn.server_name}}",
+          "ignore_failure": true,
+          "if" : "(ctx.containsKey('query'))"
         }
       }
     ]

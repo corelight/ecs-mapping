@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight GQUIC pipeline",
+  "description" : "Corelight GQUIC pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -19,49 +19,49 @@
       "rename": {
         "field": "orig_fuids",
         "target_field": "log.id.orig_fuids",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "cyu",
         "target_field": "gquic.cyu",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "cyutags",
         "target_field": "gquic.cyutags",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_name",
         "target_field": "destination.domain",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "tag_count",
         "target_field": "gquic.tag_count",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "user_agent",
         "target_field": "user_agent.original",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version",
         "target_field": "gquic.version",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

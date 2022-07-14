@@ -1,5 +1,5 @@
 {
-  "description": "Corelight FTP pipeline",
+  "description": "Corelight FTP pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -19,77 +19,77 @@
       "rename": {
         "field": "fuid",
         "target_field": "log.id.fuid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "user",
         "target_field": "source.user.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "password",
         "target_field": "source.user.password",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "arg",
         "target_field": "ftp.args",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "command",
         "target_field": "ftp.command",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "mime_type",
         "target_field": "file.mime_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "cwd",
         "target_field": "file.path",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "reply_msg",
         "target_field": "ftp.response.message",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "passive",
         "target_field": "ftp.passive",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "file_size",
         "target_field": "file.size",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "reply_code",
         "target_field": "ftp.response.code",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

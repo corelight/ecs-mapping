@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight etc_viz pipeline",
+  "description" : "Corelight etc_viz pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -12,15 +12,15 @@
       "rename": {
         "field": "server_a",
         "target_field": "destination.address",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
-        "rename": {
-            "field": "server_p",
-            "target_field": "destination.port",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "server_p",
+        "target_field": "destination.port",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -30,11 +30,11 @@
       }
     },
     {
-        "rename": {
-            "field": "c2s_viz.pdu1_enc",
-            "target_field": "client.viz.pdu1_enc",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "c2s_viz.pdu1_enc",
+        "target_field": "client.viz.pdu1_enc",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -44,11 +44,11 @@
       }
     },
     {
-        "rename": {
-            "field": "c2s_viz.clr_ex",
-            "target_field": "client.viz.clr_ex",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "c2s_viz.clr_ex",
+        "target_field": "client.viz.clr_ex",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -58,11 +58,11 @@
       }
     },
     {
-        "rename": {
-            "field": "c2s_viz.size",
-            "target_field": "client.viz.size",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "c2s_viz.size",
+        "target_field": "client.viz.size",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -72,11 +72,11 @@
       }
     },
     {
-        "rename": {
-            "field": "c2s_viz.clr_frac",
-            "target_field": "client.viz.clr_frac",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "c2s_viz.clr_frac",
+        "target_field": "client.viz.clr_frac",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -86,11 +86,11 @@
       }
     },
     {
-        "rename": {
-            "field": "c2s_viz.enc_frac",
-            "target_field": "client.viz.enc_frac",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "c2s_viz.enc_frac",
+        "target_field": "client.viz.enc_frac",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -100,11 +100,11 @@
       }
     },
     {
-        "rename": {
-            "field": "c2s_viz.enc_dev",
-            "target_field": "client.viz.enc_dev",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "c2s_viz.enc_dev",
+        "target_field": "client.viz.enc_dev",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -114,11 +114,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.clr_frac",
-            "target_field": "server.viz.clr_frac",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.clr_frac",
+        "target_field": "server.viz.clr_frac",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -128,11 +128,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.clr_ex",
-            "target_field": "server.viz.clr_ex",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.clr_ex",
+        "target_field": "server.viz.clr_ex",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -142,11 +142,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.pdu1_enc",
-            "target_field": "server.viz.pdu1_enc",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.pdu1_enc",
+        "target_field": "server.viz.pdu1_enc",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -156,11 +156,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.size",
-            "target_field": "server.viz.size",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.size",
+        "target_field": "server.viz.size",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -170,11 +170,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.enc_frac",
-            "target_field": "server.viz.enc_frac",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.enc_frac",
+        "target_field": "server.viz.enc_frac",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -184,11 +184,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.enc_dev",
-            "target_field": "server.viz.enc_dev",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.enc_dev",
+        "target_field": "server.viz.enc_dev",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -198,11 +198,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.clr_frac",
-            "target_field": "server.viz.enc_frac",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.clr_frac",
+        "target_field": "server.viz.enc_frac",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -212,11 +212,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.clr_ex",
-            "target_field": "server.viz.clr_ex",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.clr_ex",
+        "target_field": "server.viz.clr_ex",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -226,11 +226,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.pdu1_enc",
-            "target_field": "server.viz.pdu1_enc",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.pdu1_enc",
+        "target_field": "server.viz.pdu1_enc",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -240,11 +240,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.size",
-            "target_field": "server.viz.size",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.size",
+        "target_field": "server.viz.size",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -254,11 +254,11 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.size",
-            "target_field": "server.viz.size",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.size",
+        "target_field": "server.viz.size",
+        "ignore_missing": true
+      }
     },
     {
       "dot_expander": {
@@ -268,18 +268,18 @@
       }
     },
     {
-        "rename": {
-            "field": "s2c_viz.clr_ex",
-            "target_field": "server.viz.clr_ex",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "s2c_viz.clr_ex",
+        "target_field": "server.viz.clr_ex",
+        "ignore_missing": true
+      }
     },
     {
-        "rename": {
-            "field": "viz_stat",
-            "target_field": "labels.viz_stat",
-            "ignore_failure": true
-        }
+      "rename": {
+        "field": "viz_stat",
+        "target_field": "labels.viz_stat",
+        "ignore_missing": true
+      }
     }
-  ] 
+  ]
 }

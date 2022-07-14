@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Postprocess Metadata Destination Domain Pipeline",
+  "description": "Corelight Postprocess Metadata Destination Domain Pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "script" : {
@@ -48,7 +48,8 @@
     {
       "remove": {
         "field": [ "temp_without_top_level" ],
-        "ignore_failure": true
+        "ignore_failure": true,
+        "ignore_missing": true
       }
     }
   ]

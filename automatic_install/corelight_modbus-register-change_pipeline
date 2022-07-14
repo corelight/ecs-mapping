@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight Modbus-Register-Change pipeline",
+  "description" : "Corelight Modbus-Register-Change pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -19,28 +19,28 @@
       "rename": {
         "field": "delta",
         "target_field": "modbus.delta",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "new_val",
         "target_field": "modbus.new_value",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "old_val",
         "target_field": "modbus.old_value",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "register",
         "target_field": "modbus.register",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
