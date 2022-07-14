@@ -1,0 +1,63 @@
+{
+  "order" : 10,
+  "index_patterns": [
+    "*ecs-corelight*",
+    "*single-corelight*"
+  ],
+  "version": 1901,
+  "settings": {
+    "index": {
+      "mapping": {
+        "coerce": true,
+        "ignore_malformed": true,
+        "total_fields.limit": 10000
+      },
+      "refresh_interval": "15s"
+    },
+    "index.default_pipeline": "corelight_main_pipeline",
+    "number_of_shards": "1",
+    "number_of_replicas": "0"
+  },
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "strings_as_keyword": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "ignore_above": 4096,
+            "type": "keyword",
+            "fields": {
+              "text": {
+                "type": "text"
+              }
+            }
+          }
+        }
+      },
+      {
+        "numeric_long_fields": {
+          "match_mapping_type": "long",
+          "mapping": {
+            "type": "long"
+          }
+        }
+      },
+      {
+        "numeric_double_fields": {
+          "match_mapping_type": "double",
+          "mapping": {
+            "type": "double"
+          }
+        }
+      },
+      {
+        "boolean_fields": {
+          "match_mapping_type": "boolean",
+          "mapping": {
+            "type": "boolean"
+          }
+        }
+      }
+    ]
+  }
+}

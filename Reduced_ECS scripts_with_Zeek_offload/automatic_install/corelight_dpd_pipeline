@@ -1,0 +1,54 @@
+{
+  "description" : "Corelight DPD pipeline",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "miscellaneous",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "analyzer",
+        "target_field": "dpd.analyzer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "failure_reason",
+        "target_field": "dpd.failure_reason",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "packet_segment",
+        "target_field": "dpd.packet_segment",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "ignore_failure": true,
+        "ignore_missing" : true,
+        "field": "id"
+      }
+    }
+  ]
+}

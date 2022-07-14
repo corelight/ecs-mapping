@@ -72,18 +72,17 @@ def exportToElastic(session, baseURI, pipeline, retry=4):
         response = session.put(uri, data=postData, timeout=10)
         response = checkRequest(response)
         if response == 400 or response == 409:
-            print(response)
-          #  if pipeline == "zeek-enrichment-conn-policy":
+            if pipeline == "zeek-enrichment-conn-policy":
                 # Delete the pipeline that calls the enrich policy before we can delete the enrich policy itself. https://www.elastic.co/guide/en/elasticsearch/reference/master/enrich-setup.html#update-enrich-policies
-        #        response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry) # Keep to delete old one, can ignore these errors
-        #        response = elasticDel(session, baseURI, "xpack-corelight_additional_pipeline", retry)
-        #        response = elasticDel(session, baseURI, "xpack-corelight_conn_enrich_pipeline", retry)
-        #        response = elasticDel(session, baseURI, "zeek-enrichment-conn-policy", retry)
-                #print(response)
-                #response = elasticDel(session, baseURI, pipeline, retry)
-                # print(response)
-                # time.sleep(5)
-                #response = 500
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_pipeline", retry) # Keep to delete old one, can ignore these errors
+                response = elasticDel(session, baseURI, "xpack-corelight_additional_pipeline", retry)
+                response = elasticDel(session, baseURI, "xpack-corelight_conn_enrich_pipeline", retry)
+                response = elasticDel(session, baseURI, "zeek-enrichment-conn-policy", retry)
+                print(response)
+                response = elasticDel(session, baseURI, pipeline, retry)
+                print(response)
+                time.sleep(5)
+                response = 500
 
     if response == 200:
         return 
@@ -137,8 +136,6 @@ def get_config():
 def main():
     requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
-    input("The Install of the ECS has changed and Templets are no longer installed Please go to https://github.com/corelight/ecs-templates and install the correct templates for you setup")
-
     print("\nList of pipelines to be installed to Elasticsearch:\n")
     for f in glob.glob("*corelight*"):
         print(f)
@@ -148,25 +145,23 @@ def main():
     print("Uploading schemas to", baseURI)
 
     testConnection(session, baseURI)
-
-    # Remove adding Templates to work with the new GitHub setup
-    #xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
-    #if xpack:
-        #exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
-        #exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
-        #exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
-        #exportToElastic(session, baseURI, "xpack-corelight_additional_pipeline")
-        #exportToElastic(session, baseURI, "xpack-corelight_conn_enrich_pipeline")
-    #else:
-        #pass
-    #for f in glob.glob("template_corelight*"):
-    #    if f != "template_corelight_metrics_and_stats":
-    #        exportToElastic(session, baseURI, f)
+    xpack = input_bool("Will X-Pack be enabled? Disabling this will disable Enrich tables and Geolocation", default=True)
+    if xpack:
+        exportToElastic(session, baseURI, "zeek-enrichment-conn-dictionary", retry=1)
+        exportToElastic(session, baseURI, "zeek-enrichment-conn-policy")
+        exportToElastic(session, baseURI, "zeek-enrichment-conn-policy/_execute")
+        exportToElastic(session, baseURI, "xpack-corelight_additional_pipeline")
+        exportToElastic(session, baseURI, "xpack-corelight_conn_enrich_pipeline")
+    else:
+        pass
+    for f in glob.glob("template_corelight*"):
+        if f != "template_corelight_metrics_and_stats":
+            exportToElastic(session, baseURI, f)
     for f in glob.glob("corelight*"):
         exportToElastic(session, baseURI, f)
-    #if xpack:
-     #   exportToElastic(session, baseURI, "xpack-template_corelight")
-    #else:
-    #    exportToElastic(session, baseURI, "non-xpack-template_corelight")
+    if xpack:
+        exportToElastic(session, baseURI, "xpack-template_corelight")
+    else:
+        exportToElastic(session, baseURI, "non-xpack-template_corelight")
 if __name__ == "__main__":
     main()
