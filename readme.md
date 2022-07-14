@@ -5,13 +5,15 @@ Corelight ECS Ingest Pipeline Mapping
 Overview
 --------
 The Elastic Common Schema (https://github.com/elastic/ecs) is a way to unify field names across multiple data sources in Elastic.  
-This mapping connects either Corelight or Zeek data types to relevant Elastic Common Schema field names, using Elasticsearch ingest node pipelines. A few notes on how the ingest pipelines work:
+This repository uses Elastic ingest pipelines to ingest data from Corelight or Zeek data and maps the fields to the Elastic Common Schema.  
+A few notes on how the ingest pipelines work:
+- Requires Elasticsearch index templates from the [Corelight ECS index templates](https://github.com/corelight/ecs-templates) repository
 - Field names are replaced in this operation
 - Supports both open source Zeek and Corelight
   - Corelight => v21
   - Zeek => 4.x
 - The ingest pipelines can be uploaded directly to Elasticsearch (API) or through Kibana (manually)
-- Once done, the mapping applies to new data only and should be done using a new index.  This is because (due to how Elastic works) if the ingestion is done in a mixed index it will cause problems with field name conflicts between old and new field names. If this is a particular concern, you can work around it by having two exports to Elastic - one to a new index with the direct Elastic integration (which will have the new ECS field names) and one to the old index using the JSON exporter (which will have the original Zeek field names).
+- Once done, the pipelines apply to new data only and should be done using a new index.  This is because (due to how Elastic works) if the ingestion is done in a mixed index it will cause problems with field name conflicts between old and new field names. If this is a particular concern, you can work around it by having two exports to Elastic - one to a new index with the direct Elastic integration (which will have the new ECS field names) and one to the old index using the JSON exporter (which will have the original Zeek field names).
 - Using ingest pipelines will increase CPU consumption within your Elasticsearch nodes due to the real time field mapping.
 - ECS version [1.12](https://www.elastic.co/guide/en/ecs/1.12/ecs-reference.html)
 
@@ -33,6 +35,7 @@ Automatic installation (recommended)
        Note: Corelight recommends using the Python3 script for installation. However if you can’t run Python3 in your environment, there’s also a bash script that executes  the installation (ecs_mapping/automatic_ install/pipelines_import.sh).
  4. Respond to the configuration prompts to complete the installation.
  5. Configure your Corelight Sensor to send events to the new Elasticsearch index.
+ 6. Load the elasticsearch index templates from the [Corelight ECS Elasticsearch Templates](https://github.com/corelight/ecs-templates) repository. Make sure to use the templates from within the "ingest_pipelines" folder as well.
 
 Manual installation
 1. In the Kibana sidebar, open Dev Tools to access the console.
@@ -45,9 +48,10 @@ Manual installation
   Change the values of the index_patterns fields according to your environment and execute the request.
 6. Copy the contents of the corelight_general_pipeline file from the ecs-mapping repository into the Kibana console and execute the request. 
   This command maps the ECS datasets to the appropriate Corelight mapping file.
-7.  One at a time, copy the contents of each pipeline file (corelight_*_pipeline) into the Kibana console and execute the request. 
+7. One at a time, copy the contents of each pipeline file (corelight_*_pipeline) into the Kibana console and execute the request. 
    These commands install each pipeline to your environment.
 8. Configure your Corelight Sensor to send events to the new Elasticsearch index.
+9. Load the elasticsearch index templates from the [Corelight ECS Elasticsearch Templates](https://github.com/corelight/ecs-templates) repository. Make sure to use the templates from within the "ingest_pipelines" folder as well.
     
  In this version both reduced and non reduced logs are in the same pipeline
 
