@@ -1,5 +1,5 @@
 {
-  "description": "Corelight OCSP pipeline",
+  "description": "Corelight OCSP pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -19,105 +19,105 @@
       "rename": {
         "field": "certStatus",
         "target_field": "oscp.certStatus",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "hashAlgorithm",
         "target_field": "oscp.hashAlgorithm",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "issuerKeyHash",
         "target_field": "oscp.issuerKeyHash",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "issuerNameHash",
         "target_field": "oscp.issuerNameHash",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "nextUpdate",
         "target_field": "oscp.nextUpdate",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "revokereason",
         "target_field": "oscp.revokereason",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "revoketime",
         "target_field": "oscp.revoketime",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "serialNumber",
         "target_field": "oscp.serialNumber",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "thisUpdate",
         "target_field": "oscp.thisUpdate",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "request_type",
         "target_field": "oscp.request_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "new_ticket",
         "target_field": "oscp.new_ticket",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_cert_subject",
         "target_field": "oscp.server_cert_subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "service",
         "target_field": "oscp.service",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "from",
         "target_field": "oscp.from",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "till",
         "target_field": "oscp.till",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

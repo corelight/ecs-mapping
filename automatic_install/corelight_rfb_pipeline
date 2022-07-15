@@ -1,5 +1,5 @@
 {
-  "description": "Corelight RFB pipeline",
+  "description": "Corelight RFB pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -19,21 +19,21 @@
       "rename": {
         "field": "client_minor_version",
         "target_field": "source.software.minor",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_major_version",
         "target_field": "source.software.major",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "authentication_method",
         "target_field": "rfb.authentication.method",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -56,49 +56,49 @@
       "rename": {
         "field": "auth",
         "target_field": "rfb.authentication.successful",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "height",
         "target_field": "rfb.desktop_height",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "width",
         "target_field": "rfb.desktop_width",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "share_flag",
         "target_field": "rfb.share_flag",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_major_version",
         "target_field": "destination.software.major",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_minor_version",
         "target_field": "destination.software.minor",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "desktop_name",
         "target_field": "destination.hostname",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

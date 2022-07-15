@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Traceroute pipeline",
+  "description": "Corelight Traceroute pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -11,7 +11,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "detection",
+        "value": "intrusion_detection",
         "ignore_failure": true
       }
     },
@@ -19,7 +19,7 @@
       "rename": {
         "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

@@ -1,5 +1,5 @@
 {
-  "description": "Corelight SSL pipeline",
+  "description": "Corelight SSL pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -17,23 +17,37 @@
     },
     {
       "rename": {
+        "field": "cert_chain_fps",
+        "target_field": "tls.server.cert_chain_fingerprints",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "cert_chain_fuids",
         "target_field": "log.id.cert_chain_fuids",
-        "ignore_failure": true
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_cert_chain_fps",
+        "target_field": "tls.client.cert_chain_fingerprints",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_cert_chain_fuids",
         "target_field": "log.id.client_cert_chain_fuids",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_name",
         "target_field": "tls.client.server_name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -47,35 +61,35 @@
       "rename": {
         "field": "cipher",
         "target_field": "tls.cipher",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_issuer",
         "target_field": "tls.client.issuer",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "orig_certificate_sha1",
         "target_field": "tls.client.hash.sha1",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_subject",
         "target_field": "tls.client.subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "curve",
         "target_field": "tls.curve",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -98,119 +112,119 @@
       "rename": {
         "field": "established",
         "target_field": "tls.established",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "ja3",
         "target_field": "tls.client.ja3",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "ja3s",
         "target_field": "tls.server.ja3s",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "last_alert",
         "target_field": "ssl.last_alert",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "next_protocol",
         "target_field": "tls.next_protocol",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "notary",
         "target_field": "ssl.notary",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "ocsp_status",
         "target_field": "ssl.oscp_status",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "resumed",
         "target_field": "tls.resumed",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "issuer",
         "target_field": "tls.server.issuer",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "resp_certificate_sha1",
         "target_field": "tls.server.hash.sha1",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "subject",
         "target_field": "tls.server.subject",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "valid_ct_logs",
         "target_field": "ssl.valid_ct_logs",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "valid_ct_operators",
         "target_field": "ssl.valid_ct_operators",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "valid_ct_operators_list",
         "target_field": "ssl.valid_ct_operators_list",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "validation_status",
         "target_field": "ssl.validation_status",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version",
         "target_field": "tls.version",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version_num",
         "target_field": "ssl.version_number",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

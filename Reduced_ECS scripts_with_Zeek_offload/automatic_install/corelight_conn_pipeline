@@ -1,0 +1,109 @@
+{
+  "description" : "Corelight Conn pipeline",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "conn",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "source": "if (ctx.local_orig == true && ctx.local_resp == true) {ctx.network_direction = 'internal';} else if (ctx.local_orig == true && ctx.local_resp == false) {ctx.network_direction = 'outbound';} else if (ctx.local_orig == false && ctx.local_resp == true) {ctx.network_direction = 'inbound';} else {ctx.network_direction = 'unknown';}"
+      }
+    },
+    {
+      "rename": {
+        "field": "network_direction",
+        "target_field": "network.direction",
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert" : {
+        "field" : "duration",
+        "type": "float",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.event.duration = (long)(ctx.duration * params.param_c)",
+        "params": {
+          "param_c": 1000000
+        },
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field" : "duration",
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert" : {
+        "field" : "source.bytes",
+        "type": "integer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert" : {
+        "field" : "destination.bytes",
+        "type": "integer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.network_bytes = ctx.source.bytes + ctx.destination.bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.network_ip_bytes = ctx.source.ip_bytes + ctx.destination.ip_bytes",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.network_packets = ctx.source.packets + ctx.destination.packets",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": [
+          "id",
+          "id.orig_h_name.src",
+          "id.orig_h_name.vals",
+          "id.resp_h_name.src",
+          "id.resp_h_name.vals"
+        ],
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

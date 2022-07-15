@@ -1,5 +1,5 @@
 {
-  "description": "Corelight SMTP Links pipeline",
+  "description": "Corelight SMTP Links pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -17,16 +17,16 @@
     },
     {
       "rename": {
-        "field": "host",
+        "field": "temp_host",
         "target_field": "url.domain",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "url",
         "target_field": "url.original",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

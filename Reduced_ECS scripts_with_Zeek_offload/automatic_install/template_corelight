@@ -1601,17 +1601,6 @@
             "ignore_above": 4096,
             "type": "keyword"
           },
-          "inner": {
-            "properties": {
-              "vlan": {
-                "properties": {
-                  "id": {
-                    "type": "long"
-                  }
-                }
-              }
-            }
-          },
           "name": {
             "ignore_above": 4096,
             "type": "keyword"
@@ -2304,7 +2293,7 @@
           "is_originating": {
             "type": "boolean"
           },
-          "local_orig": {
+          "local_origin": {
             "type": "boolean"
           },
           "missing_bytes": {

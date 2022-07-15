@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Intel pipeline",
+  "description": "Corelight Intel pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -11,7 +11,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "detection",
+        "value": "intrusion_detection",
         "ignore_failure": true
       }
     },
@@ -19,35 +19,35 @@
       "rename": {
         "field": "proto",
         "target_field": "network.transport",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "fuid",
         "target_field": "log.id.fuid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "file_mime_type",
         "target_field": "file.mime_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "file_desc",
         "target_field": "intel.file_description",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "matched",
         "target_field": "intel.matched",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

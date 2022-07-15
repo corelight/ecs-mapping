@@ -1,5 +1,5 @@
 {
-  "description": "Corelight SMB-Mapping pipeline",
+  "description": "Corelight SMB-Mapping pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -19,7 +19,7 @@
       "rename": {
         "field": "uid",
         "target_field": "log.id.uid",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -33,7 +33,7 @@
       "rename": {
         "field": "native_file_system",
         "target_field": "smb.native_file_system",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -48,21 +48,21 @@
       "rename": {
         "field": "path",
         "target_field": "smb.path",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "share_type",
         "target_field": "smb.share_type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "service",
         "target_field": "smb.service",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {

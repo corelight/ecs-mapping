@@ -50,6 +50,13 @@ the following field `temporary_metadata_index_name_suffix` should be set under e
   - corelight_metrics_suricata
   - corelight_metrics_system
   "temporary_metadata_index_name_suffix": "metrics-{{event.dataset}}"
+## Netcontrol type
+"temporary_metadata_index_name_prefix": "zeek-corelight"
+- zeek-corelight-netcontrol-{{event.dataset}}-yyyy-MM-dd
+  - netcontrol
+  - netcontrol_drop
+  - netcontrol_shunt
+  "temporary_metadata_index_name_suffix": "netcontrol-{{event.dataset}}"
 ## Stats type
 "temporary_metadata_index_name_prefix": "zeek-corelight"
 - zeek-corelight-stats-{{event.dataset}}-yyyy-MM-dd

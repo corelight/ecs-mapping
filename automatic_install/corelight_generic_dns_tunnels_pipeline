@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Generic DNS Tunnels pipeline",
+  "description": "Corelight Generic DNS Tunnels pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -11,7 +11,7 @@
     {
       "set": {
         "field": "event.category",
-        "value": "detection",
+        "value": "intrusion_detection",
         "ignore_failure": true
       }
     },
@@ -26,7 +26,7 @@
       "rename": {
         "field": "dns_client",
         "target_field": "source.ip",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -40,14 +40,14 @@
       "rename": {
         "field": "bytes",
         "target_field": "source.bytes",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "capture_secs",
         "target_field": "encrypted_dns_tunnels_capture_secs",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     }
   ]

@@ -1,0 +1,26 @@
+{
+  "description": "Corelight metrics utilization pipeline",
+  "processors": [
+    {
+      "rename": {
+        "field": "smartpcap",
+        "target_field": "utilization.corelight.smartpcap",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata",
+        "target_field": "utilization.corelight.suricata",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sensor",
+        "target_field": "utilization.corelight.sensor",
+        "ignore_failure": true
+      }
+    }
+    ]
+}

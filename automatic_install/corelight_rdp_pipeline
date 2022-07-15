@@ -1,5 +1,5 @@
 {
-  "description": "Corelight RDP pipeline",
+  "description": "Corelight RDP pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -19,21 +19,21 @@
       "rename": {
         "field": "cert_count",
         "target_field": "rdp.certificate.count",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "cert_permanent",
         "target_field": "rdp.certificate.permanent",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "cert_type",
         "target_field": "rdp.certificate.type",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -48,14 +48,14 @@
       "rename": {
         "field": "client_build",
         "target_field": "rdp.source.build",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_dig_product_id",
         "target_field": "rdp.source.dig_product_id",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -70,56 +70,56 @@
       "rename": {
         "field": "client_name",
         "target_field": "rdp.source.name",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "cookie",
         "target_field": "rdp.cookie",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "desktop_height",
         "target_field": "rdp.desktop_height",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "desktop_width",
         "target_field": "rdp.desktop_width",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "encryption_level",
         "target_field": "rdp.encryption_level",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "encryption_method",
         "target_field": "rdp.encryption_method",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "keyboard_layout",
         "target_field": "rdp.keyboard_layout",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "requested_color_depth",
         "target_field": "rdp.requested_color_depth",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -142,28 +142,28 @@
       "rename": {
         "field": "result",
         "target_field": "rdp.result",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "auth_success",
         "target_field": "rdp.auth_successful",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },    
     {
       "rename": {
         "field": "security_protocol",
         "target_field": "rdp.selected_protocol",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "ssl",
         "target_field": "rdp.ssl",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
@@ -177,35 +177,35 @@
       "rename": {
         "field": "channels_joined",
         "target_field": "rdp.channels_joined",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "inferences",
         "target_field": "rdp.inferences",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "rdpeudp_uid",
-        "target_field": "log.id.rdpeudp_uidp",
-        "ignore_failure": true
+        "target_field": "log.id.rdpeudp_uid",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "rdfp_string",
         "target_field": "rdp.rdfp_string",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "rdfp_hash",
         "target_field": "rdp.rdfp_hash",
-        "ignore_failure": true
+        "ignore_missing": true
       }
     }
   ]

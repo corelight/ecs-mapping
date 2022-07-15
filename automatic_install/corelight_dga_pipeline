@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight DGA pipeline",
+  "description" : "Corelight DGA pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -11,7 +11,7 @@
     {
       "set" : {
         "field" : "event.category",
-        "value" : "network",
+        "value" : "intrusion_detection",
         "ignore_failure": true
       }
     },

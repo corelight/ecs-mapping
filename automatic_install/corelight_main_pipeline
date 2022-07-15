@@ -1,6 +1,6 @@
 {
-  "description": "A pipeline of pipelines for Corelight log files",
-  "version": 1901,
+  "description": "A pipeline of pipelines for Corelight log files. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
   "processors": [
     {
       "pipeline": {
@@ -430,8 +430,15 @@
     },
     {
       "set": {
-        "description": "This field can be used to determine if a data type is a metric or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle stats - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
+        "description": "This field can be used to determine if a data type is a stats or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle stats - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
         "field": "temporary_metadata_is_stats_log",
+        "value": "no"
+      }
+    },
+    {
+      "set": {
+        "description": "This field can be used to determine if a data type is a netcontrol or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle stats - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
+        "field": "temporary_metadata_is_netcontrol_log",
         "value": "no"
       }
     },
@@ -445,28 +452,35 @@
     {
       "pipeline": {
         "description": "Logs that are system related.",
-        "if": "ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'auditlog'",
+        "if": "ctx.event.dataset == 'audit' || ctx.event.dataset == 'auditlog' || ctx.event.dataset == 'broker' || ctx.event.dataset == 'cluster' || ctx.event.dataset == 'config' || ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'corelight_license_capacity' || ctx.event.dataset == 'loaded_scripts'",
         "name": "corelight_system_related_info_general_pipeline"
       }
     },
     {
       "pipeline": {
         "description": "Logs that are metrics.",
-        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_utilization' ||ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system'",
+        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_docker' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_metrics_utilization'",
         "name": "corelight_metrics_general_pipeline"
       }
     },
     {
       "pipeline": {
         "description": "Logs that are stats.",
-        "if": "ctx.event.dataset == 'namecache' || ctx.event.dataset == 'loaded_scripts' || ctx.event.dataset == 'suricata_stats' ||  ctx.event.dataset == 'reporter'  ||  ctx.event.dataset == 'stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'corelight_profiling' || ctx.event.dataset == 'packet_filter' || ctx.event.dataset == 'weird_stats'",
+        "if": "ctx.event.dataset == 'capture_loss' || ctx.event.dataset == 'conn_doctor' || ctx.event.dataset == 'corelight_cloud_stats' || ctx.event.dataset == 'corelight_overall_capture_loss' || ctx.event.dataset == 'corelight_profiling'|| ctx.event.dataset == 'corelight_weird_stats' || ctx.event.dataset == 'corelight_weird_stats' || ctx.event.dataset == 'namecache'|| ctx.event.dataset == 'packet_filter' || ctx.event.dataset == 'reporter' || ctx.event.dataset == 'smartpcap-stats' || ctx.event.dataset == 'stats' || ctx.event.dataset == 'suricata_stats' || ctx.event.dataset == 'weird_stats'",
         "name": "corelight_stats_general_pipeline"
       }
     },
     {
       "pipeline": {
+        "description": "Logs that are netcontrol.",
+        "if": "ctx.event.dataset == 'netcontrol' || ctx.event.dataset == 'netcontrol_drop' || ctx.event.dataset == 'netcontrol_shunt' || ctx.event.dataset == 'openflow'",
+        "name": "corelight_netcontrol_general_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "description": "If is a metadata log do extra enrichment and parsing. Metadata log AKA application or network protocol log.. ie: not a metric, stat, or other system log.",
-        "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'",
+        "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_netcontrol_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'",
         "name": "corelight_postprocess_metadata_logs_pipeline"
       }
     },
