@@ -59,6 +59,20 @@
       },
       {
         "rename": {
+          "field": "orig_city",
+          "target_field": "source.geo.city_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "orig_region",
+          "target_field": "source.geo.region_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
           "field": "resp_cc",
           "target_field": "destination.geo.country_iso_code",
           "ignore_failure": true
@@ -68,6 +82,13 @@
         "rename": {
           "field": "resp_city",
           "target_field": "destination.geo.city_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "resp_region",
+          "target_field": "destination.geo.region_name",
           "ignore_failure": true
         }
       },
