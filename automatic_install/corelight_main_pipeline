@@ -424,7 +424,7 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'log4j' || ctx.event.dataset == 'log4shell'",
-        "name": "corelight_etc_viz_pipeline"
+        "name": "corelight_log4j_pipeline"
       }
     },
     {
