@@ -171,6 +171,42 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'known-certs'",
+        "name": "corelight_known-certs_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-devices'",
+        "name": "corelight_known-devices_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-domains'",
+        "name": "corelight_known-domains_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-hosts'",
+        "name": "corelight_known-hosts_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-names'",
+        "name": "corelight_known-names_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-services'",
+        "name": "corelight_known-services_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'modbus'",
         "name": "corelight_modbus_pipeline"
       }
