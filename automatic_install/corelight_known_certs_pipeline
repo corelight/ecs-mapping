@@ -25,52 +25,30 @@
     {
       "rename": {
         "field": "issuer_subject",
-        "target_field": "known_certs.issuer_subject",
+        "target_field": "file.x509.issuer.distinguished_name",
         "ignore_missing": true
       }
     },
     {
       "rename": {
+        "field": "port_num",
+        "target_field": "host.port",
+        "ignore_missing": true,
+        "if": "(ctx.containsKey('port_num'))"
+      }
+    },
+    {
+      "rename": {
         "field": "serial",
-        "target_field": "known_certs.serial",
+        "target_field": "file.x509.serial_number",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "subject",
-        "target_field": "known_certs.subject",
+        "target_field": "file.x509.subject.distinguished_name",
         "ignore_missing": true
-      }
-    },
-    {
-      "set": {
-        "field": "host.port",
-        "value": "{{port_num}}",
-        "ignore_failure": true,
-        "if": "(ctx.containsKey('port_num'))"
-      }
-    },
-    {
-      "set": {
-        "field": "known_certs.host",
-        "value": "{{host.ip}}",
-        "ignore_failure": true,
-        "if": "(ctx.containsKey('port_num'))"
-      }
-    },
-    {
-      "rename": {
-        "field": "port_num",
-        "target_field": "known_certs.port",
-        "ignore_missing": true
-      }
-    },
-    {
-      "set": {
-        "field": "network.transport",
-        "value": "tcp",
-        "ignore_failure": true
       }
     },
     {
