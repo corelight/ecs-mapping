@@ -154,7 +154,7 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'known_hosts'",
-        "name": "corelight_known-hosts_pipeline"
+        "name": "corelight_known_hosts_pipeline"
       }
     },
     {
