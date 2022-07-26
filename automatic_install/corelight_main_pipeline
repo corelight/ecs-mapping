@@ -160,7 +160,7 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'known_modbus'",
-        "name": "corelight_known-modbus_pipeline"
+        "name": "corelight_known_modbus_pipeline"
       }
     },
     {
