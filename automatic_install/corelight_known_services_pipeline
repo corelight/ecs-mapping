@@ -25,7 +25,7 @@
     {
       "rename": {
         "field": "temp_host",
-        "target_field": "host.ip",
+        "target_field": "destination.ip",
         "ignore_missing": true
       }
     },
@@ -39,7 +39,7 @@
     {
       "rename": {
         "field": "port_num",
-        "target_field": "host.port",
+        "target_field": "destination.port",
         "ignore_missing": true
       }
     },
