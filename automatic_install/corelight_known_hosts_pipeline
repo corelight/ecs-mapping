@@ -23,13 +23,6 @@
       }
     },
     {
-      "set": {
-        "field": "network.transport",
-        "value": "tcp",
-        "ignore_failure": true
-      }
-    },
-    {
       "remove": {
         "field": "id",
         "ignore_failure": true,
