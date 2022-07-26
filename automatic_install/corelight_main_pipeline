@@ -148,7 +148,7 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'known_certs'",
-        "name": "corelight_known-certs_pipeline"
+        "name": "corelight_known_certs_pipeline"
       }
     },
     {
