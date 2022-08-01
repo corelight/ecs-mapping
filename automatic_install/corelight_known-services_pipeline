@@ -18,7 +18,7 @@
     {
       "rename": {
         "field": "app",
-        "target_field": "corelight][known][application",
+        "target_field": "corelight.known.application",
         "ignore_missing": true
       }
     },
@@ -87,14 +87,14 @@
     {
       "rename": {
         "field": "software",
-        "target_field": "software][original",
+        "target_field": "software.original",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "temp_port",
-        "target_field": "host.port",
+        "target_field": "destination.port",
         "if": "(ctx.containsKey('temp_port'))"
       }
     },
