@@ -179,7 +179,7 @@
         "field": "destination.port",
         "value": "{{notice.p}}",
         "ignore_failure": true,
-        "if": "!(ctx.containsKey('destination')) || !(ctx['destination'].containsKey('port'))"
+        "if": "!(ctx.containsKey('destination')) && !(ctx['destination'].containsKey('port'))"
       }
     },
     {
