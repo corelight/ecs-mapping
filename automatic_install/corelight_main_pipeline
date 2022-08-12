@@ -201,8 +201,20 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'known-remotes'",
+        "name": "corelight_known-remotes_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'known-services'",
         "name": "corelight_known-services_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-users'",
+        "name": "corelight_known-users_pipeline"
       }
     },
     {
@@ -413,6 +425,12 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'tunnel'",
         "name": "corelight_tunnel_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'unknown_mime_type_discovery'",
+        "name": "corelight_unknown_mime_type_discovery_pipeline"
       }
     },
     {
