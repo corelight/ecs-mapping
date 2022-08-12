@@ -1,0 +1,47 @@
+{
+    "description" : "Corelight Wireguard pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+    "processors" : [
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_suffix",
+          "value": "various",
+          "ignore_failure": false
+        }
+      },
+      {
+        "set": {
+          "field": "event.category",
+          "value": "network",
+          "ignore_failure": true
+        }
+      },
+      {
+        "set": {
+          "field": "network.transport",
+          "value": "udp",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "established",
+          "target_field": "vpn.established",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "initiations",
+          "target_field": "vpn.initiations",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "responses",
+          "target_field": "vpn.responses",
+          "ignore_failure": true
+        }
+      }
+    ]
+}

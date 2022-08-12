@@ -17,6 +17,13 @@
       },
       {
         "rename": {
+          "field": "client_info",
+          "target_field": "vpn.client_info",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
           "field": "duration",
           "target_field": "event.duration",
           "ignore_failure": true
@@ -26,6 +33,13 @@
         "rename": {
           "field": "inferences",
           "target_field": "vpn.inferences",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "issuer",
+          "target_field": "tls.server.issuer",
           "ignore_failure": true
         }
       },
@@ -59,6 +73,20 @@
       },
       {
         "rename": {
+          "field": "orig_city",
+          "target_field": "source.geo.city_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "orig_region",
+          "target_field": "source.geo.region_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
           "field": "resp_cc",
           "target_field": "destination.geo.country_iso_code",
           "ignore_failure": true
@@ -73,6 +101,13 @@
       },
       {
         "rename": {
+          "field": "resp_region",
+          "target_field": "destination.geo.region_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
           "field": "server_name",
           "target_field": "vpn.server_name",
           "ignore_failure": true
@@ -82,6 +117,13 @@
         "rename": {
           "field": "service",
           "target_field": "network.protocol",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "subject",
+          "target_field": "tls.server.subject",
           "ignore_failure": true
         }
       },

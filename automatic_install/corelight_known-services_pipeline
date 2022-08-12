@@ -1,5 +1,5 @@
 {
-  "description": "Corelight known-hosts pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description": "Corelight known-names pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -17,22 +17,8 @@
     },
     {
       "rename": {
-        "field": "conns_closed",
-        "target_field": "corelight.known.conns_closed",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "conns_opened",
-        "target_field": "corelight.known.conns_opened",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "conns_pending",
-        "target_field": "corelight.known.conns_pending",
+        "field": "app",
+        "target_field": "corelight.known.application",
         "ignore_missing": true
       }
     },
@@ -50,14 +36,7 @@
     {
       "rename": {
         "field": "host_ip",
-        "target_field": "host.ip",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "host_type",
-        "target_field": "corelight.known.host_type",
+        "target_field": "destination.ip",
         "ignore_missing": true
       }
     },
@@ -93,9 +72,30 @@
     },
     {
       "rename": {
-        "field": "long_conns",
-        "target_field": "corelight.known.long_conns",
+        "field": "protocol",
+        "target_field": "network.transport",
         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "service",
+        "target_field": "network.protocol",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "software",
+        "target_field": "software.original",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "temp_port",
+        "target_field": "destination.port",
+        "if": "(ctx.containsKey('temp_port'))"
       }
     },
     {

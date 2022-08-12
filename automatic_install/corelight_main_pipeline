@@ -148,25 +148,73 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'known_certs'",
-        "name": "corelight_known-certs_pipeline"
+        "name": "corelight_known_certs_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'known_hosts'",
-        "name": "corelight_known-hosts_pipeline"
+        "name": "corelight_known_hosts_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'known_modbus'",
-        "name": "corelight_known-modbus_pipeline"
+        "name": "corelight_known_modbus_pipeline"
       }
     },
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'known_services'",
         "name": "corelight_known_services_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-certs'",
+        "name": "corelight_known-certs_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-devices'",
+        "name": "corelight_known-devices_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-domains'",
+        "name": "corelight_known-domains_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-hosts'",
+        "name": "corelight_known-hosts_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-names'",
+        "name": "corelight_known-names_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-remotes'",
+        "name": "corelight_known-remotes_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-services'",
+        "name": "corelight_known-services_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known-users'",
+        "name": "corelight_known-users_pipeline"
       }
     },
     {
@@ -381,6 +429,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'unknown_mime_type_discovery'",
+        "name": "corelight_unknown_mime_type_discovery_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'weird'",
         "name": "corelight_weird_pipeline"
       }
@@ -419,6 +473,24 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'etc_viz'",
         "name": "corelight_etc_viz_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'log4j' || ctx.event.dataset == 'log4shell'",
+        "name": "corelight_log4j_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'vpn'",
+        "name": "corelight_vpn_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'wireguard'",
+        "name": "corelight_vpn_pipeline"
       }
     },
     {

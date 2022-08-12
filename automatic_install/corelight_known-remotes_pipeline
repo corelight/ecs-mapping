@@ -1,5 +1,5 @@
 {
-  "description": "Corelight known-hosts pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description": "Corelight known-remotes pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -13,27 +13,6 @@
         "field": "event.category",
         "value": "observations",
         "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
-        "field": "conns_closed",
-        "target_field": "corelight.known.conns_closed",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "conns_opened",
-        "target_field": "corelight.known.conns_opened",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "conns_pending",
-        "target_field": "corelight.known.conns_pending",
-        "ignore_missing": true
       }
     },
     {
@@ -56,13 +35,6 @@
     },
     {
       "rename": {
-        "field": "host_type",
-        "target_field": "corelight.known.host_type",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
         "field": "kuid",
         "target_field": "log.id.kuid",
         "ignore_missing": true,
@@ -71,30 +43,8 @@
     },
     {
       "rename": {
-        "field": "last_active_interval",
-        "target_field": "corelight.known.last_active_interval",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "last_active_session",
-        "target_field": "corelight.known.last_active_session",
-        "if": "ctx?.last_active_session != null",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
         "field": "num_conns",
         "target_field": "corelight.known.num_conns",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "long_conns",
-        "target_field": "corelight.known.long_conns",
         "ignore_missing": true
       }
     },
