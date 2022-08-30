@@ -333,6 +333,13 @@
       }
     },
     {
+      "rename": {
+        "field": "app",
+        "target_field": "network.application",
+        "ignore_missing": true
+      }
+    },
+    {
       "remove": {
         "field": [
           "id",
