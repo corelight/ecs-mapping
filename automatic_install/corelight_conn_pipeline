@@ -65,8 +65,7 @@
     },
     {
       "script": {
-        "source": "if (ctx.local_orig == true && ctx.local_resp == true) {ctx.network_direction = 'internal';} else if (ctx.local_orig == true && ctx.local_resp == false) {ctx.network_direction = 'outbound';} else if (ctx.local_orig == false && ctx.local_resp == true) {ctx.network_direction = 'inbound';} else {ctx.network_direction = 'unknown';}",
-        "if": "ctx.containsKey('local_orig') && ctx.containsKey('local_resp')"
+        "source": "if (ctx?.local_orig == null || ctx?.local_resp == null) {ctx.network.direction = \"unknown\"; return;} if (ctx.local_orig == true && ctx.local_resp == true) {ctx.network.direction = \"internal\"; return;} if (ctx.local_orig == true &&ctx.local_resp == false) {ctx.network.direction = \"outbound\"; return;} if (ctx.local_orig == false &&ctx.local_resp == true) {ctx.network.direction = \"inbound\"; return;} if (ctx.local_orig == false && ctx.local_resp == false) {ctx.network.direction = \"external\"; return;}"
       }
     },
     {
