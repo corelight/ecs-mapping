@@ -103,7 +103,8 @@
       "set" : {
         "field" : "destination.port",
         "value" : "{{log4j.target_port}}",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.log4j?.target_port != null && ctx.log4j.target_port ==~ /^[0-9]+/"
       }
     }
   ]

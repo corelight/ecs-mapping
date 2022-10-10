@@ -164,6 +164,55 @@
     },
     {
       "set": {
+        "copy_from": "smtp.cc",
+        "field": "email.cc.address",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "copy_from": "smtp.from",
+        "field": "email.from.address",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "copy_from": "smtp.mailfrom",
+        "field": "email.sender.address",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "copy_from": "smtp.msg_id",
+        "field": "email.message_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "copy_from": "smtp.reply_to",
+        "field": "email.reply_to.address",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "copy_from": "smtp.subject",
+        "field": "email.subject",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "copy_from": "smtp.to",
+        "field": "email.to.address",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
         "field": "network.transport",
         "value": "tcp",
         "ignore_failure": true
