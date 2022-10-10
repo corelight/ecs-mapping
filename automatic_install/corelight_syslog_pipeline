@@ -39,7 +39,7 @@
     {
       "rename": {
         "field": "message",
-        "target_field": "syslog.message",
+        "target_field": "log.syslog.message",
         "ignore_missing": true
       }
     },

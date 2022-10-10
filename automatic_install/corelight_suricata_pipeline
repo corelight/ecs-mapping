@@ -24,7 +24,7 @@
     },
     {
       "set": {
-        "field": "rule.action",
+        "field": "suricata.alert.action",
         "value": "{{alert.action}}",
         "ignore_failure": true,
         "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('action')"
@@ -39,14 +39,7 @@
     {
       "rename": {
         "field": "alert.action",
-        "target_field": "rule.action",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "alert_action",
-        "target_field": "rule.action",
+        "target_field": "event.type",
         "ignore_missing": true
       }
     },
@@ -65,20 +58,6 @@
       }
     },
     {
-      "rename": {
-        "field": "alert.category",
-        "target_field": "rule.category",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "alert_category",
-        "target_field": "rule.category",
-        "ignore_missing": true
-      }
-    },
-    {
       "set": {
         "field": "rule.gid",
         "value": "{{alert.gid}}",
@@ -93,16 +72,23 @@
       }
     },
     {
-      "rename": {
-        "field": "alert.gid",
-        "target_field": "rule.gid",
-        "ignore_missing": true
+      "set": {
+        "field": "suricata.alert.metadata_original",
+        "value": "{{alert.metadata}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('metadata')"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "alert.metadata",
+        "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "alert_gid",
-        "target_field": "rule.gid",
+        "field": "alert.metadata",
+        "target_field": "suricata.alert.metadata",
         "ignore_missing": true
       }
     },
@@ -121,17 +107,31 @@
       }
     },
     {
-      "rename": {
-        "field": "alert.rev",
-        "target_field": "rule.version",
-        "ignore_missing": true
+      "set": {
+        "field": "rule.name",
+        "value": "{{alert.signature}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('signature')"
       }
     },
     {
-      "rename": {
-        "field": "alert_rev",
-        "target_field": "rule.version",
-        "ignore_missing": true
+      "dot_expander": {
+        "field": "alert.signature",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "rule.signature_id",
+        "value": "{{alert.signature_id}}",
+        "ignore_failure": true,
+        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('signature_id')"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "alert.signature_id",
+        "ignore_failure": true
       }
     },
     {
@@ -150,83 +150,6 @@
     },
     {
       "rename": {
-        "field": "alert.severity",
-        "target_field": "event.severity",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "alert_severity",
-        "target_field": "event.severity",
-        "ignore_missing": true
-      }
-    },
-    {
-      "set": {
-        "field": "rule.name",
-        "value": "{{alert.signature}}",
-        "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('signature')"
-      }
-    },
-    {
-      "dot_expander": {
-        "field": "alert.signature",
-        "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
-        "field": "alert.signature",
-        "target_field": "rule.name",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "alert_signature",
-        "target_field": "rule.name",
-        "ignore_missing": true
-      }
-    },
-    {
-      "set": {
-        "field": "rule.id",
-        "value": "{{alert.signature_id}}",
-        "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('signature_id')"
-      }
-    },
-    {
-      "dot_expander": {
-        "field": "alert.signature_id",
-        "ignore_failure": true
-      }
-    },
-    {
-      "rename": {
-        "field": "alert.signature_id",
-        "target_field": "rule.id",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "alert_signature_id",
-        "target_field": "rule.id",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "community_id",
-        "target_field": "network.community_id",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
         "field": "metadata",
         "target_field": "suricata.metadata",
         "ignore_missing": true
@@ -234,8 +157,8 @@
     },
     {
       "rename": {
-        "field": "suri_id",
-        "target_field": "log.id.suri_id",
+        "field": "pcap_cnt",
+        "target_field": "suricata.pcap_count",
         "ignore_missing": true
       }
     },
@@ -243,6 +166,13 @@
       "rename": {
         "field": "service",
         "target_field": "network.protocol",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suri_id",
+        "target_field": "log.id.suri_id",
         "ignore_missing": true
       }
     },
@@ -261,10 +191,153 @@
       }
     },
     {
-      "rename": {
-        "field": "pcap_cnt",
-        "target_field": "suricata.pcap_count",
+      "kv": {
+        "field": "suricata.alert.metadata",
+        "field_split": ",",
+        "value_split": ":",
+        "target_field": "suricata.alert.metadata",
+        "ignore_failure": true,
         "ignore_missing": true
+      }
+    },
+    
+    
+    
+    {
+      "lowercase": {
+        "field": "suricata.alert.metadata.filename",
+        "ignore_missing": true
+      }
+    },
+    {
+      "lowercase": {
+        "field": "suricata.alert.metadata.mitre_tactic_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "lowercase": {
+        "field": "suricata.alert.metadata.mitre_tactic_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "lowercase": {
+        "field": "suricata.alert.metadata.mitre_technique_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "lowercase": {
+        "field": "suricata.alert.metadata.mitre_technique_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata.alert.metadata.created_at",
+        "target_field": "suricata.alert.metadata.created_at_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata.alert.metadata.filename",
+        "target_field": "file.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata.alert.metadata.mitre_tactic_id",
+        "target_field": "threat.tactic.id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata.alert.metadata.mitre_tactic_name",
+        "target_field": "threat.tactic.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata.alert.metadata.mitre_technique_id",
+        "target_field": "threat.technique.id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata.alert.metadata.mitre_technique_name",
+        "target_field": "threat.technique.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata.alert.metadata.updated_at",
+        "target_field": "suricata.alert.metadata.updated_at_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "threat.tactic.reference",
+        "value" : "https://attack.mitre.org/tactics/{{threat.tactic.id}}/",
+        "ignore_empty_value": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "threat.technique.reference",
+        "value" : "https://attack.mitre.org/techniques/{{threat.technique.id}}/",
+        "ignore_empty_value": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "set" : {
+        "field" : "threat.framework",
+        "value" : "MITRE ATT&CK",
+        "if": "ctx.threat?.framework == null && (ctx.threat?.technique?.id != null || ctx.threat?.tactic?.id != null)",
+        "ignore_empty_value": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "date" : {
+        "field": "suricata.alert.metadata.created_at_non_formatted_date",
+        "target_field": "suricata.alert.metadata.created_at",
+        "formats" : [ "yyyy-MM-dd", "yyyy_MM_dd" ],
+        "ignore_failure": true,
+        "if": "ctx.suricata?.alert?.metadata?.created_at_non_formatted_date != null"
+      }
+    },
+    {
+      "date" : {
+        "field": "suricata.alert.metadata.updated_at_non_formatted_date",
+        "target_field": "suricata.alert.metadata.updated_at",
+        "formats" : [ "yyyy-MM-dd", "yyyy_MM_dd" ],
+        "ignore_failure": true,
+        "if": "ctx.suricata?.alert?.metadata?.updated_at_non_formatted_date != null"
+      }
+    },
+    {
+      "remove": {
+        "field": [ "alert.category", "alert.gid", "alert.signature_id", "alert.signature", "alert.severity", "alert.rev" ],
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    },
+    {
+      "remove": {
+        "field": "log.id.tx_id",
+        "ignore_failure": true,
+        "ignore_missing" : true,
+        "if": "ctx.log?.id?.tx_id == 0"
       }
     },
     {
