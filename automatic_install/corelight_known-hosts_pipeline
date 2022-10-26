@@ -49,9 +49,18 @@
     },
     {
       "rename": {
+        "field": "temp_host",
+        "target_field": "host.ip",
+        "ignore_missing": true,
+        "if": "ctx.host_ip == null"
+      }
+    },
+    {
+      "rename": {
         "field": "host_ip",
         "target_field": "host.ip",
-        "ignore_missing": true
+        "ignore_missing": true,
+        "if": "ctx.host?.ip == null"
       }
     },
     {
