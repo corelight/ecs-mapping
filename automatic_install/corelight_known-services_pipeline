@@ -35,9 +35,18 @@
     },
     {
       "rename": {
+        "field": "temp_host",
+        "target_field": "host.ip",
+        "ignore_missing": true,
+        "if": "ctx.host_ip == null"
+      }
+    },
+    {
+      "rename": {
         "field": "host_ip",
-        "target_field": "destination.ip",
-        "ignore_missing": true
+        "target_field": "host.ip",
+        "ignore_missing": true,
+        "if": "ctx.host?.ip == null"
       }
     },
     {
@@ -79,6 +88,13 @@
     },
     {
       "rename": {
+        "field": "port_proto",
+        "target_field": "network.transport",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "service",
         "target_field": "network.protocol",
         "ignore_missing": true
@@ -96,6 +112,13 @@
         "field": "temp_port",
         "target_field": "destination.port",
         "if": "(ctx.containsKey('temp_port'))"
+      }
+    },
+    {
+      "rename": {
+        "field": "port_num",
+        "target_field": "destination.port",
+        "if": "(ctx.containsKey('port_num'))"
       }
     },
     {
