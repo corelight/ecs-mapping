@@ -6,6 +6,17 @@ import glob
 import time
 import sys
 
+def checkRequest(responseObj):
+    code = responseObj.status_code
+    if code == 200:
+        return 200
+
+    if 400 <= code <= 500:
+        print(responseObj.json())
+        time.sleep(5)
+        return code
+    return code
+
 def input_bool(question, default=None):
 
     prompt = " [yn]"
@@ -37,16 +48,29 @@ def testConnection(session, baseURI):
     checkRequest(response)
     response.raise_for_status()
 
-def checkRequest(responseObj):
-    code = responseObj.status_code
-    if code == 200:
-        return 200
+def input_bool(question, default=None):
 
-    if 400 <= code <= 500:
-        print(responseObj.json())
-        time.sleep(5)
-        return code
-    return code
+    prompt = " [yn]"
+
+    if default is not None:
+        prompt = " [Yn]:" if default else " [yN]:"
+
+    while True:
+        val = input(question + prompt)
+        val = val.lower()
+        if val  == '' and default is not None:
+            return default
+        if val in ('y', 'n'):
+            return val == 'y'
+        print("Invalid response")
+
+def input_int(question):
+    while True:
+        val = input(question + ": ")
+        try:
+            return int(val)
+        except ValueError as e:
+            print("Invalid response", e)
 
 def exportToElastic(session, baseURI, pipeline, retry=4):
     print("Trying to upload pipeline: %s" % pipeline)
