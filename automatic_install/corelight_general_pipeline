@@ -6,7 +6,7 @@
         "field": "@path",
         "target_field": "event.dataset",
         "ignore_missing": true,
-        "if": "ctx?['@path'] != null"
+        "if": "ctx['@path'] != null"
       }
     },
     {
@@ -29,7 +29,7 @@
         "field": "@stream",
         "target_field": "event.dataset",
         "ignore_missing": true,
-        "if": "ctx?['@stream'] != null"
+        "if": "ctx['@stream'] != null"
       }
     },
     {
@@ -45,7 +45,7 @@
         "field": "ts",
         "target_field": "@timestamp",
         "formats" : [ "UNIX", "ISO8601" ],
-        "if": "ctx?.ts != null && ctx?['@timestamp'] == null"
+        "if": "ctx?.ts != null && ctx['@timestamp'] == null"
       }
     },
     {
@@ -193,7 +193,7 @@
       "rename": {
         "field": "@sensor",
         "target_field": "observer.hostname",
-        "if": "ctx?['@sensor'] != null"
+        "if": "ctx['@sensor'] != null"
       }
     },
     {
