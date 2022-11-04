@@ -44,6 +44,12 @@
       }
     },
     {
+      "dot_expander": {
+        "field": "alert.category",
+        "ignore_failure": true
+      }
+    },
+    {
       "set": {
         "field": "rule.category",
         "value": "{{alert.category}}",
@@ -53,7 +59,7 @@
     },
     {
       "dot_expander": {
-        "field": "alert.category",
+        "field": "alert.gid",
         "ignore_failure": true
       }
     },
@@ -67,7 +73,7 @@
     },
     {
       "dot_expander": {
-        "field": "alert.gid",
+        "field": "alert.metadata",
         "ignore_failure": true
       }
     },
@@ -80,16 +86,16 @@
       }
     },
     {
-      "dot_expander": {
-        "field": "alert.metadata",
-        "ignore_failure": true
-      }
-    },
-    {
       "rename": {
         "field": "alert.metadata",
         "target_field": "suricata.alert.metadata",
         "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "alert.rev",
+        "ignore_failure": true
       }
     },
     {
@@ -102,7 +108,7 @@
     },
     {
       "dot_expander": {
-        "field": "alert.rev",
+        "field": "alert.signature",
         "ignore_failure": true
       }
     },
@@ -116,7 +122,7 @@
     },
     {
       "dot_expander": {
-        "field": "alert.signature",
+        "field": "alert.signature_id",
         "ignore_failure": true
       }
     },
@@ -130,7 +136,7 @@
     },
     {
       "dot_expander": {
-        "field": "alert.signature_id",
+        "field": "alert.severity",
         "ignore_failure": true
       }
     },
@@ -140,12 +146,6 @@
         "value": "{{alert.severity}}",
         "ignore_failure": true,
         "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('severity')"
-      }
-    },
-    {
-      "dot_expander": {
-        "field": "alert.severity",
-        "ignore_failure": true
       }
     },
     {
@@ -279,6 +279,13 @@
       "rename": {
         "field": "suricata.alert.metadata.updated_at",
         "target_field": "suricata.alert.metadata.updated_at_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "retries",
+        "target_field": "suricata.retries",
         "ignore_missing": true
       }
     },
