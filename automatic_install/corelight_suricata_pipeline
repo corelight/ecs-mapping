@@ -308,21 +308,31 @@
       }
     },
     {
-      "date" : {
-        "field": "suricata.alert.metadata.created_at_non_formatted_date",
-        "target_field": "suricata.alert.metadata.created_at",
-        "formats" : [ "yyyy-MM-dd", "yyyy_MM_dd" ],
-        "ignore_failure": true,
-        "if": "ctx.suricata?.alert?.metadata?.created_at_non_formatted_date != null"
+      "script": {
+        "source": "if ( ctx?.suricata?.alert?.created_at_non_formatted_date != null && ctx?.suricata?.alert?.created_at_non_formatted_date[0] instanceof String) { ctx.temp_created_at_non_formatted_date = ctx?.suricata?.alert?.created_at_non_formatted_date[0]; return;}"
       }
     },
     {
       "date" : {
-        "field": "suricata.alert.metadata.updated_at_non_formatted_date",
+        "field": "temp_created_at_non_formatted_date",
+        "target_field": "suricata.alert.metadata.created_at",
+        "formats" : [ "yyyy-MM-dd", "yyyy_MM_dd" ],
+        "ignore_failure": true,
+        "if": "ctx.temp_created_at_non_formatted_date != null"
+      }
+    },
+    {
+      "script": {
+        "source": "if ( ctx?.suricata?.alert?.updated_at_non_formatted_date != null && ctx?.suricata?.alert?.updated_at_non_formatted_date[0] instanceof String) { ctx.temp_updated_at_non_formatted_date = ctx?.suricata?.alert?.updated_at_non_formatted_date[0]; return;}"
+      }
+    },
+    {
+      "date" : {
+        "field": "temp_updated_at_non_formatted_date",
         "target_field": "suricata.alert.metadata.updated_at",
         "formats" : [ "yyyy-MM-dd", "yyyy_MM_dd" ],
         "ignore_failure": true,
-        "if": "ctx.suricata?.alert?.metadata?.updated_at_non_formatted_date != null"
+        "if": "ctx.temp_updated_at_non_formatted_date != null"
       }
     },
     {
@@ -342,7 +352,11 @@
     },
     {
       "remove": {
-        "field": "id",
+        "field": [
+          "id",
+          "temp_created_at_non_formatted_date",
+          "temp_updated_at_non_formatted_date"
+        ],
         "ignore_failure": true,
         "ignore_missing" : true
       }
