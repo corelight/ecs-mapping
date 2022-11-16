@@ -197,7 +197,8 @@
         "value_split": ":",
         "target_field": "suricata.alert.metadata",
         "ignore_failure": true,
-        "ignore_missing": true
+        "ignore_missing": true,
+        "if": "ctx.suricata?.alert?.metadata != null"
       }
     },
     
