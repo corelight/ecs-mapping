@@ -88,7 +88,7 @@
     {
       "rename": {
         "field": "alert.metadata",
-        "target_field": "suricata.alert.metadata",
+        "target_field": "temp_suricata_alert_metadata",
         "ignore_missing": true
       }
     },
@@ -191,19 +191,25 @@
       }
     },
     {
+      "join": {
+        "field": "temp_suricata_alert_metadata",
+        "target_field": "temp_suricata_alert_metadata",
+        "separator": ",",
+        "ignore_failure": true,
+        "if": "(ctx.temp_suricata_alert_metadata != null && ctx.temp_suricata_alert_metadata instanceof List && ctx.temp_suricata_alert_metadata.size()>0)"
+      }
+    },
+    {
       "kv": {
-        "field": "suricata.alert.metadata",
+        "field": "temp_suricata_alert_metadata",
         "field_split": ",",
         "value_split": ":",
         "target_field": "suricata.alert.metadata",
-        "ignore_failure": true,
+        "ignore_failure": false,
         "ignore_missing": true,
-        "if": "ctx.suricata?.alert?.metadata != null"
+        "if": "(ctx.temp_suricata_alert_metadata != null && ctx.temp_suricata_alert_metadata instanceof String && ctx.temp_suricata_alert_metadata.length() !=0)"
       }
     },
-    
-    
-    
     {
       "lowercase": {
         "field": "suricata.alert.metadata.filename",
@@ -319,7 +325,7 @@
     },
     {
       "script": {
-        "source": "if ( ctx?.suricata?.alert?.created_at_non_formatted_date != null && ctx?.suricata?.alert?.created_at_non_formatted_date[0] instanceof String) { ctx.temp_created_at_non_formatted_date = ctx?.suricata?.alert?.created_at_non_formatted_date[0]; return;}"
+        "source": "if ( ctx?.suricata?.alert?.metadata?.created_at_non_formatted_date != null && ctx?.suricata?.alert?.metadata?.created_at_non_formatted_date instanceof String) { ctx.temp_created_at_non_formatted_date = ctx?.suricata?.alert?.metadata?.created_at_non_formatted_date; return;}"
       }
     },
     {
@@ -333,7 +339,7 @@
     },
     {
       "script": {
-        "source": "if ( ctx?.suricata?.alert?.updated_at_non_formatted_date != null && ctx?.suricata?.alert?.updated_at_non_formatted_date[0] instanceof String) { ctx.temp_updated_at_non_formatted_date = ctx?.suricata?.alert?.updated_at_non_formatted_date[0]; return;}"
+        "source": "if ( ctx?.suricata?.alert?.metadata?.updated_at_non_formatted_date != null && ctx?.suricata?.alert?.metadata?.updated_at_non_formatted_date instanceof String) { ctx.temp_updated_at_non_formatted_date = ctx?.suricata?.alert?.metadata?.updated_at_non_formatted_date; return;}"
       }
     },
     {
