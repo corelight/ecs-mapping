@@ -364,7 +364,8 @@
         "field": [
           "id",
           "temp_created_at_non_formatted_date",
-          "temp_updated_at_non_formatted_date"
+          "temp_updated_at_non_formatted_date",
+          "alert"
         ],
         "ignore_failure": true,
         "ignore_missing" : true
