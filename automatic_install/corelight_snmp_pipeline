@@ -35,7 +35,7 @@
         "field": "destination.software.original",
         "value": "{{display_string}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('display_string'))"
+        "if": "ctx.display_string != null"
       }
     },
     {

@@ -250,29 +250,29 @@
     {
       "dot_expander": {
         "field": "id.orig_h_name.src",
-        "if": "(ctx.containsKey('id.orig_h_name.src'))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['id.orig_h_name.src'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "id.orig_h_name.vals",
-        "if": "(ctx.containsKey('id.orig_h_name.vals'))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['id.orig_h_name.vals'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "id.resp_h_name.src",
-        "if": "(ctx.containsKey('id.resp_h_name.src'))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['id.resp_h_name.src'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "id.resp_h_name.vals",
-        "if": "(ctx.containsKey('id.resp_h_name.vals'))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['id.resp_h_name.vals'] != null )"
       }
     },
     {
@@ -369,22 +369,22 @@
      {
       "dot_expander": {
         "field": "spcap.rule",
-        "if": "(ctx.containsKey('spcap.rule'))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['spcap.rule'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "spcap.trigger",
-        "if": "(ctx.containsKey('spcap.trigger'))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['spcap.trigger'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "spcap.url",
-        "if": "(ctx.containsKey('spcap.url'))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['spcap.url'] != null )"
       }
     },
     {
@@ -412,7 +412,7 @@
       "rename": {
         "field": "id_vlan",
         "target_field": "network.vlan.id",
-        "if": "ctx.containsKey('id_vlan') && !(ctx.network.vlan.containsKey('id'))"
+        "if": "ctx?.id_vlan != null && ctx?.network?.vlan?.id == null"
       }
     },
     {

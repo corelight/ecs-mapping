@@ -75,7 +75,7 @@
         "field": "log.id.fuid",
         "value": "{{fuid}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('fuid'))"
+        "if": "ctx.fuid != null"
       }
     },
     {
@@ -83,7 +83,7 @@
         "field": "event.id",
         "value": "{{fuid}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('fuid'))"
+        "if": "ctx.fuid != null"
       }
     },
     {

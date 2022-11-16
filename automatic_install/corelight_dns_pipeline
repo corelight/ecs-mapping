@@ -148,14 +148,14 @@
         "field" : "destination.domain",
         "value" : "{{query}}",
         "ignore_failure": true,
-        "if" : "(ctx.containsKey('query'))"
+        "if": "ctx.query != null"
       }
     },
     {
       "script" : {
         "lang" : "painless",
         "source" : "ctx.length = ctx.query.length()",
-        "if" : "(ctx.containsKey('query'))"
+        "if": "ctx.query != null"
       }
     },
     {

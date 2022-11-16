@@ -27,7 +27,7 @@
         "field": "event.id",
         "value" : "{{log.id.fid}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('log') && ctx['log'].containsKey('id') && ctx['log'].containsKey('fid')"
+        "if": "(ctx.log?.id != null && ctx.log?.fid != null)"
       }
     },
     {
@@ -35,7 +35,7 @@
         "field": "id",
         "ignore_failure": true,
         "ignore_missing" : true,
-        "if": "ctx.containsKey('id')"
+        "if": "ctx.id != null"
       }
     }
   ]

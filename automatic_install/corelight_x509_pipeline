@@ -214,21 +214,21 @@
       "rename": {
         "field": "client_cert",
         "target_field": "file.x509.client_cert",
-        "if": "(ctx.containsKey('client_cert'))"
+        "if": "ctx.client_cert != null"
       }
     },
     {
       "rename": {
         "field": "fingerprint",
         "target_field": "file.hash.sha256",
-        "if": "(ctx.containsKey('fingerprint'))"
+        "if": "ctx.fingerprint != null"
       }
     },
     {
       "rename": {
         "field": "host_cert",
         "target_field": "file.x509.host_cert",
-        "if": "(ctx.containsKey('host_cert'))"
+        "if": "ctx.host_cert != null"
       }
     },
     {
@@ -453,7 +453,7 @@
         "field": "event.id",
         "value": "{{id}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('id'))"
+        "if": "ctx.id != null"
       }
     },
     {
@@ -467,8 +467,7 @@
       "set": {
         "field": "url.original",
         "value": "{{file.x509.san_url}}",
-        "ignore_failure": true,
-        "if": "(ctx.containsKey('file.x509.san_url'))"
+        "if": "ctx.file?.x509?.san_url != null"
       }
     },
     {

@@ -34,7 +34,7 @@
         "field": "port_num",
         "target_field": "host.port",
         "ignore_missing": true,
-        "if": "(ctx.containsKey('port_num'))"
+        "if": "ctx.port_num != null"
       }
     },
     {

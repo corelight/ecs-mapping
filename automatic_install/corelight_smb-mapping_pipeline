@@ -41,7 +41,7 @@
         "field": "file.path",
         "value": "{{path}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('path'))"
+        "if": "ctx.path != null"
       }
     },
     {

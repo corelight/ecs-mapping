@@ -112,7 +112,7 @@
         "field": "event.id",
         "value" : "{{log.id.kuid}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('log') && ctx['log'].containsKey('id') && ctx['log'].containsKey('kuid')"
+        "if": "(ctx.log?.id != null && ctx.log?.kuid != null)"
       }
     },
     {
@@ -120,7 +120,7 @@
         "field": "id",
         "ignore_failure": true,
         "ignore_missing" : true,
-        "if": "ctx.containsKey('id')"
+        "if": "ctx.id != null"
       }
     }
   ]

@@ -14,7 +14,7 @@
         "target_field": "@timestamp",
         "formats" : [ "ISO8601", "UNIX" ],
         "ignore_failure": true,
-        "if": "!(ctx.containsKey('@timestamp'))"
+        "if": "(ctx['@timestamp'] == null )"
       }
     },
     {

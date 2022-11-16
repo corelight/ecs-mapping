@@ -27,7 +27,7 @@
         "field": "suricata.alert.action",
         "value": "{{alert.action}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('action')"
+        "if": "ctx.alert?.action != null"
       }
     },
     {
@@ -54,7 +54,7 @@
         "field": "rule.category",
         "value": "{{alert.category}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('category')"
+        "if": "ctx.alert?.category != null"
       }
     },
     {
@@ -68,7 +68,7 @@
         "field": "rule.gid",
         "value": "{{alert.gid}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('gid')"
+        "if": "ctx.alert?.gid != null"
       }
     },
     {
@@ -82,7 +82,7 @@
         "field": "suricata.alert.metadata_original",
         "value": "{{alert.metadata}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('metadata')"
+        "if": "ctx.alert?.metadata != null"
       }
     },
     {
@@ -103,7 +103,7 @@
         "field": "rule.version",
         "value": "{{alert.rev}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('rev')"
+        "if": "ctx.alert?.rev != null"
       }
     },
     {
@@ -117,7 +117,7 @@
         "field": "rule.name",
         "value": "{{alert.signature}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('signature')"
+        "if": "ctx.alert?.signature != null"
       }
     },
     {
@@ -131,7 +131,7 @@
         "field": "rule.signature_id",
         "value": "{{alert.signature_id}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('signature_id')"
+        "if": "ctx.alert?.signature_id != null"
       }
     },
     {
@@ -145,7 +145,7 @@
         "field": "event.severity",
         "value": "{{alert.severity}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('alert') && ctx['alert'].containsKey('severity')"
+        "if": "ctx.alert?.severity != null"
       }
     },
     {
@@ -294,7 +294,8 @@
         "field" : "threat.tactic.reference",
         "value" : "https://attack.mitre.org/tactics/{{threat.tactic.id}}/",
         "ignore_empty_value": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.threat?.tactic?.id != null"
       }
     },
     {
@@ -302,7 +303,8 @@
         "field" : "threat.technique.reference",
         "value" : "https://attack.mitre.org/techniques/{{threat.technique.id}}/",
         "ignore_empty_value": true,
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.threat?.technique?.id != null"
       }
     },
     {
