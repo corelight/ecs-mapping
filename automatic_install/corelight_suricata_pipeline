@@ -347,26 +347,13 @@
     },
     {
       "remove": {
-        "field": [ "alert.category", "alert.gid", "alert.signature_id", "alert.signature", "alert.severity", "alert.rev" ],
-        "ignore_failure": true,
-        "ignore_missing" : true
-      }
-    },
-    {
-      "remove": {
-        "field": "log.id.tx_id",
-        "ignore_failure": true,
-        "ignore_missing" : true,
-        "if": "ctx.log?.id?.tx_id == 0"
-      }
-    },
-    {
-      "remove": {
         "field": [
+          "alert",
           "id",
+          "log.id.tx_id",
           "temp_created_at_non_formatted_date",
-          "temp_updated_at_non_formatted_date",
-          "alert"
+          "temp_suricata_alert_metadata",
+          "temp_updated_at_non_formatted_date"
         ],
         "ignore_failure": true,
         "ignore_missing" : true
