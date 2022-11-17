@@ -34,7 +34,7 @@
         "field" : "destination.domain",
         "value" : "{{sni}}",
         "ignore_failure": true,
-        "if" : "(ctx.containsKey('sni'))"
+        "if": "ctx.sni != null"
       }
     },
     {
@@ -47,7 +47,7 @@
       "dot_expander": {
         "field": "cert.cn",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('cert.cn'))"
+        "if": "(ctx['cert.cn'] != null )"
       }
     },
     {
@@ -61,7 +61,7 @@
       "dot_expander": {
         "field": "cert.sans",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('cert.sans'))"
+        "if": "(ctx['cert.sans'] != null )"
       }
     },
     {

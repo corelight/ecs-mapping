@@ -147,30 +147,6 @@
     },
     {
       "pipeline": {
-        "if": "ctx.event.dataset == 'known_certs'",
-        "name": "corelight_known_certs_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'known_hosts'",
-        "name": "corelight_known_hosts_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'known_modbus'",
-        "name": "corelight_known_modbus_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'known_services'",
-        "name": "corelight_known_services_pipeline"
-      }
-    },
-    {
-      "pipeline": {
         "if": "ctx.event.dataset == 'known-certs'",
         "name": "corelight_known-certs_pipeline"
       }
@@ -221,6 +197,60 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'known-users'",
         "name": "corelight_known-users_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_certs'",
+        "name": "corelight_known_certs_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_devices'",
+        "name": "corelight_known_certs_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_domains'",
+        "name": "corelight_known_certs_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_hosts'",
+        "name": "corelight_known_hosts_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_modbus'",
+        "name": "corelight_known_modbus_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_names'",
+        "name": "corelight_known_hosts_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_remotes'",
+        "name": "corelight_known_hosts_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_services'",
+        "name": "corelight_known_services_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'known_users'",
+        "name": "corelight_known_services_pipeline"
       }
     },
     {
@@ -590,7 +620,7 @@
     {
       "set": {
         "field": "error.message",
-        "value": "{{ _ingest.on_failure_message }}"
+        "value": "Processor {{ _ingest.on_failure_processor_type }} with tag {{ _ingest.on_failure_processor_tag }} in pipeline {{ _ingest.on_failure_pipeline }} failed with message {{ _ingest.on_failure_message }}"
       }
     },
     {

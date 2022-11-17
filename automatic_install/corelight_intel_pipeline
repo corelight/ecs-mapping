@@ -55,7 +55,7 @@
         "field": "intel.seen.indicator",
         "value": "{{seen.indicator}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('seen.indicator'))"
+        "if": "(ctx['seen.indicator'] != null )"
       }
     },
     {
@@ -63,7 +63,7 @@
         "field": "intel.seen.indicator_type",
         "value": "{{seen.indicator_type}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('seen.indicator_type'))"
+        "if": "(ctx['seen.indicator_type'] != null )"
       }
     },
     {
@@ -71,7 +71,7 @@
         "field": "host.ip",
         "value": "{{seen.host}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('seen.host'))"
+        "if": "(ctx['seen.host'] != null )"
       }
     },
     {
@@ -79,7 +79,7 @@
         "field": "intel.seen.node",
         "value": "{{seen.node}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('seen.node'))"
+        "if": "(ctx['seen.node'] != null )"
       }
     },
     {
@@ -87,7 +87,7 @@
         "field": "intel.seen.where",
         "value": "{{seen.where}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('seen.where'))"
+        "if": "(ctx['seen.where'] != null )"
       }
     },
     {
@@ -95,43 +95,49 @@
         "field": "intel.seen.sources",
         "value": "{{seen.sources}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('seen.sources'))"
+        "if": "(ctx['seen.sources'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "seen.sources",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['seen.sources'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "seen.where",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['seen.where'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "seen.node",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['seen.node'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "seen.host",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['seen.host'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "seen.indicator_type",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['seen.indicator_type'] != null )"
       }
     },
     {
       "dot_expander": {
         "field": "seen.indicator",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "(ctx['seen.indicator'] != null )"
       }
     },
     {

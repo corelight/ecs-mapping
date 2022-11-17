@@ -27,7 +27,7 @@
         "field": "event.id",
         "value": "{{fuid}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('fuid'))"
+        "if": "ctx.fuid != null"
       }
     },
     {
@@ -35,7 +35,7 @@
         "field": "log.id.fuid",
         "value": "{{fuid}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('fuid'))"
+        "if": "ctx.fuid != null"
       }
     },
     {
@@ -58,7 +58,7 @@
         "field": "file.created",
         "value": "{{pe.compile_ts}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('compile_ts'))"
+        "if": "ctx.compile_ts != null"
       }
     },
     {

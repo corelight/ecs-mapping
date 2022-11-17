@@ -6,8 +6,8 @@
         "description": "Add length of user_agent.original",
         "lang" : "painless",
         "source" : "ctx.user_agent.original_length = ctx.user_agent.original.length()",
-        "if": "ctx.containsKey('user_agent') && ctx['user_agent'].containsKey('original')",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.user_agent?.original != null"
       }
     }
   ]

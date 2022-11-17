@@ -139,7 +139,7 @@
           "field" : "destination.domain",
           "value" : "{{vpn.server_name}}",
           "ignore_failure": true,
-          "if" : "(ctx.containsKey('query'))"
+          "if": "ctx.query != null"
         }
       }
     ]

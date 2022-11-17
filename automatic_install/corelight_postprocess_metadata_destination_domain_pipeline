@@ -6,8 +6,8 @@
         "lang" : "painless",
         "description": "Add length of destination.domain",
         "source" : "ctx.destination.domain_length = ctx.destination.domain.length()",
-        "if": "ctx.containsKey('destination') && ctx['destination'].containsKey('domain')",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.destination?.domain != null"
       }
     },
     {

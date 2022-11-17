@@ -6,7 +6,7 @@
         "field": "@path",
         "target_field": "event.dataset",
         "ignore_missing": true,
-        "if": "ctx.containsKey('@path')"
+        "if": "ctx['@path'] != null"
       }
     },
     {
@@ -14,7 +14,7 @@
         "field": "_path",
         "target_field": "event.dataset",
         "ignore_missing": true,
-        "if": "ctx.containsKey('_path')"
+        "if": "ctx?._path != null"
       }
     },
     {
@@ -29,7 +29,7 @@
         "field": "@stream",
         "target_field": "event.dataset",
         "ignore_missing": true,
-        "if": "ctx.containsKey('@stream')"
+        "if": "ctx['@stream'] != null"
       }
     },
     {
@@ -37,7 +37,7 @@
         "field": "ts",
         "target_field": "@timestamp",
         "formats" : [ "ISO8601", "UNIX" ],
-        "if": "ctx.containsKey('ts')"
+        "if": "ctx?.ts != null"
       }
     },
     {
@@ -45,7 +45,7 @@
         "field": "ts",
         "target_field": "@timestamp",
         "formats" : [ "UNIX", "ISO8601" ],
-        "if": "ctx.containsKey('ts') && !(ctx.containsKey('@timestamp'))"
+        "if": "ctx?.ts != null && ctx['@timestamp'] == null"
       }
     },
     {
@@ -53,34 +53,34 @@
         "field": "_write_ts",
         "target_field": "event.created",
         "formats" : ["ISO8601"],
-        "if": "(ctx.containsKey('_write_ts'))"
+        "if": "ctx?._write_ts != null"
       }
     },
     {
       "dot_expander": {
         "field": "id.orig_h",
-        "if": "(ctx.containsKey('id.orig_h'))"
+        "if": "(ctx['id.orig_h'] != null )"
       }
     },
     {
       "rename": {
         "field": "source",
         "target_field": "temp_source",
-        "if": "(ctx.containsKey('source'))"
+        "if": "ctx?.source != null"
       }
     },
     {
       "rename": {
         "field": "host",
         "target_field": "temp_host",
-        "if": "(ctx.containsKey('host'))"
+        "if": "ctx?.host != null"
       }
     },
     {
       "rename": {
         "field": "port",
         "target_field": "temp_port",
-        "if": "(ctx.containsKey('host'))"
+        "if": "ctx?.port != null"
       }
     },
     {
@@ -88,13 +88,13 @@
         "field": "id.orig_h",
         "target_field": "source.ip",
         "ignore_missing": true,
-        "if": "ctx.id.containsKey('orig_h')"
+        "if": "ctx?.id?.orig_h != null"
       }
     },
     {
       "dot_expander": {
         "field": "id.orig_p",
-        "if": "(ctx.containsKey('id.orig_p'))"
+        "if": "(ctx['id.orig_p'] != null )"
       }
     },
     {
@@ -102,13 +102,13 @@
         "field": "id.orig_p",
         "target_field": "source.port",
         "ignore_missing": true,
-        "if": "ctx.id.containsKey('orig_p')"
+        "if": "ctx?.id?.orig_p != null"
       }
     },
     {
       "dot_expander": {
         "field": "id.resp_h",
-        "if": "(ctx.containsKey('id.resp_h'))"
+        "if": "(ctx['id.resp_h'] != null )"
       }
     },
     {
@@ -116,13 +116,13 @@
         "field": "id.resp_h",
         "target_field": "destination.ip",
         "ignore_missing": true,
-        "if": "ctx.id.containsKey('resp_h')"
+        "if": "ctx?.id?.resp_h != null"
       }
     },
     {
       "dot_expander": {
         "field": "id.resp_p",
-        "if": "(ctx.containsKey('id.resp_p'))"
+        "if": "(ctx['id.resp_p'] != null )"
       }
     },
     {
@@ -130,105 +130,105 @@
         "field": "id.resp_p",
         "target_field": "destination.port",
         "ignore_missing": true,
-        "if": "ctx.id.containsKey('resp_p')"
+        "if": "ctx?.id?.resp_p != null"
       }
     },
     {
       "rename": {
         "field": "id_orig_h",
         "target_field": "source.ip",
-        "if": "(ctx.containsKey('id_orig_h'))"
+        "if": "ctx?.id_orig_h != null"
       }
     },
     {
       "rename": {
         "field": "id_orig_p",
         "target_field": "source.port",
-        "if": "(ctx.containsKey('id_orig_p'))"
+        "if": "ctx?.id_orig_p != null"
       }
     },
     {
       "rename": {
         "field": "id_resp_h",
         "target_field": "destination.ip",
-        "if": "(ctx.containsKey('id_resp_h'))"
+        "if": "ctx?.id_resp_h != null"
       }
     },
     {
       "rename": {
         "field": "id_resp_p",
         "target_field": "destination.port",
-        "if": "(ctx.containsKey('id_resp_p'))"
+        "if": "ctx?.id_resp_p != null"
       }
     },
     {
       "set": {
         "field": "source.address",
         "value": "{{source.ip}}",
-        "if": "ctx.containsKey('source') && ctx['source'].containsKey('ip')"
+        "if": "ctx?.source?.ip != null"
       }
     },
     {
       "set": {
         "field": "destination.address",
         "value": "{{destination.ip}}",
-        "if": "ctx.containsKey('destination') && ctx['destination'].containsKey('ip')"
+        "if": "ctx?.destination?.ip != null"
       }
     },    
     {
       "set": {
         "field": "event.id",
         "value": "{{uid}}",
-        "if": "(ctx.containsKey('uid'))"
+        "if": "ctx?.uid != null"
       }
     },
     {
       "set": {
         "field": "log.id.uid",
         "value": "{{uid}}",
-        "if": "(ctx.containsKey('uid'))"
+        "if": "ctx?.uid != null"
       }
     },
     {
       "rename": {
         "field": "@sensor",
         "target_field": "observer.hostname",
-        "if": "(ctx.containsKey('@sensor'))"
+        "if": "ctx['@sensor'] != null"
       }
     },
     {
       "rename": {
         "field": "_system_name",
         "target_field": "observer.hostname",
-        "if": "(ctx.containsKey('_system_name'))"
+        "if": "ctx?._system_name != null"
       }
     },
     {
       "rename": {
         "field": "community_id",
         "target_field": "network.community_id",
-        "if": "(ctx.containsKey('community_id'))"
+        "if": "ctx?.community_id != null"
       }
     },
     {
       "rename": {
         "field": "inner_vlan",
         "target_field": "network.inner.vlan.id",
-        "if": "(ctx.containsKey('inner_vlan'))"
+        "if": "ctx?.inner_vlan != null"
       }
     },
     {
       "rename": {
         "field": "vlan_inner",
         "target_field": "network.inner.vlan.id",
-        "if": "(ctx.containsKey('vlan_inner'))"
+        "if": "ctx?.vlan_inner != null"
       }
     },
     {
       "rename": {
         "field": "vlan",
         "target_field": "network.vlan.id",
-        "if": "(ctx.containsKey('vlan'))"
+        "if": "ctx?.vlan != null"
       }
     },
     {

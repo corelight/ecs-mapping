@@ -64,7 +64,7 @@
         "field": "source.user.name",
         "value": "{{client}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('client'))"
+        "if": "ctx.client != null"
       }
     },
     {

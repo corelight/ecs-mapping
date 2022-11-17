@@ -6,7 +6,7 @@
       "set": {
         "description": "set index name prefix for non metrics,stats,system,etc",
         "field": "temporary_metadata_index_name_prefix",
-        "value": "ecs-corelight",
+        "value": "corelight",
         "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_netcontrol_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'"
       }
     },

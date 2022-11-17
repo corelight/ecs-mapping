@@ -20,7 +20,7 @@
         "field": "event.id",
         "value": "{{uids}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('uids'))"
+        "if": "ctx.uids != null"
       }
     },
     {
@@ -28,7 +28,7 @@
         "field": "log.id.uids",
         "value": "{{uids}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('uids'))"
+        "if": "ctx.uids != null"
       }
     },
     {
@@ -43,7 +43,7 @@
         "field": "source.address",
         "value": "{{client_addr}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('client_addr'))"
+        "if": "ctx.client_addr != null"
       }
     },
     {
@@ -58,7 +58,7 @@
         "field": "destination.address",
         "value": "{{server_addr}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('server_addr'))"
+        "if": "ctx.server_addr != null"
       }
     },
     {
@@ -213,7 +213,7 @@
         "lang": "painless",
         "source": "ctx.event.duration = (long)(ctx.duration * params.param_c)",
         "params": {
-          "param_c": 1000000
+          "param_c": 1000000000
         },
         "ignore_failure": true
       }
