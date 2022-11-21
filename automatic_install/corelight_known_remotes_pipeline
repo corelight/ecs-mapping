@@ -1,5 +1,5 @@
 {
-  "description": "Corelight known-devices pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description": "Corelight known_remotes pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -43,44 +43,8 @@
     },
     {
       "rename": {
-        "field": "last_active_interval",
-        "target_field": "corelight.known.last_active_interval",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "last_active_session",
-        "target_field": "corelight.known.last_active_session",
-        "if": "ctx?.last_active_session != null",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "mac",
-        "target_field": "host.mac",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
         "field": "num_conns",
         "target_field": "corelight.known.num_conns",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "protocols",
-        "target_field": "network.protocol",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "vendor_mac",
-        "target_field": "host.mac_oui_vendor_name",
         "ignore_missing": true
       }
     },

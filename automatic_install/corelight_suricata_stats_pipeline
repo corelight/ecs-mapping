@@ -14,7 +14,7 @@
         "target_field" : "@timestamp",
         "formats" : ["ISO8601"],
         "ignore_failure": true,
-        "if": "ctx.containsKey('suricata_stats') && ctx['suricata_stats'].containsKey('timestamp')"
+        "if": "ctx?.suricata_stats?.timestamp != null"
       }
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "description": "Corelight Known-certs pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description": "Corelight known_certs pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -16,10 +16,37 @@
       }
     },
     {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.event.duration = Math.round(ctx.duration * params.multiply_by); ctx.remove('duration')",
+        "params": {
+          "multiply_by": 1000000000
+        },
+        "ignore_failure": false,
+        "if": "ctx.duration != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "hash",
+        "target_field": "file.hash.sha1",
+        "ignore_missing": true
+      }
+    },
+    {
       "rename": {
         "field": "temp_host",
         "target_field": "host.ip",
-        "ignore_missing": true
+        "ignore_missing": true,
+        "if": "ctx.host_ip == null"
+      }
+    },
+    {
+      "rename": {
+        "field": "host_ip",
+        "target_field": "host.ip",
+        "ignore_missing": true,
+        "if": "ctx.host?.ip == null"
       }
     },
     {
@@ -31,10 +58,32 @@
     },
     {
       "rename": {
-        "field": "port_num",
-        "target_field": "host.port",
+        "field": "kuid",
+        "target_field": "log.id.kuid",
         "ignore_missing": true,
-        "if": "(ctx.containsKey('port_num'))"
+        "if": "ctx?.kuid != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "last_active_interval",
+        "target_field": "corelight.known.last_active_interval",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "last_active_session",
+        "target_field": "corelight.known.last_active_session",
+        "ignore_missing": true,
+        "if": "ctx?.last_active_session != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "num_conns",
+        "target_field": "corelight.known.num_conns",
+        "ignore_missing": true
       }
     },
     {
@@ -46,16 +95,39 @@
     },
     {
       "rename": {
-        "field": "subject",
+        "field": "serial",
         "target_field": "file.x509.subject.distinguished_name",
         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "protocol",
+        "target_field": "network.transport",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "temp_port",
+        "target_field": "host.port",
+        "if": "ctx.temp_port != null"
+      }
+    },
+    {
+      "set": {
+        "field": "event.id",
+        "value" : "{{log.id.kuid}}",
+        "ignore_failure": true,
+        "if": "(ctx.log?.id != null && ctx.log?.kuid != null)"
       }
     },
     {
       "remove": {
         "field": "id",
         "ignore_failure": true,
-        "ignore_missing" : true
+        "ignore_missing" : true,
+        "if": "ctx.id != null"
       }
     }
   ]

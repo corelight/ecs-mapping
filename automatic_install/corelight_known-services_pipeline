@@ -1,5 +1,5 @@
 {
-  "description": "Corelight known-names pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description": "Corelight known-services pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
@@ -111,7 +111,14 @@
       "rename": {
         "field": "temp_port",
         "target_field": "destination.port",
-        "if": "(ctx.containsKey('temp_port'))"
+        "if": "ctx.temp_port != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "port_num",
+        "target_field": "destination.port",
+        "if": "ctx.port_num != null"
       }
     },
     {
@@ -126,7 +133,7 @@
         "field": "event.id",
         "value" : "{{log.id.kuid}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('log') && ctx['log'].containsKey('id') && ctx['log'].containsKey('kuid')"
+        "if": "(ctx.log?.id != null && ctx.log?.kuid != null)"
       }
     },
     {
@@ -134,7 +141,7 @@
         "field": "id",
         "ignore_failure": true,
         "ignore_missing" : true,
-        "if": "ctx.containsKey('id')"
+        "if": "ctx.id != null"
       }
     }
   ]

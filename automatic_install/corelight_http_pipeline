@@ -48,7 +48,7 @@
         "field": "destination.domain",
         "value": "{{temp_host}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('temp_host'))"
+        "if": "ctx.temp_host != null"
       }
     },
     {
@@ -91,7 +91,7 @@
         "field": "source.file.name",
         "value": "{{orig_filenames}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('orig_filenames')"
+        "if": "ctx.orig_filenames != null"
       }
     },
     {
@@ -162,7 +162,7 @@
         "field": "destination.file.name",
         "value": "{{resp_filenames}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('resp_filenames')"
+        "if": "ctx.resp_filenames != null"
       }
     },
     {
@@ -191,7 +191,7 @@
         "field": "url.path",
         "value": "{{uri}}",
         "ignore_failure": true,
-        "if": "ctx.containsKey('uri')"
+        "if": "ctx.uri != null"
       }
     },
     {

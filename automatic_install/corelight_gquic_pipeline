@@ -75,7 +75,7 @@
       "user_agent": {
         "field": "user_agent.original",
         "target_field": "user_agent",
-        "if": "(ctx.containsKey('user_agent.original'))"
+        "if": "ctx.user_agent?.original != null"
       }
     },
     {

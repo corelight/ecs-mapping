@@ -107,7 +107,7 @@
         "field": "host.ip",
         "value": "{{software_host}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('software_host'))"
+        "if": "ctx.software_host != null"
       }
     },
     {
@@ -122,7 +122,7 @@
         "field": "host.port",
         "value": "{{host_p}}",
         "ignore_failure": true,
-        "if": "(ctx.containsKey('host_p'))"
+        "if": "ctx.host_p != null"
       }
     },
     {
