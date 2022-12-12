@@ -14,35 +14,40 @@
       "script" : {
         "lang" : "painless",
         "source": "ctx.destination.top_level_domain = ctx.destination.domain.substring(ctx.destination.domain.lastIndexOf('.')+1)",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.destination?.domain != null"
       }
     },
     {
       "script" : {
         "lang" : "painless",
         "source": "ctx.temp_without_top_level = ctx.destination.domain.substring(0,(ctx.destination.domain.lastIndexOf('.')))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.destination?.domain != null"
       }
     },
     {
       "script" : {
         "lang" : "painless",
         "source": "ctx.destination.parent_domain = ctx.temp_without_top_level.substring(ctx.temp_without_top_level.lastIndexOf('.') + 1)",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.temp_without_top_level != null"
       }
     },
     {
       "script" : {
         "lang" : "painless",
         "source": "ctx.destination.subdomain = ctx.temp_without_top_level.substring(0,(ctx.temp_without_top_level.lastIndexOf('.')))",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.temp_without_top_level != null"
       }
     },
     {
       "script" : {
         "lang" : "painless",
         "source": "ctx.destination.registered_domain = ctx.destination.parent_domain + '.' + ctx.destination.top_level_domain",
-        "ignore_failure": true
+        "ignore_failure": true,
+        "if": "ctx.destination?.parent_domain != null"
       }
     },
     {
