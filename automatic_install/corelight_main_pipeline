@@ -135,6 +135,12 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'ipsec'",
+        "name": "corelight_ipsec_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'irc'",
         "name": "corelight_irc_pipeline"
       }
@@ -395,6 +401,18 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'software_red'",
         "name": "corelight_software_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'stun'",
+        "name": "corelight_stun_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'stun_nat'",
+        "name": "corelight_stun_nat_pipeline"
       }
     },
     {
