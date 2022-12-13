@@ -88,7 +88,8 @@
         "field": "id.orig_h",
         "target_field": "source.ip",
         "ignore_missing": true,
-        "if": "ctx?.id?.orig_h != null"
+        "if": "ctx?.id instanceof Map && ctx?.id?.orig_h != null",
+        "tag": "1"
       }
     },
     {
@@ -102,7 +103,7 @@
         "field": "id.orig_p",
         "target_field": "source.port",
         "ignore_missing": true,
-        "if": "ctx?.id?.orig_p != null"
+        "if": "ctx?.id instanceof Map && ctx?.id?.orig_p != null"
       }
     },
     {
@@ -116,7 +117,7 @@
         "field": "id.resp_h",
         "target_field": "destination.ip",
         "ignore_missing": true,
-        "if": "ctx?.id?.resp_h != null"
+        "if": "ctx?.id instanceof Map && ctx?.id?.resp_h != null"
       }
     },
     {
@@ -130,7 +131,7 @@
         "field": "id.resp_p",
         "target_field": "destination.port",
         "ignore_missing": true,
-        "if": "ctx?.id?.resp_p != null"
+        "if": "ctx?.id instanceof Map && ctx?.id?.resp_p != null"
       }
     },
     {
