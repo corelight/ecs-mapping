@@ -261,13 +261,6 @@
         "ignore_failure": true,
         "ignore_missing" : true
       }
-    },
-    {
-      "remove": {
-        "field": "id",
-        "ignore_failure": true,
-        "ignore_missing" : true
-      }
     }
   ]
 }

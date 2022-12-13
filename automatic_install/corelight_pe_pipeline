@@ -18,31 +18,25 @@
     {
       "rename": {
         "field": "id",
-        "target_field": "event.id",
-        "ignore_missing": true
+        "target_field": "log.id.id",
+        "ignore_missing": true,
+        "if": "ctx.id != null"
       }
     },
     {
       "set": {
         "field": "event.id",
-        "value": "{{fuid}}",
+        "value": "{{log.id.id}}",
         "ignore_failure": true,
-        "if": "ctx.fuid != null"
+        "if": "ctx.log?.id?.id != null"
       }
     },
     {
       "set": {
         "field": "log.id.fuid",
-        "value": "{{fuid}}",
+        "value": "{{log.id.id}}",
         "ignore_failure": true,
-        "if": "ctx.fuid != null"
-      }
-    },
-    {
-      "remove": {
-        "field": "fuid",
-        "ignore_failure": true,
-        "ignore_missing": true
+        "if": "ctx.log?.id?.id != null"
       }
     },
     {
