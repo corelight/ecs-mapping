@@ -577,7 +577,7 @@
     },
     {
       "set": {
-        "description": "This field will be used to determine if a data type is a parse-failure or not for later on in index naming.,
+        "description": "This field will be used to determine if a data type is a parse-failure or not for later on in index naming.",
         "field": "temporary_metadata_is_parse_failure",
         "value": "no"
       }
