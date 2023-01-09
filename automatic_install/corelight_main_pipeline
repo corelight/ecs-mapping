@@ -576,6 +576,13 @@
       }
     },
     {
+      "set": {
+        "description": "This field will be used to determine if a data type is a parse-failure or not for later on in index naming.,
+        "field": "temporary_metadata_is_parse_failure",
+        "value": "no"
+      }
+    },
+    {
       "pipeline": {
         "description": "Logs that are system related.",
         "if": "ctx.event.dataset == 'audit' || ctx.event.dataset == 'auditlog' || ctx.event.dataset == 'broker' || ctx.event.dataset == 'cluster' || ctx.event.dataset == 'config' || ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'corelight_license_capacity' || ctx.event.dataset == 'loaded_scripts'",
@@ -619,33 +626,9 @@
   ],
   "on_failure" : [
     {
-      "set": {
-        "field": "event.ingested",
-        "value": "{{_ingest.timestamp}}",
-        "if": "ctx.event?.ingested == null"
-      }
-    },
-    {
-      "date_index_name" : {
-        "field" : "event.ingested",
-        "index_name_prefix" : "parse-failures-corelight-",
-        "date_formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXX", "yyyy-MM-dd'T'HH:mm:ss.SSSXX" ],
-        "date_rounding": "d",
-        "ignore_failure": true,
-        "index_name_format": "yyyy.MM.dd"
-      }
-    },
-    {
-      "set": {
-        "field": "error.message",
-        "value": "Processor {{ _ingest.on_failure_processor_type }} with tag {{ _ingest.on_failure_processor_tag }} in pipeline {{ _ingest.on_failure_pipeline }} failed with message {{ _ingest.on_failure_message }}"
-      }
-    },
-    {
-      "remove": {
-        "field": "id",
-        "ignore_failure": true,
-        "ignore_missing" : true
+      "pipeline": {
+        "description": "Run pipeline for handling ingest/parse failures (parse-failures).",
+        "name": "corelight_postprocess_parse_failures_pipeline"
       }
     }
   ]

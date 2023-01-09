@@ -1,0 +1,38 @@
+{
+  "description": "A pipeline to handle logs that have critical parse failures that could prevent field collisions and other improper handling of data that could cause issues in mappings/fields/values.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "event.ingested",
+        "value": "{{_ingest.timestamp}}",
+        "if": "ctx.event?.ingested == null"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_is_parse_failure",
+        "value": "yes"
+      }
+    },
+    {
+      "set": {
+        "field": "error.message",
+        "value": "Processor {{ _ingest.on_failure_processor_type }} with tag {{ _ingest.on_failure_processor_tag }} in pipeline {{ _ingest.on_failure_pipeline }} failed with message {{ _ingest.on_failure_message }}"
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "pipeline": {
+        "description": "Set index naming.",
+        "name": "corelight_postprocess_index_naming_pipeline"
+      }
+    }
+  ]
+}
