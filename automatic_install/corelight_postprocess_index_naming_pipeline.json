@@ -1,7 +1,6 @@
 {
   "description": "Corelight index naming pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
-
     {
       "set": {
         "description": "index prefix for - Protocol Logs (ie: non metrics,stats,system,etc) index prefix.",
