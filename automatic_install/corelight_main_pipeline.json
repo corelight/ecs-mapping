@@ -627,7 +627,7 @@
   "on_failure" : [
     {
       "pipeline": {
-        "description": "Run pipeline for handling ingest/parse failures (parse-failures).",
+        "description": "Run pipeline for handling ingest/parse failures (parse_failures).",
         "name": "corelight_postprocess_parse_failures_pipeline"
       }
     }
