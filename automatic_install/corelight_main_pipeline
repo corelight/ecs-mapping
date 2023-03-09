@@ -548,6 +548,18 @@
       }
     },
     {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ldap'",
+        "name": "corelight_ldap_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ldap_search'",
+        "name": "corelight_ldap_search_pipeline"
+      }
+    },
+    {
       "set": {
         "description": "This field can be used to determine if a data type is a metric or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle metrics - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
         "field": "temporary_metadata_is_metric_log",
