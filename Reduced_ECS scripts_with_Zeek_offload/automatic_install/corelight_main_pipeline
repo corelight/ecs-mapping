@@ -64,7 +64,7 @@
     {
       "pipeline": {
         "if": "ctx.event.dataset == 'dpd'",
-        "name": "corelight_dnp3_pipeline"
+        "name": "corelight_dpd_pipeline"
       }
     },
     {
