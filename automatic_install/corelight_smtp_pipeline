@@ -166,7 +166,7 @@
       "date": {
         "field": "smtp.date_non_formatted_date",
         "target_field": "smtp.date",
-        "formats": ["RFC_1123_DATE_TIME"],
+        "formats": ["EEE, dd MMM yyyy HH:mm:ss x", "EEE, d MMM yyyy HH:mm:ss x","EEE dd MMM yyyy HH:mm:ss x", "EEE, d MMM yyyy HH:mm:ss", "EEE, dd MMM yyyy HH:mm:ss", "EEE, d MMM yyyy HH:mm:ss","EEE, dd MMM yyyy HH:mm:ss x (z)", "EEE, d MMM yyyy HH:mm:ss x (z)"],
         "on_failure": [
           {
             "remove": {
