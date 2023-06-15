@@ -158,8 +158,24 @@
     {
       "rename": {
         "field": "date",
-        "target_field": "smtp.date",
+        "target_field": "smtp.date_raw",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "smtp.date_raw",
+        "target_field": "smtp.date",
+        "formats": ["RFC_1123_DATE_TIME"],
+        "on_failure": [
+          {
+            "remove": {
+            "field": "smtp.date",
+            "ignore_missing" : true
+            }
+          }
+        ]
+
       }
     },
     {
