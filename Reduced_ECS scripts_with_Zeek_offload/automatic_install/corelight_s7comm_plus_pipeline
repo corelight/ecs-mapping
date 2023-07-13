@@ -1,0 +1,61 @@
+{
+  "description" : "Corelight s7comm_plus log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "is_orig",
+        "value": "s7comm.is_orig",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version",
+        "value": "s7comm.version",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "opcode",
+        "value": "s7comm.opcode",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "opcode_name",
+        "value": "s7comm.opcode_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "function_code",
+        "value": "s7comm.function_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "function_name",
+        "value": "s7comm.function_name",
+        "ignore_failure": true
+      }
+    }
+  ]
+}

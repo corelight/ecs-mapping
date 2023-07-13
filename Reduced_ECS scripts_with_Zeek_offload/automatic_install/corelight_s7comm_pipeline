@@ -1,0 +1,89 @@
+{
+  "description" : "Corelight s7comm log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "is_orig",
+        "value": "s7comm.is_orig",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rosctr_code",
+        "value": "s7comm.rosctr_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rosctr_name",
+        "value": "s7comm.rosctr_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pdu_reference",
+        "value": "s7comm.pdu_reference",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "function_code",
+        "value": "s7comm.function_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "function_name",
+        "value": "s7comm.function_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "subfunction_code",
+        "value": "s7comm.subfunction_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "subfunction_name",
+        "value": "s7comm.subfunction_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "error_class",
+        "value": "s7comm.error_class",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "error_code",
+        "value": "s7comm.error_code",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
