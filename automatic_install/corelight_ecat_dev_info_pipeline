@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight enip pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description" : "Corelight ecat_dev_info log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -17,64 +17,64 @@
     },
     {
       "rename": {
-        "field": "is_orig",
-        "value": "enip.is_orig",
+        "field": "slave_id",
+        "value": "ecat.slave_id",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "enip_command_code",
-        "value": "enip.enip_command_code",
+        "field": "revision",
+        "value": "ecat.revision",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "command",
-        "target_field": "enip.command",
+        "field": "dev_type",
+        "target_field": "ecat.dev_type",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "length",
-        "target_field": "enip.length",
+        "field": "build",
+        "target_field": "ecat.build",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "options",
-        "target_field": "enip.options",
+        "field": "fmmucnt",
+        "target_field": "ecat.fmmucnt",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "session_handle",
-        "target_field": "enip.session_handle",
+        "field": "smcount",
+        "target_field": "ecat.smcount",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "sender_context",
-        "target_field": "enip.sender_context",
+        "field": "ports",
+        "target_field": "ecat.ports",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "status",
-        "target_field": "enip.status",
+        "field": "dpram",
+        "target_field": "ecat.dpram",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "enip_status",
-        "target_field": "enip.enip_status",
+        "field": "features",
+        "target_field": "ecat.features",
         "ignore_missing": true
       }
     }

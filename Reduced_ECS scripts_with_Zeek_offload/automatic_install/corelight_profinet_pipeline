@@ -42,6 +42,13 @@
         "target_field": "profinet.subslot_number",
         "ignore_failure": true
       }
+    },
+    {
+      "rename": {
+        "field": "index",
+        "target_field": "profinet.index",
+        "ignore_failure": true
+      }
     }
   ]
 }

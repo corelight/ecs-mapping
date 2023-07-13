@@ -560,6 +560,162 @@
       }
     },
     {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus_read_write_multiple_registers'",
+        "name": "corelight_modbus_read_write_multiple_registers_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus_mask_write_register'",
+        "name": "corelight_modbus_mask_write_register_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus_detailed'",
+        "name": "corelight_modbus_detailed_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'cip_identity'",
+        "name": "corelight_cip_identity_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_arp_info'",
+        "name": "corelight_ecat_arp_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_soe_info'",
+        "name": "corelight_ecat_soe_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_coe_info'",
+        "name": "corelight_ecat_coe_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_aoe_info'",
+        "name": "corelight_ecat_aoe_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_dev_info'",
+        "name": "corelight_ecat_dev_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_registers'",
+        "name": "corelight_ecat_registers_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_log_address'",
+        "name": "corelight_ecat_log_address_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bacnet_property'",
+        "name": "corelight_bacnet_property_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_ip_header'",
+        "name": "corelight_bsap_ip_header_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_ip_rdp'",
+        "name": "corelight_bsap_ip_rdp_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_ip_unknown'",
+        "name": "corelight_bsap_ip_unknown_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_header'",
+        "name": "corelight_bsap_serial_header_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_rdb'",
+        "name": "corelight_bsap_serial_rdb_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_rdb_ext'",
+        "name": "corelight_bsap_serial_rdb_ext_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_unknown'",
+        "name": "corelight_bsap_serial_unknown_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'dnp3_control'",
+        "name": "corelight_dnp3_control_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'cip_io'",
+        "name": "corelight_cip_io_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'cip'",
+        "name": "corelight_cip_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'enip'",
+        "name": "corelight_enip_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'dnp3_objects'",
+        "name": "corelight_dnp3_objects_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bacnet_discovery'",
+        "name": "corelight_bacnet_discovery_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bacnet'",
+        "name": "corelight_bacnet_pipeline"
+      }
+    },
+    {
       "set": {
         "description": "This field can be used to determine if a data type is a metric or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle metrics - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
         "field": "temporary_metadata_is_metric_log",

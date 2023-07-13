@@ -1,0 +1,75 @@
+{
+  "description" : "Corelight s7comm_read_szl log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pdu_reference",
+        "value": "s7comm.pdu_reference",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "method",
+        "value": "s7comm.method",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "szl_id",
+        "value": "s7comm.szl_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "szl_id_name",
+        "value": "s7comm.szl_id_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "szl_index",
+        "value": "s7comm.szl_index",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "return_code",
+        "value": "s7comm.return_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "subfunction_code",
+        "value": "s7comm.subfunction_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "return_code_name",
+        "value": "s7comm.return_code_name",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
