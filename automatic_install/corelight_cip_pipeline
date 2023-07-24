@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "is_orig",
-        "value": "cip.is_orig",
+        "target_field": "cip.is_orig",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "cip_sequence_count",
-        "value": "cip.cip_sequence_count",
+        "target_field": "cip.cip_sequence_count",
         "ignore_failure": true
       }
     },
