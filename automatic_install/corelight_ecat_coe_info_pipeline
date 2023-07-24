@@ -18,7 +18,7 @@
     {
       "rename": {
         "field": "number",
-        "vtarget_field": "ecat.number",
+        "target_field": "ecat.number",
         "ignore_failure": true
       }
     },
