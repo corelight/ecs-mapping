@@ -90,6 +90,6 @@
         "target_field": "bsap.variable_value",
         "ignore_missing": true
       }
-    },
+    }
   ]
 }
