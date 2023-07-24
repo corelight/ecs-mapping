@@ -356,8 +356,23 @@
     {
       "rename": {
         "field": "certificate_not_valid_after",
-        "target_field": "file.x509.not_after",
+        "target_field": "file.x509.nonformatted_not_after",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "file.x509.nonformatted_not_after",
+        "target_field": "file.x509.not_after",
+        "formats": ["yyyy-MM-dd'T'HH:mm:ss.SSSZ", "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"],
+        "on_failure": [
+          {
+            "remove": {
+            "field": "file.x509.not_after",
+            "ignore_missing" : true
+            }
+          }
+        ]
       }
     },
     {
