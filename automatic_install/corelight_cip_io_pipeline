@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "is_orig",
-        "value": "cip.is_orig",
+        "target_field": "cip.is_orig",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "connection_id",
-        "value": "cip.connection_id",
+        "target_field": "cip.connection_id",
         "ignore_failure": true
       }
     },
