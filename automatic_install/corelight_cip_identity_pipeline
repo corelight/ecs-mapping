@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "encapsulation_version",
-        "value": "cip.encapsulation_version",
+        "target_field": "cip.encapsulation_version",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "socket_address",
-        "value": "cip.socket_address",
+        "target_field": "cip.socket_address",
         "ignore_failure": true
       }
     },
