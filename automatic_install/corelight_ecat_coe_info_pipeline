@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "number",
-        "value": "ecat.number",
+        "vtarget_field": "ecat.number",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "type",
-        "value": "ecat.type",
+        "target_field": "ecat.type",
         "ignore_failure": true
       }
     },

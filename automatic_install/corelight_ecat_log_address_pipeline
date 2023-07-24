@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "srcmac",
-        "value": "source.mac",
+        "target_field": "source.mac",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "dstmac",
-        "value": "destination.mac",
+        "target_field": "destination.mac",
         "ignore_failure": true
       }
     },

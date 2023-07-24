@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "arp_type",
-        "value": "ecat.opcode",
+        "target_field": "ecat.opcode",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "mac_src",
-        "value": "source.mac",
+        "target_field": "source.mac",
         "ignore_failure": true
       }
     },
