@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "targetid",
-        "value": "ecat.targetid",
+        "target_field": "ecat.targetid",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "targetport",
-        "value": "destination.port",
+        "target_field": "destination.port",
         "ignore_failure": true
       }
     },

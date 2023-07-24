@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "slave_id",
-        "value": "ecat.slave_id",
+        "target_field": "ecat.slave_id",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "revision",
-        "value": "ecat.revision",
+        "target_field": "ecat.revision",
         "ignore_failure": true
       }
     },

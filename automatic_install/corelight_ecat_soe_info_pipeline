@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "opcode",
-        "value": "ecat.opcode",
+        "target_field": "ecat.opcode",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "incomplete",
-        "value": "ecat.incomplete",
+        "target_field": "ecat.incomplete",
         "ignore_failure": true
       }
     },

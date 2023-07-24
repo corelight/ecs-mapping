@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "is_orig",
-        "value": "enip.is_orig",
+        "target_field": "enip.is_orig",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "enip_command_code",
-        "value": "enip.enip_command_code",
+        "target_field": "enip.enip_command_code",
         "ignore_failure": true
       }
     },

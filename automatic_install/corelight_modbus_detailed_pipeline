@@ -18,14 +18,14 @@
     {
       "rename": {
         "field": "unit_id",
-        "value": "modbus.unit_id",
+        "target_field": "modbus.unit_id",
         "ignore_failure": true
       }
     },
     {
       "rename": {
         "field": "func",
-        "value": "modbus.func",
+        "target_field": "modbus.func",
         "ignore_failure": true
       }
     },
