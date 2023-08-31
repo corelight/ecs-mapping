@@ -1,0 +1,41 @@
+{
+  "description" : "Corelight ml_results log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "domain",
+        "target_field": "destination.domain",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "predicted_tag_name",
+        "target_field": "ml_results.predicted_tag_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "predicted_probability",
+        "target_field": "ml_results.predicted_probability",
+        "ignore_failure": true
+      }
+    }
+  ]
+}
+    
