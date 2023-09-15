@@ -1,0 +1,89 @@
+{
+  "description" : "Corelight s7comm_upload_download log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rosctr",
+        "value": "s7comm.rosctr",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pdu_reference",
+        "value": "s7comm.pdu_reference",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "function_name",
+        "value": "s7comm.function_name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "function_status",
+        "value": "s7comm.function_status",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "session_id",
+        "value": "s7comm.session_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "blocklength",
+        "value": "s7comm.blocklength",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "filename",
+        "value": "s7comm.filename",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "block_type",
+        "value": "s7comm.block_type",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "block_number",
+        "value": "s7comm.block_number",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "destination_filesystem",
+        "value": "s7comm.destination_filesystem",
+        "ignore_failure": true
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight enip pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description" : "Corelight enip_list_identity pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -17,15 +17,15 @@
     },
     {
       "rename": {
-        "field": "is_orig",
-        "target_field": "enip.is_orig",
+        "field": "device_ip",
+        "target_field": "enip.device_ip",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "enip_command_code",
-        "target_field": "enip.enip_command_code",
+        "field": "device_type",
+        "target_field": "enip.device_type",
         "ignore_failure": true
       }
     },
@@ -38,29 +38,29 @@
     },
     {
       "rename": {
-        "field": "length",
-        "target_field": "enip.length",
+        "field": "product_code",
+        "target_field": "enip.product_code",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "options",
-        "target_field": "enip.options",
+        "field": "product_name",
+        "target_field": "enip.product_name",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "session_handle",
-        "target_field": "enip.session_handle",
+        "field": "revision",
+        "target_field": "enip.revision",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "sender_context",
-        "target_field": "enip.sender_context",
+        "field": "state",
+        "target_field": "enip.state",
         "ignore_missing": true
       }
     },
@@ -73,9 +73,17 @@
     },
     {
       "rename": {
-        "field": "enip_status",
-        "target_field": "enip.enip_status",
+        "field": "vendor",
+        "target_field": "enip.vendor",
         "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "host.ip",
+        "value": "{{enip.device_ip}}",
+        "ignore_failure": true,
+        "if": "ctx.enip?.device_ip != null && ctx.host?.ip == null"
       }
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "description" : "Corelight enip pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description" : "Corelight modbus_detailed log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors" : [
     {
       "set": {
@@ -17,64 +17,64 @@
     },
     {
       "rename": {
-        "field": "is_orig",
-        "target_field": "enip.is_orig",
+        "field": "unit_id",
+        "target_field": "modbus.unit_id",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "enip_command_code",
-        "target_field": "enip.enip_command_code",
+        "field": "func",
+        "target_field": "modbus.func",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "command",
-        "target_field": "enip.command",
+        "field": "socket_port",
+        "target_field": "modbus.socket_port",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "length",
-        "target_field": "enip.length",
+        "field": "network_direction",
+        "target_field": "modbus.network_direction",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "options",
-        "target_field": "enip.options",
+        "field": "vendor_name",
+        "target_field": "modbus.vendor_name",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "session_handle",
-        "target_field": "enip.session_handle",
+        "field": "address",
+        "target_field": "modbus.address",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "sender_context",
-        "target_field": "enip.sender_context",
+        "field": "quantity",
+        "target_field": "modbus.quantity",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "status",
-        "target_field": "enip.status",
+        "field": "product_code",
+        "target_field": "modbus.product_code",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "enip_status",
-        "target_field": "enip.enip_status",
+        "field": "values",
+        "target_field": "modbus.values",
         "ignore_missing": true
       }
     }

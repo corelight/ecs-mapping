@@ -1,0 +1,68 @@
+{
+  "description" : "Corelight profinet_dce_rpc log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version",
+        "value": "profinet.version",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "packet_type",
+        "value": "profinet.packet_type",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "object_uuid",
+        "target_field": "profinet.object_uuid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "interface_uuid",
+        "target_field": "profinet.interface_uuid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "interface_uuid",
+        "target_field": "profinet.interface_uuid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_boot_time",
+        "target_field": "profinet.server_boot_time",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "operation",
+        "target_field": "profinet.operation",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

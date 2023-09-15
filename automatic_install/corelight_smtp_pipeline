@@ -158,8 +158,24 @@
     {
       "rename": {
         "field": "date",
-        "target_field": "smtp.date",
+        "target_field": "smtp.date_non_formatted_date",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "smtp.date_non_formatted_date",
+        "target_field": "smtp.date",
+        "formats": ["EEE, dd MMM yyyy HH:mm:ss x", "EEE, d MMM yyyy HH:mm:ss x","EEE dd MMM yyyy HH:mm:ss x", "EEE, d MMM yyyy HH:mm:ss", "EEE, dd MMM yyyy HH:mm:ss", "EEE, d MMM yyyy HH:mm:ss","EEE, dd MMM yyyy HH:mm:ss x (z)", "EEE, d MMM yyyy HH:mm:ss x (z)"],
+        "on_failure": [
+          {
+            "remove": {
+            "field": "smtp.date",
+        "ignore_missing": true
+            }
+          }
+        ]
+
       }
     },
     {

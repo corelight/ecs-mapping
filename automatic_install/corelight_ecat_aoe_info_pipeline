@@ -1,0 +1,68 @@
+{
+  "description" : "Corelight ecat_aoe_info log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "targetid",
+        "target_field": "ecat.targetid",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "targetport",
+        "target_field": "destination.port",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "senderid",
+        "target_field": "ecat.senderid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "senderport",
+        "target_field": "source.port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cmd",
+        "target_field": "ecat.cmd",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "stateflags",
+        "target_field": "ecat.stateflags",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "data",
+        "target_field": "ecat.data",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

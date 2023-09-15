@@ -63,6 +63,18 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'dnp3_control'",
+        "name": "corelight_dnp3_control_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'dnp3_objects'",
+        "name": "corelight_dnp3_objects_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'dpd'",
         "name": "corelight_dnp3_pipeline"
       }
@@ -257,18 +269,6 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'known_users'",
         "name": "corelight_known_services_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'modbus'",
-        "name": "corelight_modbus_pipeline"
-      }
-    },
-    {
-      "pipeline": {
-        "if": "ctx.event.dataset == 'modbus_register_change'",
-        "name": "corelight_modbus-register-change_pipeline"
       }
     },
     {
@@ -519,7 +519,25 @@
     },
     {
       "pipeline": {
+        "if": "ctx.event.dataset == 'enip_list_identity'",
+        "name": "corelight_enip_list_identity_pipeline"
+      }
+    },
+    {
+      "pipeline": {
         "if": "ctx.event.dataset == 'profinet'",
+        "name": "corelight_profinet_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'profinet_dce_rpc'",
+        "name": "corelight_profinet_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'profinet_debug'",
         "name": "corelight_profinet_pipeline"
       }
     },
@@ -545,6 +563,258 @@
       "pipeline": {
         "if": "ctx.event.dataset == 'wireguard'",
         "name": "corelight_vpn_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ldap'",
+        "name": "corelight_ldap_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ldap_search'",
+        "name": "corelight_ldap_search_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus'",
+        "name": "corelight_modbus_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus_detailed'",
+        "name": "corelight_modbus_detailed_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus_register_change'",
+        "name": "corelight_modbus-register-change_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus_read_write_multiple_registers'",
+        "name": "corelight_modbus_read_write_multiple_registers_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'modbus_mask_write_register'",
+        "name": "corelight_modbus_mask_write_register_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bacnet'",
+        "name": "corelight_bacnet_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bacnet_discovery'",
+        "name": "corelight_bacnet_discovery_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bacnet_property'",
+        "name": "corelight_bacnet_property_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_ip_header'",
+        "name": "corelight_bsap_ip_header_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_ip_rdb'",
+        "name": "corelight_bsap_ip_rdb_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_ip_unknown'",
+        "name": "corelight_bsap_ip_unknown_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_header'",
+        "name": "corelight_bsap_serial_header_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_rdb'",
+        "name": "corelight_bsap_serial_rdb_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_rdb_ext'",
+        "name": "corelight_bsap_serial_rdb_ext_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'bsap_serial_unknown'",
+        "name": "corelight_bsap_serial_unknown_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'cip'",
+        "name": "corelight_cip_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'cip_io'",
+        "name": "corelight_cip_io_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'cip_identity'",
+        "name": "corelight_cip_identity_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'cotp'",
+        "name": "corelight_cotp_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'iso_cotp'",
+        "name": "corelight_cotp_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_aoe_info'",
+        "name": "corelight_ecat_aoe_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_arp_info'",
+        "name": "corelight_ecat_arp_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_coe_info'",
+        "name": "corelight_ecat_coe_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_dev_info'",
+        "name": "corelight_ecat_dev_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_foe_info'",
+        "name": "corelight_ecat_foe_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_log_address'",
+        "name": "corelight_ecat_log_address_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_registers'",
+        "name": "corelight_ecat_registers_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ecat_soe_info'",
+        "name": "corelight_ecat_soe_info_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'enip'",
+        "name": "corelight_enip_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'genisys'",
+        "name": "corelight_genisys_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 's7comm'",
+        "name": "corelight_s7comm_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 's7comm_plus'",
+        "name": "corelight_s7comm_plus_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 's7comm_read_szl'",
+        "name": "corelight_s7comm_read_szl_plus_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 's7comm_upload_download'",
+        "name": "corelight_s7comm_upload_download_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'tds'",
+        "name": "corelight_tds_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'tds_rpc'",
+        "name": "corelight_tds_rpc_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'tds_sql_batch'",
+        "name": "corelight_tds_sql_batch_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ml_results'",
+        "name": "corelight_ml_results_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'corelight_ml_results'",
+        "name": "corelight_ml_results_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'pcr'",
+        "name": "corelight_pcr_pipeline"
       }
     },
     {
@@ -577,7 +847,7 @@
     },
     {
       "set": {
-        "description": "This field will be used to determine if a data type is a parse-failure or not for later on in index naming.",
+        "description": "This field will be used to determine if a data type is a parse_failure or not for later on in index naming.",
         "field": "temporary_metadata_is_parse_failure",
         "value": "no"
       }
@@ -592,7 +862,7 @@
     {
       "pipeline": {
         "description": "Logs that are metrics.",
-        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_docker' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_metrics_utilization'",
+        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_docker' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_metrics_utilization' || 'ml_metrics' || 'corelight_ml_metrics'",
         "name": "corelight_metrics_general_pipeline"
       }
     },

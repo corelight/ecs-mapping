@@ -17,64 +17,43 @@
     },
     {
       "rename": {
-        "field": "is_orig",
-        "target_field": "enip.is_orig",
+        "field": "crc_calculated",
+        "target_field": "genisys.crc_calculated",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "enip_command_code",
-        "target_field": "enip.enip_command_code",
+        "field": "crc_transmitted",
+        "target_field": "genisys.crc_transmitted",
         "ignore_failure": true
       }
     },
     {
       "rename": {
-        "field": "command",
-        "target_field": "enip.command",
+        "field": "direction",
+        "target_field": "genisys.direction",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "length",
-        "target_field": "enip.length",
+        "field": "header",
+        "target_field": "genisys.header",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "options",
-        "target_field": "enip.options",
+        "field": "payload",
+        "target_field": "genisys.payload",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "session_handle",
-        "target_field": "enip.session_handle",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "sender_context",
-        "target_field": "enip.sender_context",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "status",
-        "target_field": "enip.status",
-        "ignore_missing": true
-      }
-    },
-    {
-      "rename": {
-        "field": "enip_status",
-        "target_field": "enip.enip_status",
+        "field": "server",
+        "target_field": "genisys.server",
         "ignore_missing": true
       }
     }
