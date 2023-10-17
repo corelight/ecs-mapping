@@ -277,7 +277,11 @@
     },
     {
       "remove": {
-        "field": [ "ts", "uid", "_write_ts" ],
+        "field": [
+          "ts",
+          "uid",
+          "_write_ts"
+        ],
         "ignore_missing": true
       }
     }
