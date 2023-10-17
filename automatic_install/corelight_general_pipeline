@@ -59,7 +59,7 @@
     {
       "dot_expander": {
         "field": "id.orig_h",
-        "if": "(ctx['id.orig_h'] != null )"
+        "if": "ctx['id.orig_h'] != null"
       }
     },
     {
