@@ -1,0 +1,21 @@
+{
+  "description": "Corelight Postprocess Metadata SSL Pipeline",
+  "processors" : [
+    {
+      "script" : {
+        "lang" : "painless",
+        "source" : "$FILLEME",
+        "if" : "$FILLEME"
+      },
+      "ignore_failure": true
+    },
+    {
+      "rename" : {
+        "field" : "$FILLEME",
+        "target_field" : "$FILLEME",
+        "ignore_failure": true
+      },
+      "ignore_failure": true
+    }
+  ]
+}
