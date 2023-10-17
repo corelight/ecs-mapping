@@ -95,7 +95,7 @@
     {
       "dot_expander": {
         "field": "id.orig_p",
-        "if": "(ctx['id.orig_p'] != null )"
+        "if": "ctx['id.orig_p'] != null"
       }
     },
     {
@@ -109,7 +109,7 @@
     {
       "dot_expander": {
         "field": "id.resp_h",
-        "if": "(ctx['id.resp_h'] != null )"
+        "if": "ctx['id.resp_h'] != null"
       }
     },
     {
@@ -123,7 +123,7 @@
     {
       "dot_expander": {
         "field": "id.resp_p",
-        "if": "(ctx['id.resp_p'] != null )"
+        "if": "ctx['id.resp_p'] != null"
       }
     },
     {
