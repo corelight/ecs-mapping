@@ -18,71 +18,71 @@
     {
       "rename": {
         "field": "is_orig",
-        "value": "s7comm.is_orig",
-        "ignore_failure": true
+        "target_field": "s7comm.is_orig",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "rosctr_code",
-        "value": "s7comm.rosctr_code",
-        "ignore_failure": true
+        "target_field": "s7comm.rosctr_code",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "rosctr_name",
-        "value": "s7comm.rosctr_name",
-        "ignore_failure": true
+        "target_field": "s7comm.rosctr_name",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "pdu_reference",
-        "value": "s7comm.pdu_reference",
-        "ignore_failure": true
+        "target_field": "s7comm.pdu_reference",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "function_code",
-        "value": "s7comm.function_code",
-        "ignore_failure": true
+        "target_field": "s7comm.function_code",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "function_name",
-        "value": "s7comm.function_name",
-        "ignore_failure": true
+        "target_field": "s7comm.function_name",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "subfunction_code",
-        "value": "s7comm.subfunction_code",
-        "ignore_failure": true
+        "target_field": "s7comm.subfunction_code",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "subfunction_name",
-        "value": "s7comm.subfunction_name",
-        "ignore_failure": true
+        "target_field": "s7comm.subfunction_name",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "error_class",
-        "value": "s7comm.error_class",
-        "ignore_failure": true
+        "target_field": "s7comm.error_class",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "error_code",
-        "value": "s7comm.error_code",
-        "ignore_failure": true
+        "target_field": "s7comm.error_code",
+        "ignore_missing": true
       }
     }
   ]

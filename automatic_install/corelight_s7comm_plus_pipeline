@@ -18,43 +18,43 @@
     {
       "rename": {
         "field": "is_orig",
-        "value": "s7comm.is_orig",
-        "ignore_failure": true
+        "target_field": "s7comm.is_orig",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "version",
-        "value": "s7comm.version",
-        "ignore_failure": true
+        "target_field": "s7comm.version",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "opcode",
-        "value": "s7comm.opcode",
-        "ignore_failure": true
+        "target_field": "s7comm.opcode",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "opcode_name",
-        "value": "s7comm.opcode_name",
-        "ignore_failure": true
+        "target_field": "s7comm.opcode_name",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "function_code",
-        "value": "s7comm.function_code",
-        "ignore_failure": true
+        "target_field": "s7comm.function_code",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "function_name",
-        "value": "s7comm.function_name",
-        "ignore_failure": true
+        "target_field": "s7comm.function_name",
+        "ignore_missing": true
       }
     }
   ]

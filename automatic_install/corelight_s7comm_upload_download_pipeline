@@ -18,71 +18,71 @@
     {
       "rename": {
         "field": "rosctr",
-        "value": "s7comm.rosctr",
-        "ignore_failure": true
+        "target_field": "s7comm.rosctr",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "pdu_reference",
-        "value": "s7comm.pdu_reference",
-        "ignore_failure": true
+        "target_field": "s7comm.pdu_reference",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "function_name",
-        "value": "s7comm.function_name",
-        "ignore_failure": true
+        "target_field": "s7comm.function_name",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "function_status",
-        "value": "s7comm.function_status",
-        "ignore_failure": true
+        "target_field": "s7comm.function_status",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "session_id",
-        "value": "s7comm.session_id",
-        "ignore_failure": true
+        "target_field": "s7comm.session_id",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "blocklength",
-        "value": "s7comm.blocklength",
-        "ignore_failure": true
+        "target_field": "s7comm.blocklength",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "filename",
-        "value": "s7comm.filename",
-        "ignore_failure": true
+        "target_field": "s7comm.filename",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "block_type",
-        "value": "s7comm.block_type",
-        "ignore_failure": true
+        "target_field": "s7comm.block_type",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "block_number",
-        "value": "s7comm.block_number",
-        "ignore_failure": true
+        "target_field": "s7comm.block_number",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "destination_filesystem",
-        "value": "s7comm.destination_filesystem",
-        "ignore_failure": true
+        "target_field": "s7comm.destination_filesystem",
+        "ignore_missing": true
       }
     }
   ]

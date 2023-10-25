@@ -18,15 +18,15 @@
     {
       "rename": {
         "field": "version",
-        "value": "profinet.version",
-        "ignore_failure": true
+        "target_field": "profinet.version",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "packet_type",
-        "value": "profinet.packet_type",
-        "ignore_failure": true
+        "target_field": "profinet.packet_type",
+        "ignore_missing": true
       }
     },
     {

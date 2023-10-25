@@ -18,8 +18,8 @@
     {
       "rename": {
         "field": "raw_data",
-        "value": "profinet.raw_data",
-        "ignore_failure": true
+        "target_field": "profinet.raw_data",
+        "ignore_missing": true
       }
     }
   ]

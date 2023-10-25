@@ -18,8 +18,8 @@
     {
       "rename": {
         "field": "command",
-        "value": "tds.command",
-        "ignore_failure": true
+        "target_field": "tds.command",
+        "ignore_missing": true
       }
     }
   ]
