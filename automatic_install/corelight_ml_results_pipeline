@@ -50,7 +50,6 @@
         "target_field" : "ml_results.predicted_probability",
         "ignore_failure": true
       }
-    },
-
+    }
   ]
 }
