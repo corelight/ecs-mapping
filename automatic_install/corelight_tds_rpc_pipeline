@@ -18,15 +18,15 @@
     {
       "rename": {
         "field": "procedure_name",
-        "value": "tds.procedure_name",
-        "ignore_failure": true
+        "target_field": "tds.procedure_name",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "parameters",
-        "value": "tds.parameters",
-        "ignore_failure": true
+        "target_field": "tds.parameters",
+        "ignore_missing": true
       }
     }
   ]

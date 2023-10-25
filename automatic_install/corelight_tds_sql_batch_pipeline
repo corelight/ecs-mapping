@@ -18,15 +18,15 @@
     {
       "rename": {
         "field": "header_type",
-        "value": "tds.header_type",
-        "ignore_failure": true
+        "target_field": "tds.header_type",
+        "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "query",
-        "value": "tds.query",
-        "ignore_failure": true
+        "target_field": "tds.query",
+        "ignore_missing": true
       }
     }
   ]
