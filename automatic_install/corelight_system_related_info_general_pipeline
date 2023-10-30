@@ -23,10 +23,11 @@
       }
     },
     {
-      "pipeline": {
-        "description": "Logs that are system related.",
-        "if": "ctx.event.dataset == 'corelight_audit_log'",
-        "name": "corelight_audit_log_pipeline"
+      "set": {
+        "field": "event.category",
+        "value": "iam",
+        "ignore_failure": true,
+        "if": "ctx.event.dataset == 'corelight_audit_log' || ctx.event.dataset == 'audit' || ctx.event.dataset == 'auditlog'"
       }
     }
   ]
