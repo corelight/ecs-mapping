@@ -1,5 +1,5 @@
 {
-  "description": "Corelight MQTT Connect, Publish, and Subscribe pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "description": "Corelight pipeline for 'mqtt_connect', 'mqtt_publish', and 'mqtt_subscribe' log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
   "processors": [
     {
       "set": {
