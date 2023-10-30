@@ -1,0 +1,96 @@
+{
+  "description" : "Corelight modbus_read_write_multiple_registers log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "unit_id",
+        "target_field": "modbus.unit_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "func",
+        "target_field": "modbus.func",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "network_direction",
+        "target_field": "modbus.network_direction",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "write_start_address",
+        "target_field": "modbus.write_start_address",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "write_registers",
+        "target_field": "modbus.write_registers",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "read_start_address",
+        "target_field": "modbus.read_start_address",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "read_quantity",
+        "target_field": "modbus.read_quantity",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "read_registers",
+        "target_field": "modbus.read_registers",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

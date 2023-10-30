@@ -1,0 +1,104 @@
+{
+  "description": "Corelight Generic ICMP Tunnels pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "intrusion_detection",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set" : {
+        "field" : "network.protocol",
+        "value" : "icmp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig",
+        "target_field": "source.ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp",
+        "target_field": "destination.ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "id",
+        "target_field": "icmp_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "seq",
+        "target_field": "icmp_seq_number",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "bytes",
+        "target_field": "network.bytes",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "payload_len",
+        "target_field": "icmp_payload_len",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "icmp_payload",
+        "target_field": "payload",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "intrusion_detection",
+        "target_field": "icmp_detection",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

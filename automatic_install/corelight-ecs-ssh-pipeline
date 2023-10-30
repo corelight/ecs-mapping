@@ -1,0 +1,222 @@
+{
+  "description": "Corelight SSH pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "source.software.original",
+        "value": "{{client}}",
+        "ignore_failure": true,
+        "if": "ctx.client != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "client",
+        "target_field": "ssh.client",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "direction",
+        "target_field": "network.direction",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "auth_attempts",
+        "target_field": "ssh.auth_attempts",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.auth_success == true)"
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.auth_success == false)"
+      }
+    },
+    {
+      "rename": {
+        "field": "auth_success",
+        "target_field": "ssh.auth_successful",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cipher_alg",
+        "target_field": "ssh.cipher",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "compression_alg",
+        "target_field": "ssh.compression_algorithm",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cshka",
+        "target_field": "ssh.cshka",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hassh",
+        "target_field": "ssh.hassh",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshAlgorithms",
+        "target_field": "ssh.hasshAlgorithms",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshServer",
+        "target_field": "ssh.hasshServer",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshServerAlgorithms",
+        "target_field": "ssh.hasshServerAlgorithms",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hasshVersion",
+        "target_field": "ssh.hasshVersion",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host_key",
+        "target_field": "ssh.host_key",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host_key_alg",
+        "target_field": "ssh.key_algorithm",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "kex_alg",
+        "target_field": "ssh.key_exchange_algorithm",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "mac_alg",
+        "target_field": "ssh.mac_algorithm",
+        "ignore_missing": true
+      }
+    },
+    
+    {
+      "set": {
+        "field": "destination.software.original",
+        "value": "{{server}}",
+        "ignore_failure": true,
+        "if": "ctx.server != null"
+      }
+    },
+    
+    {
+      "rename": {
+        "field": "server",
+        "target_field": "ssh.server",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sshka",
+        "target_field": "ssh.sshka",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version",
+        "target_field": "ssh.version",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "description": "Corelight Meterpreter pipeline that handles both meterpreter.log and meterpreter_headers.log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "date" : {
+        "field": "start_time",
+        "target_field": "@timestamp",
+        "formats" : [ "ISO8601", "UNIX" ],
+        "ignore_failure": true,
+        "if": "(ctx['@timestamp'] == null )"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "intrusion_detection",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "protocol",
+        "target_field": "network.transport",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "reason",
+        "target_field": "meterpreter_reason",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "os",
+        "target_field": "os_family",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "guid",
+        "target_field": "meterpreter_guid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "staged",
+        "target_field": "meterpreter_staged",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "encrypted",
+        "target_field": "meterpreter_encrypted",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

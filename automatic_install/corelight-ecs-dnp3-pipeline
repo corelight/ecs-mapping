@@ -1,0 +1,75 @@
+{
+  "description" : "Corelight DNP3 pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "fc_reply",
+        "target_field": "dnp3.fc_reply",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "fc_request",
+        "target_field": "dnp3.fc_request",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "iin",
+        "target_field": "dnp3.iin",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "ignore_failure": true,
+        "ignore_missing" : true,
+        "field": "id"
+      }
+    }
+  ]
+}

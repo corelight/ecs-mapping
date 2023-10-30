@@ -1,0 +1,75 @@
+{
+  "description" : "Corelight DPD pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "miscellaneous",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "proto",
+        "target_field": "network.transport",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "analyzer",
+        "target_field": "dpd.analyzer",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "failure_reason",
+        "target_field": "dpd.failure_reason",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "packet_segment",
+        "target_field": "dpd.packet_segment",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "ignore_failure": true,
+        "ignore_missing" : true,
+        "field": "id"
+      }
+    }
+  ]
+}

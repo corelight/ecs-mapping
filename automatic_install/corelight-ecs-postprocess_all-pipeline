@@ -1,0 +1,19 @@
+{
+  "description" : "Corelight Postprocessing All Pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "pipeline": {
+        "description": "Set index naming",
+        "name": "corelight-ecs-postprocess_index_naming-pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "description": "Run final pipeline. Does cleanup of temporary fields or tags and other final things needed.",
+        "name": "corelight-ecs-postprocess_final-pipeline"
+      }
+    }
+  ]
+}
+
+

@@ -1,0 +1,106 @@
+{
+  "description": "Corelight MySQL pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "proto",
+        "target_field": "network.transport",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "arg",
+        "target_field": "mysql.args",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cmd",
+        "target_field": "mysql.command",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "response",
+        "target_field": "mysql.response",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rows",
+        "target_field": "mysql.rows",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.success == true)"
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.success == false)"
+      }
+    },
+    {
+      "rename": {
+        "field": "success",
+        "target_field": "mysql.successful",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

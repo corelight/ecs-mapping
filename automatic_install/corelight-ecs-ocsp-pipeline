@@ -1,0 +1,153 @@
+{
+  "description": "Corelight OCSP pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "file",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "certStatus",
+        "target_field": "oscp.certStatus",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hashAlgorithm",
+        "target_field": "oscp.hashAlgorithm",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "issuerKeyHash",
+        "target_field": "oscp.issuerKeyHash",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "issuerNameHash",
+        "target_field": "oscp.issuerNameHash",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "nextUpdate",
+        "target_field": "oscp.nextUpdate",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "revokereason",
+        "target_field": "oscp.revokereason",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "revoketime",
+        "target_field": "oscp.revoketime",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "serialNumber",
+        "target_field": "oscp.serialNumber",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "thisUpdate",
+        "target_field": "oscp.thisUpdate",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "request_type",
+        "target_field": "oscp.request_type",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "new_ticket",
+        "target_field": "oscp.new_ticket",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_cert_subject",
+        "target_field": "oscp.server_cert_subject",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "service",
+        "target_field": "oscp.service",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "from",
+        "target_field": "oscp.from",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "till",
+        "target_field": "oscp.till",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

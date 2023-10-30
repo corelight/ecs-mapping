@@ -1,0 +1,193 @@
+{
+  "description": "Corelight PE pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "file",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "id",
+        "target_field": "log.id.id",
+        "ignore_missing": true,
+        "if": "ctx.id != null"
+      }
+    },
+    {
+      "set": {
+        "field": "event.id",
+        "value": "{{log.id.id}}",
+        "ignore_failure": true,
+        "if": "ctx.log?.id?.id != null"
+      }
+    },
+    {
+      "set": {
+        "field": "log.id.fuid",
+        "value": "{{log.id.id}}",
+        "ignore_failure": true,
+        "if": "ctx.log?.id?.id != null"
+      }
+    },
+    {
+      "date": {
+        "field": "compile_ts",
+        "target_field": "pe.compile_ts",
+        "formats": [ "ISO8601" ],
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "file.created",
+        "value": "{{pe.compile_ts}}",
+        "ignore_failure": true,
+        "if": "ctx.compile_ts != null"
+      }
+    },
+    {
+      "remove": {
+        "field": "compile_ts",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "file.type",
+        "value": "pe",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "has_cert_table",
+        "target_field": "pe.has_cert_table",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "has_debug_data",
+        "target_field": "pe.has_debug_data",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "has_import_table",
+        "target_field": "pe.has_import_table",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "has_export_table",
+        "target_field": "pe.has_export_table",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "is_64bit",
+        "target_field": "pe.is_64bit",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "is_exe",
+        "target_field": "pe.is_exe",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "machine",
+        "target_field": "pe.machine",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "os",
+        "target_field": "pe.os",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "section_names",
+        "target_field": "pe.section_names",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "subsystem",
+        "target_field": "pe.subsystem",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uses_aslr",
+        "target_field": "pe.uses_aslr",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uses_code_integrity",
+        "target_field": "pe.uses_code_integrity",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uses_dep",
+        "target_field": "pe.uses_dep",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uses_seh",
+        "target_field": "pe.uses_seh",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

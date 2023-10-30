@@ -1,0 +1,220 @@
+{
+  "description": "Corelight pipeline for 'smb_files' log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "smb",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "uid",
+        "target_field": "log.id.uid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "fuid",
+        "target_field": "log.id.fuid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "name",
+        "target_field": "file.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "path",
+        "target_field": "file.path",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "size",
+        "target_field": "file.size",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "action",
+        "target_field": "smb.action",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "prev_name",
+        "target_field": "smb.previous_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "times.accessed",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times.accessed",
+        "target_field": "file.accessed",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times_accessed",
+        "target_field": "file.accessed",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "times.created",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times.created",
+        "target_field": "file.created",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times_created",
+        "target_field": "file.created",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "times.changed",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times.changed",
+        "target_field": "file.ctime",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times_changed",
+        "target_field": "file.ctime",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "times.modified",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times.modified",
+        "target_field": "file.mtime",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "times_modified",
+        "target_field": "file.mtime",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.accessed",
+        "target_field" : "file.accessed",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.accessed != null"
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.created",
+        "target_field" : "file.created",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.created != null"
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.ctime",
+        "target_field" : "file.ctime",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.ctime != null"
+      }
+    },
+    {
+      "date" : {
+        "field" : "file.mtime",
+        "target_field" : "file.mtime",
+        "formats" : ["UNIX"],
+        "ignore_failure": true,
+        "if": "ctx.file?.mtime != null"
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

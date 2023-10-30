@@ -1,0 +1,106 @@
+{
+  "description" : "Corelight DCE_RPC pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "endpoint",
+        "target_field": "dce_rpc.endpoint",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "named_pipe",
+        "target_field": "dce_rpc.named_pipe",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "operation",
+        "target_field": "dce_rpc.operation",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "rtt",
+        "value": "{{dce_rpc.rtt}}",
+        "ignore_failure": true
+      }
+    },
+    {
+      "convert" : {
+        "field" : "rtt",
+        "type": "float",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.event.duration = (long)(ctx.rtt * params.param_c)",
+        "params": {
+          "param_c": 1000000000
+        },
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rtt",
+        "target_field": "dce_rpc.rtt",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

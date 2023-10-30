@@ -1,0 +1,234 @@
+{
+  "description": "Corelight RDP pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "cert_count",
+        "target_field": "rdp.certificate.count",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cert_permanent",
+        "target_field": "rdp.certificate.permanent",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cert_type",
+        "target_field": "rdp.certificate.type",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "software.original",
+        "value": "{{client_build}}",
+        "ignore_failure": true,
+        "if": "ctx.client_build != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "client_build",
+        "target_field": "rdp.source.build",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_dig_product_id",
+        "target_field": "rdp.source.dig_product_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "source.hostname",
+        "value": "{{client_name}}",
+        "ignore_failure": true,
+        "if": "ctx.client_name != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "client_name",
+        "target_field": "rdp.source.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cookie",
+        "target_field": "rdp.cookie",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "desktop_height",
+        "target_field": "rdp.desktop_height",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "desktop_width",
+        "target_field": "rdp.desktop_width",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "encryption_level",
+        "target_field": "rdp.encryption_level",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "encryption_method",
+        "target_field": "rdp.encryption_method",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "keyboard_layout",
+        "target_field": "rdp.keyboard_layout",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "requested_color_depth",
+        "target_field": "rdp.requested_color_depth",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.auth_success == true)"
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.auth_success == false)"
+      }
+    },
+    {
+      "rename": {
+        "field": "result",
+        "target_field": "rdp.result",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "auth_success",
+        "target_field": "rdp.auth_successful",
+        "ignore_missing": true
+      }
+    },    
+    {
+      "rename": {
+        "field": "security_protocol",
+        "target_field": "rdp.selected_protocol",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "ssl",
+        "target_field": "rdp.ssl",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    },
+    {
+      "rename": {
+        "field": "channels_joined",
+        "target_field": "rdp.channels_joined",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "inferences",
+        "target_field": "rdp.inferences",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rdpeudp_uid",
+        "target_field": "log.id.rdpeudp_uid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rdfp_string",
+        "target_field": "rdp.rdfp_string",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rdfp_hash",
+        "target_field": "rdp.rdfp_hash",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+{
+  "description": "Corelight Software pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "observations",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "version.addl",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version.addl",
+        "target_field": "software.version.additional_info",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version_addl",
+        "target_field": "software.version.additional_info",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "version.minor",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version.minor",
+        "target_field": "software.version.minor",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version_minor",
+        "target_field": "software.version.minor",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "version.minor2",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version.minor2",
+        "target_field": "software.version.minor2",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version_minor2",
+        "target_field": "software.version.minor2",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "version.minor3",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version.minor3",
+        "target_field": "software.version.minor3",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version_minor3",
+        "target_field": "software.version.minor3",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "temp_host",
+        "target_field": "software_host",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "host.ip",
+        "value": "{{software_host}}",
+        "ignore_failure": true,
+        "if": "ctx.software_host != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "software_host",
+        "target_field": "software.ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "host.port",
+        "value": "{{host_p}}",
+        "ignore_failure": true,
+        "if": "ctx.host_p != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "host_p",
+        "target_field": "software.port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "name",
+        "target_field": "software.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "unparsed_version",
+        "target_field": "software.original",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "software_type",
+        "target_field": "software.type",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "url",
+        "target_field": "url.original",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

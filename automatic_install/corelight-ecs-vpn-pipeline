@@ -1,0 +1,167 @@
+{
+    "description" : "Corelight VPN pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+    "processors" : [
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_dataset_suffix",
+          "value": "various",
+          "ignore_failure": false
+        }
+      },
+      {
+        "set": {
+          "field": "event.category",
+          "value": "network",
+          "ignore_failure": true
+        }
+      },
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_type",
+          "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+          "ignore_failure": false
+        }
+      },
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_dataset_prefix",
+          "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+          "ignore_failure": false
+        }
+      },
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_namespace",
+          "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+          "ignore_failure": false
+        }
+      },
+      {
+        "rename": {
+          "field": "client_info",
+          "target_field": "vpn.client_info",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "duration",
+          "target_field": "event.duration",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "inferences",
+          "target_field": "vpn.inferences",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "issuer",
+          "target_field": "tls.server.issuer",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "ja3",
+          "target_field": "tls.client.ja3",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "ja3s",
+          "target_field": "tls.server.ja3s",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "orig_bytes",
+          "target_field": "source.bytes",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "orig_cc",
+          "target_field": "source.geo.country_iso_code",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "orig_city",
+          "target_field": "source.geo.city_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "orig_region",
+          "target_field": "source.geo.region_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "resp_cc",
+          "target_field": "destination.geo.country_iso_code",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "resp_city",
+          "target_field": "destination.geo.city_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "resp_region",
+          "target_field": "destination.geo.region_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "server_name",
+          "target_field": "vpn.server_name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "service",
+          "target_field": "network.protocol",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "subject",
+          "target_field": "tls.server.subject",
+          "ignore_failure": true
+        }
+      },
+      {
+        "rename": {
+          "field": "vpn_type",
+          "target_field": "vpn.name",
+          "ignore_failure": true
+        }
+      },
+      {
+        "set" : {
+          "field" : "destination.domain",
+          "value" : "{{vpn.server_name}}",
+          "ignore_failure": true,
+          "if": "ctx.query != null"
+        }
+      }
+    ]
+}

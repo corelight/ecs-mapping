@@ -1,0 +1,67 @@
+{
+  "description": "Corelight index naming pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "pipeline": {
+        "description": "Catch any potentials to cause field name issues",
+        "name": "corelight-ecs-postprocess_parse_failures-index_naming-pipeline",
+        "ignore_missing_pipeline": false,
+        "if": "ctx?.event?.dataset == null || (ctx?.tags != null && (ctx.tags.contains('preserve_original_event'))) "
+      }
+    },
+    {
+      "set": {
+        "description": "Set 'data_stream.namespace' if it's not already set. If it is already was set this would mean the user wants to set namespace and has already set it (ie: for multiple customers to differentiate) else can use 'custom_temporary_metadata_index_name_namespace'.",
+        "field": "data_stream.namespace",
+        "copy_from": "temporary_metadata_index_name_namespace",
+        "if": "ctx.temporary_metadata_index_strategy == 'datastream' && ctx?.data_stream?.namespace == null"
+      }
+    },
+    {
+      "set": {
+        "description": "Set data_stream fields 'data_stream.type'.",
+        "field": "data_stream.type",
+        "copy_from": "temporary_metadata_index_name_type",
+        "if": "ctx.temporary_metadata_index_strategy == 'datastream'"
+      }
+    },
+    {
+      "set": {
+        "description": "Set data_stream fields 'data_stream.dataset'.",
+        "field": "data_stream.dataset",
+        "value": "{{{temporary_metadata_index_name_dataset_prefix}}}.{{{temporary_metadata_index_name_dataset_suffix}}}",
+        "if": "ctx.temporary_metadata_index_strategy == 'datastream'"
+      }
+    },
+    {
+      "set": {
+        "description": "User wants to set namespace and has already set it, therefore override/set 'temporary_metadata_index_name_namespace'.",
+        "field": "temporary_metadata_index_name_namespace",
+        "copy_from": "custom_temporary_metadata_index_name_namespace",
+        "ignore_empty_value": true,
+        "if": "ctx?.custom_temporary_metadata_index_name_namespace != null"
+      }
+    },
+    {
+      "set": {
+        "description": "User wants to set namespace and has already set it, therefore override/set 'data_stream.namespace'.",
+        "field": "data_stream.namespace",
+        "copy_from": "custom_temporary_metadata_index_name_namespace",
+        "ignore_empty_value": true,
+        "if": "ctx?.custom_temporary_metadata_index_name_namespace != null"
+      }
+    },
+    {
+      "set": {
+        "description": "Set final _index name.",
+        "field": "_index",
+        "value": "{{{temporary_metadata_index_name_type}}}-{{{temporary_metadata_index_name_dataset_prefix}}}.{{{temporary_metadata_index_name_dataset_suffix}}}-{{{temporary_metadata_index_name_namespace}}}"
+      }
+    }
+  ]
+}
+
+
+
+

@@ -1,0 +1,15 @@
+{
+  "description": "Corelight Postprocess Metadata UserAgent Pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors" : [
+    {
+      "script" : {
+        "description": "Add length of user_agent.original",
+        "lang" : "painless",
+        "source" : "ctx.user_agent.original_length = ctx.user_agent.original.length()",
+        "ignore_failure": true,
+        "if": "ctx.user_agent?.original != null"
+      }
+    }
+  ]
+}

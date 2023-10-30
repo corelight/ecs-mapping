@@ -1,0 +1,75 @@
+{
+  "description" : "Corelight Weird pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "weird",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "miscellaneous",
+        "ignore_failure": true
+      }   
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "addl",
+        "target_field": "weird.additional_info",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "name",
+        "target_field": "weird.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "notice",
+        "target_field": "weird.notice",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "peer",
+        "target_field": "weird.peer",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

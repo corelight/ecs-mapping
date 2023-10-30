@@ -1,0 +1,103 @@
+{
+  "description" : "Corelight ecat_dev_info log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "slave_id",
+        "target_field": "ecat.slave_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "revision",
+        "target_field": "ecat.revision",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "dev_type",
+        "target_field": "ecat.dev_type",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "build",
+        "target_field": "ecat.build",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "fmmucnt",
+        "target_field": "ecat.fmmucnt",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "smcount",
+        "target_field": "ecat.smcount",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "ports",
+        "target_field": "ecat.ports",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "dpram",
+        "target_field": "ecat.dpram",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "features",
+        "target_field": "ecat.features",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

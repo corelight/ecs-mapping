@@ -1,0 +1,306 @@
+{
+  "description" : "Corelight etc_viz pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "server_a",
+        "target_field": "destination.address",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "server_p",
+        "target_field": "destination.port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "c2s_viz.pdu1_enc",
+        "ignore_failure": true,
+        "if": "(ctx['c2s_viz.pdu1_enc'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "c2s_viz.pdu1_enc",
+        "target_field": "client.viz.pdu1_enc",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "c2s_viz.clr_ex",
+        "ignore_failure": true,
+        "if": "(ctx['c2s_viz.clr_ex'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "c2s_viz.clr_ex",
+        "target_field": "client.viz.clr_ex",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "c2s_viz.size",
+        "ignore_failure": true,
+        "if": "(ctx['c2s_viz.size'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "c2s_viz.size",
+        "target_field": "client.viz.size",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "c2s_viz.clr_frac",
+        "ignore_failure": true,
+        "if": "(ctx['c2s_viz.clr_frac'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "c2s_viz.clr_frac",
+        "target_field": "client.viz.clr_frac",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "c2s_viz.enc_frac",
+        "ignore_failure": true,
+        "if": "(ctx['c2s_viz.enc_frac'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "c2s_viz.enc_frac",
+        "target_field": "client.viz.enc_frac",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "c2s_viz.enc_dev",
+        "ignore_failure": true,
+        "if": "(ctx['c2s_viz.enc_dev'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "c2s_viz.enc_dev",
+        "target_field": "client.viz.enc_dev",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.clr_frac",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.clr_frac'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.clr_frac",
+        "target_field": "server.viz.clr_frac",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.clr_ex",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.clr_ex'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.clr_ex",
+        "target_field": "server.viz.clr_ex",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.pdu1_enc",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.pdu1_enc'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.pdu1_enc",
+        "target_field": "server.viz.pdu1_enc",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.size",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.size'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.size",
+        "target_field": "server.viz.size",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.enc_frac",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.enc_frac'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.enc_frac",
+        "target_field": "server.viz.enc_frac",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.enc_dev",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.enc_dev'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.enc_dev",
+        "target_field": "server.viz.enc_dev",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.clr_frac",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.clr_frac'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.clr_frac",
+        "target_field": "server.viz.enc_frac",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.clr_ex",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.clr_ex'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.clr_ex",
+        "target_field": "server.viz.clr_ex",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.pdu1_enc",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.pdu1_enc'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.pdu1_enc",
+        "target_field": "server.viz.pdu1_enc",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.size",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.size'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.size",
+        "target_field": "server.viz.size",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.size",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.size'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.size",
+        "target_field": "server.viz.size",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "s2c_viz.clr_ex",
+        "ignore_failure": true,
+        "if": "(ctx['s2c_viz.clr_ex'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "s2c_viz.clr_ex",
+        "target_field": "server.viz.clr_ex",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "viz_stat",
+        "target_field": "labels.viz_stat",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

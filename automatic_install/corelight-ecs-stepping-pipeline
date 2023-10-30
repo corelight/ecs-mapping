@@ -1,0 +1,434 @@
+{
+  "description" : "Corelight SSH Stepping Stones pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "intrusion_detection",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "direct",
+        "value": "true",
+        "ignore_failure": true,
+        "if": "ctx.direct == 'T'"
+      }
+    },
+    {
+      "set": {
+        "field": "direct",
+        "value": "false",
+        "ignore_failure": true,
+        "if": "ctx.direct == 'F'"
+      }
+    },
+    {
+      "rename": {
+        "field": "direct",
+        "target_field": "ssh.stepping.direct",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "dt",
+        "target_field": "ssh.stepping.dt",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid1",
+        "target_field": "ssh.stepping.uid1",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid2",
+        "target_field": "ssh.stepping.uid2",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid3",
+        "target_field": "ssh.stepping.uid3",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid4",
+        "target_field": "ssh.stepping.uid4",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid5",
+        "target_field": "ssh.stepping.uid5",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid6",
+        "target_field": "ssh.stepping.uid6",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid7",
+        "target_field": "ssh.stepping.uid7",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid8",
+        "target_field": "ssh.stepping.uid8",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid9",
+        "target_field": "ssh.stepping.uid9",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uid10",
+        "target_field": "ssh.stepping.uid10",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client1_h",
+        "target_field": "ssh.stepping.client1_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client1_p",
+        "target_field": "ssh.stepping.client1_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client2_h",
+        "target_field": "ssh.stepping.client2_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client2_p",
+        "target_field": "ssh.stepping.client2_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client3_h",
+        "target_field": "ssh.stepping.client3_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client3_p",
+        "target_field": "ssh.stepping.client3_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client4_h",
+        "target_field": "ssh.stepping.client4_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client4_p",
+        "target_field": "ssh.stepping.client4_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client5_h",
+        "target_field": "ssh.stepping.client5_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client5_p",
+        "target_field": "ssh.stepping.client5_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client6_h",
+        "target_field": "ssh.stepping.client6_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client6_p",
+        "target_field": "ssh.stepping.client6_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client7_h",
+        "target_field": "ssh.stepping.client7_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client7_p",
+        "target_field": "ssh.stepping.client7_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client8_h",
+        "target_field": "ssh.stepping.client8_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client8_p",
+        "target_field": "ssh.stepping.client8_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client9_h",
+        "target_field": "ssh.stepping.client9_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client9_p",
+        "target_field": "ssh.stepping.client9_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client10_h",
+        "target_field": "ssh.stepping.client10_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client10_p",
+        "target_field": "ssh.stepping.client10_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server1_h",
+        "target_field": "ssh.stepping.server1_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server1_p",
+        "target_field": "ssh.stepping.server1_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server2_h",
+        "target_field": "ssh.stepping.server2_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server2_p",
+        "target_field": "ssh.stepping.server2_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server3_h",
+        "target_field": "ssh.stepping.server3_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server3_p",
+        "target_field": "ssh.stepping.server3_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server4_h",
+        "target_field": "ssh.stepping.server4_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server4_p",
+        "target_field": "ssh.stepping.server4_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server5_h",
+        "target_field": "ssh.stepping.server5_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server5_p",
+        "target_field": "ssh.stepping.server5_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server6_h",
+        "target_field": "ssh.stepping.server6_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server6_p",
+        "target_field": "ssh.stepping.server6_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server7_h",
+        "target_field": "ssh.stepping.server7_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server7_p",
+        "target_field": "ssh.stepping.server7_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server8_h",
+        "target_field": "ssh.stepping.server8_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server8_p",
+        "target_field": "ssh.stepping.server8_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server9_h",
+        "target_field": "ssh.stepping.server9_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server9_p",
+        "target_field": "ssh.stepping.server9_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server10_h",
+        "target_field": "ssh.stepping.server10_ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server10_p",
+        "target_field": "ssh.stepping.server10_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing" : true
+      }
+    }
+  ]
+}

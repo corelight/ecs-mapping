@@ -1,0 +1,89 @@
+{
+  "description" : "Corelight ecat_arp_info log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "arp_type",
+        "target_field": "ecat.opcode",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "mac_src",
+        "target_field": "source.mac",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "mac_dst",
+        "target_field": "destination.mac",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "spa",
+        "target_field": "ecat.spa",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sha",
+        "target_field": "ecat.sha",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tpa",
+        "target_field": "ecat.tpa",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tha",
+        "target_field": "ecat.tha",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

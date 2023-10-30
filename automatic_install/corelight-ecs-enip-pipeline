@@ -1,0 +1,103 @@
+{
+  "description" : "Corelight enip pipeline. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "various",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CORELIGHT_INDEX_NAME_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CORELIGHT_INDEX_DATASET_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CORELIGHT_INDEX_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "is_orig",
+        "target_field": "enip.is_orig",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "enip_command_code",
+        "target_field": "enip.enip_command_code",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "command",
+        "target_field": "enip.command",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "length",
+        "target_field": "enip.length",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "options",
+        "target_field": "enip.options",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "session_handle",
+        "target_field": "enip.session_handle",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sender_context",
+        "target_field": "enip.sender_context",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "status",
+        "target_field": "enip.status",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "enip_status",
+        "target_field": "enip.enip_status",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

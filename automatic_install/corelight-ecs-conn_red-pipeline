@@ -1,0 +1,11 @@
+{
+  "description": "Corelight pipeline for 'conn_red' log. This pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 11221,
+  "processors": [
+    {
+      "pipeline": {
+        "name": "corelight-ecs-conn-pipeline"
+      }
+    }
+  ]
+}
