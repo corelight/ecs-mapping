@@ -88,8 +88,7 @@
         "field": "id.orig_h",
         "target_field": "source.ip",
         "ignore_missing": true,
-        "if": "ctx?.id instanceof Map && ctx?.id?.orig_h != null",
-        "tag": "1"
+        "if": "ctx?.id instanceof Map && ctx?.id?.orig_h != null"
       }
     },
     {
