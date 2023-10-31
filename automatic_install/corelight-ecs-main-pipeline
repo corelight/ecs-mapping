@@ -99,7 +99,7 @@
     {
       "pipeline": {
         "description": "If is a protocol log do extra enrichment and parsing. Protocol log AKA application or network protocol log.. ie: not a metric, stat, or other system log.",
-        "name": "corelight-ecs-postprocess_metadata_logs-pipeline",
+        "name": "corelight-ecs-postprocess_protocol_logs-pipeline",
         "ignore_missing_pipeline": false,
         "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_netcontrol_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'"
       }
