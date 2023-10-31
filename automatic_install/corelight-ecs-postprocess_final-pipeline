@@ -23,8 +23,10 @@
           "temporary_metadata_index_name_namespace",
           "temporary_metadata_index_name_prefix",
           "temporary_metadata_index_name_type",
+          "temporary_metadata_index_strategy",
           "temporary_metadata_is_metric_log",
           "temporary_metadata_is_netcontrol_log",
+          "temporary_metadata_is_parse_failure",
           "temporary_metadata_is_protocol_log",
           "temporary_metadata_is_stats_log",
           "temporary_metadata_is_system_log"
