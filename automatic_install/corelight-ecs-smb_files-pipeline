@@ -177,7 +177,7 @@
       "date" : {
         "field" : "file.accessed",
         "target_field" : "file.accessed",
-        "formats" : ["UNIX"],
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
         "ignore_failure": true,
         "if": "ctx.file?.accessed != null"
       }
@@ -186,7 +186,7 @@
       "date" : {
         "field" : "file.created",
         "target_field" : "file.created",
-        "formats" : ["UNIX"],
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
         "ignore_failure": true,
         "if": "ctx.file?.created != null"
       }
@@ -195,7 +195,7 @@
       "date" : {
         "field" : "file.ctime",
         "target_field" : "file.ctime",
-        "formats" : ["UNIX"],
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
         "ignore_failure": true,
         "if": "ctx.file?.ctime != null"
       }
@@ -204,7 +204,7 @@
       "date" : {
         "field" : "file.mtime",
         "target_field" : "file.mtime",
-        "formats" : ["UNIX"],
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
         "ignore_failure": true,
         "if": "ctx.file?.mtime != null"
       }

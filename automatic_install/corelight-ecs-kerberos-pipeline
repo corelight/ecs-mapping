@@ -41,16 +41,18 @@
       "date": {
         "field": "from",
         "target_field" : "kerberos.ticket.valid_from",
-        "formats": [ "UNIX" ],
-        "ignore_failure": true
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
+        "ignore_failure": true,
+        "if": "ctx.kerberos?.ticket?.valid_from != null"
       }
     },
     {
       "date": {
         "field": "till",
         "target_field" : "kerberos.ticket.valid_till",
-        "formats": [ "UNIX" ],
-        "ignore_failure": true
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
+        "ignore_failure": true,
+        "if": "ctx.kerberos?.ticket?.valid_till != null"
       }
     },
     {
