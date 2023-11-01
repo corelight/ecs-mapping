@@ -8,6 +8,12 @@
       }
     },
     {
+      "set": {
+        "field": "event.category",
+        "value": "tbd"
+      }
+    },
+    {
       "rename": {
         "field": "@path",
         "target_field": "event.dataset",
