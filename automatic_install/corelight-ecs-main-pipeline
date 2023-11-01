@@ -113,7 +113,7 @@
     },
     {
       "pipeline": {
-        "description": "If set, run custom user definied pipeline for all logs.",
+        "description": "If set, run custom user defined pipeline for all logs.",
         "name": "corelight-ecs-custom-final-pipeline",
         "ignore_missing_pipeline": true
       }
