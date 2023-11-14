@@ -47,7 +47,7 @@
     {
       "rename": {
         "field": "cc",
-        "target_field": "smtp.cc",
+        "target_field": "email.cc.address",
         "ignore_missing": true
       }
     },
@@ -61,7 +61,7 @@
     {
       "rename": {
         "field": "from",
-        "target_field": "smtp.from",
+        "target_field": "email.from.address",
         "ignore_missing": true
       }
     },
@@ -96,14 +96,14 @@
     {
       "rename": {
         "field": "mailfrom",
-        "target_field": "smtp.mailfrom",
+        "target_field": "email.sender.address",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "msg_id",
-        "target_field": "smtp.msg_id",
+        "target_field": "email.message_id",
         "ignore_missing": true
       }
     },
@@ -124,7 +124,7 @@
     {
       "rename": {
         "field": "reply_to",
-        "target_field": "smtp.reply_to",
+        "target_field": "email.reply_to.address",
         "ignore_missing": true
       }
     },
@@ -138,7 +138,7 @@
     {
       "rename": {
         "field": "subject",
-        "target_field": "smtp.subject",
+        "target_field": "email.subject",
         "ignore_missing": true
       }
     },
@@ -152,7 +152,7 @@
     {
       "rename": {
         "field": "to",
-        "target_field": "smtp.to",
+        "target_field": "email.to.address",
         "ignore_missing": true
       }
     },
@@ -187,66 +187,16 @@
     {
       "date": {
         "field": "smtp.date_non_formatted_date",
-        "target_field": "smtp.date",
+        "target_field": "email.origination_timestamp",
         "formats": ["EEE, dd MMM yyyy HH:mm:ss x", "EEE, d MMM yyyy HH:mm:ss x","EEE dd MMM yyyy HH:mm:ss x", "EEE, d MMM yyyy HH:mm:ss", "EEE, dd MMM yyyy HH:mm:ss", "EEE, d MMM yyyy HH:mm:ss","EEE, dd MMM yyyy HH:mm:ss x (z)", "EEE, d MMM yyyy HH:mm:ss x (z)"],
         "on_failure": [
           {
             "remove": {
-            "field": "smtp.date",
-        "ignore_missing": true
+              "field": "email.origination_timestamp",
+              "ignore_missing": true
             }
           }
         ]
-
-      }
-    },
-    {
-      "set": {
-        "copy_from": "smtp.cc",
-        "field": "email.cc.address",
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "copy_from": "smtp.from",
-        "field": "email.from.address",
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "copy_from": "smtp.mailfrom",
-        "field": "email.sender.address",
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "copy_from": "smtp.msg_id",
-        "field": "email.message_id",
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "copy_from": "smtp.reply_to",
-        "field": "email.reply_to.address",
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "copy_from": "smtp.subject",
-        "field": "email.subject",
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "copy_from": "smtp.to",
-        "field": "email.to.address",
-        "ignore_failure": true
       }
     },
     {
