@@ -102,14 +102,14 @@
     {
       "rename": {
         "field": "times.accessed",
-        "target_field": "file.accessed",
+        "target_field": "file.accessed_non_formatted_date",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_accessed",
-        "target_field": "file.accessed",
+        "target_field": "file.accessed_non_formatted_date",
         "ignore_missing": true
       }
     },
@@ -122,14 +122,14 @@
     {
       "rename": {
         "field": "times.created",
-        "target_field": "file.created",
+        "target_field": "file.created_non_formatted_date",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_created",
-        "target_field": "file.created",
+        "target_field": "file.created_non_formatted_date",
         "ignore_missing": true
       }
     },
@@ -142,14 +142,14 @@
     {
       "rename": {
         "field": "times.changed",
-        "target_field": "file.ctime",
+        "target_field": "file.ctime_non_formatted_date",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_changed",
-        "target_field": "file.ctime",
+        "target_field": "file.ctime_non_formatted_date",
         "ignore_missing": true
       }
     },
@@ -162,14 +162,14 @@
     {
       "rename": {
         "field": "times.modified",
-        "target_field": "file.mtime",
+        "target_field": "file.mtime_non_formatted_date",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "times_modified",
-        "target_field": "file.mtime",
+        "target_field": "file.mtime_non_formatted_date",
         "ignore_missing": true
       }
     },
@@ -184,29 +184,29 @@
     },
     {
       "date" : {
-        "field" : "file.created",
+        "field" : "file.created_non_formatted_date",
         "target_field" : "file.created",
         "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
         "ignore_failure": true,
-        "if": "ctx.file?.created != null"
+        "if": "ctx.file?.created_non_formatted_date != null"
       }
     },
     {
       "date" : {
-        "field" : "file.ctime",
+        "field" : "file.ctime_non_formatted_date",
         "target_field" : "file.ctime",
         "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
         "ignore_failure": true,
-        "if": "ctx.file?.ctime != null"
+        "if": "ctx.file?.ctime_non_formatted_date != null"
       }
     },
     {
       "date" : {
-        "field" : "file.mtime",
+        "field" : "file.mtime_non_formatted_date",
         "target_field" : "file.mtime",
         "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
         "ignore_failure": true,
-        "if": "ctx.file?.mtime != null"
+        "if": "ctx.file?.mtime_non_formatted_date != null"
       }
     },
     {

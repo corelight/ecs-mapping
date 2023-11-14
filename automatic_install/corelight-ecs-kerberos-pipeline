@@ -38,21 +38,35 @@
       }
     },
     {
-      "date": {
+      "rename": {
         "field": "from",
-        "target_field" : "kerberos.ticket.valid_from",
-        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
-        "ignore_failure": true,
-        "if": "ctx.kerberos?.ticket?.valid_from != null"
+        "target_field": "kerberos.ticket.valid_from_non_formatted_date",
+        "ignore_missing": true
       }
     },
     {
       "date": {
-        "field": "till",
-        "target_field" : "kerberos.ticket.valid_till",
-        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601" ],
+        "field": "kerberos.ticket.valid_from_non_formatted_date",
+        "target_field" : "kerberos.ticket.valid_from",
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
         "ignore_failure": true,
-        "if": "ctx.kerberos?.ticket?.valid_till != null"
+        "if": "ctx.kerberos?.ticket?.valid_from_non_formatted_date != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "valid_till",
+        "target_field": "kerberos.ticket.valid_till_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "kerberos.ticket.valid_till_non_formatted_date",
+        "target_field" : "kerberos.ticket.valid_till",
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
+        "ignore_failure": true,
+        "if": "ctx.kerberos?.ticket?.valid_till_non_formatted_date != null"
       }
     },
     {

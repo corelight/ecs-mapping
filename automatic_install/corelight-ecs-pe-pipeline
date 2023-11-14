@@ -62,26 +62,19 @@
       }
     },
     {
-      "date": {
+      "rename": {
         "field": "compile_ts",
-        "target_field": "pe.compile_ts",
-        "formats": [ "ISO8601" ],
-        "ignore_failure": true
-      }
-    },
-    {
-      "set": {
-        "field": "file.created",
-        "value": "{{pe.compile_ts}}",
-        "ignore_failure": true,
-        "if": "ctx.compile_ts != null"
-      }
-    },
-    {
-      "remove": {
-        "field": "compile_ts",
-        "ignore_failure": true,
+        "target_field": "file.created_non_formatted_date",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "file.created_non_formatted_date",
+        "target_field" : "file.created",
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.file?.created_non_formatted_date != null"
       }
     },
     {

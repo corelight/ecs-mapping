@@ -54,8 +54,17 @@
     {
       "rename": {
         "field": "org_time",
-        "target_field": "ntp.org_time",
+        "target_field": "ntp.org_time_non_formatted_date",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.org_time_non_formatted_date",
+        "target_field" : "ntp.org_time",
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.org_time_non_formatted_date != null"
       }
     },
     {
@@ -75,8 +84,17 @@
     {
       "rename": {
         "field": "rec_time",
-        "target_field": "ntp.rec_time",
+        "target_field": "ntp.rec_time_non_formatted_date",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.rec_time_non_formatted_date",
+        "target_field" : "ntp.rec_time",
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.rec_time_non_formatted_date != null"
       }
     },
     {
@@ -89,8 +107,17 @@
     {
       "rename": {
         "field": "ref_time",
-        "target_field": "ntp.ref_time",
+        "target_field": "ntp.ref_time_non_formatted_date",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.ref_time_non_formatted_date",
+        "target_field" : "ntp.ref_time",
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.ref_time_non_formatted_date != null"
       }
     },
     {
@@ -124,8 +151,17 @@
     {
       "rename": {
         "field": "xmt_time",
-        "target_field": "ntp.xmt_time",
+        "target_field": "ntp.xmt_time_non_formatted_date",
         "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.xmt_time_non_formatted_date",
+        "target_field" : "ntp.xmt_time",
+        "formats" : [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.xmt_time_non_formatted_date != null"
       }
     },
     {
