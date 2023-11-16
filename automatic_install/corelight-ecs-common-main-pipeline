@@ -63,7 +63,7 @@
                   "append": {
                     "field": "tags",
                     "value": ["parse_failure_critical", "ts date parsing error "],
-                    "allow_duplicates": "false",
+                    "allow_duplicates": false,
                     "ignore_failure": false
                   }
                 }
