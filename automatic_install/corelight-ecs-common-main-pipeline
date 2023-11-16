@@ -288,6 +288,15 @@
       }
     },
     {
+      "gsub": {
+        "description": "If any log name contains \"_red$\" (for reduced) then remove that from event.dataset to keep them from being decoupled even though it has identical field names, for the fields it does have, (ie: should go through the same config process) as it's counterpart. ie: dns_red can be treated indentically as dns.",
+        "field": "event.dataset",
+        "pattern": "_red$",
+        "replacement": "",
+        "if": "ctx.event?.dataset != null && ctx.event.dataset.contains('_red')"
+      }
+    },
+    {
       "remove": {
         "field": [
           "ts",
