@@ -2,6 +2,9 @@
 The repository is compromised of Ingest Pipeline files required to be used with the repository  
 https://github.com/brasitech/ecs-templates
 
+# License
+The files and automation script are open-source under a BSD license. See ``COPYING``for details.
+
 
 # Github Repository Definitions
 
