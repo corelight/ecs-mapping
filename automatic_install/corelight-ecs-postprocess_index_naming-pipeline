@@ -5,9 +5,9 @@
     {
       "pipeline": {
         "description": "Catch any potentials to cause field name issues",
-        "name": "corelight-ecs-postprocess_parse_failures-index_naming-pipeline",
+        "name": "corelight-ecs-postprocess_parse_failures-pipeline",
         "ignore_missing_pipeline": false,
-        "if": "ctx?.event?.dataset == null || (ctx?.tags != null && (ctx.tags.contains('preserve_original_event'))) "
+        "if": "ctx?.event?.dataset == null || (ctx?.tags != null && ctx.tags.contains('parse_failure_critical')) || ctx['@timestamp'] == null"
       }
     },
     {

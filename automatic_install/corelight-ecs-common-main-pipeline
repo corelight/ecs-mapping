@@ -50,15 +50,27 @@
         "field": "ts",
         "target_field": "@timestamp",
         "formats" : [ "ISO8601", "UNIX" ],
-        "if": "ctx?.ts != null"
-      }
-    },
-    {
-      "date" : {
-        "field": "ts",
-        "target_field": "@timestamp",
-        "formats" : [ "UNIX", "ISO8601" ],
-        "if": "ctx?.ts != null && ctx['@timestamp'] == null"
+        "if": "ctx?.ts != null",
+        "on_failure": [
+          {
+            "date" : {
+              "field": "ts",
+              "target_field": "@timestamp",
+              "formats" : [ "UNIX", "ISO8601" ],
+              "if": "ctx?.ts != null && ctx['@timestamp'] == null",
+              "on_failure": [
+                {
+                  "append": {
+                    "field": "tags",
+                    "value": ["parse_failure_critical", "ts date parsing error "],
+                    "allow_duplicates": "false",
+                    "ignore_failure": false
+                  }
+                }
+              ]
+            }
+          }
+        ]
       }
     },
     {

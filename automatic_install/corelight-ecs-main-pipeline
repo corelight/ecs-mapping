@@ -91,6 +91,13 @@
         "name": "corelight-ecs-postprocess_parse_failures-pipeline",
         "ignore_missing_pipeline": false
       }
+    },
+    {
+      "pipeline": {
+        "description": "Set index naming.",
+        "name": "corelight-ecs-postprocess_index_naming-pipeline",
+        "ignore_missing_pipeline": false
+      }
     }
   ]
 }

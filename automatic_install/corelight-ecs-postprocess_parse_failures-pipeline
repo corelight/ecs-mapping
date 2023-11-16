@@ -11,6 +11,13 @@
     },
     {
       "set": {
+        "field": "@timestamp",
+        "value": "{{event.ingested}}",
+        "if": "ctx['@timestamp'] == null"
+      }
+    },
+    {
+      "set": {
         "field": "error.message",
         "value": "Processor {{ _ingest.on_failure_processor_type }} with tag {{ _ingest.on_failure_processor_tag }} in pipeline {{ _ingest.on_failure_pipeline }} failed with message {{ _ingest.on_failure_message }}"
       }
@@ -24,8 +31,9 @@
     },
     {
       "pipeline": {
-        "description": "Set index naming.",
-        "name": "corelight-ecs-postprocess_index_naming-pipeline"
+        "description": "Set naming for parse_failures",
+        "name": "corelight-ecs-postprocess_parse_failures-index_naming-pipeline",
+        "ignore_missing_pipeline": false
       }
     }
   ]
