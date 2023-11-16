@@ -297,6 +297,15 @@
       }
     },
     {
+      "gsub": {
+        "description": "If any log name contains \"^bro_\" (for older versions) then remove that from event.dataset to keep them from being decoupled",
+        "field": "event.dataset",
+        "pattern": "^bro_",
+        "replacement": "",
+        "if": "ctx.event?.dataset != null && ctx.event.dataset.contains('bro_')"
+      }
+    },
+    {
       "remove": {
         "field": [
           "ts",
