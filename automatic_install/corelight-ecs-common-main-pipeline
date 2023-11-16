@@ -4,7 +4,8 @@
     {
       "set": {
         "field": "temporary_metadata_is_protocol_log",
-        "value": "yes"
+        "value": "yes",
+        "override": true
       }
     },
     {

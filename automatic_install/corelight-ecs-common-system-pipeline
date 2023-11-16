@@ -6,7 +6,7 @@
       "set": {
         "field": "temporary_metadata_is_protocol_log",
         "value": "no",
-        "ignore_failure": false
+        "override": true
       }
     },
     {
@@ -49,13 +49,6 @@
       "set": {
         "field": "temporary_metadata_index_name_namespace",
         "value": "VAR_CORELIGHT_INDEX_NAMESPACE_NON_PROTOCOL_LOG",
-        "ignore_failure": false
-      }
-    },
-    {
-      "set": {
-        "field": "temporary_metadata_is_system_log",
-        "value": "yes",
         "ignore_failure": false
       }
     }

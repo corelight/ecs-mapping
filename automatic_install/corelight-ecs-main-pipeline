@@ -22,41 +22,6 @@
       }
     },
     {
-      "set": {
-        "description": "This field can be used to determine if a data type is a metric or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle metrics - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
-        "field": "temporary_metadata_is_metric_log",
-        "value": "no"
-      }
-    },
-    {
-      "set": {
-        "description": "This field can be used to determine if a data type is a stats or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle stats - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
-        "field": "temporary_metadata_is_stats_log",
-        "value": "no"
-      }
-    },
-    {
-      "set": {
-        "description": "This field can be used to determine if a data type is a netcontrol or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle stats - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
-        "field": "temporary_metadata_is_netcontrol_log",
-        "value": "no"
-      }
-    },
-    {
-      "set": {
-        "description": "This field can be used to determine if a data type is a system type log or not. Set all as 'no' first, then once it hits the specific call to the pipelines that system logs - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
-        "field": "temporary_metadata_is_system_log",
-        "value": "no"
-      }
-    },
-    {
-      "set": {
-        "description": "This field will be used to determine if a data type is a parse_failure or not for later on in index naming.",
-        "field": "temporary_metadata_is_parse_failure",
-        "value": "no"
-      }
-    },
-    {
       "pipeline": {
         "description": "Logs that are system related.",
         "name": "corelight-ecs-common-system-pipeline",
@@ -101,7 +66,7 @@
         "description": "If is a protocol log do extra enrichment and parsing. Protocol log AKA application or network protocol log.. ie: not a metric, stat, or other system log.",
         "name": "corelight-ecs-postprocess_protocol_logs-pipeline",
         "ignore_missing_pipeline": false,
-        "if": "ctx.temporary_metadata_is_metric_log == 'no' && ctx.temporary_metadata_is_netcontrol_log == 'no' && ctx.temporary_metadata_is_stats_log == 'no' && ctx.temporary_metadata_is_system_log == 'no'"
+        "if": "ctx.temporary_metadata_is_protocol_log == 'yes'"
       }
     },
     {
