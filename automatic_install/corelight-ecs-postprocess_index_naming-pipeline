@@ -15,23 +15,21 @@
         "description": "Set 'data_stream.namespace' if it's not already set. If it is already was set this would mean the user wants to set namespace and has already set it (ie: for multiple customers to differentiate) else can use 'custom_temporary_metadata_index_name_namespace'.",
         "field": "data_stream.namespace",
         "copy_from": "temporary_metadata_index_name_namespace",
-        "if": "ctx.temporary_metadata_index_strategy == 'datastream' && ctx?.data_stream?.namespace == null"
+        "if": "ctx?.data_stream?.namespace == null"
       }
     },
     {
       "set": {
         "description": "Set data_stream fields 'data_stream.type'.",
         "field": "data_stream.type",
-        "copy_from": "temporary_metadata_index_name_type",
-        "if": "ctx.temporary_metadata_index_strategy == 'datastream'"
+        "copy_from": "temporary_metadata_index_name_type"
       }
     },
     {
       "set": {
         "description": "Set data_stream fields 'data_stream.dataset'.",
         "field": "data_stream.dataset",
-        "value": "{{{temporary_metadata_index_name_dataset_prefix}}}.{{{temporary_metadata_index_name_dataset_suffix}}}",
-        "if": "ctx.temporary_metadata_index_strategy == 'datastream'"
+        "value": "{{{temporary_metadata_index_name_dataset_prefix}}}.{{{temporary_metadata_index_name_dataset_suffix}}}"
       }
     },
     {
