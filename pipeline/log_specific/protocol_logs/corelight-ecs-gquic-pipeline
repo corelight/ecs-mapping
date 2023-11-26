@@ -1,0 +1,130 @@
+{
+  "description": "Corelight ingest pipeline for 'gquic' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_fuids",
+        "target_field": "log.id.orig_fuids",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cyu",
+        "target_field": "gquic.cyu",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cyutags",
+        "target_field": "gquic.cyutags",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_name",
+        "target_field": "destination.domain",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tag_count",
+        "target_field": "gquic.tag_count",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "user_agent",
+        "target_field": "user_agent.original",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version",
+        "target_field": "gquic.version",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "udp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "user_agent": {
+        "field": "user_agent.original",
+        "target_field": "user_agent",
+        "if": "ctx.user_agent?.original != null"
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  
+  ]
+}

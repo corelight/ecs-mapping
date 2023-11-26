@@ -1,0 +1,82 @@
+{
+  "description": "Corelight ingest pipeline for System logs (system, iam, and netcontrol logs). This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_is_protocol_log",
+        "value": "no",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "system",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "diagnostics"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_SYSTEM_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_SYSTEM_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_SYSTEM_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_SYSTEM_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "description": "Set a few different event.category that are iam",
+        "field": "event.category",
+        "value": [ "system", "iam" ],
+        "if": "ctx?.labels?.corelight?.event_sub_type != null && [ 'audit', 'auditlog', 'corelight_audit_log' ].contains(ctx.labels?.corelight?.event_sub_type)"
+      }
+    },
+    {
+      "set": {
+        "description": "Set netcontrol labels.corelight.event_sub_type",
+        "field": "event.category",
+        "value": [ "system", "iam" ],
+        "if": "ctx?.labels?.corelight?.event_sub_type != null && [ 'netcontrol', 'netcontrol_drop', 'netcontrol_shunt', 'openflow' ].contains(ctx.labels?.corelight?.event_sub_type)"
+      }
+    }
+  ]
+}

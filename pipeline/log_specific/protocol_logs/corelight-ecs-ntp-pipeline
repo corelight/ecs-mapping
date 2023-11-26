@@ -1,0 +1,193 @@
+{
+  "description": "Corelight ingest pipeline for 'ntp' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "mode",
+        "target_field": "ntp.mode",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "num_exts",
+        "target_field": "ntp.num_exts",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "org_time",
+        "target_field": "ntp.org_time_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.org_time_non_formatted_date",
+        "target_field": "ntp.org_time",
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.org_time_non_formatted_date != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "poll",
+        "target_field": "ntp.poll",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "precision",
+        "target_field": "ntp.precision",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rec_time",
+        "target_field": "ntp.rec_time_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.rec_time_non_formatted_date",
+        "target_field": "ntp.rec_time",
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.rec_time_non_formatted_date != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "ref_id",
+        "target_field": "ntp.ref_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "ref_time",
+        "target_field": "ntp.ref_time_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.ref_time_non_formatted_date",
+        "target_field": "ntp.ref_time",
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.ref_time_non_formatted_date != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "root_delay",
+        "target_field": "ntp.root_delay",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "root_disp",
+        "target_field": "ntp.root_disp",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "stratum",
+        "target_field": "ntp.stratum",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version",
+        "target_field": "ntp.version",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "xmt_time",
+        "target_field": "ntp.xmt_time_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "ntp.xmt_time_non_formatted_date",
+        "target_field": "ntp.xmt_time",
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX" ],
+        "ignore_failure": true,
+        "if": "ctx.ntp?.xmt_time_non_formatted_date != null"
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}

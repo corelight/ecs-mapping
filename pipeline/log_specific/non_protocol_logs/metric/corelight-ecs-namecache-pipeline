@@ -1,0 +1,167 @@
+{
+  "description": "Corelight ingest pipeline for 'namecache' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "rename": {
+        "field": "cache_add_rx_mpg",
+        "target_field": "namecache.cache_add_rx_mpg",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_rx_new",
+        "target_field": "namecache.cache_add_rx_new",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_tx_ev",
+        "target_field": "namecache.cache_add_tx_ev",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_add_tx_mpg",
+        "target_field": "namecache.cache_add_tx_mpg",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_del_mpg",
+        "target_field": "namecache.cache_del_mpg",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cache_entries",
+        "target_field": "namecache.cache_entries",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn",
+        "target_field": "namecache.hit_rate_conn",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn_orig_h",
+        "target_field": "namecache.hit_rate_conn_orig_h",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn_prod",
+        "target_field": "namecache.hit_rate_conn_prod",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn_prod_orig_h",
+        "target_field": "namecache.hit_rate_conn_prod_orig_h",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn_prod_resp_h",
+        "target_field": "namecache.hit_rate_conn_prod_resp_h",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn_resp_h",
+        "target_field": "namecache.hit_rate_conn_resp_h",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn_int_h",
+        "target_field": "namecache.hit_rate_conn_int_h",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "hit_rate_conn_ext_h",
+        "target_field": "namecache.hit_rate_conn_ext_h",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "lookups",
+        "target_field": "namecache.lookups",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_dns_a",
+        "target_field": "namecache.src_dns_a",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_dns_aaaa",
+        "target_field": "namecache.src_dns_aaaa",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_dns_a6",
+        "target_field": "namecache.src_dns_a6",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_dns_ptr",
+        "target_field": "namecache.src_dns_ptr",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_http_host",
+        "target_field": "namecache.src_http_host",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_ssl_sni",
+        "target_field": "namecache.src_ssl_sni",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_ntlm_auth",
+        "target_field": "namecache.src_ntlm_auth",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src_unknown",
+        "target_field": "namecache.src_unknown",
+        "ignore_missing": true
+      }
+    }
+  ]
+}
