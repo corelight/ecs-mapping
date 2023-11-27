@@ -67,7 +67,7 @@
         "name": "corelight-ecs-reuse-replace_dotted_fields_with_underscore-pipeline",
         "ignore_failure": true
       }
-    },
+    }
     //{
     //  "pipeline": {
     //    "name": "corelight-ecs-corelight_metrics_utilization-pipeline",
