@@ -65,14 +65,14 @@
     {
       "rename": {
         "field": "username",
-        "target_field": "source.user.name",
+        "target_field": "url.username",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "password",
-        "target_field": "source.user.password",
+        "target_field": "url.password",
         "ignore_missing": true
       }
     },
@@ -81,6 +81,22 @@
         "field": "resp_fuids",
         "target_field": "log.id.resp_fuids",
         "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "source.user.password",
+        "copy_from": "url.password",
+        "ignore_empty_value": true,
+        "ignore_failure": true
+      }
+    },
+    {
+      "set": {
+        "field": "source.user.name",
+        "copy_from": "url.username",
+        "ignore_empty_value": true,
+        "ignore_failure": true
       }
     },
     {
