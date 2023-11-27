@@ -58,7 +58,7 @@
     {
       "set": {
         "field": "suricata.alert.action",
-        "value": "{{{alert.action}}}",
+        "value": "{{{alert.action}}}}",
         "ignore_failure": true,
         "if": "ctx.alert?.action != null"
       }
@@ -386,7 +386,7 @@
     {
       "append": {
         "field": "event.type",
-        "value": "{{{suricata.alert.action}}",
+        "value": "{{{suricata.alert.action}}}",
         "if": "ctx?.suricata?.alert?.action != null"
       }
     },
