@@ -70,10 +70,9 @@
       }
     },
     {
-      "rename": {
+      "remove": {
         "field": "alert.action",
-        "target_field": "event.type",
-        "ignore_missing": true
+        "ignore_failure": true
       }
     },
     {
@@ -385,11 +384,25 @@
       }
     },
     {
+      "append": {
+        "field": "event.type",
+        "value": "{{{suricata.alert.action}}",
+        "if": "ctx?.suricata?.alert?.action != null"
+      }
+    },
+    {
+      "remove": {
+        "field": "log.id.tx_id",
+        "ignore_failure": true,
+        "ignore_missing": true,
+        "if": "ctx?.log?.id?.tx_id == '0'"
+      }
+    },
+    {
       "remove": {
         "field": [
           "alert",
           "id",
-          "log.id.tx_id",
           "temp_created_at_non_formatted_date",
           "temp_suricata_alert_metadata",
           "temp_updated_at_non_formatted_date"
