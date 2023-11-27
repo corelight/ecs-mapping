@@ -63,6 +63,12 @@
       }
     },
     {
+      "pipeline": {
+        "name": "corelight-ecs-reuse-replace_dotted_fields_with_underscore-pipeline",
+        "ignore_failure": true
+      }
+    },
+    {
       "set": {
         "description": "Set a few different event.category that are iam",
         "field": "event.category",

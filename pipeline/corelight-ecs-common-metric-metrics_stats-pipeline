@@ -64,45 +64,51 @@
     },
     {
       "pipeline": {
-        "name": "corelight-ecs-corelight_metrics_utilization-pipeline",
-        "if": "ctx.labels?.corelight?.event_sub_type == 'corelight_metrics_utilization'"
+        "name": "corelight-ecs-reuse-replace_dotted_fields_with_underscore-pipeline",
+        "ignore_failure": true
       }
     },
-    {
-      "pipeline": {
-        "name": "corelight-ecs-corelight_weird_stats-pipeline",
-        "if": "ctx.labels?.corelight?.event_sub_type == 'corelight_weird_stats'"
-      }
-    },
-    {
-      "pipeline": {
-        "name": "corelight-ecs-namecache-pipeline",
-        "if": "ctx.labels?.corelight?.event_sub_type == 'namecache'"
-      }
-    },
-    {
-      "pipeline": {
-        "name": "corelight-ecs-reporter-pipeline",
-        "if": "ctx.labels?.corelight?.event_sub_type == 'reporter'"
-      }
-    },
-    {
-      "pipeline": {
-        "name": "corelight-ecs-stats-pipeline",
-        "if": "ctx.labels?.corelight?.event_sub_type == 'stats'"
-      }
-    },
-    {
-      "pipeline": {
-        "name": "corelight-ecs-suricata_stats-pipeline",
-        "if": "ctx.labels?.corelight?.event_sub_type == 'suricata_stats'"
-      }
-    },
-    {
-      "pipeline": {
-        "name": "corelight-ecs-weird_stats-pipeline",
-        "if": "ctx.labels?.corelight?.event_sub_type == 'weird_stats'"
-      }
-    }
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-corelight_metrics_utilization-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'corelight_metrics_utilization'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-corelight_weird_stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'corelight_weird_stats'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-namecache-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'namecache'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-reporter-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'reporter'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'stats'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-suricata_stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'suricata_stats'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-weird_stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'weird_stats'"
+    //  }
+    //}
   ]
 }
