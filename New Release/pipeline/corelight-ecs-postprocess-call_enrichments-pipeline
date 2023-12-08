@@ -1,0 +1,54 @@
+{
+  "description": "Corelight ingest pipeline for post processing to call enrichment ingest pipelines. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "pipeline": {
+        "name": "corelight-ecs-postprocess-enrich-destination.domain-pipeline",
+        "ignore_missing_pipeline": false,
+        "ignore_failure": true,
+        "if": "ctx?.destination instanceof Map && ctx.destination?.domain != null"
+      }
+    },
+    {
+      "pipeline": {
+        "name": "corelight-ecs-postprocess-enrich-geoip-destination.ip-pipeline",
+        "ignore_missing_pipeline": false,
+        "ignore_failure": true,
+        "if": "ctx?.destination instanceof Map && ctx.destination?.ip != null"
+      }
+    },
+    {
+      "pipeline": {
+        "name": "corelight-ecs-postprocess-enrich-geoip-host.ip-pipeline",
+        "ignore_missing_pipeline": false,
+        "ignore_failure": true,
+        "if": "ctx?.host instanceof Map && ctx.host?.ip != null"
+      }
+    },
+    {
+      "pipeline": {
+        "name": "corelight-ecs-postprocess-enrich-geoip-source.ip-pipeline",
+        "ignore_missing_pipeline": false,
+        "ignore_failure": true,
+        "if": "ctx?.source instanceof Map && ctx.source?.ip != null"
+      }
+    },
+    {
+      "pipeline": {
+        "name": "corelight-ecs-postprocess-enrich-url-pipeline",
+        "ignore_missing_pipeline": false,
+        "ignore_failure": true,
+        "if": "ctx?.url instanceof Map && ctx.url?.original != null"
+      }
+    },
+    {
+      "pipeline": {
+        "name": "corelight-ecs-postprocess-enrich-user_agent-pipeline",
+        "ignore_missing_pipeline": false,
+        "ignore_failure": true,
+        "if": "ctx?.user_agent instanceof Map && ctx.user_agent?.original != null"
+      }
+    }
+  ]
+}

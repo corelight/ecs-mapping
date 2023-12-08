@@ -1,0 +1,59 @@
+{
+  "description": "Corelight ingest pipeline for destination.domain. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "script": {
+        "lang": "painless",
+        "description": "Add length of destination.domain",
+        "source": "ctx.destination.domain_length = ctx.destination.domain.length()",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.destination.top_level_domain = ctx.destination.domain.substring(ctx.destination.domain.lastIndexOf('.')+1)",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.temp_without_top_level = ctx.destination.domain.substring(0,(ctx.destination.domain.lastIndexOf('.')))",
+        "ignore_failure": true
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.destination.parent_domain = ctx.temp_without_top_level.substring(ctx.temp_without_top_level.lastIndexOf('.') + 1)",
+        "ignore_failure": true,
+        "if": "ctx.temp_without_top_level != null"
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.destination.subdomain = ctx.temp_without_top_level.substring(0,(ctx.temp_without_top_level.lastIndexOf('.')))",
+        "ignore_failure": true,
+        "if": "ctx.temp_without_top_level != null"
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "source": "ctx.destination.registered_domain = ctx.destination.parent_domain + '.' + ctx.destination.top_level_domain",
+        "ignore_failure": true,
+        "if": "ctx.destination?.parent_domain != null"
+      }
+    },
+    {
+      "remove": {
+        "field": [ "temp_without_top_level" ],
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}

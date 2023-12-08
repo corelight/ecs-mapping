@@ -1,0 +1,27 @@
+{
+  "description": "Corelight ingest pipeline for 'corelight_metrics_utilization' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.\"",
+  "version": 2023120101,
+  "processors": [
+    {
+      "rename": {
+        "field": "smartpcap",
+        "target_field": "utilization.corelight.smartpcap",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suricata",
+        "target_field": "utilization.corelight.suricata",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sensor",
+        "target_field": "utilization.corelight.sensor",
+        "ignore_failure": true
+      }
+    }
+  ]
+}

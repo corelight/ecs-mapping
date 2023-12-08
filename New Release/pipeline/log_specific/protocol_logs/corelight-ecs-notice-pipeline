@@ -1,0 +1,233 @@
+{
+  "description": "Corelight ingest pipeline for 'notice' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "alert"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": [ "intrusion_detection", "network" ],
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "detection"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "fuid",
+        "target_field": "log.id.fuid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "file_desc",
+        "target_field": "file.description",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "file_mime_type",
+        "target_field": "file.mime_type",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "proto",
+        "target_field": "network.transport",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "actions",
+        "target_field": "notice.actions",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "severity",
+        "target_field": "event.severity",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "email_body_sections",
+        "target_field": "notice.email_body_sections",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "email_delay_tokens",
+        "target_field": "notice.email_delay_tokens",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "identifier",
+        "target_field": "notice.identifier",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "msg",
+        "target_field": "notice.message",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "note",
+        "target_field": "notice.note",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "n",
+        "target_field": "notice.number",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "peer_descr",
+        "target_field": "notice.peer_description",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "peer_name",
+        "target_field": "notice.peer_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sub",
+        "target_field": "notice.sub_message",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "suppress_for",
+        "target_field": "notice.supress_duration",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "dropped",
+        "target_field": "notice.dropped",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "src",
+        "target_field": "notice.src_ip",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "source.ip",
+        "value": "{{{notice.src_ip}}}",
+        "ignore_failure": true,
+        "if": "ctx.notice?.src_ip != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "dst",
+        "target_field": "notice.dst_ip",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "destination.ip",
+        "value": "{{{notice.dst_ip}}}",
+        "ignore_failure": true,
+        "if": "ctx.notice?.dst_ip != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "p",
+        "target_field": "notice.p",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "destination.port",
+        "value": "{{{notice.p}}}",
+        "ignore_failure": true,
+        "if": "ctx?.destination?.port == null"
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}

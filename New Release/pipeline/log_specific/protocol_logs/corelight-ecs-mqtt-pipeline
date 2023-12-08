@@ -1,0 +1,199 @@
+{
+  "description": "Corelight ingest pipeline for 'mqtt_connect', 'mqtt_publish', and 'mqtt_subscribe' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "ack",
+        "target_field": "mqtt.ack",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "action",
+        "target_field": "mqtt.action",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_id",
+        "target_field": "mqtt.client_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "connect_status",
+        "target_field": "mqtt.connect_status",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "from_client",
+        "target_field": "mqtt.from_client",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "granted_qos_level",
+        "target_field": "mqtt.granted_qos_level",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "payload",
+        "target_field": "mqtt.payload",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "payload_len",
+        "target_field": "mqtt.payload_len",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "proto_name",
+        "target_field": "mqtt.proto_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "proto_version",
+        "target_field": "mqtt.proto_version",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "qos",
+        "target_field": "mqtt.qos",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "qos_levels",
+        "target_field": "mqtt.qos_levels",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "retain",
+        "target_field": "mqtt.retain",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "status",
+        "target_field": "mqtt.status",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "topic",
+        "target_field": "mqtt.topic",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "topics",
+        "target_field": "mqtt.topics",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "will_payload",
+        "target_field": "mqtt.will_payload",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "will_topic",
+        "target_field": "mqtt.will_topic",
+        "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}

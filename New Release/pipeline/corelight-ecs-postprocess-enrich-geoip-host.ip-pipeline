@@ -1,0 +1,37 @@
+{
+  "description": "Corelight ingest pipeline for host.ip Geo IP and Geo ASN enrichment. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "geoip": {
+        "field": "host.ip",
+        "target_field": "host.geo",
+        "ignore_missing": true
+      }
+    },
+    {
+      "geoip": {
+        "database_file": "GeoLite2-ASN.mmdb",
+        "field": "host.ip",
+        "target_field": "host.as",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host.as.asn",
+        "target_field": "host.as.number",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host.as.organization_name",
+        "target_field": "host.as.organization.name",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}

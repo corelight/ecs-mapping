@@ -1,0 +1,34 @@
+{
+  "description": "Corelight ingest pipeline for setting the index prefix/suffix. Common parsings amongst each data/log type. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "description": "Start off as unknown protocol log. Later on in the pipeline appropriate variable will be set.",
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_UNKNOWN_LOG"
+      }
+    },
+    {
+      "set": {
+        "description": "Start off as unknown protocol log. Later on in the pipeline appropriate variable will be set.",
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_UNKNOWN_LOG"
+      }
+    },
+    {
+      "set": {
+        "description": "Start off as unknown protocol log. Later on in the pipeline appropriate variable will be set.",
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_UNKNOWN_LOG"
+      }
+    },
+    {
+      "set": {
+        "description": "Start off as unknown protocol log. Later on in the pipeline appropriate variable will be set.",
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_UNKNOWN_LOG"
+      }
+    }
+  ]
+}
