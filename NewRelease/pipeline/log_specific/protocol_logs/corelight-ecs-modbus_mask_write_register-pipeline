@@ -1,0 +1,115 @@
+{
+  "description": "Corelight ingest pipeline for 'modbus_mask_write_register' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "unit_id",
+        "target_field": "modbus.unit_id",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "func",
+        "target_field": "modbus.func",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "socket_port",
+        "target_field": "modbus.socket_port",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "network_direction",
+        "target_field": "modbus.network_direction",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "vendor_name",
+        "target_field": "modbus.vendor_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "address",
+        "target_field": "modbus.address",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "and_mask",
+        "target_field": "modbus.and_mask",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "or_mask",
+        "target_field": "modbus.or_mask",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

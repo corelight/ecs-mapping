@@ -1,0 +1,130 @@
+{
+  "description": "Corelight ingest pipeline for 'enip_list_identity' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "device_ip",
+        "target_field": "enip.device_ip",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "device_type",
+        "target_field": "enip.device_type",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "command",
+        "target_field": "enip.command",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "product_code",
+        "target_field": "enip.product_code",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "product_name",
+        "target_field": "enip.product_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "revision",
+        "target_field": "enip.revision",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "state",
+        "target_field": "enip.state",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "status",
+        "target_field": "enip.status",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "vendor",
+        "target_field": "enip.vendor",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "host.ip",
+        "value": "{{{enip.device_ip}}}",
+        "ignore_failure": true,
+        "if": "ctx.enip?.device_ip != null && ctx.host?.ip == null"
+      }
+    }
+  ]
+}

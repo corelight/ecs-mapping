@@ -716,6 +716,18 @@
       }
     },
     {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'corelight_ml_results'",
+        "name": "corelight_ml_results_pipeline"
+      }
+    },
+    {
+      "pipeline": {
+        "if": "ctx.event.dataset == 'ml_results'",
+        "name": "corelight_ml_results_pipeline"
+      }
+    },
+    {
       "set": {
         "description": "This field can be used to determine if a data type is a metric or not. Set all as 'no' first, then once it hits the specific call to the pipelines that handle metrics - it will be then be set to 'yes' This is a sort of tag. But tags are not good to use because of the drastic pipeline inefficiency of using a for in check.. so we create our own field and use an exact compare check",
         "field": "temporary_metadata_is_metric_log",
@@ -753,7 +765,7 @@
     {
       "pipeline": {
         "description": "Logs that are metrics.",
-        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_docker' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_metrics_utilization'",
+        "if": "ctx.event.dataset == 'corelight_metrics_bro' || ctx.event.dataset == 'corelight_metrics_cpu' || ctx.event.dataset == 'corelight_metrics_disk' || ctx.event.dataset == 'corelight_metrics_docker' || ctx.event.dataset == 'corelight_metrics_iface' || ctx.event.dataset == 'corelight_metrics_memory' || ctx.event.dataset == 'corelight_metrics_s3' || ctx.event.dataset == 'corelight_metrics_sftp' || ctx.event.dataset == 'corelight_metrics_suricata' || ctx.event.dataset == 'corelight_metrics_system' || ctx.event.dataset == 'corelight_metrics_utilization' || ctx.event.dataset == 'corelight_ml_metrics' || ctx.event.dataset == 'ml_metrics' ",
         "name": "corelight_metrics_general_pipeline"
       }
     },

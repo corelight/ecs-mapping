@@ -1,0 +1,241 @@
+{
+  "description": "Corelight ingest pipeline for 'kerberos' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "from",
+        "target_field": "kerberos.ticket.valid_from_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "kerberos.ticket.valid_from_non_formatted_date",
+        "target_field": "kerberos.ticket.valid_from",
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
+        "ignore_failure": true,
+        "if": "ctx.kerberos?.ticket?.valid_from_non_formatted_date != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "valid_till",
+        "target_field": "kerberos.ticket.valid_till_non_formatted_date",
+        "ignore_missing": true
+      }
+    },
+    {
+      "date": {
+        "field": "kerberos.ticket.valid_till_non_formatted_date",
+        "target_field": "kerberos.ticket.valid_till",
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
+        "ignore_failure": true,
+        "if": "ctx.kerberos?.ticket?.valid_till_non_formatted_date != null"
+      }
+    },
+    {
+      "remove": {
+        "field": "till",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_cert_fuid",
+        "target_field": "log.id.server_cert_fuid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_cert_fuid",
+        "target_field": "log.id.client_cert_fuid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "error_msg",
+        "target_field": "kerberos.error_message",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "source.user.name",
+        "value": "{{{client}}}",
+        "ignore_failure": true,
+        "if": "ctx.client != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "client",
+        "target_field": "kerberos.request.client",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_cert_subject",
+        "target_field": "kerberos.request.certificate.subject",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cipher",
+        "target_field": "kerberos.request.ticket.cipher",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "auth_ticket",
+        "target_field": "kerberos.request.ticket.hash.md5",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "request_type",
+        "target_field": "kerberos.request.type",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "new_ticket",
+        "target_field": "kerberos.response.ticket.hash.md5",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_cert_subject",
+        "target_field": "kerberos.response.certificate.subject",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "service",
+        "target_field": "kerberos.ticket.service",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "success",
+        "ignore_failure": true,
+        "if": "(ctx.success == true)"
+      }
+    },
+    {
+      "set": {
+        "field": "event.outcome",
+        "value": "failure",
+        "ignore_failure": true,
+        "if": "(ctx.success == false)"
+      }
+    },
+    {
+      "rename": {
+        "field": "success",
+        "target_field": "kerberos.request.successul",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "forwardable",
+        "target_field": "kerberos.request.ticket.forwardable",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "renewable",
+        "target_field": "kerberos.request.ticket.renewable",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "error_code",
+        "target_field": "kerberos.error_code",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "network.transport",
+        "value": "tcp",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": "id",
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}

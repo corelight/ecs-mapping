@@ -1,0 +1,108 @@
+{
+  "description": "Corelight ingest pipeline for 'bacnet_discovery' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "is_orig",
+        "target_field": "bacnet.is_orig",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "pdu_service",
+        "target_field": "bacnet.pdu_service",
+        "ignore_missing": true
+        }
+    },
+    {
+      "rename": {
+        "field": "object_type",
+        "target_field": "bacnet.object_type ",
+        "ignore_missing": true
+        }
+    },
+    {
+     "rename": {
+       "field": "instance_number",
+       "target_field": "bacnet.instance_number",
+       "ignore_missing": true
+       }
+    },
+    {
+      "rename": {
+        "field": "range",
+        "target_field": "bacnet.range",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "vendor",
+        "target_field": "bacnet.vendor",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "object_name",
+        "target_field": "bacnet.object_name",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

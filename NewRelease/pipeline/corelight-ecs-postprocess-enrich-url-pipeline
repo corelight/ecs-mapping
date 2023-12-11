@@ -1,0 +1,24 @@
+{
+  "description": "Corelight ingest pipeline for url. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "script": {
+        "lang": "painless",
+        "description": "Add length of url.original",
+        "source": "ctx.url.original_length = ctx.url.original.length()",
+        "ignore_failure": true,
+        "if": "ctx.url?.original != null"
+      }
+    },
+    {
+      "script": {
+        "lang": "painless",
+        "description": "Add length of url.domain",
+        "source": "ctx.url.domain_length = ctx.url.domain.length()",
+        "ignore_failure": true,
+        "if": "ctx.url?.domain != null"
+      }
+    }
+  ]
+}

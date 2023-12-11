@@ -1,0 +1,43 @@
+{
+  "description": "Corelight ingest pipeline for the final post processing. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "pipeline": {
+        "description": "Set _index name",
+        "name": "corelight-ecs-postprocess-final-set_index-pipeline"
+      }
+    },
+    {
+      "rename": {
+        "field": "temp_host",
+        "target_field": "labels.corelight.logstash_input_host_listening_ip",
+        "ignore_failure": true,
+        "if": "ctx.temp_host != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "temp_port",
+        "target_field": "labels.corelight.logstash_input_host_listening_port",
+        "ignore_failure": true,
+        "if": "ctx.temp_port != null"
+      }
+    },
+    {
+      "remove": {
+        "field": [
+          "custom_temporary_metadata_index_name_namespace",
+          "temporary_metadata_index_name_dataset_prefix",
+          "temporary_metadata_index_name_dataset_suffix",
+          "temporary_metadata_index_name_namespace",
+          "temporary_metadata_index_name_prefix",
+          "temporary_metadata_index_name_type",
+          "temporary_metadata_is_protocol_log"
+        ],
+        "ignore_failure": true,
+        "ignore_missing": true
+      }
+    }
+  ]
+}
