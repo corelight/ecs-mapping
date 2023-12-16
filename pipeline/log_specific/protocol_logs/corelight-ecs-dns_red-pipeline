@@ -1,0 +1,11 @@
+{
+  "description": "Corelight ingest pipeline for 'dns_red' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "pipeline": {
+        "name": "corelight-ecs-dns-pipeline"
+      }
+    }
+  ]
+}

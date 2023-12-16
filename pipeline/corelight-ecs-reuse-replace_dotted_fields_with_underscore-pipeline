@@ -1,0 +1,12 @@
+{
+  "description": "Corelight ingest pipeline for replacing dots in fields with underscores (Remove infinite dotted fields and replace with underscore). This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "processors" : [
+    {
+      "script": {
+        "lang": "painless",
+        "source": "\n          // Create a map to hold new field values\n          def newFields = new HashMap();\n    \n          // Create a list to hold field names to be removed\n          def fieldsToRemove = new ArrayList();\n    \n          // Iterate over the document fields\n          for (def entry : ctx.entrySet()) {\n            def key = entry.getKey();\n    \n            // Check if field name contains a dot\n            if (key.contains('.')) {\n              // Replace dots with underscores in the field name\n              def newKey = key.replace('.', '_');\n              //def newKey = key.replaceAll('.{2,}', '_');\n    \n              // Add the new field name and value to the map\n              newFields.put(newKey, entry.getValue());\n    \n              // Mark the original field for removal\n              fieldsToRemove.add(key);\n            }\n          }\n    \n          // Apply the new fields\n          for (def newField : newFields.entrySet()) {\n            ctx.put(newField.getKey(), newField.getValue());\n          }\n    \n          // Remove the original fields\n          for (def field : fieldsToRemove) {\n            ctx.remove(field);\n          }\n        ",
+        "ignore_failure": true
+      }
+    }
+  ]
+}

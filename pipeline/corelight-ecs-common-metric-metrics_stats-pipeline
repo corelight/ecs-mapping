@@ -1,0 +1,114 @@
+{
+  "description": "Corelight ingest pipeline for Metric logs (metrics and stats logs). This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "temporary_metadata_is_protocol_log",
+        "value": "no",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "metric"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "metrics",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "diagnostics"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_METRIC_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_METRIC_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_METRIC_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_METRIC_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "pipeline": {
+        "name": "corelight-ecs-reuse-replace_dotted_fields_with_underscore-pipeline",
+        "ignore_failure": true
+      }
+    }
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-corelight_metrics_utilization-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'corelight_metrics_utilization'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-corelight_weird_stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'corelight_weird_stats'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-namecache-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'namecache'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-reporter-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'reporter'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'stats'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-suricata_stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'suricata_stats'"
+    //  }
+    //},
+    //{
+    //  "pipeline": {
+    //    "name": "corelight-ecs-weird_stats-pipeline",
+    //    "if": "ctx.labels?.corelight?.event_sub_type == 'weird_stats'"
+    //  }
+    //}
+  ]
+}

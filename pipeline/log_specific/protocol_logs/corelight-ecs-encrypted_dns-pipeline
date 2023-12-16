@@ -1,0 +1,129 @@
+{
+  "description": "Corelight ingest pipeline for 'encrypted_dns' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2023120101,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "alert"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": [ "intrusion_detection", "network" ],
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "detection"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "network.protocol",
+        "value": "dns",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_h",
+        "target_field": "destination.ip",
+        "ignore_missing": true
+      }
+    },
+    {
+      "set": {
+        "field": "destination.domain",
+        "value": "{{sni}}}",
+        "ignore_failure": true,
+        "if": "ctx.sni != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "sni",
+        "target_field": "tls.client.server_name",
+        "ignore_missing": true
+      }
+    },    {
+      "dot_expander": {
+        "field": "cert.cn",
+        "ignore_failure": true,
+        "if": "(ctx['cert.cn'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "cert.cn",
+        "target_field": "encrypted_dns_cert_cn",
+        "ignore_missing": true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "cert.sans",
+        "ignore_failure": true,
+        "if": "(ctx['cert.sans'] != null )"
+      }
+    },
+    {
+      "rename": {
+        "field": "cert.sans",
+        "target_field": "encrypted_dns_cert_sans",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cert",
+        "target_field": "encrypted_dns_cert",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "match",
+        "target_field": "encrypted_dns_match",
+        "ignore_missing": true
+      }
+    }
+  ]
+}
