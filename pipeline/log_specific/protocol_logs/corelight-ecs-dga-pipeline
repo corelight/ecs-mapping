@@ -87,7 +87,7 @@
     {
       "set": {
         "field": "destination.domain",
-        "value": "{{query}}}",
+        "value": "{{{query}}}",
         "ignore_failure": true,
         "if": "ctx.query != null"
       }
