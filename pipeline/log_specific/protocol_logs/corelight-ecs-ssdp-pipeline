@@ -1,0 +1,144 @@
+{
+    "description": "Corelight ingest pipeline for 'ssdp' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+    "version": 2024020101,
+    "processors": [
+      {
+        "set": {
+          "field": "event.kind",
+          "value": "event"
+        }
+      },
+      {
+        "set": {
+          "field": "event.category",
+          "value": "network",
+          "override": true
+        }
+      },
+      {
+        "set": {
+          "field": "event.type",
+          "value": [ "connection", "info", "protocol" ]
+        }
+      },
+      {
+        "set": {
+          "field": "labels.corelight.event_category",
+          "value": "network_protocols"
+        }
+      },
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_type",
+          "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+          "ignore_failure": false
+        }
+      },
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_dataset_prefix",
+          "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+          "ignore_failure": false
+        }
+      },
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_dataset_suffix",
+          "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+          "ignore_failure": false
+        }
+      },
+      {
+        "set": {
+          "field": "temporary_metadata_index_name_namespace",
+          "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+          "ignore_failure": false
+        }
+      },
+      {
+          "rename": {
+            "field": "is_orig",
+            "target_field": "ssdp.is_orig",
+            "ignore_missing": true
+          }
+      },
+      {
+        "rename": {
+          "field": "operation",
+          "target_field": "ssdp.operation",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "usn",
+          "target_field": "ssdp.usn",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "target",
+          "target_field": "ssdp.target",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "target_sub",
+          "target_field": "ssdp.target_sub",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "location",
+          "target_field": "ssdp.location",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "user_agent",
+          "target_field": "ssdp.user_agent",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "server",
+          "target_field": "ssdp.server",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "man",
+          "target_field": "ssdp.man",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "mx",
+          "target_field": "ssdp.mx",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "remaining_header_names",
+          "target_field": "ssdp.remaining_header_names",
+          "ignore_missing": true
+        }
+    },
+    {
+        "rename": {
+          "field": "remaining_header_values",
+          "target_field": "ssdp.remaining_header_values",
+          "ignore_missing": true
+        }
+    }
+]
+}
+
