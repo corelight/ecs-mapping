@@ -118,6 +118,13 @@
       }
     },
     {
+      "rename": {
+        "field": "annotations",
+        "target_field": "corelight.known.annotations",
+        "ignore_missing": true
+      }
+    },
+    {
       "set": {
         "field": "event.id",
         "value": "{{log.id.kuid}}}",

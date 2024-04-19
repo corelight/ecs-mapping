@@ -225,6 +225,118 @@
       }
     },
     {
+      "dot_expander": {
+        "field": "id.orig_ep_cid",
+        "if": "ctx['id.orig_ep_cid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.orig_ep_cid",
+        "target_field": "source.orig_ep_cid",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?.orig_ep_cid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.orig_ep_source",
+        "if": "ctx['id.orig_ep_source'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.orig_ep_source",
+        "target_field": "source.orig_ep_source",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?.orig_ep_source != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.orig_ep_status",
+        "if": "ctx['id.orig_ep_status'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.orig_ep_status",
+        "target_field": "source.orig_ep_status",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?.orig_ep_status != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.orig_ep_uid",
+        "if": "ctx['id.orig_ep_uid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.orig_ep_uid",
+        "target_field": "source.orig_ep_uid",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?.orig_ep_uid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.resp_ep_cid",
+        "if": "ctx['id.resp_ep_cid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.resp_ep_cid",
+        "target_field": "destination.orig_ep_cid",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?.resp_ep_cid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.resp_ep_source",
+        "if": "ctx['id.resp_ep_source'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.resp_ep_source",
+        "target_field": "destination.resp_ep_source",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?.resp_ep_source != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.resp_ep_status",
+        "if": "ctx['id.resp_ep_status'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.resp_ep_status",
+        "target_field": "destination.resp_ep_status",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?resp_ep_status != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "id.resp_ep_uid",
+        "if": "ctx['id.resp_ep_uid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "id.resp_ep_uid",
+        "target_field": "destination.resp_ep_uid",
+        "ignore_missing": true,
+        "if": "ctx?.id instanceof Map && ctx?.id?.resp_ep_uid != null"
+      }
+    },
+    {
       "rename": {
         "field": "id_orig_h",
         "target_field": "source.ip",

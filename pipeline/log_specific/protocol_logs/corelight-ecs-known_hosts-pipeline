@@ -148,6 +148,90 @@
       }
     },
     {
+      "dot_expander": {
+        "field": "ep.cid",
+        "if": "ctx['ep.cid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "ep.cid",
+        "target_field": "corelight.known.cid",
+        "ignore_missing": true,
+        "if": "ctx?.ep.cid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "ep.criticality",
+        "if": "ctx['ep.criticality'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "ep.criticality",
+        "target_field": "corelight.known.criticality",
+        "ignore_missing": true,
+        "if": "ctx?.ep.criticality != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "ep.desc",
+        "if": "ctx['ep.desc'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "ep.desc",
+        "target_field": "corelight.known.desc",
+        "ignore_missing": true,
+        "if": "ctx?.ep.desc != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "ep.source",
+        "if": "ctx['ep.source'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "ep.source",
+        "target_field": "corelight.known.source",
+        "ignore_missing": true,
+        "if": "ctx?.ep.source != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "ep.status",
+        "if": "ctx['ep.status'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "ep.status",
+        "target_field": "corelight.known.status",
+        "ignore_missing": true,
+        "if": "ctx?.ep.status != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "ep.uid",
+        "if": "ctx['ep.uid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "ep.uid",
+        "target_field": "corelight.known.uid",
+        "ignore_missing": true,
+        "if": "ctx?.ep.uid != null"
+      }
+    },
+    {
       "set": {
         "field": "event.id",
         "value": "{{log.id.kuid}}}",

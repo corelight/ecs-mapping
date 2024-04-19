@@ -399,6 +399,202 @@
       }
     },
     {
+      "dot_expander": {
+        "field": "orig_vulnerable_host.cvs",
+        "if": "ctx['orig_vulnerable_host.cvs'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_vulnerable_host.cvs",
+        "target_field": "source.vulnerable_host.cve",
+        "ignore_missing": true,
+        "if": "ctx?.orig_vulnerable_host.cvs != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_vulnerable_host.uid",
+        "if": "ctx['orig_vulnerable_host.uid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_vulnerable_host.uid",
+        "target_field": "source.vulnerable_host.uid",
+        "ignore_missing": true,
+        "if": "ctx?.orig_vulnerable_host.uid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_vulnerable_host.cid",
+        "if": "ctx['orig_vulnerable_host.cid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_vulnerable_host.cid",
+        "target_field": "source.vulnerable_host.cid",
+        "ignore_missing": true,
+        "if": "ctx?.orig_vulnerable_host.cid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_vulnerable_host.hostname",
+        "if": "ctx['orig_vulnerable_host.hostname'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_vulnerable_host.hostname",
+        "target_field": "source.vulnerable_host.hostname",
+        "ignore_missing": true,
+        "if": "ctx?.orig_vulnerable_host.hostname != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_vulnerable_host.os_version",
+        "if": "ctx['orig_vulnerable_host.os_version'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_vulnerable_host.os_version",
+        "target_field": "source.vulnerable_host.os_version",
+        "ignore_missing": true,
+        "if": "ctx?.orig_vulnerable_host.os_version != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_vulnerable_host.criticality",
+        "if": "ctx['orig_vulnerable_host.criticality'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_vulnerable_host.criticality",
+        "target_field": "source.vulnerable_host.criticality",
+        "ignore_missing": true,
+        "if": "ctx?.orig_vulnerable_host.criticality != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_vulnerable_host.source",
+        "if": "ctx['orig_vulnerable_host.source'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_vulnerable_host.source",
+        "target_field": "source.vulnerable_host.source",
+        "ignore_missing": true,
+        "if": "ctx?.orig_vulnerable_host.source != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "resp_vulnerable_host.cvs",
+        "if": "ctx['resp_vulnerable_host.cvs'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_vulnerable_host.cvs",
+        "target_field": "destination.vulnerable_host.cve",
+        "ignore_missing": true,
+        "if": "ctx?.resp_vulnerable_host.cvs != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "resp_vulnerable_host.uid",
+        "if": "ctx['resp_vulnerable_host.uid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_vulnerable_host.uid",
+        "target_field": "destination.vulnerable_host.uid",
+        "ignore_missing": true,
+        "if": "ctx?.resp_vulnerable_host.uid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "resp_vulnerable_host.cid",
+        "if": "ctx['resp_vulnerable_host.cid'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_vulnerable_host.cid",
+        "target_field": "destination.vulnerable_host.cid",
+        "ignore_missing": true,
+        "if": "ctx?.resp_vulnerable_host.cid != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "resp_vulnerable_host.hostname",
+        "if": "ctx['resp_vulnerable_host.hostname'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_vulnerable_host.hostname",
+        "target_field": "destination.vulnerable_host.hostname",
+        "ignore_missing": true,
+        "if": "ctx?.resp_vulnerable_host.hostname != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "resp_vulnerable_host.os_version",
+        "if": "ctx['resp_vulnerable_host.os_version'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_vulnerable_host.os_version",
+        "target_field": "destination.vulnerable_host.os_version",
+        "ignore_missing": true,
+        "if": "ctx?.resp_vulnerable_host.os_version != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "resp_vulnerable_host.criticality",
+        "if": "ctx['resp_vulnerable_host.criticality'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_vulnerable_host.criticality",
+        "target_field": "destination.vulnerable_host.criticality",
+        "ignore_missing": true,
+        "if": "ctx?.resp_vulnerable_host.criticality != null"
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "resp_vulnerable_host.source",
+        "if": "ctx['resp_vulnerable_host.source'] != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_vulnerable_host.source",
+        "target_field": "destination.vulnerable_host.source",
+        "ignore_missing": true,
+        "if": "ctx?.resp_vulnerable_host.source != null"
+      }
+    },
+    {
       "remove": {
         "field": [
           "alert",

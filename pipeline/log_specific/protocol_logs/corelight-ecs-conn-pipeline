@@ -478,6 +478,69 @@
       }
     },
     {
+      "rename": {
+        "field": "orig_ep_cid",
+        "target_field": "source.orig_ep_cid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_ep_source",
+        "target_field": "source.orig_ep_source",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_ep_status",
+        "target_field": "source.orig_ep_status",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_ep_uid",
+        "target_field": "source.orig_ep_uid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_ep_cid",
+        "target_field": "destination.orig_ep_cid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_ep_source",
+        "target_field": "destination.orig_ep_source",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_ep_status",
+        "target_field": "destination.orig_ep_status",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_ep_uid",
+        "target_field": "destination.orig_ep_uid",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_ep_cid",
+        "target_field": "destination.orig_ep_cid",
+        "ignore_missing": true
+      }
+    },
+    {
       "remove": {
         "field": [ "id", "id_vlan" ],
         "ignore_missing": true
