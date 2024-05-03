@@ -319,7 +319,7 @@
         "field": "id.resp_ep_status",
         "target_field": "destination.resp_ep_status",
         "ignore_missing": true,
-        "if": "ctx?.id instanceof Map && ctx?.id?resp_ep_status != null"
+        "if": "ctx?.id instanceof Map && ctx?.id?.resp_ep_status != null"
       }
     },
     {
