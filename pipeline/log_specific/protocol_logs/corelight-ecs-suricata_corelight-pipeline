@@ -409,7 +409,7 @@
         "field": "orig_vulnerable_host.cvs",
         "target_field": "source.vulnerable_host.cve",
         "ignore_missing": true,
-        "if": "ctx?.orig_vulnerable_host.cvs != null"
+        "if": "ctx?.orig_vulnerable_host?.cvs != null"
       }
     },
     {
@@ -423,7 +423,7 @@
         "field": "orig_vulnerable_host.uid",
         "target_field": "source.vulnerable_host.uid",
         "ignore_missing": true,
-        "if": "ctx?.orig_vulnerable_host.uid != null"
+        "if": "ctx?.orig_vulnerable_host?.uid != null"
       }
     },
     {
@@ -437,7 +437,7 @@
         "field": "orig_vulnerable_host.cid",
         "target_field": "source.vulnerable_host.cid",
         "ignore_missing": true,
-        "if": "ctx?.orig_vulnerable_host.cid != null"
+        "if": "ctx?.orig_vulnerable_host?.cid != null"
       }
     },
     {
@@ -451,7 +451,7 @@
         "field": "orig_vulnerable_host.hostname",
         "target_field": "source.vulnerable_host.hostname",
         "ignore_missing": true,
-        "if": "ctx?.orig_vulnerable_host.hostname != null"
+        "if": "ctx?.orig_vulnerable_host?.hostname != null"
       }
     },
     {
@@ -465,7 +465,7 @@
         "field": "orig_vulnerable_host.os_version",
         "target_field": "source.vulnerable_host.os_version",
         "ignore_missing": true,
-        "if": "ctx?.orig_vulnerable_host.os_version != null"
+        "if": "ctx?.orig_vulnerable_host?.os_version != null"
       }
     },
     {
@@ -479,7 +479,7 @@
         "field": "orig_vulnerable_host.criticality",
         "target_field": "source.vulnerable_host.criticality",
         "ignore_missing": true,
-        "if": "ctx?.orig_vulnerable_host.criticality != null"
+        "if": "ctx?.orig_vulnerable_host?.criticality != null"
       }
     },
     {
@@ -493,7 +493,7 @@
         "field": "orig_vulnerable_host.source",
         "target_field": "source.vulnerable_host.source",
         "ignore_missing": true,
-        "if": "ctx?.orig_vulnerable_host.source != null"
+        "if": "ctx?.orig_vulnerable_host?.source != null"
       }
     },
     {
@@ -507,7 +507,7 @@
         "field": "resp_vulnerable_host.cvs",
         "target_field": "destination.vulnerable_host.cve",
         "ignore_missing": true,
-        "if": "ctx?.resp_vulnerable_host.cvs != null"
+        "if": "ctx?.resp_vulnerable_host?.cvs != null"
       }
     },
     {
@@ -521,7 +521,7 @@
         "field": "resp_vulnerable_host.uid",
         "target_field": "destination.vulnerable_host.uid",
         "ignore_missing": true,
-        "if": "ctx?.resp_vulnerable_host.uid != null"
+        "if": "ctx?.resp_vulnerable_host?.uid != null"
       }
     },
     {
@@ -535,7 +535,7 @@
         "field": "resp_vulnerable_host.cid",
         "target_field": "destination.vulnerable_host.cid",
         "ignore_missing": true,
-        "if": "ctx?.resp_vulnerable_host.cid != null"
+        "if": "ctx?.resp_vulnerable_host?.cid != null"
       }
     },
     {
@@ -549,7 +549,7 @@
         "field": "resp_vulnerable_host.hostname",
         "target_field": "destination.vulnerable_host.hostname",
         "ignore_missing": true,
-        "if": "ctx?.resp_vulnerable_host.hostname != null"
+        "if": "ctx?.resp_vulnerable_host?.hostname != null"
       }
     },
     {
@@ -563,7 +563,7 @@
         "field": "resp_vulnerable_host.os_version",
         "target_field": "destination.vulnerable_host.os_version",
         "ignore_missing": true,
-        "if": "ctx?.resp_vulnerable_host.os_version != null"
+        "if": "ctx?.resp_vulnerable_host?.os_version != null"
       }
     },
     {
@@ -577,7 +577,7 @@
         "field": "resp_vulnerable_host.criticality",
         "target_field": "destination.vulnerable_host.criticality",
         "ignore_missing": true,
-        "if": "ctx?.resp_vulnerable_host.criticality != null"
+        "if": "ctx?.resp_vulnerable_host?.criticality != null"
       }
     },
     {
@@ -591,7 +591,7 @@
         "field": "resp_vulnerable_host.source",
         "target_field": "destination.vulnerable_host.source",
         "ignore_missing": true,
-        "if": "ctx?.resp_vulnerable_host.source != null"
+        "if": "ctx?.resp_vulnerable_host?.source != null"
       }
     },
     {
