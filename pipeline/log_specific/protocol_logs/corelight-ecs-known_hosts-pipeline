@@ -158,7 +158,7 @@
         "field": "ep.cid",
         "target_field": "corelight.known.cid",
         "ignore_missing": true,
-        "if": "ctx?.ep.cid != null"
+        "if": "ctx?.ep?.cid != null"
       }
     },
     {
@@ -172,7 +172,7 @@
         "field": "ep.criticality",
         "target_field": "corelight.known.criticality",
         "ignore_missing": true,
-        "if": "ctx?.ep.criticality != null"
+        "if": "ctx?.ep?.criticality != null"
       }
     },
     {
@@ -186,7 +186,7 @@
         "field": "ep.desc",
         "target_field": "corelight.known.desc",
         "ignore_missing": true,
-        "if": "ctx?.ep.desc != null"
+        "if": "ctx?.ep?.desc != null"
       }
     },
     {
@@ -200,7 +200,7 @@
         "field": "ep.source",
         "target_field": "corelight.known.source",
         "ignore_missing": true,
-        "if": "ctx?.ep.source != null"
+        "if": "ctx?.ep?.source != null"
       }
     },
     {
@@ -214,7 +214,7 @@
         "field": "ep.status",
         "target_field": "corelight.known.status",
         "ignore_missing": true,
-        "if": "ctx?.ep.status != null"
+        "if": "ctx?.ep?.status != null"
       }
     },
     {
@@ -228,7 +228,7 @@
         "field": "ep.uid",
         "target_field": "corelight.known.uid",
         "ignore_missing": true,
-        "if": "ctx?.ep.uid != null"
+        "if": "ctx?.ep?.uid != null"
       }
     },
     {
