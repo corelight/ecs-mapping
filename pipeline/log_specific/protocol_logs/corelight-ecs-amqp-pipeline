@@ -1,0 +1,157 @@
+{
+  "description": "Corelight ingest pipeline for 'amqp' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2024081901,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_DNS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "ver_maj",
+        "target_field": "amqp.ver_maj",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "ver_min",
+        "target_field": "amqp.ver_min",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "ver_rev",
+        "target_field": "amqp.ver_rev",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "host",
+        "target_field": "amqp.host",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "name",
+        "target_field": "amqp.name",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "product",
+        "target_field": "amqp.product",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "version",
+        "target_field": "amqp.version",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "copyright",
+        "target_field": "amqp.copyright",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "platform",
+        "target_field": "amqp.platform",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "information",
+        "target_field": "amqp.information",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "instance",
+        "target_field": "amqp.instance",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "delivered_exchanges",
+        "target_field": "amqp.delivered_exchanges",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "published_exchanges",
+        "target_field": "amqp.published_exchanges",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "consumed_queues",
+        "target_field": "consumed_queues",
+        "ignore_failure": true
+      }
+    }
+  ]
+}

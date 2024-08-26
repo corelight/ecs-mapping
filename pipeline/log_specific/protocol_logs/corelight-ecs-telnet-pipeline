@@ -1,0 +1,179 @@
+{
+  "description": "Corelight ingest pipeline for 'telnet' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2024081901,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_DNS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.tn3270 == null",
+        "field": "telnet.tn3270",
+        "value": false
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.tn3270 == 'T'",
+        "field": "telnet.tn3270",
+        "value": true
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.tn3270e == null",
+        "field": "telnet.tn3270e",
+        "value": false
+      }
+    },
+    {
+      "set": {
+        "if": "ctx.tn3270e == 'T'",
+        "field": "telnet.tn3270e",
+        "value": true
+      }
+    },
+    {
+      "rename": {
+        "field": "terminal_type",
+        "target_field": "telnet.terminal_type",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "terminal_speed",
+        "target_field": "telnet.terminal_speed",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "x_display_location",
+        "target_field": "telnet.x_display_location",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "environ_value_names",
+        "target_field": "telnet.environ_value_names",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "environ_value_values",
+        "target_field": "telnet.environ_value_values",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tn3270e_device_type_request",
+        "target_field": "telnet.tn3270e_device_type_request",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tn3270e_device_type_request_associate",
+        "target_field": "telnet.tn3270e_device_type_request_associate",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tn3270e_device_type_request_connect",
+        "target_field": "telnet.tn3270e_device_type_request_connect",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tn3270e_device_type_is",
+        "target_field": "telnet.tn3270e_device_type_is",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tn3270e_device_type_is_associate",
+        "target_field": "telnet.tn3270e_device_type_is_associate",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "tn3270e_device_type_is_connect",
+        "target_field": "telnet.tn3270e_device_type_is_connect",
+        "ignore_failure": true
+      }
+    },
+    {
+      "rename": {
+        "field": "data",
+        "target_field": "telnet.data",
+        "ignore_failure": true
+      }
+    },
+    {
+      "remove": {
+        "field": [
+          "tn3270",
+          "tn3270e"
+        ]
+      }
+    }
+  ]
+}
