@@ -283,6 +283,146 @@
     },
     {
       "rename": {
+        "field": "resp_inst.az",
+        "target_field": "conn.resp_inst.az",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.id",
+        "target_field": "conn.resp_inst.id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.name",
+        "target_field": "conn.resp_inst.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.orig_id",
+        "target_field": "conn.resp_inst.orig_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.vpc_id",
+        "target_field": "conn.resp_inst.vpc_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.az",
+        "target_field": "conn.resp_inst.az",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.id",
+        "target_field": "conn.resp_inst.id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.name",
+        "target_field": "conn.resp_inst.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.orig_id",
+        "target_field": "conn.resp_inst.orig_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.vpc_id",
+        "target_field": "conn.resp_inst.vpc_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.az",
+        "target_field": "conn.resp_inst.az",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.id",
+        "target_field": "conn.resp_inst.id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.name",
+        "target_field": "conn.resp_inst.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.orig_id",
+        "target_field": "conn.resp_inst.orig_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "resp_inst.vpc_id",
+        "target_field": "conn.resp_inst.vpc_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_inst.az",
+        "target_field": "conn.orig_inst.az",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_inst.id",
+        "target_field": "conn.orig_inst.id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_inst.name",
+        "target_field": "conn.orig_inst.name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_inst.orig_id",
+        "target_field": "conn.orig_inst.orig_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "orig_inst.vpc_id",
+        "target_field": "conn.orig_inst.vpc_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "corelight_shunted",
         "target_field": "conn.corelight_shunted",
         "ignore_missing": true
