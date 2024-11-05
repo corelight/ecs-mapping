@@ -223,6 +223,13 @@
       }
     },
     {
+      "rename": {
+        "field": "inferences",
+        "target_field": "ssh.inferences",
+        "ignore_missing": true
+      }
+    },
+    {
       "set": {
         "field": "network.transport",
         "value": "tcp",
