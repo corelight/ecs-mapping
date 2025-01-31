@@ -681,6 +681,13 @@
       }
     },
     {
+      "rename": {
+        "field": "ts_last",
+        "target_field": "corelight.ts_last",
+        "ignore_missing": true
+      }
+    },
+    {
       "remove": {
         "field": [ "id", "id_vlan" ],
         "ignore_missing": true
