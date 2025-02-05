@@ -264,6 +264,13 @@
       }
     },
     {
+      "rename": {
+        "field": "ts_last",
+        "target_field": "corelight.ts_last",
+        "ignore_missing": true
+      }
+    },
+    {
       "append": {
         "field": "dns.header_flags",
         "value": "AA",
