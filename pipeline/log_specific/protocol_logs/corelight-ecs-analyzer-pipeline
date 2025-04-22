@@ -1,0 +1,94 @@
+{
+  "description": "Corelight ingest pipeline for 'reporter' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2025042201,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "error" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "analyzer_kind",
+        "target_field": "analyzer.analyzer_kind",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "analyzer_name",
+        "target_field": "analyzer.analyzer_name",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cause",
+        "target_field": "analyzer.cause",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "failure_data",
+        "target_field": "analyzer.failure_data",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "failure_reason",
+        "target_field": "analyzer.failure_reason",
+        "ignore_missing": true
+      }
+    }
+  ]
+}
