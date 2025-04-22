@@ -1,0 +1,124 @@
+{
+  "description": "Corelight ingest pipeline for 'websocket' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2025042201,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "destination.domain",
+        "value": "{{{temp_host}}}",
+        "ignore_failure": true,
+        "if": "ctx.temp_host != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "temp_host",
+        "target_field": "url.domain",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "uri",
+        "target_field": "url.original",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "subprotocol",
+        "target_field": "websockets.subprotocol",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_protocols",
+        "target_field": "websockets.client_protocols",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_extensions",
+        "target_field": "websockets.server_extensions",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_extensions",
+        "target_field": "websockets.client_extensions",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "client_key",
+        "target_field": "websockets.client_key",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "server_accept",
+        "target_field": "websockets.server_accept",
+        "ignore_missing": true
+      }
+    }
+  ]
+}
+
