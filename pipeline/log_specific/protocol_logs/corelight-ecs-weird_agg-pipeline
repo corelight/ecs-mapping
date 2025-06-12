@@ -1,0 +1,11 @@
+{
+  "description": "Corelight ingest pipeline for 'weird_agg' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2025061001,
+  "processors": [
+    {
+      "pipeline": {
+        "name": "corelight-ecs-weird-pipeline"
+      }
+    }
+  ]
+}

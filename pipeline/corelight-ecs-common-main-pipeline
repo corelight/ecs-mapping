@@ -112,6 +112,17 @@
       }
     },
     {
+        "date": {
+          "field": "time",
+          "target_field": "ts",
+          "formats": [
+            "ISO8601",
+            "UNIX"
+            ],
+            "if": "ctx?.event.dataset == 'auditlog'"
+        }
+      },
+    {
       "date": {
         "field": "ts",
         "target_field": "@timestamp",
