@@ -44,7 +44,7 @@
     {
       "set": {
         "field": "temporary_metadata_index_name_dataset_suffix",
-        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_WEIRD",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
         "ignore_failure": false
       }
     },
