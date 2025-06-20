@@ -1,0 +1,136 @@
+{
+  "description": "Corelight ingest pipeline for 'anomaly' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2025061301,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "miscellaneous"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "usecase",
+        "value": "anomaly.usecase",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "usecase_description",
+        "value": "anomaly.usecase_description",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "entity",
+        "value": "anomaly.entity",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "original_entity",
+        "value": "anomaly.original_entity",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "entity_training_items",
+        "value": "anomaly.entity_training_items",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "item_assoc_entities",
+        "value": "anomaly.item_assoc_entities",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "item_score",
+        "value": "anomaly.item_score",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "item_assoc_entities",
+        "value": "anomaly.item_assoc_entities",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "item_assoc_entities_similarity",
+        "value": "anomaly.item_assoc_entities_similarity",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "ignorable",
+        "value": "anomaly.ignorable",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "anomaly_type",
+        "value": "anomaly.anomaly_type",
+        "ignore_failure": false
+      }
+    }
+  ]
+  }
