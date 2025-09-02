@@ -26,7 +26,7 @@
         "description": "Common pipeline for Metric logs (metrics and stats logs).",
         "name": "corelight-ecs-common-metric-metrics_stats-pipeline",
         "ignore_missing_pipeline": false,
-        "if": "ctx?.labels?.corelight?.event_sub_type != null && [ 'capture_loss', 'conn_doctor', 'corelight_cloud_stats', 'corelight_metrics_bro', 'corelight_metrics_cpu', 'corelight_metrics_disk', 'corelight_metrics_docker', 'corelight_metrics_iface', 'corelight_metrics_memory', 'corelight_metrics_s3', 'corelight_metrics_sftp', 'corelight_metrics_suricata', 'corelight_metrics_system', 'corelight_metrics_utilization', 'corelight_ml_metrics', 'corelight_overall_capture_loss', 'corelight_profiling', 'corelight_weird_stats', 'ml_metrics', 'namecache', 'packet_filter', 'reporter', 'smartpcap-stats', 'stats', 'suricata_stats', 'weird_stats' ].contains(ctx.labels?.corelight?.event_sub_type)"
+        "if": "ctx?.labels?.corelight?.event_sub_type != null && [ 'capture_loss', 'conn_doctor', 'corelight_cloud_stats', 'corelight_metrics_bro', 'corelight_metrics_cpu', 'corelight_metrics_disk', 'corelight_metrics_docker', 'corelight_metrics_iface', 'corelight_metrics_memory', 'corelight_metrics_s3', 'corelight_metrics_sftp', 'corelight_metrics_suricata', 'corelight_metrics_system', 'corelight_metrics_utilization', 'corelight_ml_metrics', 'corelight_overall_capture_loss', 'corelight_profiling',  'corelight_service_status', 'corelight_weird_stats', 'ml_metrics', 'namecache', 'packet_filter', 'reporter', 'smartpcap-stats', 'stats', 'suricata_stats', 'weird_stats' ].contains(ctx.labels?.corelight?.event_sub_type)"
       }
     },
     {
