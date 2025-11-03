@@ -329,6 +329,13 @@
       }
     },
     {
+      "rename": {
+        "field": "payload",
+        "target_field": "suricata.payload",
+        "ignore_missing": true
+      }
+    },
+    {
       "set": {
         "field": "threat.tactic.reference",
         "value": "https://attack.mitre.org/tactics/{{threat.tactic.id}}/",

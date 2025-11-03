@@ -181,7 +181,7 @@
     {
       "rename": {
         "field": "certificate.not_valid_after",
-        "target_field": "file.x509.not_after",
+        "target_field": "file.x509.not_after_non_formatted_date",
         "ignore_missing": true
       }
     },
@@ -194,7 +194,7 @@
     {
       "rename": {
         "field": "certificate.not_valid_before",
-        "target_field": "file.x509.not_before",
+        "target_field": "file.x509.not_before_non_formatted_date",
         "ignore_missing": true
       }
     },
@@ -394,17 +394,10 @@
       }
     },
     {
-      "rename": {
-        "field": "certificate_not_valid_after",
-        "target_field": "file.x509.not_after_non_formatted_date",
-        "ignore_missing": true
-      }
-    },
-    {
       "date": {
         "field": "file.x509.not_after_non_formatted_date",
         "target_field": "file.x509.not_after",
-        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
         "on_failure": [
           {
             "remove": {
@@ -416,17 +409,10 @@
       }
     },
     {
-      "rename": {
-        "field": "certificate_not_valid_before",
-        "target_field": "file.x509.not_before_non_formatted_date",
-        "ignore_missing": true
-      }
-    },
-    {
       "date": {
         "field": "file.x509.not_before_non_formatted_date",
         "target_field": "file.x509.not_before",
-        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
+        "formats": [ "yyyy-MM-dd'T'HH:mm:ss.SSSSSSXXX", "UNIX", "YYYY-MM-dd HH:mm:ss.SSS", "ISO8601", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" ],
         "on_failure": [
           {
             "remove": {
@@ -553,6 +539,18 @@
         "field": "id",
         "ignore_failure": true,
         "ignore_missing": true
+      }
+    },
+    {
+      "remove": {
+        "field": "file.x509.not_before_non_formatted_date",
+        "if": "ctx.file?.x509?.not_before != null"
+      }
+    },
+    {
+      "remove": {
+        "field": "file.x509.not_after_non_formatted_date",
+        "if": "ctx.file?.x509?.not_after != null"
       }
     }
   ]
