@@ -1,0 +1,94 @@
+{
+  "description": "Corelight ingest pipeline for 'unknown_protocols' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2025121501,
+  "processors":[
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "analyzer",
+        "target_field": "network.unknown.protocol",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "analyzer_history",
+        "target_field": "network.unknown.protocol_history",
+        "ignore_missing": true
+      }
+    },
+     {
+      "rename": {
+        "field": "protocol_id",
+        "target_field": "network.unknown.protocol_id",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "first_bytes",
+        "target_field": "network.unknown.first_bytes",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "protocol_name",
+        "target_field": "network.unknown.protocol_name",
+        "ignore_missing": true
+      }
+    }
+]
+}
