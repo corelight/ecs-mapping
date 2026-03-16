@@ -404,6 +404,13 @@
       }
     },
     {
+      "set": {
+        "field": "log.id.uids",
+        "value": "{{{uids}}}",
+        "if": "ctx?.uids != null"
+      }
+    },
+    {
       "rename": {
         "field": "@sensor",
         "target_field": "observer.hostname",

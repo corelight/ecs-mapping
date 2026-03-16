@@ -264,6 +264,13 @@
         "ignore_missing": true
       }
     },
+     {
+      "rename": {
+        "field": "user_agents",
+        "target_field": "user_agents.original",
+        "ignore_missing": true
+      }
+    },
     {
       "rename": {
         "field": "info_code",
