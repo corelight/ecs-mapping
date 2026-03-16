@@ -260,6 +260,13 @@
         "ignore_missing": true
       }
     },
+     {
+      "rename": {
+        "field": "mime_types",
+        "target_field": "file.mime_types",
+        "ignore_missing": true
+      }
+    },
     {
       "rename": {
         "field": "filename",
