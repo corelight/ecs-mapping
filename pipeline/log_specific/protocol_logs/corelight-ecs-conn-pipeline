@@ -523,7 +523,7 @@
       "set": {
         "field": "network.icmp_type",
         "copy_from": "source.port",
-         "if": "ctx?.network.transport == 'icmp'"
+         "if": "(ctx['network.transport'].contains('icmp'))"
       }
     },
     {
