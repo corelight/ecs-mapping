@@ -274,13 +274,22 @@
         "ignore_failure": true
       }
     },
-    {
-      "set": {
-        "field": "event.dataset",
-        "value": "tls",
-        "ignore_failure": true
-      }
-    },
+      {
+        "set": {
+          "field": "event.dataset",
+          "value": "tls",
+          "ignore_failure": true,
+          "if": "ctx.event?.dataset == 'ssl'"
+        }
+      },
+      {
+        "set": {
+          "field": "event.dataset",
+          "value": "tls_agg",
+          "ignore_failure": true,
+          "if": "ctx.event?.dataset == 'ssl_agg'"
+        }
+      },
     {
       "remove": {
         "field": "id",
