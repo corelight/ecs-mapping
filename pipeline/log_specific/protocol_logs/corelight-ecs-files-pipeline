@@ -80,6 +80,22 @@
     },
     {
       "set": {
+        "field": "corelight.source.ip",
+        "copy_from": "files.tx_hosts",
+        "ignore_failure": true,
+        "if": "ctx?.files?.tx_hosts != null"
+      }
+    },
+    {
+      "set": {
+        "field": "corelight.destination.ip",
+        "copy_from": "files.rx_hosts",
+        "ignore_failure": true,
+        "if": "ctx?.files?.rx_hosts != null"
+      }
+    },
+    {
+      "set": {
         "field": "destination.address",
         "copy_from": "files.rx_hosts",
         "ignore_failure": true,
