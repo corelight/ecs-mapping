@@ -272,6 +272,45 @@
       }
     },
     {
+      "set": {
+        "field": "user_agent.original",
+        "value": "{{user_agents.original}}",
+        "if": "ctx?.log.id.uids != null"
+      }
+    },
+  {
+    "gsub": {
+      "field": "user_agent.original",
+      "pattern": "[{}]",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },
+  {
+    "gsub": {
+      "field": "user_agent.original",
+      "pattern": "\\d+=",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },
+  {
+    "gsub": {
+      "field": "user_agent.original",
+      "pattern": "\\s+",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },   
+    {
+    "join": {
+      "field": "user_agent.original",
+      "separator": ",",
+      "if": "ctx?.log?.id?.uid instanceof List",
+        "ignore_failure": true
+    }
+    },
+    {
       "rename": {
         "field": "info_code",
         "target_field": "http.response.informational_code",

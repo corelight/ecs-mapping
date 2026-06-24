@@ -284,6 +284,45 @@
       }
     },
     {
+      "set": {
+        "field": "file.mime_type",
+        "value": "{{file.mime_types}}",
+        "if": "ctx?.log.id.uids != null"
+      }
+    },
+  {
+    "gsub": {
+      "field": "file.mime_type",
+      "pattern": "[{}]",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },
+  {
+    "gsub": {
+      "field": "file.mime_type",
+      "pattern": "\\d+=",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },
+  {
+    "gsub": {
+      "field": "file.mime_type",
+      "pattern": "\\s+",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },   
+    {
+    "join": {
+      "field": "file.mime_type",
+      "separator": ",",
+      "if": "ctx?.log?.id?.uid instanceof List",
+        "ignore_failure": true
+    }
+    },
+    {
       "rename": {
         "field": "filename",
         "target_field": "file.name",
