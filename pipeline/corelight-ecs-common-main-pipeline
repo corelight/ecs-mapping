@@ -407,7 +407,53 @@
       "set": {
         "field": "log.id.uid",
         "value": "{{log.id.uids}}",
-        "if": "ctx?.log.id.uids != null"
+        "if": "ctx?.log?.id?.uids != null"
+      }
+    },
+  {
+    "gsub": {
+      "field": "log.id.uid",
+      "pattern": "[{}]",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },
+  {
+    "gsub": {
+      "field": "log.id.uid",
+      "pattern": "\\d+=",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },
+  {
+    "gsub": {
+      "field": "log.id.uid",
+      "pattern": "\\s+",
+      "replacement": "",
+      "ignore_failure": true
+    }
+  },   
+    {
+    "join": {
+      "field": "log.id.uid",
+      "separator": ",",
+      "if": "ctx?.log?.id?.uid instanceof List",
+        "ignore_failure": true
+    }
+    },
+    {
+      "set": {
+        "field": "event.id",
+        "value": "{{{log.id.uid}}}",
+        "if": "ctx?.log?.id?.uid != null"
+      }
+    },
+     {
+      "set": {
+        "field": "log.id.uid",
+        "value": "{{log.id.uids}}",
+        "if": "ctx?.log?.id?.uids != null"
       }
     },
   {
