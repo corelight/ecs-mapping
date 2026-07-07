@@ -499,7 +499,7 @@
       "set": {
         "field": "log.id.uid",
         "value": "{{log.id.uids}}",
-        "if": "ctx?.log.id.uids != null"
+        "if": "ctx?.log?.id?.uids != null"
       }
     },
   {
