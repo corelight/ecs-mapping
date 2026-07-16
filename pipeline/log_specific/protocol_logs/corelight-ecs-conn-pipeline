@@ -694,6 +694,125 @@
         "ignore_missing": true
       }
     },
+     {
+      "dot_expander": {
+        "field": "capture_metadata.vpc.vpc_id",
+        "ignore_failure": true,
+        "if": "(ctx['capture_metadata.vpc.vpc_id'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "capture_metadata.vpc.vpc_id",
+        "target_field" : "corelight.cloud.capture_metadata_vpc_vpc_id",
+        "ignore_missing" : true
+      }
+    },
+     {
+      "rename" : {
+        "field" : "capture_source",
+        "target_field" : "corelight.cloud.capture_source",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_inst.sg_ids",
+        "ignore_failure": true,
+        "if": "(ctx['orig_inst.sg_ids'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "orig_inst.sg_ids",
+        "target_field" : "corelight.cloud.orig_inst.sg_ids",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_inst.subnet_id",
+        "ignore_failure": true,
+        "if": "(ctx['orig_inst.subnet_id'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "orig_inst.subnet_id",
+        "target_field" : "corelight.cloud.orig_inst_subnet_id",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_inst.name",
+        "ignore_failure": true,
+        "if": "(ctx['orig_inst.name'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "orig_inst.name",
+        "target_field" : "corelight.cloud.orig_inst_name",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_inst.org_id",
+        "ignore_failure": true,
+        "if": "(ctx['orig_inst.org_id'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "orig_inst.org_id",
+        "target_field" : "corelight.cloud.orig_inst_org_id",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_inst.profile",
+        "ignore_failure": true,
+        "if": "(ctx['orig_inst.profile'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "orig_inst.profile",
+        "target_field" : "corelight.cloud.orig_inst_profile",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_inst.az",
+        "ignore_failure": true,
+        "if": "(ctx['orig_inst.az'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "orig_inst.az",
+        "target_field" : "corelight.cloud.orig_inst_az",
+        "ignore_missing" : true
+      }
+    },
+    {
+      "dot_expander": {
+        "field": "orig_inst.id",
+        "ignore_failure": true,
+        "if": "(ctx['orig_inst.id'] != null )"
+      }
+    },
+    {
+      "rename" : {
+        "field" : "orig_inst.id",
+        "target_field" : "corelight.cloud.orig_inst_id",
+        "ignore_missing" : true
+      }
+    },
     {
       "remove": {
         "field": [ "id", "id_vlan" ],
