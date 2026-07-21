@@ -725,7 +725,7 @@
     {
       "rename" : {
         "field" : "orig_inst.sg_ids",
-        "target_field" : "corelight.cloud.orig_inst.sg_ids",
+        "target_field" : "corelight.cloud.orig_inst_sg_ids",
         "ignore_missing" : true
       }
     },
