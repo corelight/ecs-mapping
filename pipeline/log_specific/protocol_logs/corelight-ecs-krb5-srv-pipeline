@@ -1,6 +1,6 @@
 {
-  "description": "Corelight ingest pipeline for 'websocket' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
-  "version": 2025042201,
+  "description": "Corelight ingest pipeline for 'krb5-srv' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2026091701,
   "processors": [
     {
       "set": {
@@ -57,68 +57,88 @@
     },
     {
       "set": {
-        "field": "destination.domain",
-        "value": "{{{temp_host}}}",
+        "field": "source.user.name",
+        "value": "{{{client}}}",
         "ignore_failure": true,
-        "if": "ctx.temp_host != null"
+        "if": "ctx.client != null"
       }
     },
     {
       "rename": {
-        "field": "temp_host",
-        "target_field": "url.domain",
+        "field": "client",
+        "target_field": "kerberos.request.client",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "uri",
-        "target_field": "url.original",
+        "field": "service",
+        "target_field": "kerberos.ticket.service",
+        "ignore_missing": true
+      }
+    },
+     {
+      "rename": {
+        "field": "realm",
+        "target_field": "kerberos.ticket.realm",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "subprotocol",
-        "target_field": "websockets.subprotocol",
+        "field": "error_code",
+        "target_field": "kerberos.error_code",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "client_protocols",
-        "target_field": "websockets.client_protocols",
+        "field": "rtime",
+        "target_field": "kerberos.ticket.renewal_time",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "server_extensions",
-        "target_field": "websockets.server_extensions",
+        "field": "cipher_req",
+        "target_field": "kerberos.request.ticket.cipher_requested",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "client_extensions",
-        "target_field": "websockets.client_extensions",
+        "field": "cipher_rep",
+        "target_field": "kerberos.request.ticket.cipher_negotiated",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "client_key",
-        "target_field": "websockets.client_key",
+        "field": "padata_hash",
+        "target_field": "kerberos.request.ticket.hash.sha256",
+        "ignore_missing": true
+      }
+    },
+     {
+      "rename": {
+        "field": "ticket_hash",
+        "target_field": "kerberos.response.ticket.hash.sha256",
         "ignore_missing": true
       }
     },
     {
       "rename": {
-        "field": "server_accept",
-        "target_field": "websockets.server_accept",
+        "field": "renew",
+        "target_field": "kerberos.request.ticket.renew",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "renewable",
+        "target_field": "kerberos.request.ticket.renewable",
         "ignore_missing": true
       }
     }
   ]
 }
-
