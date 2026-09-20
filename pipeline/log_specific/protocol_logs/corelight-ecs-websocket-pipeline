@@ -119,7 +119,7 @@
         "ignore_missing": true
       }
     },
-    ,
+
     {
       "rename": {
         "field": "user_agent",
