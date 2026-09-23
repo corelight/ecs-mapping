@@ -1,0 +1,144 @@
+{
+  "description": "Corelight ingest pipeline for 'krb5-srv' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2026091701,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": [ "connection", "info", "protocol" ]
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "network_protocols"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "source.user.name",
+        "value": "{{{client}}}",
+        "ignore_failure": true,
+        "if": "ctx.client != null"
+      }
+    },
+    {
+      "rename": {
+        "field": "client",
+        "target_field": "kerberos.request.client",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "service",
+        "target_field": "kerberos.ticket.service",
+        "ignore_missing": true
+      }
+    },
+     {
+      "rename": {
+        "field": "realm",
+        "target_field": "kerberos.ticket.realm",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "error_code",
+        "target_field": "kerberos.error_code",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "rtime",
+        "target_field": "kerberos.ticket.renewal_time",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cipher_req",
+        "target_field": "kerberos.request.ticket.cipher_requested",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "cipher_rep",
+        "target_field": "kerberos.request.ticket.cipher_negotiated",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "padata_hash",
+        "target_field": "kerberos.request.ticket.hash.sha256",
+        "ignore_missing": true
+      }
+    },
+     {
+      "rename": {
+        "field": "ticket_hash",
+        "target_field": "kerberos.response.ticket.hash.sha256",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "renew",
+        "target_field": "kerberos.request.ticket.renew",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "renewable",
+        "target_field": "kerberos.request.ticket.renewable",
+        "ignore_missing": true
+      }
+    }
+  ]
+}

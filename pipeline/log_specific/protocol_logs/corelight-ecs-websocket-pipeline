@@ -80,42 +80,50 @@
     {
       "rename": {
         "field": "subprotocol",
-        "target_field": "websockets.subprotocol",
+        "target_field": "websocket.subprotocol",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_protocols",
-        "target_field": "websockets.client_protocols",
+        "target_field": "websocket.client_protocols",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_extensions",
-        "target_field": "websockets.server_extensions",
+        "target_field": "websocket.server_extensions",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_extensions",
-        "target_field": "websockets.client_extensions",
+        "target_field": "websocket.client_extensions",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "client_key",
-        "target_field": "websockets.client_key",
+        "target_field": "websocket.client_key",
         "ignore_missing": true
       }
     },
     {
       "rename": {
         "field": "server_accept",
-        "target_field": "websockets.server_accept",
+        "target_field": "websocket.server_accept",
+        "ignore_missing": true
+      }
+    },
+
+    {
+      "rename": {
+        "field": "user_agent",
+        "target_field": "websocket.user_agent",
         "ignore_missing": true
       }
     }
