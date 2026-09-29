@@ -57,7 +57,7 @@
     },
     {
       "set": {
-        "field": "usecase",
+        "field": "use_case",
         "value": "anomaly.usecase",
         "ignore_failure": false
       }
@@ -94,6 +94,13 @@
       "set": {
         "field": "item_assoc_entities",
         "value": "anomaly.item_assoc_entities",
+        "ignore_failure": false
+      }
+    },
+     {
+      "set": {
+        "field": "item",
+        "value": "anomaly.item",
         "ignore_failure": false
       }
     },
