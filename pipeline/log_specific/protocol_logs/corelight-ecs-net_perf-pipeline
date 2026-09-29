@@ -1,0 +1,107 @@
+{
+  "description": "Corelight ingest pipeline for 'network peformance' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2025061301,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "miscellaneous"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "host_str",
+        "value": "host.ip"
+      }
+    },
+    {
+      "set": {
+        "field": "local_entity",
+        "value": "net_perf.local_entity"
+      }
+    },
+    {
+      "set": {
+        "field": "recv_bytes",
+        "value": "net_perf.recv_bytes"
+      }
+    },
+    {
+      "set": {
+        "field": "reply_rate",
+        "value": "net_perf.reply_rate"
+      }
+    },
+    {
+      "set": {
+        "field": "sent_bytes",
+        "value": "net_perf.sent_bytes"
+      }
+    },
+    {
+      "set": {
+        "field": "total",
+        "value": "net_perf.total"
+      }
+    },
+    {
+      "set": {
+        "field": "trigger",
+        "value": "net_perf.trigger"
+      }
+    },
+    {
+      "set": {
+        "field": "window",
+        "value": "net_perf.window"
+      }
+    }
+  ]
+}
