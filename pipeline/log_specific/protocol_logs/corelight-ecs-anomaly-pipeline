@@ -56,84 +56,84 @@
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "use_case",
         "target_field": "anomaly.usecase",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "usecase_description",
         "target_field": "anomaly.usecase_description",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "entity",
         "target_field": "anomaly.entity",
        "ignore_missing": true
       }
     },
     {
-      "set": {
+     "rename": {
         "field": "original_entity",
         "target_field": "anomaly.original_entity",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "entity_training_items",
         "target_field": "anomaly.entity_training_items",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "item_assoc_entities",
         "target_field": "anomaly.item_assoc_entities",
         "ignore_missing": true
       }
     },
      {
-      "set": {
+      "rename": {
         "field": "item",
         "target_field": "anomaly.item",
        "ignore_missing": true
       }
     },
     {
-      "set": {
+     "rename": {
         "field": "item_score",
         "target_field": "anomaly.item_score",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "item_assoc_entities",
         "target_field": "anomaly.item_assoc_entities",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "item_assoc_entities_similarity",
         "target_field": "anomaly.item_assoc_entities_similarity",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+        "rename": {
         "field": "ignorable",
         "target_field": "anomaly.ignorable",
         "ignore_missing": true
       }
     },
     {
-      "set": {
+      "rename": {
         "field": "anomaly_type",
         "target_field": "anomaly.anomaly_type",
        "ignore_missing": true
