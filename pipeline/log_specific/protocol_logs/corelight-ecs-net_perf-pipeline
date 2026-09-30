@@ -58,49 +58,57 @@
     {
       "set": {
         "field": "host_str",
-        "value": "host.ip"
+       "target_field": "host.ip",
+        "ignore_failure": false
       }
     },
     {
       "set": {
         "field": "local_entity",
-        "value": "net_perf.local_entity"
+        "target_field": "net_perf.local_entity",
+         "ignore_failure": false
       }
     },
     {
       "set": {
         "field": "recv_bytes",
-        "value": "net_perf.recv_bytes"
+        "target_field": "net_perf.recv_bytes",
+         "ignore_failure": false
       }
     },
     {
       "set": {
         "field": "reply_rate",
-        "value": "net_perf.reply_rate"
+        "target_field": "net_perf.reply_rate",
+         "ignore_failure": false
       }
     },
     {
       "set": {
         "field": "sent_bytes",
-        "value": "net_perf.sent_bytes"
+        "target_field": "net_perf.sent_bytes",
+         "ignore_failure": false
       }
     },
     {
       "set": {
         "field": "total",
-        "value": "net_perf.total"
+        "target_field": "net_perf.total",
+         "ignore_failure": false
       }
     },
     {
       "set": {
         "field": "trigger",
-        "value": "net_perf.trigger"
+        "target_field": "net_perf.trigger",
+         "ignore_failure": false
       }
     },
     {
       "set": {
         "field": "window",
-        "value": "net_perf.window"
+        "target_field": "net_perf.window",
+         "ignore_failure": false
       }
     }
   ]
