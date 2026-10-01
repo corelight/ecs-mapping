@@ -1,0 +1,115 @@
+{
+  "description": "Corelight ingest pipeline for 'network peformance' log. This ingest pipeline is from the Github repository https://github.com/corelight/ecs-mapping. Please file all questions or issues with this configuration in the corresponding Github repository.",
+  "version": 2025061301,
+  "processors": [
+    {
+      "set": {
+        "field": "event.kind",
+        "value": "event"
+      }
+    },
+    {
+      "set": {
+        "field": "event.category",
+        "value": "network",
+        "override": true
+      }
+    },
+    {
+      "set": {
+        "field": "event.type",
+        "value": "info"
+      }
+    },
+    {
+      "set": {
+        "field": "labels.corelight.event_category",
+        "value": "miscellaneous"
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_type",
+        "value": "VAR_CL_DS_TYPE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_prefix",
+        "value": "VAR_CL_DS_PREFIX_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_dataset_suffix",
+        "value": "VAR_CL_DS_SUFFIX_PROTOCOL_LOG_VARIOUS",
+        "ignore_failure": false
+      }
+    },
+    {
+      "set": {
+        "field": "temporary_metadata_index_name_namespace",
+        "value": "VAR_CL_DS_NAMESPACE_PROTOCOL_LOG",
+        "ignore_failure": false
+      }
+    },
+    {
+      "rename": {
+        "field": "host_str",
+       "target_field": "host.ip",
+        "ignore_missing": true
+      }
+    },
+    {
+     "rename": {
+        "field": "local_entity",
+        "target_field": "net_perf.local_entity",
+         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "recv_bytes",
+        "target_field": "net_perf.recv_bytes",
+         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "reply_rate",
+        "target_field": "net_perf.reply_rate",
+         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "sent_bytes",
+        "target_field": "net_perf.sent_bytes",
+         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "total",
+        "target_field": "net_perf.total",
+         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "trigger",
+        "target_field": "net_perf.trigger",
+         "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
+        "field": "window",
+        "target_field": "net_perf.window",
+         "ignore_missing": true
+      }
+    }
+  ]
+}
