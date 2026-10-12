@@ -57,6 +57,13 @@
     },
     {
       "rename": {
+        "field": "domain",
+        "target_field": "destination.domain",
+        "ignore_missing": true
+      }
+    },
+    {
+      "rename": {
         "field": "host",
        "target_field": "host.ip",
         "ignore_missing": true
