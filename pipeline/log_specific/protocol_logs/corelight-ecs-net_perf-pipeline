@@ -73,7 +73,8 @@
       "rename": {
         "field": "host",
        "target_field": "host.ip",
-        "ignore_missing": true
+        "ignore_failure": true,
+        "if": "(ctx['host.ip'] == null )"
       }
     },
     {
