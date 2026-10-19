@@ -150,7 +150,7 @@
     {
       "rename": {
         "field": "error_code",
-        "error.code",
+        "target_field": "error.code",
         "ignore_missing": true
       }
     },
