@@ -23,13 +23,6 @@
     },
     {
       "pipeline": {
-        "description": "Replace dotted fields with underscore for ALL logs to prevent object/scalar mapping conflicts.",
-        "name": "corelight-ecs-reuse-replace_dotted_fields_with_underscore-pipeline",
-        "ignore_failure": true
-      }
-    },
-    {
-      "pipeline": {
         "description": "Common pipeline for Metric logs (metrics and stats logs).",
         "name": "corelight-ecs-common-metric-metrics_stats-pipeline",
         "ignore_missing_pipeline": false,
