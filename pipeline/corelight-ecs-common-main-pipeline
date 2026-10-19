@@ -175,7 +175,8 @@
       "rename": {
         "field": "host",
         "target_field": "temp_host",
-        "if": "ctx?.host != null"
+        "if": "ctx?.host != null && ctx.event?.dataset != 'net_perf'",
+        "ignore_missing": true
       }
     },
     {
