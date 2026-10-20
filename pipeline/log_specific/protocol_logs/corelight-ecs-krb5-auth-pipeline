@@ -155,23 +155,17 @@
       }
     },
     {
-        "date": {
+        "rename": {
           "field": "from",
           "target_field": "kerberos.ticket.valid_from",
-          "formats": [
-            "ISO8601",
-            "UNIX"
-            ]
+           "ignore_missing": true
         }
       },
     {
-        "date": {
+        "rename": {
           "field": "till",
           "target_field": "kerberos.ticket.valid_until",
-          "formats": [
-            "ISO8601",
-            "UNIX"
-            ]
+          "ignore_missing": true
         }
       }
   ]
